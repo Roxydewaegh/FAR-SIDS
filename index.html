@@ -1,369 +1,544 @@
 <!DOCTYPE html>
 <!--
-  ============================================================
-  FAR-SIDS planning pack, version 4  (webpage)
-  ============================================================
-  HOW TO EDIT THIS PAGE (for Roxy):
-  1. Each section is labelled with a short marker line that begins
-     with the word EDIT, so you can scan down and find the part you
-     want to change.
-  2. To change wording, edit only the words sitting between two tags.
-     Tags are the little labels inside angle brackets, like li or td.
-     You change the words, never the tags themselves.
-  3. To change a date in a table, edit the words inside the matching
-     table cell.
-  4. You do not need to touch the style section near the top unless
-     you want to change colours or fonts.
-  5. Save the file, upload it to GitHub, and the website updates on
-     its own within a minute or two.
-  ============================================================
+  FAR-SIDS project website.
+  Single self-contained file. Upload as index.html to the repo root, the same
+  way as before, and it replaces the old page.
+  To change wording: edit the words sitting between the tags. Each section
+  starts with a short SECTION label so you can find it quickly.
+  The look (colours, fonts) lives in the style block just below.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FAR-SIDS planning pack, version 4</title>
+<title>FAR-SIDS · Foreign Aid, Remittances, and Wellbeing in Small Island Developing States</title>
+<meta name="description" content="A Marie Sklodowska-Curie postdoctoral research project at the University of Malta studying how foreign aid and remittances shape wellbeing in Jamaica, Tonga, and Comoros.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#1F3864; --ink:#232329; --muted:#5d5d66; --line:#d9dee6; --bg:#ffffff; --panel:#f5f7fa;
-    --admin:#712B13; --adminbg:#FAECE7; --train:#085041; --trainbg:#E1F5EE;
-    --res:#3C3489; --resbg:#EEEDFE; --out:#72243E; --outbg:#FBEAF0; --life:#444441; --lifebg:#F1EFE8;
+    --abyss:#08293A; --deep:#0E4D5C; --lagoon:#1C8C9B; --shoal:#BFE3E2;
+    --sand:#EFE6D2; --sand-deep:#E4D6B8; --coral:#E2664A; --gold:#FFCC00;
+    --ink:#0B2530; --ink-soft:#3D5560; --paper:#F6FBFB; --line:#d7e6e6;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Spline Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'Space Mono','SFMono-Regular',Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0; background:var(--bg); color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.55; font-size:16px;}
-  .wrap{max-width:980px; margin:0 auto; padding:0 20px;}
-  header{background:linear-gradient(135deg,#1F3864,#3C3489); color:#fff; padding:42px 0 34px;}
-  header h1{margin:0 0 8px; font-size:30px; letter-spacing:.2px;}
-  header p{margin:0; color:#dfe4f1; font-size:14.5px; max-width:760px;}
-  .pill{display:inline-block; margin-top:14px; background:#ffffff22; border:1px solid #ffffff44;
-    color:#fff; font-size:12.5px; padding:4px 11px; border-radius:20px;}
-  nav.toc{background:var(--panel); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5;}
-  nav.toc ul{display:flex; flex-wrap:wrap; gap:6px 18px; list-style:none; margin:0; padding:12px 0;}
-  nav.toc a{color:var(--navy); text-decoration:none; font-size:13.5px; font-weight:600;}
-  nav.toc a:hover{text-decoration:underline;}
-  section{padding:30px 0; border-bottom:1px solid var(--line);}
-  h2{font-size:22px; color:var(--navy); margin:0 0 6px;}
-  h3{font-size:15px; color:var(--res); margin:20px 0 6px;}
-  .sub{color:var(--muted); font-style:italic; font-size:14px; margin:0 0 14px;}
-  p{margin:9px 0;}
-  ol,ul{margin:10px 0; padding-left:22px;}
-  li{margin:7px 0;}
-  .lead{font-weight:700; color:var(--navy);}
-  .wpline{font-weight:700;}
-  .scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:14px 0;}
-  table{border-collapse:collapse; width:100%; font-size:13.5px;}
-  .gloss th{background:var(--navy); color:#fff; text-align:left; padding:8px 10px; font-size:13px;}
-  .gloss td{border:1px solid var(--line); padding:8px 10px; vertical-align:top;}
-  .gloss tr:nth-child(even) td{background:var(--panel);}
-  .code{font-weight:700; color:var(--navy); white-space:nowrap;}
-  .date{white-space:nowrap; color:#444; font-weight:600;}
-  .band{font-weight:700; color:#fff; padding:7px 12px; border-radius:6px 6px 0 0; margin-top:18px; font-size:14px;}
-  .band.admin{background:var(--admin);} .band.train{background:var(--train);}
-  .band.res{background:var(--res);} .band.out{background:var(--out);}
-  .hy th{text-align:left; padding:8px 9px; font-size:12.5px; border-radius:6px 6px 0 0;}
-  .hy td{vertical-align:top; padding:8px 9px; font-size:12.5px; border-bottom:1px solid #e7e7e7;}
-  .hy .rowlab{font-weight:700; width:96px;}
-  .adminH{background:var(--adminbg); color:var(--admin);} .adminC{background:#FAECE799; color:var(--admin);}
-  .trainH{background:var(--trainbg); color:var(--train);} .trainC{background:#E1F5EE99; color:var(--train);}
-  .resH{background:var(--resbg); color:var(--res);} .resC{background:#EEEDFE99; color:var(--res);}
-  .outH{background:var(--outbg); color:var(--out);} .outC{background:#FBEAF099; color:var(--out);}
-  .lifeH{background:var(--lifebg); color:var(--life);} .lifeC{background:#F1EFE899; color:var(--life);}
-  .hi{background:var(--resbg);}
-  .note{background:#FBF7E9; border:1px solid #E7D9A8; padding:11px 14px; border-radius:8px; font-size:14px; margin:16px 0;}
-  footer{padding:26px 0 50px; color:var(--muted); font-size:13px;}
-  @media (max-width:640px){
-    header h1{font-size:24px;} body{font-size:15px;} .hy .rowlab{width:auto;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+    font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 26px;}
+  a{color:var(--lagoon); text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif); font-weight:500; line-height:1.08; margin:0;}
+  .eyebrow{font-family:var(--mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--lagoon); margin:0 0 14px;}
+
+  header.bar{position:sticky; top:0; z-index:20; backdrop-filter:saturate(140%) blur(8px);
+    background:#08293Acc; border-bottom:1px solid #ffffff1a; transition:background .3s;}
+  .bar .wrap{display:flex; align-items:center; justify-content:space-between; height:60px;}
+  .brand{font-family:var(--mono); font-weight:700; letter-spacing:.14em; color:#fff; font-size:.92rem;}
+  .brand b{color:var(--gold);}
+  nav.links{display:flex; gap:22px; overflow-x:auto;}
+  nav.links a{color:#cfe6e6; font-size:.84rem; font-family:var(--mono); letter-spacing:.04em; white-space:nowrap;}
+  nav.links a:hover{color:#fff;}
+
+  .hero{position:relative; overflow:hidden; color:#eafaf8;
+    background:radial-gradient(120% 130% at 80% -10%, #11657033 0%, transparent 55%),
+               linear-gradient(160deg,#08293A 0%, #0C3F4D 55%, #0E4D5C 100%);}
+  .hero svg.contours{position:absolute; inset:0; width:100%; height:100%; opacity:.5;}
+  .hero .wrap{position:relative; z-index:2; padding:96px 26px 104px;}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem); font-weight:500; letter-spacing:-.01em; max-width:16ch; color:#fff;}
+  .hero h1 em{font-style:italic; color:var(--gold);}
+  .hero p.lede{font-size:clamp(1.05rem,1.6vw,1.28rem); max-width:60ch; margin:24px 0 0; color:#cfe9e6;}
+  .hero .meta{margin-top:34px; display:flex; flex-wrap:wrap; gap:10px 26px; font-family:var(--mono);
+    font-size:.74rem; letter-spacing:.08em; color:#9fd0cf;}
+  .hero .meta span{display:inline-flex; align-items:center; gap:8px;}
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--coral); display:inline-block;}
+  .scrollcue{position:absolute; bottom:18px; left:50%; transform:translateX(-50%); z-index:2;
+    font-family:var(--mono); font-size:.62rem; letter-spacing:.3em; color:#7fb6b5; text-transform:uppercase;}
+
+  section{padding:78px 0; border-bottom:1px solid var(--line);}
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  h2.title{font-size:clamp(1.8rem,3.4vw,2.5rem); max-width:20ch;}
+  .lead-p{font-size:1.12rem; max-width:64ch; color:var(--ink); margin:18px 0 0;}
+  .muted{color:var(--ink-soft);}
+
+  .question{background:
+    radial-gradient(100% 120% at 100% 0, #e4d6b855 0, transparent 50%), var(--sand); border:0;}
+  .question .big{font-family:var(--serif); font-size:clamp(1.5rem,3vw,2.1rem); line-height:1.25;
+    max-width:24ch; color:var(--abyss); font-weight:500;}
+  .question .cols{display:grid; grid-template-columns:1fr 1fr; gap:30px 54px; margin-top:30px;}
+  .question p{margin:0 0 14px;}
+  @media(max-width:760px){ .question .cols{grid-template-columns:1fr;} }
+
+  .islands-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:40px;}
+  .isle{background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    display:flex; flex-direction:column; transition:transform .35s ease, box-shadow .35s ease;}
+  .isle:hover{transform:translateY(-5px); box-shadow:0 18px 40px -22px #0e4d5c66;}
+  .isle .top{padding:20px 20px 0; background:linear-gradient(180deg,#f1f9f8,#ffffff);}
+  .isle svg{display:block; width:100%; height:96px;}
+  .isle .body{padding:8px 22px 24px;}
+  .isle .coord{font-family:var(--mono); font-size:.68rem; letter-spacing:.06em; color:var(--lagoon);}
+  .isle h3{font-size:1.5rem; margin:6px 0 2px; color:var(--abyss);}
+  .isle .ocean{font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.12em; color:var(--coral); margin-bottom:12px;}
+  .isle p{margin:0; font-size:.96rem; color:var(--ink-soft);}
+  .isle .tag{display:inline-block; margin-top:14px; font-size:.78rem; font-family:var(--mono);
+    color:var(--deep); background:#e3f2f0; padding:4px 9px; border-radius:6px;}
+  @media(max-width:760px){ .islands-grid{grid-template-columns:1fr;} }
+
+  .strands{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:38px;}
+  .strand{border:1px solid var(--line); border-radius:14px; padding:28px; background:#fff;}
+  .strand .n{font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; color:var(--lagoon); text-transform:uppercase;}
+  .strand h3{font-size:1.4rem; margin:10px 0 10px; color:var(--abyss);}
+  .strand p{margin:0; color:var(--ink-soft); font-size:.98rem;}
+  .frame{margin-top:26px; padding:22px 26px; border-left:3px solid var(--coral);
+    background:#fff7f3; border-radius:0 12px 12px 0;}
+  .frame b{color:var(--abyss);}
+  @media(max-width:680px){ .strands{grid-template-columns:1fr;} }
+
+  .wpset{margin-top:40px; display:flex; flex-direction:column; gap:18px;}
+  .wp{position:relative; background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px 26px 22px 30px;}
+  .wp::before{content:""; position:absolute; left:0; top:0; bottom:0; width:5px; border-radius:14px 0 0 14px; background:var(--lagoon);}
+  .wp.alt::before{background:var(--coral);}
+  .wphead{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;}
+  .wp .num{font-family:var(--mono); font-size:.7rem; letter-spacing:.16em; color:var(--lagoon); text-transform:uppercase;}
+  .wp h3{font-size:1.3rem; color:var(--abyss);}
+  .wp .when{font-family:var(--mono); font-size:.68rem; color:var(--ink-soft); letter-spacing:.04em; margin-left:auto;}
+  .wp .active{background:var(--coral); color:#fff; font-family:var(--mono); font-size:.6rem; letter-spacing:.12em;
+    text-transform:uppercase; padding:3px 9px; border-radius:20px;}
+  .wp p.d{margin:10px 0 12px; color:var(--ink-soft); font-size:.98rem; max-width:74ch;}
+  .wp .dels{font-size:.93rem; line-height:1.75; color:var(--ink);}
+  .wp .lab{font-family:var(--mono); font-size:.64rem; text-transform:uppercase; letter-spacing:.14em; color:var(--lagoon); display:block; margin-bottom:3px;}
+  .wp .code2{font-family:var(--mono); font-weight:700; color:var(--deep); font-size:.82rem;}
+  .wp .ms{margin-top:11px; font-size:.84rem; font-family:var(--mono); color:var(--coral);}
+
+  .focus{background:linear-gradient(135deg,#0E4D5C,#08293A); color:#dcefee; border-radius:14px;
+    padding:22px 26px; margin-top:34px; display:flex; gap:14px 30px; flex-wrap:wrap; align-items:center;}
+  .focus .fl{font-family:var(--mono); font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:#7fd0cf; margin-bottom:3px;}
+  .focus b{font-family:var(--serif); font-weight:500; font-size:1.3rem; color:#fff;}
+  .focus .txt{color:#a9cfce; font-size:.95rem; flex:1; min-width:240px;}
+  .log{position:relative; margin-top:28px; padding-left:24px;}
+  .log::before{content:""; position:absolute; left:4px; top:8px; bottom:8px; width:2px; background:var(--line);}
+  .log .entry{position:relative; padding:11px 0; border-bottom:1px dashed var(--line);}
+  .log .entry:last-child{border-bottom:0;}
+  .log .entry::before{content:""; position:absolute; left:-24px; top:16px; width:9px; height:9px; border-radius:50%;
+    background:var(--lagoon); border:2px solid var(--paper); box-shadow:0 0 0 1px var(--line);}
+  .log .date{font-family:var(--mono); font-size:.68rem; letter-spacing:.06em; color:var(--coral); text-transform:uppercase;}
+  .log .what{margin:3px 0 0; font-size:.98rem; color:var(--ink);}
+  .log .tagcode{font-family:var(--mono); font-size:.7rem; color:var(--ink-soft);}
+
+  .people{display:grid; grid-template-columns:1.2fr 1fr; gap:30px 50px; margin-top:36px;}
+  .people h3{font-size:1.15rem; color:var(--abyss); margin-bottom:4px; font-family:var(--sans); font-weight:600;}
+  .people .role{font-family:var(--mono); font-size:.74rem; color:var(--lagoon); letter-spacing:.06em;}
+  .people ul{list-style:none; padding:0; margin:10px 0 0;}
+  .people li{padding:9px 0; border-bottom:1px dashed var(--line); font-size:.96rem;}
+  .people li span{color:var(--ink-soft); font-size:.86rem;}
+  @media(max-width:680px){ .people{grid-template-columns:1fr;} }
+
+  footer{background:var(--abyss); color:#cfe5e4;}
+  footer .wrap{padding:54px 26px 60px;}
+  .fund{display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;}
+  .emblem{background:#fff; padding:12px; border-radius:8px; flex:0 0 auto;}
+  .emblem svg{display:block; width:132px; height:88px;}
+  .fund .stmt{flex:1; min-width:260px;}
+  .fund .stmt b{color:#fff; font-size:1.05rem; font-family:var(--serif); font-weight:500;}
+  .fund .stmt p{font-size:.82rem; line-height:1.6; color:#9fc4c3; margin:8px 0 0; max-width:70ch;}
+  .foot-meta{margin-top:34px; padding-top:22px; border-top:1px solid #ffffff1f;
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.05em; color:#7fb0af;
+    display:flex; flex-wrap:wrap; gap:8px 28px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+    .reveal{opacity:1; transform:none;}
+    html{scroll-behavior:auto;}
   }
+  @keyframes drift{ from{transform:translate(0,0);} to{transform:translate(-34px,22px);} }
 </style>
 </head>
 <body>
 
-<!-- EDIT: Page title and intro -->
-<header>
+<!-- SECTION: top bar -->
+<header class="bar" id="top">
   <div class="wrap">
-    <h1>FAR-SIDS planning pack, version 4</h1>
-    <p>Foreign Aid, Remittances, and Wellbeing in Small Island Developing States (MSCA-PF, Grant 101244526). Fellow: Roxane de Waegh. Supervisor: Prof. Stefano Moncada, ISSI, University of Malta. Timeline anchored at contract start, 15 June 2026.</p>
-    <span class="pill">Updated after the 17 June 2026 supervision meeting</span>
+    <div class="brand"><b>FAR</b>·SIDS</div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#islands">Islands</a>
+      <a href="#approach">Approach</a>
+      <a href="#programme">Work programme</a>
+      <a href="#progress">Progress</a>
+      <a href="#team">Team</a>
+    </nav>
   </div>
 </header>
 
-<nav class="toc">
+<!-- SECTION: hero -->
+<div class="hero">
+  <svg class="contours" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#5fd0cf" stroke-width="1.1" style="animation:drift 26s ease-in-out infinite alternate;">
+      <g transform="translate(940,150)">
+        <path stroke-opacity=".10" d="M0,-150 C60,-142 105,-90 120,-30 C132,22 105,82 45,112 C-8,138 -82,120 -117,68 C-147,22 -138,-52 -90,-105 C-63,-135 -38,-147 0,-150 Z"/>
+        <path stroke-opacity=".16" d="M0,-110 C44,-104 77,-66 88,-22 C97,16 77,60 33,82 C-6,101 -60,88 -86,50 C-108,16 -101,-38 -66,-77 C-46,-99 -28,-108 0,-110 Z"/>
+        <path stroke-opacity=".22" d="M0,-72 C29,-68 50,-43 58,-14 C64,11 50,40 22,54 C-4,66 -39,58 -56,33 C-71,10 -66,-25 -43,-50 C-30,-65 -18,-71 0,-72 Z"/>
+        <path stroke-opacity=".30" d="M0,-38 C15,-36 27,-23 31,-7 C34,6 27,21 11,29 C-2,35 -21,30 -30,17 C-38,5 -35,-13 -23,-27 C-16,-34 -9,-37 0,-38 Z"/>
+      </g>
+      <g transform="translate(220,560)">
+        <path stroke-opacity=".08" d="M0,-150 C60,-142 105,-90 120,-30 C132,22 105,82 45,112 C-8,138 -82,120 -117,68 C-147,22 -138,-52 -90,-105 C-63,-135 -38,-147 0,-150 Z"/>
+        <path stroke-opacity=".13" d="M0,-110 C44,-104 77,-66 88,-22 C97,16 77,60 33,82 C-6,101 -60,88 -86,50 C-108,16 -101,-38 -66,-77 C-46,-99 -28,-108 0,-110 Z"/>
+        <path stroke-opacity=".19" d="M0,-72 C29,-68 50,-43 58,-14 C64,11 50,40 22,54 C-4,66 -39,58 -56,33 C-71,10 -66,-25 -43,-50 C-30,-65 -18,-71 0,-72 Z"/>
+      </g>
+    </g>
+  </svg>
   <div class="wrap">
-    <ul>
-      <li><a href="#decisions">Planning decisions</a></li>
-      <li><a href="#packages">Work packages</a></li>
-      <li><a href="#glossary">Glossary</a></li>
-      <li><a href="#runway">Runway</a></li>
-      <li><a href="#purchases">Purchases</a></li>
-      <li><a href="#meeting">Meeting decisions</a></li>
-    </ul>
+    <p class="eyebrow" style="color:#7fd0cf;">Marie Sklodowska-Curie Postdoctoral Fellowship · University of Malta</p>
+    <h1>How do aid and remittances shape the <em>wellbeing</em> of island nations?</h1>
+    <p class="lede">FAR-SIDS is a two year study across Jamaica, Tonga, and Comoros that pairs econometric modelling with community led fieldwork to understand dependency, agency, and self-reliance in Small Island Developing States.</p>
+    <div class="meta">
+      <span><span class="dot"></span> Jun 2026 to May 2028</span>
+      <span><span class="dot"></span> Three islands, three oceans</span>
+      <span><span class="dot"></span> Horizon Europe · GA 101244526</span>
+    </div>
   </div>
-</nav>
+  <div class="scrollcue">scroll</div>
+</div>
 
 <div class="wrap">
 
-<!-- EDIT: Key planning decisions. Change the words inside each <li>...</li> -->
-<section id="decisions">
-  <h2>Key planning decisions (updated June 2026)</h2>
-  <ol>
-    <li><span class="lead">Ethics is submitted by the end of September 2026</span> with the full instrument package (protocol, survey, interview and focus group guides, consent and information sheets). The 17 June meeting moved the target earlier, from October or November to end September. Stefano has a route around the instruments up front constraint, and the instruments are finalised with him in early September. Submission goes to UM REC through FREC, the Faculty of Arts committee, plus the three in-country bodies. This still leaves five to six months for review cycles, corrections, and in-country processes before the April 2027 departure. March 2027 remains a deliberate buffer.</li>
-    <li><span class="lead">Both WP2 teaching seminars are delivered virtually within semester one.</span> The ISSI MA host seminar (in Pedro's unit) lands in the second week of October, and the Hildesheim guest seminar on 27 November. Both sit well before M.2.1 (training complete, February), which therefore carries no risk. Virtual delivery also reduces the project's carbon footprint, in line with the MSCA Green Charter.</li>
-    <li><span class="lead">Relationship building opens now (June), not October.</span> Comoros goes first, in French, as the coldest start, then warm introductions to Jamaica and Tonga. October remains the milestone for formally named counterparts (D.3.2).</li>
-    <li><span class="lead">The MOOC is a slow burn:</span> outline in October, scripts through November and December, recording only in January.</li>
-    <li><span class="lead">The September data pull extracts every series back to 1980</span> (for the year two ARDL models); the proposal's 2000 to 2020 review window is a subset of the same extraction.</li>
-    <li><span class="lead">Deliverable and milestone dates from the accepted Gantt never move;</span> only the work behind them starts earlier.</li>
-    <li><span class="lead">Workshops are semester bound.</span> The Doctoral School Semester 1 begins 1 October, so the four taught workshops (D.2.1 to D.2.4) are scheduled across October to December, more than one a month where it helps. The FinTech elective (D.2.5) is now a self-paced Coursera course from the Inter-American Development Bank, taken in August and reimbursed through an RTN memo to the Project Support Office.</li>
-  </ol>
+<!-- SECTION: about / the question -->
+<section class="question" id="about" style="margin:0 -26px; padding-left:26px; padding-right:26px;">
+  <div class="reveal">
+    <p class="eyebrow">The question</p>
+    <p class="big">Small island nations receive some of the world's largest flows of aid and remittances relative to their size. What do those flows actually leave behind?</p>
+    <div class="cols">
+      <div>
+        <p>FAR-SIDS traces how foreign aid and money sent home by relatives abroad translate into real wellbeing on the ground, and where they strengthen, or quietly weaken, a community's own capacity to thrive.</p>
+        <p>The project deliberately begins from island agency and self-determination rather than from vulnerability. The people who live these economies are treated as the experts on them.</p>
+      </div>
+      <div>
+        <p>It studies three nations in three different oceans, each with a distinct history of migration, aid, and resilience, so that what is learned in one place can be read against the others.</p>
+        <p>The work is hosted at the Institute for Islands and Small States at the University of Malta, itself a small island state, and runs with partner universities in each country studied.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- EDIT: The seven work packages -->
-<section id="packages">
-  <h2>The seven work packages in plain language</h2>
-  <p><span class="wpline">WP1, Project management (all 24 months).</span> The paperwork spine. D.1.1 is the opening bundle (mobility declaration, PCDP, training plan); D.1.2 is the data management plan plus the digital platform (project page, OSF, Dataverse, GitHub, with the GitHub page live in June or July), updated annually; D.1.3 to D.1.10 are trimestral progress reports with quarterly PCDP updates.</p>
-  <p><span class="wpline">WP2, Training at ISSI (months 1 to 9).</span> Four workshops scheduled across October to December (quantitative methods, policy writing, leadership and project management, integrated methods), the FinTech elective now taken as the Coursera IDB financial inclusion course, two teaching seminars designed and delivered with authentic assessments (both virtual, semester one), and MOOC 1, Bridging Cultures with Reciprocity.</p>
-  <p><span class="wpline">WP3, Fieldwork preparation, remote from Malta (year 1).</span> Language practice (Tongan and Shikomori), formal partnerships with UWI Jamaica, USP Tonga, and the University of Comoros (warm emails from June, Comoros first), study site selection with community stakeholders, ethics (scheduled here as an internal addition, now submitted end September), and offering MOOC 1 at partner universities.</p>
-  <p><span class="wpline">WP4, Ethnographic fieldwork (April to October 2027).</span> Roughly two months per country in the order Jamaica, Tonga, Comoros, chosen to avoid peak cyclone and hurricane seasons. Within each visit the sequence is ethnography first, surveys after, since interviews inform the survey in practice. Per country KPI: 10 to 20 interviews, 3 focus groups, 250 to 300 household surveys. Each visit ends with a secondment at the local university.</p>
-  <p><span class="wpline">WP5, Econometrics and analysis (brackets the fieldwork).</span> Before: the gender sensitive monitoring framework (D.5.1) and the systematic review of World Bank and OECD data (M.5.1), supported by the household survey literature reading that begins in June. After: design three site specific ARDL models with Stefano (D.5.2), then analyse data using the structured framework (D.5.3).</p>
-  <p><span class="wpline">WP6, Two way knowledge transfer.</span> Four research seminars (ISSI plus one at each partner university during secondments), two international conference presentations, and MOOC 2, Waves of Wealth.</p>
-  <p><span class="wpline">WP7, Dissemination and exploitation.</span> One local newspaper or magazine article per country timed to fieldwork, policy briefs for SIDS governments, donors, and regional bodies, three journal article submissions, and the MSCA evaluation questionnaire at month 24. The social media project (Island Voices, Global Impact) is set up and begins building content now, with the formal launch milestone M.3.1 staying in March 2027. WP7 closes with D.7.7.</p>
+<!-- SECTION: the three islands -->
+<section id="islands">
+  <div class="reveal">
+    <p class="eyebrow">Where</p>
+    <h2 class="title">Three islands, three oceans</h2>
+    <p class="lead-p muted">Fieldwork runs for about two months in each country, in sequence, timed to avoid peak cyclone and hurricane seasons.</p>
+    <div class="islands-grid">
+
+      <article class="isle">
+        <div class="top">
+          <svg viewBox="0 0 220 120" aria-hidden="true">
+            <g fill="none" stroke="#1C8C9B"><circle cx="110" cy="62" r="46" stroke-opacity=".18"/><circle cx="110" cy="62" r="32" stroke-opacity=".3"/></g>
+            <path d="M70,70 C84,52 104,50 120,56 C140,49 160,58 156,72 C150,86 120,90 100,84 C84,88 64,84 70,70 Z" fill="#2AA7B5" fill-opacity=".9"/>
+            <circle cx="110" cy="68" r="4" fill="#E2664A"/>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="coord">17°59′N 76°48′W · Kingston</div>
+          <h3>Jamaica</h3>
+          <div class="ocean">Caribbean Sea</div>
+          <p>The first fieldwork site, where the study design is tested before it travels. A long history of labour migration and remittances to North America and the UK.</p>
+          <span class="tag">Partner: UWI · Apr 2027</span>
+        </div>
+      </article>
+
+      <article class="isle">
+        <div class="top">
+          <svg viewBox="0 0 220 120" aria-hidden="true">
+            <g fill="none" stroke="#1C8C9B"><circle cx="110" cy="62" r="46" stroke-opacity=".18"/><circle cx="110" cy="62" r="32" stroke-opacity=".3"/></g>
+            <path d="M86,58 C92,48 104,48 108,56 C116,50 126,54 124,64" fill="none" stroke="#2AA7B5" stroke-width="3" stroke-opacity=".9"/>
+            <circle cx="104" cy="60" r="5" fill="#2AA7B5"/><circle cx="132" cy="74" r="4" fill="#2AA7B5"/><circle cx="150" cy="64" r="3" fill="#2AA7B5"/>
+            <circle cx="110" cy="62" r="4" fill="#E2664A"/>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="coord">21°08′S 175°12′W · Nukuʻalofa</div>
+          <h3>Tonga</h3>
+          <div class="ocean">South Pacific Ocean</div>
+          <p>An archipelago where remittances are among the highest in the world as a share of the economy. Built on long standing research relationships in the country.</p>
+          <span class="tag">Partner: USP · Jun 2027</span>
+        </div>
+      </article>
+
+      <article class="isle">
+        <div class="top">
+          <svg viewBox="0 0 220 120" aria-hidden="true">
+            <g fill="none" stroke="#1C8C9B"><circle cx="110" cy="62" r="46" stroke-opacity=".18"/><circle cx="110" cy="62" r="32" stroke-opacity=".3"/></g>
+            <path d="M96,52 C108,44 124,48 128,60 C140,58 150,68 142,78 C132,90 104,88 92,78 C82,70 84,58 96,52 Z" fill="#2AA7B5" fill-opacity=".9"/>
+            <circle cx="116" cy="66" r="4" fill="#E2664A"/>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="coord">11°42′S 43°15′E · Moroni</div>
+          <h3>Comoros</h3>
+          <div class="ocean">Indian Ocean</div>
+          <p>The least studied of the three, where relationship building opens first. Fieldwork is conducted in French and Shikomori, with translation built into the design.</p>
+          <span class="tag">Partner: U. Comoros · Aug 2027</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
 </section>
 
-<!-- EDIT: Deliverable and milestone glossary tables -->
-<section id="glossary">
-  <h2>Deliverable and milestone glossary</h2>
-  <p class="sub">D = deliverable, something I produce. M = milestone, a checkpoint that a phase is finished. Months are calendar mapped from June 2026. Items marked internal are my own scheduling additions, not grant numbering.</p>
-
-  <div class="band admin">WP1 Project management</div>
-  <div class="scroll"><table class="gloss">
-    <tr><th style="width:110px;">Item</th><th>Description</th><th style="width:120px;">When</th></tr>
-    <tr><td class="code">D.1.1</td><td>Mobility declaration, PCDP, and training plan. Mobility declaration needs EU portal access from Stefano, then signing and validation, treated as immediate.</td><td class="date">Jun 26</td></tr>
-    <tr><td class="code">D.1.2</td><td>Data management plan + digital platform (site, OSF, Dataverse, GitHub). GitHub project page live June or July; platform live July, updated annually.</td><td class="date">Jul 26, Jun 27</td></tr>
-    <tr><td class="code">D.1.3 to D.1.10</td><td>Trimestral progress reports + quarterly PCDP updates, eight in total, every 3 months. Format agreed with Stefano: maximum two pages, ideally one.</td><td class="date">every 3 months</td></tr>
-    <tr><td class="code">M.1.1</td><td>PCDP, DMP, and digital platform all complete.</td><td class="date">Dec 26</td></tr>
-  </table></div>
-
-  <div class="band train">WP2 Training at ISSI</div>
-  <div class="scroll"><table class="gloss">
-    <tr><th style="width:110px;">Item</th><th>Description</th><th style="width:120px;">When</th></tr>
-    <tr><td class="code">D.2.1 to D.2.4</td><td>Four workshops, all in Semester 1 so scheduled October to December: <b>D.2.1 Quantitative methods</b> (DOC6021 Quantitative Research Methods, plus DOC6067 Using R for Data Processing, since DOC6049 is no longer offered); <b>D.2.2 Policy writing</b> (DOC6047 likely discontinued, so watch for a Semester 1 workshop or a related opportunity Stefano flagged); <b>D.2.3 Leadership and project management</b> (DOC6009 or DOC6058, plus DOC6068; both confirmed because they were committed in the proposal, even though neither was flagged as high priority); <b>D.2.4 Integrated methods</b> (ISS5220 Research Methodology, ISSI's own unit taught by Stefano, in place of DOC6023).</td><td class="date">Oct to Dec 26</td></tr>
-    <tr><td class="code">D.2.5</td><td>FinTech elective, now the Coursera course "Perspectives in Digital Transformation: Financial Inclusion" from the Inter-American Development Bank (replaces ARI5122). Self-paced, about ten hours, shareable certificate. Reimbursed via an RTN memo to the Project Support Office.</td><td class="date">Aug 26</td></tr>
-    <tr><td class="code">D.2.6, D.2.7</td><td>Design and deliver two teaching seminars with authentic assessments, both virtual within Semester 1: seminar in the ISSI MA host unit (Pedro coordinating, Godianne has details) in the second week of October; Hildesheim guest seminar (for Yves, certificate or letter requested) on 27 November. Both before M.2.1 in February.</td><td class="date">Oct + Nov delivery</td></tr>
-    <tr><td class="code">D.2.8</td><td>Build and launch MOOC 1, Bridging Cultures with Reciprocity (outline Oct, scripts Nov to Dec, record and publish Jan).</td><td class="date">Jan 27</td></tr>
-    <tr><td class="code">M.2.1 / M.2.2</td><td>Training complete, requires both seminars delivered and ISS5220 assessed / final database in open access.</td><td class="date">Feb 27 / May 28</td></tr>
-  </table></div>
-
-  <div class="band res">WP3 Fieldwork preparation, remote from Malta</div>
-  <div class="scroll"><table class="gloss">
-    <tr><th style="width:110px;">Item</th><th>Description</th><th style="width:120px;">When</th></tr>
-    <tr><td class="code">D.3.1</td><td>Language practice, Tongan and Shikomori, first 12 months.</td><td class="date">from Jun 26</td></tr>
-    <tr><td class="code">D.3.2</td><td>Partnerships with UWI, USP Tonga, U. Comoros. Warm emails from June (Comoros first, in French; Stefano connecting Jamaica contacts, Pedro for Comoros); named counterpart at each by October. Gates ethics, sites, secondments, and seminars.</td><td class="date">Jun to Oct 26</td></tr>
-    <tr><td class="code">D.3.3</td><td>Identify study sites and connect with community stakeholders. Completing by September because the ethics protocol, now submitted end September, must name sites. The Gantt says December, and early is fine.</td><td class="date">Sep 26 (Gantt Dec)</td></tr>
-    <tr><td class="code">D.3.4</td><td>Offer MOOC 1 at the three partner universities.</td><td class="date">Jan 27</td></tr>
-    <tr><td class="code">M.3.1</td><td>Launch project social media for dissemination: the Island Voices, Global Impact initiative going live. Setup and content building begin in June; the milestone launch stays March.</td><td class="date">Mar 27</td></tr>
-    <tr><td class="code">M.3.2</td><td>Languages, partnerships, and study sites complete. The Gantt parks this at month 13 (Jun 27); the operative deadline is end of March 27, before the first flight.</td><td class="date">Mar 27 (Gantt Jun 27)</td></tr>
-    <tr><td class="code">Ethics (internal)</td><td>Not numbered in the grant; appears only as a WP1 risk with mitigation begin early. Plan: household survey and ethics literature reading from June (own reading plus Stefano's materials, including his Mauritius coastal communities paper), boilerplate August, instruments v1 finalised with Stefano early September, package SUBMITTED end September (UM REC through FREC, Faculty of Arts, plus Jamaica, Tonga, Comoros), corrections October to January, approvals by February, March as buffer.</td><td class="date">Jun 26 to Feb 27</td></tr>
-  </table></div>
-
-  <div class="band res">WP4 Ethnographic fieldwork, about two months per country</div>
-  <div class="scroll"><table class="gloss">
-    <tr><th style="width:110px;">Item</th><th>Description</th><th style="width:120px;">When</th></tr>
-    <tr><td class="code">D.4.1 / 4.2 / 4.3</td><td>Data collection in Jamaica / Tonga / Comoros: 10 to 20 interviews, 3 focus groups, 250 to 300 surveys each. Sequence within each visit: ethnography first, surveys after; survey refinements from field learning go through ethics amendments.</td><td class="date">Apr, Jun, Aug 27</td></tr>
-    <tr><td class="code">D.4.4 / 4.5 / 4.6</td><td>Secondments at UWI / USP Tonga / U. Comoros, co-presenting preliminary findings.</td><td class="date">May, Jul, Sep 27</td></tr>
-    <tr><td class="code">M.4.1</td><td>All fieldwork, dissemination, and secondments complete.</td><td class="date">Oct 27</td></tr>
-  </table></div>
-
-  <div class="band res">WP5 Econometrics and analysis</div>
-  <div class="scroll"><table class="gloss">
-    <tr><th style="width:110px;">Item</th><th>Description</th><th style="width:120px;">When</th></tr>
-    <tr><td class="code">D.5.1</td><td>Design the gender sensitive monitoring framework.</td><td class="date">Jul 26</td></tr>
-    <tr><td class="code">M.5.1</td><td>Complete systematic review of the OECD statistical portal and World Bank data (the spreadsheet groundwork).</td><td class="date">Nov 26</td></tr>
-    <tr><td class="code">Path to M.5.1</td><td>My monthly breakdown, not grant items: household survey lit reading from June, August variable list, September data pull for the three countries back to 1980, October review continues, November literature synthesis and clean documented dataset.</td><td class="date">Jun to Nov 26</td></tr>
-    <tr><td class="code">D.5.2</td><td>Design three site specific ARDL models (specify variables, lags, and country adaptations, with Stefano).</td><td class="date">Nov 27</td></tr>
-    <tr><td class="code">D.5.3</td><td>Analyse data using the proposed structured framework (the sustainable livelihoods framework).</td><td class="date">Dec 27</td></tr>
-    <tr><td class="code">M.5.2</td><td>Econometric modelling and comparative analysis complete.</td><td class="date">Feb 28</td></tr>
-  </table></div>
-
-  <div class="band out">WP6 Two way knowledge transfer</div>
-  <div class="scroll"><table class="gloss">
-    <tr><th style="width:110px;">Item</th><th>Description</th><th style="width:120px;">When</th></tr>
-    <tr><td class="code">D.6.1 to D.6.4</td><td>Deliver four research seminars, one at each university: ISSI (Feb), UWI (May, pulled forward to the in person secondment; confirm with Stefano), USP Tonga (Jul), U. Comoros (Sep).</td><td class="date">Feb, May, Jul, Sep 27</td></tr>
-    <tr><td class="code">D.6.5, D.6.6</td><td>Present findings at two international conferences.</td><td class="date">Jan, Mar 28</td></tr>
-    <tr><td class="code">D.6.7 / M.6.1</td><td>Build and launch MOOC 2, Waves of Wealth / knowledge transfer complete.</td><td class="date">Apr / May 28</td></tr>
-  </table></div>
-
-  <div class="band out">WP7 Dissemination and exploitation</div>
-  <div class="scroll"><table class="gloss">
-    <tr><th style="width:110px;">Item</th><th>Description</th><th style="width:120px;">When</th></tr>
-    <tr><td class="code">Note</td><td>The accepted Gantt defines no WP7 milestone; the work package is a living dissemination plan that closes with D.7.7 at month 24. Section 2.2 also promises unnumbered items (monthly podcast, artist infographics, Tableau visuals, public workshops per site, school visits, Wise partnership, blockchain prototype): still to scope with Stefano.</td><td class="date">to May 28</td></tr>
-    <tr><td class="code">D.7.1 to D.7.3</td><td>One local newspaper or magazine article per country, timed to each fieldwork visit.</td><td class="date">May, Jul, Sep 27</td></tr>
-    <tr><td class="code">D.7.4</td><td>Policy briefs tailored to SIDS governments, donors, and regional bodies.</td><td class="date">Feb 28</td></tr>
-    <tr><td class="code">D.7.5 to D.7.7</td><td>Submit three journal articles + complete the MSCA evaluation questionnaire.</td><td class="date">Mar to May 28</td></tr>
-  </table></div>
+<!-- SECTION: approach -->
+<section id="approach">
+  <div class="reveal">
+    <p class="eyebrow">How</p>
+    <h2 class="title">Two strands, woven together</h2>
+    <p class="lead-p muted">Numbers tell you what changed. People tell you why it mattered. FAR-SIDS needs both, in that order.</p>
+    <div class="strands">
+      <div class="strand">
+        <div class="n">Strand 01 · Measuring</div>
+        <h3>Econometrics</h3>
+        <p>Time series models (the ARDL approach) trace how aid and remittance flows move with wellbeing indicators in each country, drawing on World Bank and OECD data reaching back to 1980. The result is a long view of cause and effect, country by country.</p>
+      </div>
+      <div class="strand">
+        <div class="n">Strand 02 · Listening</div>
+        <h3>Ethnography</h3>
+        <p>Interviews, focus groups, and household surveys of 250 to 300 families per country put the lived experience of aid and remittances at the centre. Listening comes first, so that the survey asks the questions communities themselves raise.</p>
+      </div>
+    </div>
+    <div class="frame">
+      <b>Framework.</b> The work is read through the Sustainable Livelihoods Framework and grounded in three principles carried from earlier research with Pacific communities: relationship, reciprocity, and respect. Findings are returned to the communities who shaped them.
+    </div>
+  </div>
 </section>
 
-<!-- EDIT: Runway, the month by month tables -->
-<section id="runway">
-  <h2>Runway, month by month to Jamaica</h2>
+<!-- SECTION: work programme, the seven work packages -->
+<section id="programme">
+  <div class="reveal">
+    <p class="eyebrow">The work programme</p>
+    <h2 class="title">Seven work packages</h2>
+    <p class="lead-p muted">The fellowship is organised into seven work packages, each with its own deliverables (D) and milestones (M). The dates have shifted as the project has taken shape, but every deliverable remains.</p>
+    <div class="wpset">
 
-  <h3>Half year 1: June to November 2026</h3>
-  <div class="scroll"><table class="hy">
-    <tr><th></th><th class="adminH">Jun 26</th><th class="trainH">Jul</th><th class="resH">Aug</th><th class="outH">Sep</th><th class="adminH">Oct</th><th class="trainH">Nov</th></tr>
-    <tr>
-      <td class="rowlab adminC">Admin WP1</td>
-      <td class="adminC">Mobility decl + EU portal access, PCDP, training plan D.1.1, purchase list to RTN. GitHub page live (D.1.2)</td>
-      <td class="adminC">DMP 60% filled, platform live D.1.2</td>
-      <td class="adminC">Report 1 D.1.3</td>
-      <td class="adminC">PCDP review w Stefano</td>
-      <td class="adminC"></td>
-      <td class="adminC">Report 2 D.1.4</td>
-    </tr>
-    <tr>
-      <td class="rowlab trainC">Training WP2</td>
-      <td class="trainC">Map UM + Doctoral School courses, find ISSI MA host for sem 2 (Pedro). RESI place. Schedule Coursera FinTech for Aug</td>
-      <td class="trainC">Workshops start Oct (sem begins 1 Oct). Confirm Sem 1 offerings open to postdocs</td>
-      <td class="trainC">Coursera FinTech, Financial Inclusion D.2.5, then RTN memo to Solan</td>
-      <td class="trainC">RESI week, Malta (networking, UWI network). Leadership now via DOC workshops</td>
-      <td class="trainC">D.2.1 quant (DOC6021 + DOC6067 R). D.2.4 integrated (ISS5220) begins. Deliver ISSI MA seminar wk 2 (D.2.6/7). MOOC 1 outline</td>
-      <td class="trainC">D.2.3 leadership (DOC6009/6058) + project mgmt (DOC6068). Hildesheim seminar 27 Nov (D.2.6/7)</td>
-    </tr>
-    <tr>
-      <td class="rowlab resC">Research WP3+5</td>
-      <td class="resC">Tongan + Shikomori daily D.3.1. Zotero. Email Comoros, Jamaica + Tonga now (D.3.2). Begin household survey lit reading</td>
-      <td class="resC">Comoros emails done, Jamaica + Tonga intros. Gender fwk D.5.1. Instruments meeting w Stefano wk of 22 Jul. Lit review</td>
-      <td class="resC">Variable list. Ethics boilerplate (URECA + UM REC). Site talks w partners. Lit review continues</td>
-      <td class="resC hi"><b>Data pull x3, 1980 to present. Instruments v1 finalised w Stefano. Sites set (D.3.3), counterparts lined up (D.3.2). SUBMIT ethics end Sep: UM REC via FREC + x3</b></td>
-      <td class="resC">Counterparts named (D.3.2). Respond to ethics queries</td>
-      <td class="resC">Ethics corrections. Lit synthesis done = M.5.1</td>
-    </tr>
-    <tr>
-      <td class="rowlab outC">Outreach WP6+7</td>
-      <td class="outC">16 Jun MSCA talk (logged). Set up social project: channels, content bank</td>
-      <td class="outC">DevNet abstract draft. Build social content</td>
-      <td class="outC">Abstract due end Aug</td>
-      <td class="outC">VIS online 15 to 17. DevNet notification</td>
-      <td class="outC">Register DevNet (early bird)</td>
-      <td class="outC">DevNet final reg 3 Nov</td>
-    </tr>
-    <tr>
-      <td class="rowlab lifeC">Life</td>
-      <td class="lifeC">Settle in, swim. Stefano meeting done 17 Jun</td>
-      <td class="lifeC">NZ trip, PR by 30 Jul</td>
-      <td class="lifeC"></td>
-      <td class="lifeC"></td>
-      <td class="lifeC"></td>
-      <td class="lifeC"></td>
-    </tr>
-  </table></div>
+      <!-- EDIT: each work package is one article block. -->
+      <article class="wp">
+        <div class="wphead">
+          <span class="num">Work Package 1</span><h3>Project management</h3>
+          <span class="active">Active now</span><span class="when">All 24 months</span>
+        </div>
+        <p class="d">The administrative backbone of the fellowship: the opening paperwork, the data and platform setup, and regular reporting.</p>
+        <div class="dels">
+          <span class="lab">Deliverables and milestone</span>
+          <span class="code2">D.1.1</span> Mobility declaration, PCDP, and training plan. &nbsp; <span class="code2">D.1.2</span> Data management plan and digital platform (this website, OSF, Dataverse, GitHub). &nbsp; <span class="code2">D.1.3 to D.1.10</span> Trimestral progress reports and quarterly PCDP updates.
+          <div class="ms">Milestone M.1.1 · PCDP, DMP, and platform complete (Dec 2026)</div>
+        </div>
+      </article>
 
-  <h3>Half year 2: December 2026 to May 2027</h3>
-  <div class="scroll"><table class="hy">
-    <tr><th></th><th class="adminH">Dec 26</th><th class="trainH">Jan 27</th><th class="resH">Feb</th><th class="outH">Mar</th><th class="adminH">Apr</th><th class="trainH">May</th></tr>
-    <tr>
-      <td class="rowlab adminC">Admin WP1</td>
-      <td class="adminC hi"><b>DMP + PCDP due = M.1.1</b></td>
-      <td class="adminC">Report 3 D.1.5</td>
-      <td class="adminC"></td>
-      <td class="adminC">PCDP review, UWI secondment paperwork</td>
-      <td class="adminC"></td>
-      <td class="adminC">Report 4 D.1.6</td>
-    </tr>
-    <tr>
-      <td class="rowlab trainC">Training WP2</td>
-      <td class="trainC">D.2.2 policy writing if offered, else a related opportunity. MOOC scripts done, tool chosen</td>
-      <td class="trainC">Build + record MOOC 1 D.2.8</td>
-      <td class="trainC">Training complete M.2.1 (seminars done, ISS5220 assessed)</td>
-      <td class="trainC"></td>
-      <td class="trainC"></td>
-      <td class="trainC"></td>
-    </tr>
-    <tr>
-      <td class="rowlab resC">Research WP3+4</td>
-      <td class="resC">Ethics corrections window</td>
-      <td class="resC">Approvals arriving. Translations start (Tongan, Shikomori, French)</td>
-      <td class="resC">Approved pilot of survey. Translations done</td>
-      <td class="resC hi"><b>Buffer: amendments, logistics, CRiSTAL final. Prep done = M.3.2</b></td>
-      <td class="resC hi"><b>Fly to Jamaica. D.4.1: ethnography first, surveys after</b></td>
-      <td class="resC">UWI secondment D.4.4</td>
-    </tr>
-    <tr>
-      <td class="rowlab outC">Outreach WP6+7</td>
-      <td class="outC">DevNet talk, 2 to 4 Dec, Wellington</td>
-      <td class="outC">MOOC 1 to unis D.3.4</td>
-      <td class="outC">ISSI seminar D.6.1 + social content bank</td>
-      <td class="outC">Launch socials = M.3.1. Podcast ep 1?</td>
-      <td class="outC">First field updates</td>
-      <td class="outC">UWI seminar D.6.2 + article D.7.1</td>
-    </tr>
-    <tr>
-      <td class="rowlab lifeC">Life</td>
-      <td class="lifeC">NZ, DevNet, holidays</td>
-      <td class="lifeC">Travel clinic, visas x3</td>
-      <td class="lifeC">Flights, insurance, home logistics</td>
-      <td class="lifeC"></td>
-      <td class="lifeC">In Jamaica (2 months)</td>
-      <td class="lifeC">In Jamaica</td>
-    </tr>
-  </table></div>
+      <article class="wp">
+        <div class="wphead">
+          <span class="num">Work Package 2</span><h3>Training at ISSI</h3>
+          <span class="when">Months 1 to 9</span>
+        </div>
+        <p class="d">Advanced training to build the project's interdisciplinary toolkit, delivered across Semester 1.</p>
+        <div class="dels">
+          <span class="lab">Deliverables and milestones</span>
+          <span class="code2">D.2.1 to D.2.4</span> Four doctoral workshops (quantitative methods, policy writing, leadership and project management, integrated methods), now scheduled October to December. &nbsp; <span class="code2">D.2.5</span> FinTech elective, taken as a Coursera course. &nbsp; <span class="code2">D.2.6, D.2.7</span> Two teaching seminars delivered virtually (ISSI MA in October, Hildesheim on 27 November). &nbsp; <span class="code2">D.2.8</span> MOOC 1, Bridging Cultures with Reciprocity.
+          <div class="ms">Milestone M.2.1 · training complete (Feb 2027) &nbsp; M.2.2 · final database in open access (2028)</div>
+        </div>
+      </article>
 
-  <div class="note"><b>What moved from version 3.</b> Quant, policy writing, leadership and project management, and integrated methods all shifted into October to December (semester start). FinTech became the Coursera course in August. Ethics submission pulled forward to end September, so sites and counterparts are settled by September. Relationship emails, the GitHub page, and the social media setup all started in June to fill the early slots.</div>
+      <article class="wp">
+        <div class="wphead">
+          <span class="num">Work Package 3</span><h3>Fieldwork preparation</h3>
+          <span class="when">Year 1, remote from Malta</span>
+        </div>
+        <p class="d">Getting ready for the field: language, partnerships, study sites, and the ethics package, now prepared for submission by the end of September.</p>
+        <div class="dels">
+          <span class="lab">Deliverables and milestones</span>
+          <span class="code2">D.3.1</span> Language practice (Tongan and Shikomori). &nbsp; <span class="code2">D.3.2</span> Partnerships with UWI, USP Tonga, and the University of Comoros. &nbsp; <span class="code2">D.3.3</span> Study site selection. &nbsp; <span class="code2">D.3.4</span> Offer MOOC 1 to partner universities.
+          <div class="ms">Milestone M.3.1 · project social media launched (Mar 2027) &nbsp; M.3.2 · languages, partnerships, and sites complete</div>
+        </div>
+      </article>
+
+      <article class="wp alt">
+        <div class="wphead">
+          <span class="num">Work Package 4</span><h3>Ethnographic fieldwork</h3>
+          <span class="when">Apr to Oct 2027</span>
+        </div>
+        <p class="d">Roughly two months in each country in turn. Ethnography first, surveys after, with every visit closing in a secondment.</p>
+        <div class="dels">
+          <span class="lab">Deliverables and milestone</span>
+          <span class="code2">D.4.1 to D.4.3</span> Data collection in Jamaica, Tonga, and Comoros (10 to 20 interviews, 3 focus groups, 250 to 300 surveys each). &nbsp; <span class="code2">D.4.4 to D.4.6</span> Secondments at the partner universities.
+          <div class="ms">Milestone M.4.1 · fieldwork and secondments complete (Oct 2027)</div>
+        </div>
+      </article>
+
+      <article class="wp">
+        <div class="wphead">
+          <span class="num">Work Package 5</span><h3>Econometrics and analysis</h3>
+          <span class="when">Brackets the fieldwork</span>
+        </div>
+        <p class="d">The quantitative engine, from the systematic data review to the country level models.</p>
+        <div class="dels">
+          <span class="lab">Deliverables and milestones</span>
+          <span class="code2">D.5.1</span> Gender sensitive monitoring framework. &nbsp; <span class="code2">D.5.2</span> Three site specific ARDL models. &nbsp; <span class="code2">D.5.3</span> Analysis using the Sustainable Livelihoods Framework.
+          <div class="ms">Milestone M.5.1 · review of World Bank and OECD data (Nov 2026) &nbsp; M.5.2 · modelling and comparison complete (2028)</div>
+        </div>
+      </article>
+
+      <article class="wp">
+        <div class="wphead">
+          <span class="num">Work Package 6</span><h3>Two-way knowledge transfer</h3>
+          <span class="when">Across the two years</span>
+        </div>
+        <p class="d">Sharing the work in both directions, with partner communities and the wider research field.</p>
+        <div class="dels">
+          <span class="lab">Deliverables and milestone</span>
+          <span class="code2">D.6.1 to D.6.4</span> Four research seminars (ISSI, UWI, USP Tonga, University of Comoros). &nbsp; <span class="code2">D.6.5, D.6.6</span> Two international conference presentations. &nbsp; <span class="code2">D.6.7</span> MOOC 2, Waves of Wealth.
+          <div class="ms">Milestone M.6.1 · knowledge transfer complete (May 2028)</div>
+        </div>
+      </article>
+
+      <article class="wp">
+        <div class="wphead">
+          <span class="num">Work Package 7</span><h3>Dissemination and exploitation</h3>
+          <span class="when">A living plan, to May 2028</span>
+        </div>
+        <p class="d">Making sure the findings reach the people they are about, from local press to policy and journals.</p>
+        <div class="dels">
+          <span class="lab">Deliverables</span>
+          <span class="code2">D.7.1 to D.7.3</span> A local newspaper or magazine article in each country. &nbsp; <span class="code2">D.7.4</span> Policy briefs for governments, donors, and regional bodies. &nbsp; <span class="code2">D.7.5 to D.7.7</span> Three journal articles and the MSCA evaluation questionnaire.
+          <div class="ms">No milestone in the accepted plan; the package closes with D.7.7</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
 </section>
 
-<!-- EDIT: Purchases to request from the RTN budget -->
-<section id="purchases">
-  <h2>Purchases to request early (RTN budget)</h2>
-  <p class="sub">Rule one: check whether UM already holds a site licence before buying anything. Prices are current list prices and should be verified at checkout.</p>
-  <div class="scroll"><table class="gloss">
-    <tr><th style="width:175px;">Item</th><th style="width:190px;">Approx. price</th><th>Justification and notes</th></tr>
-    <tr><td><b>Claude (Anthropic AI) Pro</b></td><td>$20/month (about EUR 460 over 24 months); Max if usage grows</td><td>Literature synthesis, R or Stata code assistance, drafting deliverables, data documentation, MOOC scripting. Confirm UM policy on AI subscriptions from RTN funds.</td></tr>
-    <tr><td><b>NVivo (qualitative analysis)</b></td><td>Academic licence from about $849, or subscription about $130/year</td><td>Coding about 45 interviews and 9 focus groups across three countries. Check UM site licence first. Needed by March 2027.</td></tr>
-    <tr><td><b>MOOC authoring (Articulate 360)</b></td><td>Education discount about $899/year; Rise only about $499/year</td><td>For D.2.8 and D.6.7. First ask whether the UM e-learning unit licenses a tool, and whether free H5P in UM Moodle satisfies the deliverable. Free 30 day trial in December before deciding.</td></tr>
-    <tr><td><b>Virtual presenting kit</b></td><td>About EUR 150 to 250 (webcam, microphone, light)</td><td>Both teaching seminars, the Hildesheim talk, partner check ins, and stakeholder workshops are delivered virtually; broadcast quality matters.</td></tr>
-    <tr><td><b>Stata or R</b></td><td>R free; Stata educational single user roughly $200 to $450/year</td><td>Waits on the answer to: does ISSI work in R or Stata, and does UM hold a campus licence? ISS5220 covers both, which will inform the choice.</td></tr>
-    <tr><td><b>Zotero storage</b></td><td>$120/year unlimited (app is free)</td><td>Reference library for the whole fellowship, set up in June for the household survey lit review.</td></tr>
-    <tr><td><b>Survey platform</b></td><td>KoboToolbox free; or UM Qualtrics if licensed</td><td>750 to 900 household surveys across three countries; Kobo is built for development fieldwork and works offline.</td></tr>
-    <tr><td><b>Transcription</b></td><td>About EUR 300 to 500, or free with open source Whisper</td><td>Interview and focus group transcription, including non English audio. Flag the category for approval before April 2027.</td></tr>
-    <tr><td><b>Field kit</b></td><td>Audio recorder EUR 100 to 150; backup drive about EUR 100</td><td>Purchase before March 2027.</td></tr>
-    <tr><td><b>Language tutoring</b></td><td>About EUR 10 to 20/hour (budget about EUR 400)</td><td>Shikomori via tutor (possibly through the University of Comoros partnership); Tongan with Lupe.</td></tr>
-  </table></div>
+<!-- SECTION: progress tracker -->
+<section id="progress">
+  <div class="reveal">
+    <p class="eyebrow">Progress</p>
+    <h2 class="title">Where things stand</h2>
+    <p class="lead-p muted">A working record of the project, from the major deliverables down to the small day to day steps.</p>
+
+    <div class="focus">
+      <div><div class="fl">Current focus</div><b>Work Package 1</b></div>
+      <span class="txt">The opening administrative bundle: mobility declaration, Personal Career Development Plan, and training plan, alongside getting this platform live.</span>
+    </div>
+
+    <!-- EDIT: to add an update, copy one entry block and place it at the top. Newest first. -->
+    <div class="log">
+      <div class="entry">
+        <div class="date">Jun 2026</div>
+        <p class="what">Project website and GitHub repository live, the first piece of the digital platform. <span class="tagcode">D.1.2</span></p>
+      </div>
+      <div class="entry">
+        <div class="date">17 Jun 2026</div>
+        <p class="what">First supervision meeting with Dr Moncada. Training plan and timeline agreed. <span class="tagcode">WP1 · WP2</span></p>
+      </div>
+      <div class="entry">
+        <div class="date">16 Jun 2026</div>
+        <p class="what">Delivered a seven minute MSCA showcase talk, the project's first communications activity. <span class="tagcode">WP7</span></p>
+      </div>
+      <div class="entry">
+        <div class="date">15 Jun 2026</div>
+        <p class="what">Fellowship began at the Institute for Islands and Small States, University of Malta. <span class="tagcode">Start</span></p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- EDIT: Decisions from the 17 June meeting -->
-<section id="meeting">
-  <h2>Decisions from the 17 June supervision meeting</h2>
-  <h3>Grant and admin</h3>
-  <ul>
-    <li>Mobility declaration is the immediate action: Stefano grants EU portal access, then it is signed and validated.</li>
-    <li>Trimestral progress reports: maximum two pages, ideally one.</li>
-    <li>Project webpage handled separately with Solan and Deepa (this GitHub page).</li>
-  </ul>
-  <h3>Ethics and fieldwork preparation</h3>
-  <ul>
-    <li>UM REC route: work through URECA, download all forms, get a sample approved application from Stefano, and submit to FREC, the Faculty of Arts committee. Work back from committee dates and target end September.</li>
-    <li>In-country ethics: Stefano connects Jamaica contacts, Pedro connects for Comoros, both ASAP.</li>
-    <li>Instruments before ethics: Stefano has a route around the constraint. Working meeting the week of 22 July; household survey and instruments finalised in early September.</li>
-    <li>Local research assistants: confirm with Solan how RTN funds hire and train two to three RAs, sourced through contacts, paid ethically.</li>
-    <li>Survey design: Stefano to send readings, including his Mauritius coastal communities paper.</li>
-  </ul>
-  <h3>Training and seminars</h3>
-  <ul>
-    <li>Workshops sit in Semester 1 (October to December), distributed as set out above.</li>
-    <li>FinTech (D.2.5): the Coursera IDB financial inclusion course is approved, taken in August, then an RTN reimbursement memo to Solan.</li>
-    <li>Seminars: the ISSI MA host seminar (second week of October) and the Hildesheim seminar (27 November) each count toward a teaching deliverable. Virtual delivery accepted. Yves to provide a certificate or letter.</li>
-  </ul>
-  <h3>Methods, money, and outreach</h3>
-  <ul>
-    <li>Dissemination: the unnumbered Section 2.2 promises still to be scoped into the plan, parked for now.</li>
-    <li>DevNet 2026: co-authorship of the conceptual paper raised with Stefano, awaiting his confirmation. Abstract due end of August, conference 2 to 4 December in Wellington.</li>
-  </ul>
-</section>
+<!-- SECTION: people and partners -->
+<section id="team" style="border-bottom:0;">
+  <div class="reveal">
+    <p class="eyebrow">Who</p>
+    <h2 class="title">People and partners</h2>
 
-<footer>
-  FAR-SIDS planning pack, version 4. Maintained by Roxane de Waegh, Institute for Islands and Small States, University of Malta. Last updated June 2026.
-</footer>
+    <div style="margin-top:28px; max-width:66ch;">
+      <h3 style="font-size:1.3rem; font-family:var(--serif); font-weight:500; color:var(--abyss);">Dr Roxane de Waegh</h3>
+      <div class="role">Marie Sklodowska-Curie Fellow · ISSI, University of Malta</div>
+      <p class="muted" style="margin:10px 0 0; font-size:.98rem;">Leads the research, from the econometric modelling to the fieldwork in each country. Her work centres community agency and self-determination, built on years of research with Pacific island communities and grounded in relationship, reciprocity, and respect.</p>
+    </div>
+
+    <div class="people">
+      <div>
+        <h3>Supervisory team</h3>
+        <ul>
+          <li>Dr Stefano Moncada<br><span>Primary supervisor and Director of ISSI. Development economics, climate change, and sustainable development in small island states.</span></li>
+          <li>Prof. Lino Briguglio<br><span>Co-supervisor. Originator of the economic vulnerability and resilience indices for small states, and member of the UN panel on a Multidimensional Vulnerability Index.</span></li>
+          <li>Prof. Godfrey Baldacchino<br><span>Co-supervisor. A leading scholar in island studies, founding editor of Island Studies Journal, and Malta Ambassador for islands and small states.</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Host and partners</h3>
+        <ul>
+          <li>Institute for Islands and Small States (ISSI)<br><span>University of Malta · host institution</span></li>
+          <li>The University of the West Indies<br><span>Jamaica · Caribbean partner</span></li>
+          <li>University of the South Pacific<br><span>Tonga · Pacific partner · Dr Semisi Taumoepeau</span></li>
+          <li>University of Comoros<br><span>Comoros · Indian Ocean partner · Ahmed Ouledi</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
 </div>
+
+<!-- SECTION: funding footer with EU emblem -->
+<footer>
+  <div class="wrap">
+    <div class="fund">
+      <div class="emblem">
+        <!-- Official EU emblem, rebuilt as clean SVG. Do not stretch or recolour. -->
+        <svg viewBox="0 0 90 60" role="img" aria-label="Flag of the European Union" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <rect width="90" height="60" fill="#003399"/>
+          <defs>
+            <polygon id="star" fill="#FFCC00"
+              points="0,-3.3 0.76,-1.05 3.14,-1.02 1.24,0.40 1.94,2.67 0,1.3 -1.94,2.67 -1.24,0.40 -3.14,-1.02 -0.76,-1.05"/>
+          </defs>
+          <use xlink:href="#star" href="#star" x="45" y="10"/><use xlink:href="#star" href="#star" x="55" y="12.68"/>
+          <use xlink:href="#star" href="#star" x="62.32" y="20"/><use xlink:href="#star" href="#star" x="65" y="30"/>
+          <use xlink:href="#star" href="#star" x="62.32" y="40"/><use xlink:href="#star" href="#star" x="55" y="47.32"/>
+          <use xlink:href="#star" href="#star" x="45" y="50"/><use xlink:href="#star" href="#star" x="35" y="47.32"/>
+          <use xlink:href="#star" href="#star" x="27.68" y="40"/><use xlink:href="#star" href="#star" x="25" y="30"/>
+          <use xlink:href="#star" href="#star" x="27.68" y="20"/><use xlink:href="#star" href="#star" x="35" y="12.68"/>
+        </svg>
+      </div>
+      <div class="stmt">
+        <b>Funded by the European Union</b>
+        <p>Views and opinions expressed are those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.</p>
+      </div>
+    </div>
+    <div class="foot-meta">
+      <span>Marie Sklodowska-Curie Actions · Postdoctoral Fellowship</span>
+      <span>Grant Agreement No. 101244526</span>
+      <span>Institute for Islands and Small States, University of Malta</span>
+      <span>2026 to 2028</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = document.querySelectorAll('.reveal');
+    if(reduce || !('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('in'); });
+    } else {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, {threshold:0.12});
+      items.forEach(function(el){ io.observe(el); });
+    }
+    var bar = document.querySelector('header.bar');
+    window.addEventListener('scroll', function(){
+      bar.style.background = window.scrollY > 40 ? '#08293Af2' : '#08293Acc';
+    }, {passive:true});
+  })();
+</script>
+
 </body>
 </html>

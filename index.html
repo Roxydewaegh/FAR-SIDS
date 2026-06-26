@@ -214,6 +214,20 @@
     font-size:.72rem; letter-spacing:.04em; color:var(--ink-soft); background:#eef3f3; padding:9px 16px; border-radius:8px;}
   @media(max-width:720px){ .tl-heads{flex-basis:98px;} .tl-lh{font-size:.54rem; padding:0 9px;} }
 
+  /* SECTION: literature review shelf */
+  .resgroups{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:22px;}
+  .resgroup{background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px 24px;}
+  .resgroup h3{font-size:1.12rem; color:var(--abyss); font-family:var(--sans); font-weight:600;}
+  .resgroup ul{list-style:none; padding:0; margin:14px 0 0;}
+  .resgroup li{padding:11px 0; border-bottom:1px dashed var(--line); font-size:.94rem;}
+  .resgroup li:last-child{border-bottom:0; padding-bottom:0;}
+  .resgroup li a{font-weight:600; color:var(--deep);}
+  .resgroup li a:hover{color:var(--lagoon);}
+  .resgroup .note{display:block; color:var(--ink-soft); font-size:.82rem; margin-top:3px; line-height:1.5;}
+  .resgroup .opt{font-family:var(--mono); font-size:.54rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--lagoon); background:#e3f2f0; padding:1px 6px; border-radius:5px; margin-left:6px; vertical-align:middle;}
+  @media(max-width:760px){ .resgroups{grid-template-columns:1fr;} }
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
     .reveal{opacity:1; transform:none;}
@@ -233,6 +247,7 @@
       <a href="#islands">Islands</a>
       <a href="#approach">Approach</a>
       <a href="#programme">Work programme</a>
+      <a href="#litreview">Literature review</a>
       <a href="#timeline">Summer plan</a>
       <a href="#progress">Progress</a>
       <a href="#team">Team</a>
@@ -514,6 +529,75 @@
   </div>
 </section>
 
+<!-- SECTION: literature review, the groundwork -->
+<!--
+  The reading list cards (the "shelf") are plain HTML. To add a resource, copy
+  one <li> inside the relevant .resgroup and edit the link and the note.
+-->
+<section id="litreview">
+  <div class="reveal">
+    <p class="eyebrow">The groundwork</p>
+    <h2 class="title">Reading the field before entering it</h2>
+    <p class="lead-p muted">The literature review is not a numbered deliverable, but it is the foundation the numbered ones stand on. It feeds the variable selection for the econometrics, the household survey going into the ethics package, and the journal articles and conference papers to come. Two working documents are being built in parallel, one for each strand below.</p>
+
+    <div class="frame">
+      <b>The question.</b> How do foreign aid and remittances relate to wellbeing and livelihoods in Small Island Developing States, and where are the gaps?
+    </div>
+
+    <div class="strands">
+      <div class="strand">
+        <div class="n">Strand 01 · Systematic review</div>
+        <h3>Mapping the evidence</h3>
+        <p>A PRISMA systematic review, the project's first paper, mapping what has been studied on aid, remittances, and wellbeing in SIDS, which methods and models were used, and which variables they drew on. It feeds the econometric variable list and is bound for DevNet 2026 in Wellington, with the abstract due at the end of August.</p>
+      </div>
+      <div class="strand">
+        <div class="n">Strand 02 · Household surveys</div>
+        <h3>Designing the instrument</h3>
+        <p>A focused, parallel reading on household survey design for remittances and livelihoods, drawing on the World Bank LSMS materials and earlier coastal communities research. It does not need the full PRISMA machinery; it sharpens the survey instrument before drafting, ahead of the ethics submission.</p>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:48px;">The shelf</p>
+    <p class="lead-p muted" style="margin:0 0 6px;">A living set of courses, sources, and tools that support the two strands. Start with the free essentials and add only what the work demands.</p>
+
+    <div class="resgroups">
+      <div class="resgroup">
+        <h3>Courses and training</h3>
+        <ul>
+          <li><a href="https://courses.wbginstitute.org/course/multitopic-household-surveys" target="_blank" rel="noopener">World Bank LSMS survey course</a><span class="note">Designing and implementing multi-topic household surveys. Feeds Strand 02.</span></li>
+          <li><a href="https://thecommonwealth.org/news/commonwealth-launches-e-learning-course-help-countries-access-billions-climate-finance" target="_blank" rel="noopener">Commonwealth Climate Finance Essentials</a><span class="note">How small and vulnerable states access external finance. Free.</span></li>
+          <li><a href="https://www.edx.org/school/sdgacademyx" target="_blank" rel="noopener">SDG Academy on edX</a><span class="note">Financing for sustainable development, the aid and ODA frame. Free to audit.</span></li>
+          <li><a href="https://www.coursera.org/learn/perspectives-in-digital-transformation-financial-inclusion" target="_blank" rel="noopener">IDB Financial Inclusion</a><span class="note">Digital transformation and financial inclusion, the FinTech elective (D.2.5).</span></li>
+          <li><a href="https://unu.edu/merit/course/policy-brief-writing" target="_blank" rel="noopener">UNU-MERIT Policy Brief Writing</a><span class="note">Turning research into clear policy briefs (D.2.2).</span></li>
+          <li><a href="https://www.edx.org/learn/finance/the-international-monetary-fund-financial-programming-and-policies-part-1-macroeconomic-accounts-analysis" target="_blank" rel="noopener">IMFx Financial Programming</a><span class="opt">stretch</span><span class="note">Macroeconomic accounts, where aid and remittances actually sit. Free to audit.</span></li>
+          <li><a href="https://mitxonline.mit.edu/courses/course-v1:MITxT+14.73x/" target="_blank" rel="noopener">MITx Challenges of Global Poverty</a><span class="opt">background</span><span class="note">Development economics with two Nobel laureates. Free to audit.</span></li>
+        </ul>
+      </div>
+      <div class="resgroup">
+        <h3>Key sources and reading</h3>
+        <ul>
+          <li><a href="https://www.worldbank.org/en/topic/migration/brief/remittances-knomad" target="_blank" rel="noopener">World Bank KNOMAD</a><span class="note">The canonical hub on migration and remittances, briefs and data.</span></li>
+          <li><a href="https://odi.org/en/publications/the-state-of-sids-report-2026-defending-the-special-case/" target="_blank" rel="noopener">State of SIDS Report 2026</a><span class="note">ODI Global. The framing the review is read against.</span></li>
+          <li><a href="https://www.scribd.com/doc/152870351/DFID-Sustainable-Livelihoods-Guidance-Sheet" target="_blank" rel="noopener">Sustainable Livelihoods guidance</a><span class="note">DFID. The conceptual framework, with remittances as financial capital.</span></li>
+          <li><a href="https://www.worldbank.org/en/programs/lsms/publications/lsms-guidebooks" target="_blank" rel="noopener">World Bank LSMS guidebooks</a><span class="note">Survey design references behind the instrument.</span></li>
+        </ul>
+      </div>
+      <div class="resgroup">
+        <h3>Systematic review toolkit</h3>
+        <ul>
+          <li><a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a><span class="note">Reference library and de-duplication, the spine of the review.</span></li>
+          <li><a href="https://www.rayyan.ai/" target="_blank" rel="noopener">Rayyan</a><span class="note">Title and abstract screening with a PRISMA flow diagram.</span></li>
+          <li><a href="https://elicit.com/" target="_blank" rel="noopener">Elicit</a><span class="note">Semantic discovery and structured extraction from papers.</span></li>
+          <li><a href="https://www.connectedpapers.com/" target="_blank" rel="noopener">Connected Papers</a><span class="note">Citation mapping outward from seed papers.</span></li>
+          <li><a href="https://consensus.app/" target="_blank" rel="noopener">Consensus</a><span class="note">Quick directional evidence checks in plain language.</span></li>
+          <li><a href="https://notebooklm.google.com/" target="_blank" rel="noopener">NotebookLM</a><span class="note">Grounded reading of dense PDFs, cited back to the page.</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="tl-hint" style="margin-top:18px;">The two working documents themselves live in the project folder, not on this page. This shelf is the reading list behind them.</p>
+  </div>
+</section>
+
 <!-- SECTION: interactive summer timeline (the road to ethics) -->
 <!--
   This timeline is built from the EVENTS list in the script near the bottom of
@@ -525,7 +609,7 @@
   <div class="reveal">
     <p class="eyebrow">The intensive</p>
     <h2 class="title">The road to ethics, summer 2026</h2>
-    <p class="lead-p muted">The summer is the push toward an early ethics submission at the end of August 2026, brought forward from September. Three strands run at once: stepping up training, building relationships with partners in Jamaica, Tonga, and Comoros, now opened, and drafting the research instruments. Click any item to read more.</p>
+    <p class="lead-p muted">The summer is the push toward an early ethics submission at the end of August 2026, brought forward from September. Four strands run at once: the literature review that feeds everything, stepping up training, building relationships with partners in Jamaica, Tonga, and Comoros, now opened, and drafting the research instruments. Click any item to read more.</p>
 
     <div class="tl-filters" id="tlFilters">
       <span class="fl-lab">Filter</span>
@@ -573,7 +657,7 @@
       </div>
       <div class="entry plan">
         <div class="date">13 to 19 Jul 2026 <span class="badge">Upcoming</span></div>
-        <p class="what">Household survey design workshop, stepping up training to sharpen the household instrument before drafting. Provider to be confirmed. <span class="tagcode">WP2</span></p>
+        <p class="what">Household survey design workshop with the World Bank LSMS programme, <a href="https://courses.wbginstitute.org/course/multitopic-household-surveys" target="_blank" rel="noopener">Designing and Implementing Multi-topic Household Surveys</a>, stepping up training to sharpen the household instrument before drafting. Account created and expression of interest submitted; enrolment to follow. <span class="tagcode">WP2</span></p>
       </div>
       <div class="entry plan">
         <div class="date">6 to 12 Jul 2026 <span class="badge">Upcoming</span></div>
@@ -743,21 +827,33 @@
   // dates are YYYY-MM-DD. point:true draws a single marker instead of a bar.
   var START = '2026-06-22', END = '2026-09-30';
   var TRACKS = {
+    litreview:    {label:'Literature review', colour:'#6A5ACD'},
     training:     {label:'Training',     colour:'#1C8C9B'},
     partnerships: {label:'Partnerships', colour:'#E2664A'},
     instruments:  {label:'Instruments',  colour:'#0E4D5C'},
     milestone:    {label:'Milestone',    colour:'#08293A'}
   };
   var EVENTS = [
+    {track:'litreview', title:'Systematic review (Paper 1)', start:'2026-06-25', end:'2026-09-30',
+      desc:'The PRISMA systematic review, the project’s first paper. It maps what has been studied on aid, remittances, and wellbeing in SIDS, which methods and models were used, and which variables they drew on, feeding the econometric variable list and the DevNet 2026 abstract. The continuous groundwork that runs right through the summer (WP5 · WP7).',
+      href:'https://odi.org/en/publications/the-state-of-sids-report-2026-defending-the-special-case/', linkText:'Framing: State of SIDS 2026'},
+    {track:'litreview', title:'Household survey design reading', start:'2026-06-25', end:'2026-08-13',
+      desc:'The smaller parallel strand: focused reading on household survey design for remittances and livelihoods, drawing on the World Bank LSMS materials and earlier coastal communities research. It feeds the survey instrument going into the ethics package (WP3 · WP5).',
+      href:'https://www.worldbank.org/en/programs/lsms/publications/lsms-guidebooks', linkText:'World Bank LSMS guidebooks'},
+    {track:'litreview', title:'DevNet abstract due', start:'2026-08-28', point:true,
+      desc:'The abstract for Paper 1, the systematic review, is due to DevNet 2026 in Wellington at the end of August, the first concrete output of the literature review.'},
     {track:'training', title:'Policy Brief Writing workshop', start:'2026-07-01', end:'2026-07-05',
       desc:'UNU-MERIT Capacity Development Office. Turning research into clear, targeted policy briefs, the policy writing training named in the proposal (D.2.2).',
       href:'https://unu.edu/merit/course/policy-brief-writing', linkText:'UNU-MERIT course'},
-    {track:'training', title:'Financial Inclusion workshop', start:'2026-07-06', end:'2026-07-12',
-      desc:'Inter-American Development Bank, "Perspectives in Digital Transformation: Financial Inclusion." The replacement for the dropped FinTech elective, closer to the remittances focus (D.2.5).',
+    {track:'training', title:'Household survey design course', start:'2026-07-20', end:'2026-08-07',
+      desc:'World Bank LSMS, "Designing and Implementing Multi-topic Household Surveys," covering the full survey life cycle. Account created and expression of interest submitted; enrolment to follow, taken in parallel with the systematic review (WP2).',
+      href:'https://courses.wbginstitute.org/course/multitopic-household-surveys', linkText:'World Bank LSMS course'},
+    {track:'training', title:'Financial Inclusion course', start:'2026-08-10', end:'2026-08-21',
+      desc:'Inter-American Development Bank, "Perspectives in Digital Transformation: Financial Inclusion." Self-paced, about ten hours, the replacement for the dropped FinTech elective and closer to the remittances focus (D.2.5).',
       href:'https://www.coursera.org/learn/perspectives-in-digital-transformation-financial-inclusion', linkText:'Coursera, IDB'},
-    {track:'training', title:'Household survey design workshop', start:'2026-07-13', end:'2026-07-19',
-      desc:'Survey design methods to sharpen the household instrument before drafting. Provider and link to be confirmed.',
-      href:'', linkText:'Link to be added'},
+    {track:'training', title:'Climate Finance Essentials', start:'2026-09-01', end:'2026-09-18',
+      desc:'Commonwealth Climate Finance Access Hub e-learning course, on how small and vulnerable states access external finance across the Caribbean, Pacific, and Indian Ocean. Background for the external-flows world the project lives in (WP2).',
+      href:'https://thecommonwealth.org/news/commonwealth-launches-e-learning-course-help-countries-access-billions-climate-finance', linkText:'Commonwealth course'},
     {track:'training', title:'Hildesheim seminar title due', start:'2026-09-27', point:true,
       desc:'Reminder: the seminar session title is due to the University of Hildesheim, ahead of the virtual guest seminar on 27 November, part of the teaching deliverable (D.2.6/D.2.7).'},
     {track:'partnerships', title:'Outreach to Jamaica, UWI', start:'2026-06-24', end:'2026-08-21',
@@ -811,7 +907,7 @@
   track.appendChild(ruler);
 
   // greedy stack each track's events into sub-rows so overlaps never collide
-  var order = ['training','partnerships','instruments','milestone'];
+  var order = ['litreview','training','partnerships','instruments','milestone'];
   var laneEls = {};
   order.forEach(function(key){
     var evs = EVENTS.filter(function(e){ return e.track === key; });
@@ -866,10 +962,10 @@
   });
 
   // today marker (spans the whole track height)
-  var today = new Date('2026-06-25T00:00:00');
+  var today = new Date('2026-06-26T00:00:00');
   if(today >= s0 && today <= s1){
     var tl = document.createElement('div'); tl.className = 'tl-today';
-    tl.style.left = pct('2026-06-25') + '%';
+    tl.style.left = pct('2026-06-26') + '%';
     tl.style.height = track.offsetHeight + 'px';
     var ts = document.createElement('span'); ts.textContent = 'Today'; tl.appendChild(ts);
     track.appendChild(tl);
@@ -892,7 +988,7 @@
   }
 
   // filter chips
-  var activeTracks = {training:true, partnerships:true, instruments:true, milestone:true};
+  var activeTracks = {litreview:true, training:true, partnerships:true, instruments:true, milestone:true};
   order.forEach(function(key){
     var chip = document.createElement('button'); chip.className = 'tl-chip';
     chip.type = 'button'; chip.setAttribute('aria-pressed', 'true');

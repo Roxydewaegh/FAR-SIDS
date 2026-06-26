@@ -228,6 +228,16 @@
     color:var(--lagoon); background:#e3f2f0; padding:1px 6px; border-radius:5px; margin-left:6px; vertical-align:middle;}
   @media(max-width:760px){ .resgroups{grid-template-columns:1fr;} }
 
+  /* SECTION: live Zotero bibliography */
+  .zlib .zitems{list-style:none; padding:0; margin:14px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:0 28px;}
+  .zlib .zitem{padding:11px 0; border-bottom:1px dashed var(--line); font-size:.94rem;}
+  .zlib .zitem a{font-weight:600; color:var(--deep);}
+  .zlib .zitem a:hover{color:var(--lagoon);}
+  .zlib .zitem .zmeta{display:block; color:var(--ink-soft); font-size:.82rem; margin-top:2px;}
+  .zlib .zmsg{color:var(--ink-soft); font-size:.92rem; margin:12px 0 0;}
+  .zlib code{font-family:var(--mono); font-size:.82em; background:#eef3f3; padding:1px 5px; border-radius:5px;}
+  @media(max-width:760px){ .zlib .zitems{grid-template-columns:1fr;} }
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
     .reveal{opacity:1; transform:none;}
@@ -594,7 +604,13 @@
         </ul>
       </div>
     </div>
-    <p class="tl-hint" style="margin-top:18px;">The two working documents themselves live in the project folder, not on this page. This shelf is the reading list behind them.</p>
+    <div class="zlib" style="margin-top:46px;">
+      <p class="eyebrow">From the library</p>
+      <p class="lead-p muted" style="margin:0;">A live view of the project's Zotero library. References appear here automatically as the systematic review grows, pulled straight from the shared library with no manual updating. <a href="https://www.zotero.org/groups/6598740" target="_blank" rel="noopener">Browse the full library on Zotero</a>.</p>
+      <div id="zlib"><p class="zmsg">Loading the library.</p></div>
+    </div>
+
+    <p class="tl-hint" style="margin-top:30px;">The two working documents themselves live in the project folder, not on this page. This shelf is the reading list behind them.</p>
   </div>
 </section>
 
@@ -1011,6 +1027,51 @@
 
   // open the first event by default so the panel is never empty
   select(EVENTS[0], EVENTS[0]._el);
+})();
+</script>
+
+<!-- SECTION: live Zotero bibliography feed -->
+<!--
+  Pulls from the public FAR-SIDS Zotero group library (group 6598740). By
+  default it shows items tagged "website", so you control exactly what appears
+  here: add the tag "website" to any reference in the group and it shows up.
+  To show the whole library instead, delete the &tag=website part of the URL.
+-->
+<script>
+(function(){
+  var el = document.getElementById('zlib');
+  if(!el) return;
+  var GROUP = '6598740';
+  var TAG = 'website'; // set to '' to show the whole library
+  var url = 'https://api.zotero.org/groups/' + GROUP + '/items/top?format=json&sort=date&direction=desc&limit=60'
+            + (TAG ? '&tag=' + encodeURIComponent(TAG) : '');
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  if(typeof fetch === 'undefined'){ return; }
+  fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+  .then(function(items){
+    if(!items || !items.length){
+      el.innerHTML = '<p class="zmsg">The project library is being built. Key references will appear here as the systematic review progresses.</p>';
+      return;
+    }
+    var html = '<ul class="zitems">';
+    items.forEach(function(it){
+      var d = it.data || {};
+      var title = d.title || d.bookTitle || 'Untitled';
+      var creators = (d.creators || []).map(function(c){ return c.lastName || c.name; }).filter(Boolean);
+      var who = creators.length ? (creators.length > 3 ? creators.slice(0,3).join(', ') + ' et al.' : creators.join(', ')) : '';
+      var ym = (d.date || '').match(/\d{4}/);
+      var year = ym ? ym[0] : '';
+      var link = d.url || (it.links && it.links.alternate && it.links.alternate.href) || ('https://www.zotero.org/groups/' + GROUP + '/items/' + it.key);
+      var meta = [who, year].filter(Boolean).join(' · ');
+      html += '<li class="zitem"><a href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(title) + '</a>'
+            + (meta ? '<span class="zmeta">' + esc(meta) + '</span>' : '') + '</li>';
+    });
+    html += '</ul>';
+    el.innerHTML = html;
+  })
+  .catch(function(){
+    el.innerHTML = '<p class="zmsg">The library could not be loaded right now. <a href="https://www.zotero.org/groups/' + GROUP + '" target="_blank" rel="noopener">Open it on Zotero</a>.</p>';
+  });
 })();
 </script>
 

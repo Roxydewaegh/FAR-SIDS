@@ -194,9 +194,9 @@
     box-shadow:0 6px 14px -10px #08293a99; transition:transform .15s, box-shadow .2s; z-index:3;}
   .tl-bar:hover{transform:translateY(-1px); box-shadow:0 10px 18px -10px #08293aaa;}
   .tl-bar.sel{outline:2px solid var(--gold); outline-offset:2px;}
-  .tl-point{position:absolute; width:24px; height:24px; transform:translateX(-50%) rotate(45deg);
-    border-radius:6px; border:3px solid #fff; cursor:pointer; z-index:4; box-shadow:0 6px 14px -8px #08293a;}
-  .tl-point.sel{outline:2px solid var(--gold); outline-offset:3px;}
+  .tl-point{position:absolute; width:34px; height:30px; transform:translateX(-50%); cursor:pointer; z-index:4;
+    clip-path:polygon(50% 0, 100% 100%, 0 100%); filter:drop-shadow(0 5px 7px #08293a55);}
+  .tl-point.sel{filter:drop-shadow(0 0 3px var(--gold));}
   .tl-hidden{display:none !important;}
   .tl-hint{font-family:var(--mono); font-size:.6rem; letter-spacing:.06em; color:var(--ink-soft); margin:12px 0 0;}
 
@@ -215,7 +215,10 @@
   @media(max-width:720px){ .tl-heads{flex-basis:98px;} .tl-lh{font-size:.54rem; padding:0 9px;} }
 
   /* SECTION: literature review shelf */
-  .resgroups{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:22px;}
+  .resgroups{display:grid; grid-template-columns:repeat(2,1fr); gap:26px; margin-top:22px;}
+  .resgroup{position:relative;}
+  .resgroup::after{content:''; display:block; position:absolute; left:-6px; right:-6px; bottom:-9px; height:9px;
+    border-radius:3px; background:linear-gradient(180deg,#C9A46A,#9A7442); box-shadow:0 5px 9px -5px #08293a66;}
   .resgroup{background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px 24px;}
   .resgroup h3{font-size:1.12rem; color:var(--abyss); font-family:var(--sans); font-weight:600;}
   .resgroup ul{list-style:none; padding:0; margin:14px 0 0;}
@@ -235,6 +238,13 @@
   .zlib .zitem a:hover{color:var(--lagoon);}
   .zlib .zitem .zmeta{display:block; color:var(--ink-soft); font-size:.82rem; margin-top:2px;}
   .zlib .zmsg{color:var(--ink-soft); font-size:.92rem; margin:12px 0 0;}
+  .zlib .zscroll{max-height:430px; overflow-y:auto; margin-top:10px; padding-right:14px; position:relative;
+    scrollbar-width:thin; scrollbar-color:#9A7442 #eef3f3;}
+  .zlib .zscroll::-webkit-scrollbar{width:8px;} .zlib .zscroll::-webkit-scrollbar-track{background:#eef3f3; border-radius:4px;}
+  .zlib .zscroll::-webkit-scrollbar-thumb{background:linear-gradient(#C9A46A,#9A7442); border-radius:4px;}
+  .zlib .zspines{display:flex; align-items:flex-end; gap:3px; height:26px; margin:16px 0 0; padding:0 2px 0;
+    border-bottom:6px solid; border-image:linear-gradient(90deg,#C9A46A,#9A7442) 1;}
+  .zlib .zspines i{display:block; border-radius:2px 2px 0 0; opacity:.9;}
   .zlib code{font-family:var(--mono); font-size:.82em; background:#eef3f3; padding:1px 5px; border-radius:5px;}
   @media(max-width:760px){ .zlib .zitems{grid-template-columns:1fr;} }
 
@@ -578,7 +588,8 @@
       <div class="resgroup">
         <h3>Courses and training</h3>
         <ul>
-          <li><a href="https://courses.wbginstitute.org/course/multitopic-household-surveys" target="_blank" rel="noopener">World Bank LSMS survey course</a><span class="note">Designing and implementing multi-topic household surveys. Feeds Strand 02.</span></li>
+          <li><a href="https://courses.wbginstitute.org/course/multitopic-household-surveys" target="_blank" rel="noopener">World Bank LSMS survey course</a><span class="note">Designing and implementing multi-topic household surveys, 15 to 27 July. Feeds Strand 02.</span></li>
+          <li><a href="https://www.um.edu.mt/itservices/courses" target="_blank" rel="noopener">IBM SPSS, Introduction and Intermediate</a><span class="note">UM IT Services summer courses, 13 to 24 July. The statistics base ahead of the doctoral workshops (D.2.1).</span></li>
           <li><a href="https://thecommonwealth.org/news/commonwealth-launches-e-learning-course-help-countries-access-billions-climate-finance" target="_blank" rel="noopener">Commonwealth Climate Finance Essentials</a><span class="note">How small and vulnerable states access external finance. Free.</span></li>
           <li><a href="https://www.edx.org/school/sdgacademyx" target="_blank" rel="noopener">SDG Academy on edX</a><span class="note">Financing for sustainable development, the aid and ODA frame. Free to audit.</span></li>
           <li><a href="https://www.coursera.org/learn/perspectives-in-digital-transformation-financial-inclusion" target="_blank" rel="noopener">IDB Financial Inclusion</a><span class="note">Digital transformation and financial inclusion, the FinTech elective (D.2.5).</span></li>
@@ -587,6 +598,18 @@
           <li><a href="https://www.edx.org/learn/finance/the-international-monetary-fund-financial-programming-and-policies-part-1-macroeconomic-accounts-analysis" target="_blank" rel="noopener">IMFx Financial Programming</a><span class="opt">stretch</span><span class="note">Macroeconomic accounts, where aid and remittances actually sit. Free to audit.</span></li>
           <li><a href="https://mitxonline.mit.edu/courses/course-v1:MITxT+14.73x/" target="_blank" rel="noopener">MITx Challenges of Global Poverty</a><span class="opt">background</span><span class="note">Development economics with two Nobel laureates. Free to audit.</span></li>
         </ul>
+      </div>
+      <div class="resgroup">
+        <h3>Doctoral School, semester one</h3>
+        <ul>
+          <li><a href="https://www.um.edu.mt/courses/studyunit/DOC6021" target="_blank" rel="noopener">DOC6021 Quantitative Research Methods</a><span class="note">With DOC6067, the quantitative methods workshop pair (D.2.1).</span></li>
+          <li><a href="https://www.um.edu.mt/courses/studyunit/DOC6067" target="_blank" rel="noopener">DOC6067 Using R for Data Processing</a><span class="note">R skills for the econometric work ahead (D.2.1).</span></li>
+          <li><a href="https://www.um.edu.mt/courses/studyunit/DOC6047" target="_blank" rel="noopener">DOC6047 Designing Documents for Supranational Organisations</a><span class="note">The policy writing workshop, if offered in semester one (D.2.2).</span></li>
+          <li><a href="https://www.um.edu.mt/courses/studyunit/DOC6009" target="_blank" rel="noopener">DOC6009 Leadership for the 21st Century</a><span class="note">Or DOC6058, The Purpose of your Leadership in Times of Change; the choice is still open (D.2.3).</span></li>
+          <li><a href="https://www.um.edu.mt/courses/studyunit/DOC6068" target="_blank" rel="noopener">DOC6068 Project Management</a><span class="note">The project management half of D.2.3.</span></li>
+          <li><a href="https://www.um.edu.mt/courses/studyunit/ISS5220" target="_blank" rel="noopener">ISS5220 Integrated methods</a><span class="note">The integrated methods unit within the ISSI MA, across semester one (D.2.4).</span></li>
+        </ul>
+        <p class="note" style="margin-top:8px;">Agreed with the supervisor; exact dates follow the semester one timetable, out before 1 October.</p>
       </div>
       <div class="resgroup">
         <h3>Key sources and reading</h3>
@@ -883,25 +906,9 @@
 <g transform="translate(120,300)"><ellipse cx="0" cy="26" rx="20" ry="5" fill="#08293A" opacity="0.25"/><rect x="-3" y="6" width="6" height="18" fill="#08293A"/><circle cx="0" cy="-2" r="22" fill="#1C8C9B"/><path d="M-22,-2 A22,22 0 0 1 22,-2" fill="#0E4D5C" opacity="0.35"/><path d="M-12,-18 Q4,-2 -6,16" stroke="#EFE6D2" stroke-width="2" fill="none" opacity="0.6"/><circle cx="0" cy="-2" r="22" fill="none" stroke="#08293A" stroke-width="2"/></g>
 </svg></div>
       <p class="eyebrow">From the library</p>
-      <p class="lead-p muted" style="margin:0;">A live view of the project's Zotero library. References appear here automatically as the systematic review grows, pulled straight from the shared library with no manual updating. <a href="https://www.zotero.org/groups/6598740" target="_blank" rel="noopener">Browse the full library on Zotero</a>.</p>
-      <div id="zlib"><p class="zmsg">Loading the library.</p></div>
-      <p class="zmsg" style="margin-top:20px;">And a first set of relevant papers surfaced by the title and abstract screening, ahead of their arrival in the shared library:</p>
-      <ul class="zitems">
-        <li class="zitem"><a href="https://doi.org/10.1016/0305-750X(93)90020-A" target="_blank" rel="noopener">Sustainability, aid, and material welfare in small South Pacific island economies, 1900 to 1990</a><span class="zmeta">Bertram · 1993</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1111/j.1467-8373.2006.00300.x" target="_blank" rel="noopener">Beyond MIRAB: Do aid and remittances crowd out export growth in Pacific microeconomies?</a><span class="zmeta">Fraenkel · 2006</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1016/j.econmod.2011.02.018" target="_blank" rel="noopener">Income and consumption smoothing and welfare gains across Pacific island countries: The role of remittances and foreign aid</a><span class="zmeta">Balli, Balli · 2011</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1080/00220388.2010.501376" target="_blank" rel="noopener">Subjectively assessed welfare and international remittances: Evidence from Tonga</a><span class="zmeta">Brown, Jimenez · 2011</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1111/j.1475-4932.2012.00824.x" target="_blank" rel="noopener">Assessing the poverty impacts of migrants' remittances using propensity score matching: The case of Tonga</a><span class="zmeta">Jimenez-Soto, Brown · 2012</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1002/jid.1474" target="_blank" rel="noopener">Estimating the net effects of migration and remittances on poverty and inequality: Comparison of Fiji and Tonga</a><span class="zmeta">Brown, Jimenez · 2008</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1002/psp.1765" target="_blank" rel="noopener">Migrants' remittances, poverty and social protection in the South Pacific: Fiji and Tonga</a><span class="zmeta">Brown, Connell, Jimenez-Soto · 2014</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1002/jid.3833" target="_blank" rel="noopener">Island idleness: Investigating the impact of remittances on labour market participation in Comoros</a><span class="zmeta">Keller, Mulangu · 2024</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1111/imig.12591" target="_blank" rel="noopener">Social welfare and remittances to older adults in two Caribbean cities</a><span class="zmeta">Quashie · 2019</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1002/jid.1217" target="_blank" rel="noopener">Pacific island countries' high per capita foreign aid requirement</a><span class="zmeta">Gani · 2006</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1007/s13753-018-0183-8" target="_blank" rel="noopener">Remittances for disaster risk management: Perspectives from Pacific island migrants living in New Zealand</a><span class="zmeta">Pairama, Le Dé · 2018</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1007/s13132-023-01175-2" target="_blank" rel="noopener">Government debt and foreign aid: Do they matter for economic growth in small island economies?</a><span class="zmeta">Gounder, Chand, Kumar · 2024</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1002/app5.70083" target="_blank" rel="noopener">Does Japan's aid promote the economic growth of Pacific island countries?</a><span class="zmeta">Aru · 2026</span></li>
-        <li class="zitem"><a href="https://doi.org/10.1016/j.esd.2013.07.004" target="_blank" rel="noopener">Small Island Developing States and energy aid: Impacts on the energy sector in the Caribbean and Pacific</a><span class="zmeta">Niles, Lloyd · 2013</span></li>
-      </ul>
+      <p class="lead-p muted" style="margin:0;">One shelf, two feeds: the project's shared Zotero library, pulled in live as the systematic review grows, woven together with the most relevant recent papers surfaced by the title and abstract screening. Newest first. <a href="https://www.zotero.org/groups/6598740" target="_blank" rel="noopener">Browse the full library on Zotero</a>.</p>
+      <div class="zspines" id="zspines" aria-hidden="true"></div>
+      <div class="zscroll"><div id="zlib"><p class="zmsg">Loading the library.</p></div></div>
     </div>
 
     <p class="tl-hint" style="margin-top:30px;">The two working documents themselves live in the project folder, not on this page. This shelf is the reading list behind them.</p>
@@ -1005,10 +1012,6 @@
         <div class="date">10 to 21 Aug 2026 <span class="badge">Upcoming</span></div>
         <p class="what">Financial Inclusion workshop with the Inter-American Development Bank, <a href="https://www.coursera.org/learn/perspectives-in-digital-transformation-financial-inclusion" target="_blank" rel="noopener">Perspectives in Digital Transformation</a> on Coursera, the FinTech elective replacement. <span class="tagcode">D.2.5</span></p>
       </div>
-      <div class="entry plan">
-        <div class="date">1 Jul 2026 <span class="badge">Upcoming</span></div>
-        <p class="what">Meeting with the University's Open Science office to confirm the deposit workflow for the data management plan, ahead of folding the plan into the ethics application. <span class="tagcode">D.1.2</span></p>
-      </div>
       <div class="entry">
         <div class="date">3 Jul 2026</div>
         <p class="what">Registered and paid for the IBM SPSS Introduction and Intermediate summer courses with University of Malta IT Services, running 13 to 24 July. The statistics base for the doctoral quantitative methods training, with the reimbursement claim through the RTN budget under way. <span class="tagcode">D.2.1</span></p>
@@ -1016,6 +1019,10 @@
       <div class="entry">
         <div class="date">3 Jul 2026</div>
         <p class="what">Systematic review screening under way in Rayyan: roughly a fifth of the retrieved records screened at title and abstract. The protocol is at version 1.2, with the search window set to the last twenty years and studies in English, French, and Spanish included. <span class="tagcode">WP3</span></p>
+      </div>
+            <div class="entry">
+        <div class="date">1 Jul 2026</div>
+        <p class="what">Open Science meeting held: the data management plan was reviewed positively and the deposit workflow confirmed. The plan is near final and now folds into the ethics application; it remains a living document through the fellowship. <span class="tagcode">D.1.2</span></p>
       </div>
       <div class="entry">
         <div class="date">25 Jun 2026</div>
@@ -1216,7 +1223,7 @@
     {track:'partnerships', title:'Review with Prof. Moncada', start:'2026-08-24', end:'2026-08-28',
       desc:'Final supervisory review of the complete ethics package before submission.'},
     {track:'instruments', title:'Data management plan', start:'2026-07-01', end:'2026-08-21',
-      desc:'Finalising the data management plan for inclusion in the ethics application, starting with a 1 July meeting with the University Open Science office to confirm the deposit workflow (D.1.2).'},
+      desc:'The data management plan is near final: reviewed positively at the 1 July meeting with the University Open Science office, with the deposit workflow confirmed. It remains a living document through the fellowship and is folded into the ethics package (D.1.2).'},
     {track:'instruments', title:'Household survey instrument', start:'2026-07-13', end:'2026-08-21',
       desc:'Drafting the household survey for 250 to 300 families per country, grounded in a thorough review of the literature and dedicated survey design training, then refined in consultation with the local research partners before submission.'},
     {track:'instruments', title:'Information sheet and consent form', start:'2026-07-20', end:'2026-08-21',
@@ -1236,9 +1243,18 @@
     {track:'training', title:'IMFx Financial Programming', start:'2026-08-31', end:'2026-09-11',
       desc:'IMFx on edX, macroeconomic accounts and analysis, where aid and remittances sit in the national accounts. Follows straight on from the SDG Academy course and runs alongside the September data pull, so the accounts are fresh when the series are extracted (WP2).',
       href:'https://www.edx.org/learn/finance/the-international-monetary-fund-financial-programming-and-policies-part-1-macroeconomic-accounts-analysis', linkText:'IMFx on edX'},
+    {track:'training', title:'Quantitative methods workshops (D.2.1)', start:'2026-10-05', end:'2026-10-30',
+      desc:'Doctoral School workshops agreed with the supervisor: DOC6021, Quantitative Research Methods: An Introduction, and DOC6067, Using R for Data Processing. Semester one begins 1 October; shown indicatively in October until the Doctoral School timetable is published (D.2.1).',
+      href:'https://www.um.edu.mt/courses/studyunit/DOC6021', linkText:'DOC6021 in the UM catalogue'},
+    {track:'training', title:'Integrated methods: ISS5220 (D.2.4)', start:'2026-10-01', end:'2026-12-11',
+      desc:'ISS5220, the integrated methods unit within the ISSI MA, taken across semester one. Timetable to follow (D.2.4).',
+      href:'https://www.um.edu.mt/courses/studyunit/ISS5220', linkText:'ISS5220 in the UM catalogue'},
+    {track:'training', title:'Leadership and project management (D.2.3)', start:'2026-11-02', end:'2026-11-27',
+      desc:'DOC6009, Leadership for the 21st Century, or DOC6058, The Purpose of your Leadership in Times of Change, the choice still open, plus DOC6068, Project Management. Shown indicatively in November until the timetable is published (D.2.3).',
+      href:'https://www.um.edu.mt/courses/studyunit/DOC6068', linkText:'DOC6068 in the UM catalogue'},
     {track:'training', title:'ISS5200 teaching seminar', start:'2026-10-12', end:'2026-10-16',
       desc:'Delivery of the teaching seminar within the ISSI MA economics and environment unit: about four hours across one week, with a second interactive block where students map where aid and remittances touch different livelihood assets. Shown here in mid October; exact dates to be set with the programme (D.2.6).'},
-    {track:'training', title:'Hildesheim guest seminar', start:'2026-11-27', point:true,
+    {track:'training', title:'Hildesheim guest seminar', start:'2026-11-27', end:'2026-11-28',
       desc:'Virtual guest seminar at the University of Hildesheim on aid, remittances, and wellbeing in SIDS, part of the teaching deliverable (D.2.7).'},
     {track:'milestone', title:'FREC submission deadline', start:'2026-09-07', point:true,
       desc:'The formal Faculty Research Ethics Committee deadline of 7 September. The working plan stays a week ahead of it, with the package submitted by the end of August.'},
@@ -1310,7 +1326,7 @@
       if(e.point){
         var pt = document.createElement('div'); pt.className = 'tl-point';
         pt.style.left = pct(e.start) + '%';
-        pt.style.top = (topY + (BARH-24)/2) + 'px';
+        pt.style.top = (topY + (BARH-30)/2) + 'px';
         pt.style.background = TRACKS[key].colour;
         pt.title = e.title;
         pt.addEventListener('click', function(){ select(e, pt); });
@@ -1319,6 +1335,7 @@
         var b = document.createElement('div'); b.className = 'tl-bar';
         b.style.left = pct(e.start) + '%';
         b.style.width = (pct(e.end) - pct(e.start)) + '%';
+        b.style.minWidth = '54px';
         b.style.top = topY + 'px';
         b.style.background = TRACKS[key].colour;
         b.textContent = e.title; b.title = e.title;
@@ -1335,10 +1352,10 @@
   });
 
   // today marker (spans the whole track height)
-  var today = new Date('2026-06-26T00:00:00');
+  var today = new Date('2026-07-03T00:00:00');
   if(today >= s0 && today <= s1){
     var tl = document.createElement('div'); tl.className = 'tl-today';
-    tl.style.left = pct('2026-06-26') + '%';
+    tl.style.left = pct('2026-07-03') + '%';
     tl.style.height = track.offsetHeight + 'px';
     var ts = document.createElement('span'); ts.textContent = 'Today'; tl.appendChild(ts);
     track.appendChild(tl);
@@ -1399,6 +1416,48 @@
   var el = document.getElementById('zlib');
   if(!el) return;
   var GROUP = '6598740';
+  // Screening picks: shown alongside the live library until they arrive in Zotero (then de-duplicated automatically).
+  var PICKS = [
+    ['Does Japan\u2019s aid promote the economic growth of Pacific island countries?','Aru','2026','https://doi.org/10.1002/app5.70083'],
+    ['Evaluating economic stimuli in SIDS: A CGE analysis of tourism, remittances, and hotel investments in Fiji','Pratt','2025','https://doi.org/10.1016/j.annale.2025.100193'],
+    ['In search of livelihood: Labour mobility as a response to socio-economic vulnerability in the Pacific island states','Plange','2025','https://doi.org/10.4324/9781032703893-7'],
+    ['Island idleness: Investigating the impact of remittances on labour market participation in Comoros','Keller, Mulangu','2024','https://doi.org/10.1002/jid.3833'],
+    ['Government debt and foreign aid: Do they matter for economic growth in small island economies?','Gounder, Chand, Kumar','2024','https://doi.org/10.1007/s13132-023-01175-2'],
+    ['Should foreign aid consider inter-Pacific islands migration in the context of climate change? Evidence from Fiji','Goundar','2023','https://doi.org/10.1111/dpr.12742'],
+    ['Social welfare and remittances to older adults in two Caribbean cities','Quashie','2019','https://doi.org/10.1111/imig.12591'],
+    ['Remittances for disaster risk management: Perspectives from Pacific island migrants living in New Zealand','Pairama, Le D\u00e9','2018','https://doi.org/10.1007/s13753-018-0183-8'],
+    ['Role of official development assistance in enhancing resilient coastal communities in Small Island Developing States','Choi, Jin, Chang et al.','2018','https://doi.org/10.2112/SI85-294.1'],
+    ['Energy policy, aid, and the development of renewable energy resources in Small Island Developing States','Dornan, Shah','2016','https://doi.org/10.1016/j.enpol.2016.05.035'],
+    ['Migrants\u2019 remittances, poverty and social protection in the South Pacific: Fiji and Tonga','Brown, Connell, Jimenez-Soto','2014','https://doi.org/10.1002/psp.1765'],
+    ['Small Island Developing States and energy aid: Impacts on the energy sector in the Caribbean and Pacific','Niles, Lloyd','2013','https://doi.org/10.1016/j.esd.2013.07.004'],
+    ['Assessing the poverty impacts of migrants\u2019 remittances using propensity score matching: The case of Tonga','Jimenez-Soto, Brown','2012','https://doi.org/10.1111/j.1475-4932.2012.00824.x'],
+    ['Income and consumption smoothing and welfare gains across Pacific island countries: The role of remittances and foreign aid','Balli, Balli','2011','https://doi.org/10.1016/j.econmod.2011.02.018'],
+    ['Subjectively assessed welfare and international remittances: Evidence from Tonga','Brown, Leeves, Prayaga','2011','https://doi.org/10.1080/00220388.2010.501376']
+  ];
+  function norm(t){ return String(t).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,50); }
+  function renderList(rows){
+    rows.sort(function(a,b){ return (b.year||'0').localeCompare(a.year||'0'); });
+    var html = '<ul class="zitems">';
+    rows.forEach(function(r){
+      html += '<li class="zitem"><a href="' + esc(r.link) + '" target="_blank" rel="noopener">' + esc(r.title) + '</a>'
+            + '<span class="zmeta">' + esc([r.who, r.year].filter(Boolean).join(' \u00b7 ')) + '</span></li>';
+    });
+    return html + '</ul>';
+  }
+  function picksAsRows(){ return PICKS.map(function(x){ return {title:x[0], who:x[1], year:x[2], link:x[3]}; }); }
+  // book spine strip tying the list to the library illustration above
+  (function(){
+    var sp = document.getElementById('zspines');
+    if(!sp) return;
+    var cols = ['#0E4453','#1C8C9B','#C9A46A','#E2664A','#E4D6B8','#12505C','#9A7442'];
+    for(var i=0; i<48; i++){
+      var b = document.createElement('i');
+      b.style.width = (5 + (i*7)%9) + 'px';
+      b.style.height = (12 + (i*11)%13) + 'px';
+      b.style.background = cols[(i*5)%cols.length];
+      sp.appendChild(b);
+    }
+  })();
   var TAG = 'website'; // set to '' to show the whole library
   var url = 'https://api.zotero.org/groups/' + GROUP + '/items/top?format=json&sort=date&direction=desc&limit=60'
             + (TAG ? '&tag=' + encodeURIComponent(TAG) : '');
@@ -1406,28 +1465,25 @@
   if(typeof fetch === 'undefined'){ return; }
   fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
   .then(function(items){
-    if(!items || !items.length){
-      el.innerHTML = '<p class="zmsg">The project library is being built. Key references will appear here as the systematic review progresses.</p>';
-      return;
-    }
-    var html = '<ul class="zitems">';
-    items.forEach(function(it){
+    var rows = (items || []).map(function(it){
       var d = it.data || {};
-      var title = d.title || d.bookTitle || 'Untitled';
       var creators = (d.creators || []).map(function(c){ return c.lastName || c.name; }).filter(Boolean);
-      var who = creators.length ? (creators.length > 3 ? creators.slice(0,3).join(', ') + ' et al.' : creators.join(', ')) : '';
       var ym = (d.date || '').match(/\d{4}/);
-      var year = ym ? ym[0] : '';
-      var link = d.url || (it.links && it.links.alternate && it.links.alternate.href) || ('https://www.zotero.org/groups/' + GROUP + '/items/' + it.key);
-      var meta = [who, year].filter(Boolean).join(' · ');
-      html += '<li class="zitem"><a href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(title) + '</a>'
-            + (meta ? '<span class="zmeta">' + esc(meta) + '</span>' : '') + '</li>';
+      return {
+        title: d.title || d.bookTitle || 'Untitled',
+        who: creators.length ? (creators.length > 3 ? creators.slice(0,3).join(', ') + ' et al.' : creators.join(', ')) : '',
+        year: ym ? ym[0] : '',
+        link: d.url || (it.links && it.links.alternate && it.links.alternate.href) || ('https://www.zotero.org/groups/' + GROUP + '/items/' + it.key)
+      };
     });
-    html += '</ul>';
-    el.innerHTML = html;
+    var seen = {};
+    rows.forEach(function(r){ seen[norm(r.title)] = true; });
+    picksAsRows().forEach(function(r){ if(!seen[norm(r.title)]) rows.push(r); });
+    el.innerHTML = renderList(rows);
   })
   .catch(function(){
-    el.innerHTML = '<p class="zmsg">The library could not be loaded right now. <a href="https://www.zotero.org/groups/' + GROUP + '" target="_blank" rel="noopener">Open it on Zotero</a>.</p>';
+    el.innerHTML = renderList(picksAsRows())
+      + '<p class="zmsg">The live Zotero feed could not be loaded right now. <a href="https://www.zotero.org/groups/' + GROUP + '" target="_blank" rel="noopener">Open the library on Zotero</a>.</p>';
   });
 })();
 </script>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--
+  FAR-SIDS project website. One page per file, shared look in assets/style.css.
+  The data behind the timeline, the progress log, and the library papers lives
+  in the data/ folder; edit those small files for routine updates and upload
+  only the file that changed.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timeline and progress · FAR-SIDS</title>
+<meta name="description" content="The FAR-SIDS phase one timeline, June to December 2026, and the running progress record.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="bar" id="top">
+  <div class="wrap">
+    <div class="brand"><a href="index.html" style="color:#fff;"><b style="color:var(--gold);">FAR</b>·SIDS</a></div>
+    <nav class="links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#islands">Islands</a>
+      <a href="programme.html">Programme</a>
+      <a href="research.html">Research</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="index.html#team">Team</a>
+    </nav>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <p class="eyebrow" style="color:#7fd0cf;">FAR-SIDS · Timeline and progress</p>
+    <h1>Phase one: the Foundation</h1>
+    <p class="lede">June to December 2026: the push to an early ethics submission, the training programme, the first seminars, and DevNet. Later phases, the Field in 2027 and the Harvest in 2028, will join as they open.</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="timeline">
+  <div class="reveal">
+    <p class="eyebrow">The intensive</p>
+    <h2 class="title">The road to ethics and DevNet, 2026</h2>
+    <p class="lead-p muted">The second half of 2026 runs from the summer push toward an early ethics submission (end of August, ahead of the 7 September Faculty deadline) through the autumn teaching, the taught workshops, and DevNet in December. Four strands run at once: the literature review that feeds everything, stepping up training, building relationships with partners in Jamaica, Tonga, and Comoros, now opened, and drafting the research instruments. Click any item to read more.</p>
+
+    <div class="tl-filters" id="tlFilters">
+      <span class="fl-lab">Filter</span>
+    </div>
+
+    <div class="tl-wrap">
+      <div class="tl-heads" id="tlHeads"><div class="pad"></div></div>
+      <div class="tl-scroll" id="tlScroll"><div class="tl-track" id="tlTrack"></div></div>
+    </div>
+    <p class="tl-hint">Drag the timeline sideways to pan. Tap a bar or marker for detail.</p>
+
+    <div class="tl-detail" id="tlDetail"></div>
+  </div>
+</section>
+
+<!-- SECTION: progress log, rendered from data/log.js -->
+<section id="progress">
+  <div class="reveal">
+    <p class="eyebrow">Progress</p>
+    <h2 class="title">The running record</h2>
+    <p class="lead-p muted">Everything logged so far, newest first, from the major deliverables down to the small day to day steps. Upcoming items carry a badge.</p>
+    <div class="log" id="loglist"></div>
+  </div>
+</section>
+
+
+</div>
+
+<!-- SECTION: wave transition into the footer -->
+<div class="wavesep" aria-hidden="true">
+  <svg viewBox="0 0 1440 64" preserveAspectRatio="none">
+    <path d="M0,30 C180,62 360,4 600,26 C820,46 1040,70 1260,40 C1340,29 1400,24 1440,30 L1440,64 L0,64 Z" fill="#08293A"/>
+  </svg>
+</div>
+
+<!-- SECTION: funding footer with EU emblem -->
+<footer>
+  <div class="wrap">
+    <div class="fund">
+      <div class="emblem">
+        <!-- Official EU emblem, rebuilt as clean SVG. Do not stretch or recolour. -->
+        <svg viewBox="0 0 90 60" role="img" aria-label="Flag of the European Union" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <rect width="90" height="60" fill="#003399"/>
+          <defs>
+            <polygon id="star" fill="#FFCC00"
+              points="0,-3.3 0.76,-1.05 3.14,-1.02 1.24,0.40 1.94,2.67 0,1.3 -1.94,2.67 -1.24,0.40 -3.14,-1.02 -0.76,-1.05"/>
+          </defs>
+          <use xlink:href="#star" href="#star" x="45" y="10"/><use xlink:href="#star" href="#star" x="55" y="12.68"/>
+          <use xlink:href="#star" href="#star" x="62.32" y="20"/><use xlink:href="#star" href="#star" x="65" y="30"/>
+          <use xlink:href="#star" href="#star" x="62.32" y="40"/><use xlink:href="#star" href="#star" x="55" y="47.32"/>
+          <use xlink:href="#star" href="#star" x="45" y="50"/><use xlink:href="#star" href="#star" x="35" y="47.32"/>
+          <use xlink:href="#star" href="#star" x="27.68" y="40"/><use xlink:href="#star" href="#star" x="25" y="30"/>
+          <use xlink:href="#star" href="#star" x="27.68" y="20"/><use xlink:href="#star" href="#star" x="35" y="12.68"/>
+        </svg>
+      </div>
+      <div class="stmt">
+        <b>Funded by the European Union</b>
+        <p>Views and opinions expressed are those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.</p>
+      </div>
+    </div>
+    <div class="foot-meta">
+      <span>Marie Sklodowska-Curie Actions · Postdoctoral Fellowship</span>
+      <span>Grant Agreement No. 101244526</span>
+      <span>Institute for Islands and Small States, University of Malta</span>
+      <span>2026 to 2028</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="data/events.js"></script>
+<script src="data/log.js"></script>
+<script>
+(function(){
+  if(!window.FARSIDS || !FARSIDS.TL) return;
+  var START = FARSIDS.TL.START, END = FARSIDS.TL.END, TRACKS = FARSIDS.TL.TRACKS, EVENTS = FARSIDS.TL.EVENTS;
+// ---------------------------------------------------------------
+
+  var track = document.getElementById('tlTrack');
+  if(!track) return;
+  var heads = document.getElementById('tlHeads');
+  var detail = document.getElementById('tlDetail');
+  var filters = document.getElementById('tlFilters');
+  var scroll = document.getElementById('tlScroll');
+
+  var DAY = 86400000;
+  var s0 = new Date(START + 'T00:00:00'), s1 = new Date(END + 'T00:00:00');
+  var span = (s1 - s0);
+  function pct(d){ return ((new Date(d + 'T00:00:00') - s0) / span) * 100; }
+  function fmtOne(d){ return new Date(d + 'T00:00:00').toLocaleDateString('en-GB', {day:'numeric', month:'short'}); }
+  function fmtRange(ev){
+    if(ev.point || !ev.end){ return fmtOne(ev.start) + ' 2026'; }
+    return fmtOne(ev.start) + ' to ' + fmtOne(ev.end) + ' 2026';
+  }
+  var ROW = 38, BARH = 30, PADTOP = 8;
+
+  // month gridlines and ruler ticks
+  var ruler = document.createElement('div'); ruler.className = 'tl-ruler';
+  var months = FARSIDS.TL.MONTHS;
+  months.forEach(function(m){
+    var t = document.createElement('div'); t.className = 'tl-mtick'; t.style.left = pct(m[0]) + '%';
+    var sp = document.createElement('span'); sp.textContent = m[1]; t.appendChild(sp); ruler.appendChild(t);
+  });
+  track.appendChild(ruler);
+
+  // greedy stack each track's events into sub-rows so overlaps never collide
+  var order = ['litreview','training','partnerships','instruments','milestone'];
+  var laneEls = {};
+  order.forEach(function(key){
+    var evs = EVENTS.filter(function(e){ return e.track === key; });
+    var rows = []; // each row holds the latest end date used
+    evs.forEach(function(e){
+      var es = new Date(e.start + 'T00:00:00');
+      var ee = e.point ? new Date(es.getTime() + 6*DAY) : new Date(e.end + 'T00:00:00');
+      var placed = -1;
+      for(var r=0; r<rows.length; r++){ if(es >= rows[r]){ placed = r; rows[r] = ee; break; } }
+      if(placed === -1){ placed = rows.length; rows.push(ee); }
+      e._row = placed;
+    });
+    var nRows = Math.max(1, rows.length);
+    var laneH = nRows * ROW + PADTOP;
+
+    var lane = document.createElement('div'); lane.className = 'tl-laneblock';
+    lane.style.height = laneH + 'px'; lane.dataset.track = key;
+    // faint month gridlines inside the lane
+    months.forEach(function(m){
+      var g = document.createElement('div'); g.className = 'tl-gl';
+      g.style.left = pct(m[0]) + '%'; g.style.top = '0'; g.style.height = laneH + 'px';
+      lane.appendChild(g);
+    });
+
+    evs.forEach(function(e){
+      var topY = PADTOP + e._row * ROW;
+      if(e.point){
+        var pt = document.createElement('div'); pt.className = 'tl-point';
+        pt.style.left = pct(e.start) + '%';
+        pt.style.top = (topY + (BARH-30)/2) + 'px';
+        pt.style.background = TRACKS[key].colour;
+        pt.title = e.title;
+        pt.addEventListener('click', function(){ select(e, pt); });
+        e._el = pt; lane.appendChild(pt);
+      } else {
+        var b = document.createElement('div'); b.className = 'tl-bar';
+        b.style.left = pct(e.start) + '%';
+        b.style.width = (pct(e.end) - pct(e.start)) + '%';
+        b.style.minWidth = '54px';
+        b.style.top = topY + 'px';
+        b.style.background = TRACKS[key].colour;
+        b.textContent = e.title; b.title = e.title;
+        b.addEventListener('click', function(){ select(e, b); });
+        e._el = b; lane.appendChild(b);
+      }
+    });
+    track.appendChild(lane); laneEls[key] = lane;
+
+    // matching lane head, same height
+    var lh = document.createElement('div'); lh.className = 'tl-lh';
+    lh.style.height = laneH + 'px'; lh.style.color = TRACKS[key].colour;
+    lh.textContent = TRACKS[key].label; heads.appendChild(lh);
+  });
+
+  // today marker (spans the whole track height)
+  var nowIso = new Date().toISOString().slice(0,10);
+  var today = new Date(nowIso + 'T00:00:00');
+  if(today >= s0 && today <= s1){
+    var tl = document.createElement('div'); tl.className = 'tl-today';
+    tl.style.left = pct(nowIso) + '%';
+    tl.style.height = track.offsetHeight + 'px';
+    var ts = document.createElement('span'); ts.textContent = 'Today'; tl.appendChild(ts);
+    track.appendChild(tl);
+  }
+
+  // selection and detail panel
+  var selectedEl = null;
+  function select(e, el){
+    if(selectedEl) selectedEl.classList.remove('sel');
+    if(el){ el.classList.add('sel'); selectedEl = el; }
+    var c = TRACKS[e.track].colour;
+    var link = '';
+    if(e.href){ link = '<a class="go" href="' + e.href + '" target="_blank" rel="noopener">' + (e.linkText || 'Open link') + ' &nbsp;&#8599;</a>'; }
+    else if(e.linkText){ link = '<span class="soon">' + e.linkText + '</span>'; }
+    detail.innerHTML =
+      '<span class="pill" style="background:' + c + '">' + TRACKS[e.track].label + '</span>' +
+      '<h3>' + e.title + '</h3>' +
+      '<div class="dates">' + fmtRange(e) + '</div>' +
+      '<p>' + e.desc + '</p>' + link;
+  }
+
+  // filter chips
+  var activeTracks = {litreview:true, training:true, partnerships:true, instruments:true, milestone:true};
+  order.forEach(function(key){
+    var chip = document.createElement('button'); chip.className = 'tl-chip';
+    chip.type = 'button'; chip.setAttribute('aria-pressed', 'true');
+    chip.innerHTML = '<span class="sw" style="background:' + TRACKS[key].colour + '"></span>' + TRACKS[key].label;
+    chip.addEventListener('click', function(){
+      activeTracks[key] = !activeTracks[key];
+      chip.setAttribute('aria-pressed', activeTracks[key] ? 'true' : 'false');
+      EVENTS.filter(function(e){ return e.track === key; }).forEach(function(e){
+        if(e._el) e._el.classList.toggle('tl-hidden', !activeTracks[key]);
+      });
+    });
+    filters.appendChild(chip);
+  });
+
+  // drag to pan
+  var down = false, sx = 0, sl = 0;
+  scroll.addEventListener('mousedown', function(ev){ down = true; scroll.classList.add('drag'); sx = ev.pageX; sl = scroll.scrollLeft; });
+  window.addEventListener('mouseup', function(){ down = false; scroll.classList.remove('drag'); });
+  scroll.addEventListener('mousemove', function(ev){ if(!down) return; ev.preventDefault(); scroll.scrollLeft = sl - (ev.pageX - sx); });
+
+  // open the first event by default so the panel is never empty
+  select(EVENTS[0], EVENTS[0]._el);
+})();
+</script>
+<script>
+(function(){
+  var el = document.getElementById('loglist');
+  if(!el || !window.FARSIDS || !FARSIDS.LOG) return;
+  FARSIDS.LOG.forEach(function(e){
+    var d = document.createElement('div'); d.className = 'entry' + (e.up ? ' plan' : '');
+    d.innerHTML = '<div class="date">' + e.d + (e.up ? ' <span class="badge">Upcoming</span>' : '') + '</div><p class="what">' + e.w + '</p>';
+    el.appendChild(d);
+  });
+})();
+</script>
+</body>
+</html>

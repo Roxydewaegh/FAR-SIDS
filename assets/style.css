@@ -488,3 +488,17 @@
 
   /* SECTION: atlas v5.1 kill section padding inside atlas rooms */
   section.room{padding:0;}
+
+  /* SECTION: atlas v6 (4 July 2026 night): centered rooms, deep band aligned with rail line */
+  .roomwrap{flex:1 0 auto; display:flex; flex-direction:column; justify-content:center;}
+  .roomwrap > *{flex-shrink:0;}
+  .waveband .bandin{min-height:121px; align-items:flex-end; padding:12px 48px 18px;}
+  .waveband:has(.eufoot) .bandin{min-height:0; padding:10px 48px 14px; align-items:center;}
+  /* recover vertical room lost to the taller band */
+  .sub[data-sub=chart] .title{font-size:1.25rem; margin-bottom:0;}
+  .sub[data-sub=chart] .lead-p{font-size:.88rem; margin:4px 0 2px;}
+  .sub[data-sub=chart] .filters{transform:scale(.88); transform-origin:left; margin:2px 0 0;}
+  .board-panel{margin-top:8px; padding:10px 14px;}
+  .tl-detail{min-height:44px; padding:10px 16px; margin-top:8px;}
+  .zlib .zscroll{max-height:33vh;}
+  .toolgrid .resgroup{max-height:56vh;}

@@ -936,6 +936,7 @@ window.__initBoard = function(){
       if(el) el.classList.toggle('open', r === id);
     });
     links.forEach(function(a){ a.classList.toggle('on', a.dataset.room === id); });
+    document.querySelectorAll('.rail .subnav').forEach(function(sn){ sn.classList.toggle('openset', sn.dataset['for'] === id); });
     if(SUBS[id]) setSub(id, sub && SUBS[id].indexOf(sub) >= 0 ? sub : SUBS[id][0]);
     window.scrollTo(0, 0);
   }

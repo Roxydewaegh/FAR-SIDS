@@ -31,5 +31,5 @@ FARSIDS.LOG = [
   {"d": "Jun 2026", "up": false, "w": "Project website and GitHub repository live, the first piece of the digital platform. <span class=\"tagcode\">D.1.2</span>"},
   {"d": "17 Jun 2026", "up": false, "w": "First supervision meeting with Prof. Moncada. Training plan and timeline agreed. <span class=\"tagcode\">WP1 · WP2</span>"},
   {"d": "16 Jun 2026", "up": false, "w": "Delivered an <a href=\"FAR-SIDS_MSCA_application_process_Roxane_de_Waegh.pdf\" target=\"_blank\" rel=\"noopener\">MSCA showcase presentation</a> on the project, its first communications activity. <span class=\"tagcode\">WP7</span>"},
-  {"d": "15 Jun 2026", "up": false, "w": "Fellowship began at the Institute for Islands and Small States, University of Malta. <span class=\"tagcode\">Start</span>"}
+  {"d": "15 Jun 2026", "up": false, "w": "Fellowship began at the Islands and Small States Institute, University of Malta. <span class=\"tagcode\">Start</span>"}
 ];

@@ -14,8 +14,7 @@ FARSIDS.TL = {
   },
   EVENTS: [
     {track:'litreview', title:'Systematic review (Paper 1)', start:'2026-06-25', end:'2026-09-30',
-      desc:'The PRISMA systematic review, the project’s first paper. It maps what has been studied on aid, remittances, and wellbeing in SIDS, which methods and models were used, and which variables they drew on, feeding the econometric variable list and the DevNet 2026 abstract. The continuous groundwork that runs right through the summer (WP5 · WP7).',
-      href:'https://odi.org/en/publications/the-state-of-sids-report-2026-defending-the-special-case/', linkText:'Framing: State of SIDS 2026'},
+      desc:'The PRISMA systematic review, the project’s first paper. It maps what has been studied on aid, remittances, and wellbeing in SIDS, which methods and models were used, and which variables they drew on, feeding the econometric variable list and the DevNet 2026 abstract. The continuous groundwork that runs right through the summer (WP5 · WP7).'},
     {track:'litreview', title:'Household survey design reading', start:'2026-07-15', end:'2026-07-31',
       desc:'The smaller parallel strand: focused reading on household survey design for remittances and livelihoods, drawing on the World Bank LSMS materials and earlier coastal communities research. It feeds the survey instrument going into the ethics package (WP3 · WP5).',
       href:'https://www.worldbank.org/en/programs/lsms/publications/lsms-guidebooks', linkText:'World Bank LSMS guidebooks'},

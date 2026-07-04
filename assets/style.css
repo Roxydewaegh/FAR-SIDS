@@ -273,7 +273,7 @@
   .rail .eu span{color:#cfe6e6; font-size:.72rem; line-height:1.4;}
   .stage{margin-left:236px; flex:1; min-width:0;}
   .room{display:none; animation:roomin .35s ease;}
-  .room.open{display:block;}
+  .room.open{display:flex;}
   html.no-js .room{display:block;}
   @keyframes roomin{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
   .roomwrap{max-width:960px; margin:0 auto; padding:44px 44px 56px;}
@@ -470,3 +470,18 @@
   .board-panel .bar text, .board-panel text{font-size:11px;}
   .people{margin-top:22px;}
   .fundblock .fb p{font-size:.72rem; line-height:1.45;}
+
+  /* SECTION: atlas v5 (4 July 2026 evening) */
+  .roomwrap{padding-top:22px;}
+  .zlib .libbanner{margin-bottom:10px;}
+  .zlib .libbanner svg{height:175px;}
+  .zlib .lead-p{font-size:.92rem; line-height:1.5; max-width:100ch;}
+  .zlib .zspines{height:20px; margin:8px 0 0;}
+  .zlib .zscroll{margin-top:6px; max-height:38vh;}
+  .zlib .zitem{padding:7px 0; font-size:.87rem;}
+  .zlib .zitem .zmeta{font-size:.74rem;}
+  .eufoot{background:#08293A; display:flex; gap:20px; align-items:flex-start; padding:24px 48px 8px;}
+  .eufoot svg{width:62px; height:41px; flex-shrink:0; border-radius:3px; margin-top:3px;}
+  .eufoot .eftxt b{color:#fff; font-size:.98rem; letter-spacing:.01em;}
+  .eufoot .eftxt p{margin:6px 0 0; font-size:.73rem; color:#9fc0c9; line-height:1.6; max-width:100ch;}
+  .eufoot .eftxt .gline{font-family:var(--mono); font-size:.67rem; color:#8fb3bd; margin-top:8px; line-height:1.7;}

@@ -349,6 +349,7 @@
   .stage{margin-left:300px;}
   .rail nav a{font-size:.98rem; padding:8px 12px;}
   .rail .subnav{display:flex; flex-direction:column; gap:2px; margin:2px 0 6px 14px; border-left:1px solid #ffffff2a; padding-left:10px;}
+  .rail .subnav.openset{display:flex;}
   .rail .subnav a{font-size:.82rem; color:#9fc4c4; padding:4px 8px;}
   .rail .subnav a.on{color:var(--gold); background:#ffffff14; border-radius:6px;}
   .rail .eu{gap:14px; padding-top:20px;}
@@ -396,3 +397,34 @@
     .waveband .bandin{padding:8px 20px 12px;}
     .toolgrid{grid-template-columns:1fr;}
   }
+
+  /* SECTION: atlas v3, continuous ocean, logbook, toolkit, spacious question (4 July 2026) */
+  html, body{background:#08293A;}
+  .room{background:#F6FBFB;}
+  .room.qroom{background:radial-gradient(85% 80% at 8% 114%, #E2664A2b 0%, transparent 52%),
+    radial-gradient(66% 78% at 97% 4%, #FFCC0022 0%, transparent 46%),
+    linear-gradient(160deg,#08293A 0%, #0C3F4D 55%, #0E4D5C 100%);}
+  .qroom .sub[data-sub=q] h1{margin-top:10px; font-size:clamp(2.3rem,4.8vw,3.6rem); max-width:17ch;}
+  .qroom .sub[data-sub=q] .lede{max-width:56ch;}
+  .qroom .nowline{max-width:640px;}
+  .whycol{max-width:72ch;}
+  .whycol .big{color:#fff; font-size:1.35rem; line-height:1.5; font-family:var(--serif); margin:6px 0 22px;}
+  .whycol p{color:#d5ecea; font-size:1.02rem; line-height:1.75; margin:0 0 16px;}
+  .whycol .cols{display:block;}
+  .tl-detail{min-height:64px; padding:16px 20px; margin-top:14px;}
+  .loggrid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:20px;}
+  .logcol h3{font-family:var(--serif); font-weight:500; font-size:1.2rem; color:var(--abyss); margin:0 0 12px;}
+  .logcol .list{max-height:60vh; overflow-y:auto; padding-right:8px;}
+  .logcol .entry{background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:10px;}
+  .logcol .entry .date{font-family:var(--mono); font-size:.68rem; color:var(--deep); letter-spacing:.05em;}
+  .logcol .entry .what{margin:5px 0 0; font-size:.9rem; color:var(--ink); line-height:1.55;}
+  .tk-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; margin-top:24px;}
+  .tk-card{background:linear-gradient(170deg,#0E4453,#0A3242); border-radius:14px; padding:20px 22px; border-top:3px solid var(--lagoon);}
+  .tk-card:nth-child(2){border-top-color:#6A5ACD;} .tk-card:nth-child(3){border-top-color:#E2664A;}
+  .tk-card:nth-child(4){border-top-color:#FFCC00;} .tk-card:nth-child(5){border-top-color:#5DCAA5;}
+  .tk-card:nth-child(6){border-top-color:#ED93B1;}
+  .tk-card a{color:#fff; font-weight:600; font-size:1.08rem;}
+  .tk-card p{color:#9fc4c4; font-size:.86rem; line-height:1.6; margin:8px 0 0;}
+  .libbanner svg{width:100%; height:auto; display:block; border-radius:12px;}
+  .zscroll{max-height:46vh;}
+  @media(max-width:900px){ .loggrid{grid-template-columns:1fr;} .tk-grid{grid-template-columns:1fr 1fr;} }

@@ -453,14 +453,20 @@
   .toolgrid .resgroup ul{overflow-y:auto; padding-right:8px; scrollbar-width:thin;}
   .partner-badge{display:inline-flex; width:34px; height:34px; border-radius:50%; background:var(--shoal); color:var(--deep);
     align-items:center; justify-content:center; font-family:var(--mono); font-size:.62rem; font-weight:700; margin-right:10px; vertical-align:middle; flex-shrink:0;}
-  .people li{display:flex; align-items:flex-start;}
+  .people li:has(.partner-badge){display:flex; align-items:flex-start;}
   .people li .ptxt{display:inline-block;}
   .rail .eu{align-items:center; gap:14px;}
   .rail .eu svg{width:82px; height:55px;}
   .fundblock{margin-top:24px; padding-top:18px;}
   .fundblock svg{width:56px; height:37px;}
   .tl-detail{min-height:52px; padding:14px 18px; margin-top:12px;}
-  .sub[data-sub=chart] .title{font-size:1.4rem;}
+  .sub[data-sub=chart] .title{font-size:1.35rem; margin-bottom:2px;}
   .sub[data-sub=chart] .lead-p{margin-bottom:6px; font-size:.95rem;}
   .board-panel{padding:14px 16px; margin-top:12px;}
   .loggrid{margin-top:14px;}
+
+  .sub[data-sub=chart] .eyebrow{margin-bottom:4px;}
+  .sub[data-sub=chart] .filters{margin:6px 0 0; transform:scale(.92); transform-origin:left;}
+  .board-panel .bar text, .board-panel text{font-size:11px;}
+  .people{margin-top:22px;}
+  .fundblock .fb p{font-size:.72rem; line-height:1.45;}

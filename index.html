@@ -23,7 +23,6 @@
   <nav id="railnav">
     <a href="#question" data-room="question">The question</a>
     <div class="subnav" data-for="question">
-      <a href="#question/q" data-sub="q">In one line</a>
       <a href="#question/why" data-sub="why">Why it matters</a>
     </div>
     <a href="#islands" data-room="islands">Three islands</a>
@@ -35,12 +34,13 @@
       <a href="#timeline/logbook" data-sub="logbook">The logbook · done and ahead</a>
     </div>
     <a href="#programme" data-room="programme">Work programme</a>
-    <a href="#research" data-room="research">Research and library</a>
+    <a href="#research" data-room="research">Research</a>
     <div class="subnav" data-for="research">
       <a href="#research/review" data-sub="review">The literature review</a>
-      <a href="#research/training" data-sub="training">Training and courses</a>
-      <a href="#research/toolkit" data-sub="toolkit">The toolkit</a>
       <a href="#research/library" data-sub="library">The library</a>
+      <a href="#research/training" data-sub="training">Training and courses</a>
+      <a href="#research/resources" data-sub="resources">Key resources</a>
+      <a href="#research/toolkit" data-sub="toolkit">The toolkit</a>
     </div>
     <a href="#people" data-room="people">People and partners</a>
   </nav>
@@ -66,18 +66,23 @@
 <section class="room qroom" id="room-question">
   <div class="roomwrap">
     <div class="subchips" data-for="question">
-      <button data-sub="q">The question</button><button data-sub="why">Why it matters</button>
+      <button data-sub="why">Why it matters</button>
     </div>
     <div class="sub" data-sub="q">
       <p class="eyebrow" style="color:#bfe9e6;">Marie Skłodowska-Curie Postdoctoral Fellowship · University of Malta · 2026 to 2028</p>
       <h1>How do aid and remittances shape the <em>wellbeing</em> of island nations?</h1>
       <p class="lede">FAR-SIDS is a two year study across Jamaica, Tonga, and Comoros that pairs econometric modelling with community led fieldwork to understand dependency, agency, and self-reliance in Small Island Developing States.</p>
       <div class="meta"><span>Horizon Europe · Grant Agreement 101244526</span><span>Hosted at the Islands and Small States Institute</span></div>
-      <div class="nowline" style="margin-top:34px;"><span class="lab">THIS WEEK ON THE PROJECT</span><p id="nowline">&nbsp;</p></div>
+      <div class="nowline" style="margin-top:34px;">
+        <div class="labrow"><span class="lab">THIS WEEK ON THE PROJECT</span><span class="daychip" id="daychip"></span></div>
+        <p id="nowline">&nbsp;</p>
+        <div class="track"><i id="daytrack" style="width:3%;"></i></div>
+      </div>
     </div>
     <div class="sub" data-sub="why">
-      <p class="eyebrow" style="color:#bfe9e6;">The question · Why it matters</p>
+      <p class="eyebrow" style="color:#bfe9e6;">The question</p>
       <div class="whycol">
+        <h2 class="whytitle">Why it matters</h2>
 <p class="big">Small island nations receive some of the world's largest flows of aid and remittances relative to their size. What do those flows actually leave behind?</p>
     <div class="cols">
       <div>
@@ -88,7 +93,7 @@
       </div>
     </div>
   </div>
-  <div class="waveband"><svg viewBox="0 0 1440 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0,16 C180,30 360,4 600,14 C820,24 1040,6 1260,18 C1340,22 1400,16 1440,14 L1440,34 L0,34 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline1"></span></div></div>
+  <div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline1"></span></div></div>
 </section>
 
 <section class="room" id="room-islands"><div class="roomwrap"><p class="eyebrow">Where</p>
@@ -181,7 +186,7 @@
       </article>
 
     </div>
-  </div><div class="waveband"><svg viewBox="0 0 1440 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0,16 C180,30 360,4 600,14 C820,24 1040,6 1260,18 C1340,22 1400,16 1440,14 L1440,34 L0,34 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline2"></span></div></div></section>
+  </div><div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline2"></span></div></div></section>
 
 <section class="room" id="room-approach"><div class="roomwrap"><p class="eyebrow">How</p>
     <h2 class="title">Measuring and listening, woven together</h2>
@@ -201,7 +206,7 @@
     <div class="frame">
       <b>Framework.</b> The work is read through the Sustainable Livelihoods Framework and grounded in three principles carried from earlier research with Pacific communities: relationship, reciprocity, and respect. Findings are returned to the communities who shaped them.
     </div>
-  </div><div class="waveband"><svg viewBox="0 0 1440 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0,16 C180,30 360,4 600,14 C820,24 1040,6 1260,18 C1340,22 1400,16 1440,14 L1440,34 L0,34 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline3"></span></div></div></section>
+  </div><div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline3"></span></div></div></section>
 
 <section class="room" id="room-timeline">
   <div class="roomwrap">
@@ -217,8 +222,7 @@
         <button data-year="2027">2027 · On the islands</button>
         <button data-year="2028">2028 · Analysis and results</button>
       </div>
-      <svg class="route" id="routesvg" viewBox="0 0 760 56" aria-hidden="true"></svg>
-      <div class="portcard" id="portcard"></div>
+      <svg class="route" id="routesvg" viewBox="0 0 760 72" aria-hidden="true"></svg>
       <div class="portcard" id="portcard"></div>
     </div>
     <div class="sub" data-sub="chart">
@@ -250,7 +254,7 @@
       </div>
     </div>
   </div>
-  <div class="waveband"><svg viewBox="0 0 1440 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0,16 C180,30 360,4 600,14 C820,24 1040,6 1260,18 C1340,22 1400,16 1440,14 L1440,34 L0,34 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline2"></span></div></div>
+  <div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline2"></span></div></div>
 </section>
 
 <section class="room" id="room-programme">
@@ -263,16 +267,16 @@
       <div class="wpdetail" id="wpdetail"></div>
     </div>
   </div>
-  <div class="waveband"><svg viewBox="0 0 1440 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0,16 C180,30 360,4 600,14 C820,24 1040,6 1260,18 C1340,22 1400,16 1440,14 L1440,34 L0,34 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline5"></span></div></div>
+  <div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline5"></span></div></div>
 </section>
 
 <section class="room" id="room-research">
   <div class="roomwrap">
     <div class="subchips" data-for="research">
-      <button data-sub="review">The review</button><button data-sub="training">Training</button><button data-sub="toolkit">The toolkit</button><button data-sub="library">The library</button>
+      <button data-sub="review">The review</button><button data-sub="library">The library</button><button data-sub="training">Training</button><button data-sub="resources">Key resources</button><button data-sub="toolkit">The toolkit</button>
     </div>
     <div class="sub" data-sub="review">
-      <p class="eyebrow">Research and library · The literature review</p>
+      <p class="eyebrow">Research · The literature review</p>
       <h2 class="title">Reading the field before entering it</h2>
     <p class="lead-p muted">The literature review is not a numbered deliverable, but it is the foundation the numbered ones stand on. It runs through everything: the variable selection for the econometrics, the household survey going into the ethics package, the seminars, and the papers. Along the way it throws off more focused pieces of work, and the first of those are already under way.</p>
 
@@ -292,18 +296,10 @@
         <p>Reading on household survey design for remittances and livelihoods, drawing on the World Bank LSMS materials and earlier coastal communities research. This is the review turned toward practice: it sharpens the survey instrument before drafting, ahead of the ethics submission.</p>
       </div>
     </div>
-      <div style="margin-top:26px; max-width:760px;"><div class="resgroup">
-        <h3>Key sources and reading</h3>
-        <ul>
-          <li><a href="https://www.worldbank.org/en/topic/migration/brief/remittances-knomad" target="_blank" rel="noopener">World Bank KNOMAD</a><span class="note">The canonical hub on migration and remittances, briefs and data.</span></li>
-          <li><a href="https://odi.org/en/publications/the-state-of-sids-report-2026-defending-the-special-case/" target="_blank" rel="noopener">State of SIDS Report 2026</a><span class="note">ODI Global. The framing the review is read against.</span></li>
-          <li><a href="https://www.scribd.com/doc/152870351/DFID-Sustainable-Livelihoods-Guidance-Sheet" target="_blank" rel="noopener">Sustainable Livelihoods guidance</a><span class="note">DFID. The conceptual framework, with remittances as financial capital.</span></li>
-          <li><a href="https://www.worldbank.org/en/programs/lsms/publications/lsms-guidebooks" target="_blank" rel="noopener">World Bank LSMS guidebooks</a><span class="note">Survey design references behind the instrument.</span></li>
-        </ul>
-      </div></div>
+      
     </div>
     <div class="sub" data-sub="training">
-      <p class="eyebrow">Research and library · Training and courses</p>
+      <p class="eyebrow">Research · Training and courses</p>
       <h2 class="title" style="font-size:1.7rem;">The training behind the researcher</h2>
       <p class="lead-p muted" style="max-width:74ch;">The online courses that carry the summer and the Doctoral School workshops that anchor the autumn. Start with the free essentials and add only what the work demands.</p>
       <div class="toolgrid">
@@ -335,8 +331,22 @@
       </div>
       </div>
     </div>
+    <div class="sub" data-sub="resources">
+      <p class="eyebrow">Research · Key resources</p>
+      <h2 class="title" style="font-size:1.7rem;">Key resources</h2>
+      <p class="lead-p muted" style="max-width:74ch;">The anchor references the project returns to, with room to grow as the work does.</p>
+      <div style="max-width:760px;"><div class="resgroup">
+        <h3>Key resources</h3>
+        <ul>
+          <li><a href="https://www.worldbank.org/en/topic/migration/brief/remittances-knomad" target="_blank" rel="noopener">World Bank KNOMAD</a><span class="note">The canonical hub on migration and remittances, briefs and data.</span></li>
+          <li><a href="https://odi.org/en/publications/the-state-of-sids-report-2026-defending-the-special-case/" target="_blank" rel="noopener">State of SIDS Report 2026</a><span class="note">ODI Global. The framing the review is read against.</span></li>
+          <li><a href="https://www.scribd.com/doc/152870351/DFID-Sustainable-Livelihoods-Guidance-Sheet" target="_blank" rel="noopener">Sustainable Livelihoods guidance</a><span class="note">DFID. The conceptual framework, with remittances as financial capital.</span></li>
+          <li><a href="https://www.worldbank.org/en/programs/lsms/publications/lsms-guidebooks" target="_blank" rel="noopener">World Bank LSMS guidebooks</a><span class="note">Survey design references behind the instrument.</span></li>
+        </ul>
+      </div></div>
+    </div>
     <div class="sub" data-sub="toolkit">
-      <p class="eyebrow">Research and library · The toolkit</p>
+      <p class="eyebrow">Research · The toolkit</p>
       <h2 class="title" style="font-size:1.7rem;">The systematic review toolkit</h2>
       <p class="lead-p muted" style="max-width:74ch;">Six instruments, each with one job, together carrying the review from a thousand records to one defensible paper.</p>
       <div class="tk-grid">
@@ -349,7 +359,7 @@
       </div>
     </div>
     <div class="sub zlib" data-sub="library">
-      <p class="eyebrow">Research and library · The library</p>
+      <p class="eyebrow">Research · The library</p>
       <div class="libbanner"><svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a grand library reading room">
 <defs>
   <linearGradient id="libroom" x1="0" y1="0" x2="0" y2="1">
@@ -625,11 +635,11 @@
       <div style="margin-top:22px;"><p class="eyebrow">From the library</p>
       <p class="lead-p muted" style="margin:0;">The project's shared Zotero library, pulled in live as the review grows, alongside the most relevant recent papers the screening has surfaced so far. Newest first. <a href="https://www.zotero.org/groups/6598740" target="_blank" rel="noopener">Browse the full library on Zotero</a>.</p></div>
       <div class="zspines" id="zspines" aria-hidden="true"></div>
-      <div class="zscroll"><div id="zlib"><p class="zmsg">Loading the library.</p></div></div><div class="zscroll"><div id="zlib"><p class="zmsg">Loading the library.</p></div></div>
+      <div class="zscroll"><div id="zlib"><p class="zmsg">Loading the library.</p></div></div>
       <p class="tl-hint" style="margin-top:30px;">The working documents themselves live in the project folder, not on this page. This is the reading behind them.</p>
     </div>
   </div>
-  <div class="waveband"><svg viewBox="0 0 1440 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0,16 C180,30 360,4 600,14 C820,24 1040,6 1260,18 C1340,22 1400,16 1440,14 L1440,34 L0,34 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline3"></span></div></div>
+  <div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline3"></span></div></div>
 </section>
 
 <section class="room" id="room-people">
@@ -657,10 +667,10 @@
       <div>
         <h3>Host and partners</h3>
         <ul>
-          <li>Islands and Small States Institute (ISSI)<br><span>University of Malta · host institution</span></li>
-          <li>The University of the West Indies<br><span>Jamaica · Caribbean partner</span></li>
-          <li>University of the South Pacific<br><span>Tonga · Pacific partner · Dr Semisi Taumoepeau</span></li>
-          <li>University of Comoros<br><span>Comoros · Indian Ocean partner · Ahmed Ouledi</span></li>
+          <li><span class="partner-badge">UM</span><span class="ptxt">Islands and Small States Institute (ISSI)<br><span>University of Malta · host institution</span></span></li>
+          <li><span class="partner-badge">UWI</span><span class="ptxt">The University of the West Indies<br><span>Jamaica · Caribbean partner</span></span></li>
+          <li><span class="partner-badge">USP</span><span class="ptxt">University of the South Pacific<br><span>Tonga · Pacific partner · Dr Semisi Taumoepeau</span></span></li>
+          <li><span class="partner-badge">UC</span><span class="ptxt">University of Comoros<br><span>Comoros · Indian Ocean partner · Ahmed Ouledi</span></span></li>
         </ul>
       </div>
     </div>
@@ -686,7 +696,7 @@
       </div>
     </div>
   </div>
-  <div class="waveband"><svg viewBox="0 0 1440 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0,16 C180,30 360,4 600,14 C820,24 1040,6 1260,18 C1340,22 1400,16 1440,14 L1440,34 L0,34 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline7"></span></div></div>
+  <div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline7"></span></div></div>
 </section>
 
 </main>
@@ -720,7 +730,7 @@ window.__initBoard = function(){
     if(ev.point || !ev.end){ return fmtOne(ev.start) + ' 2026'; }
     return fmtOne(ev.start) + ' to ' + fmtOne(ev.end) + ' 2026';
   }
-  var ROW = 38, BARH = 30, PADTOP = 8;
+  var ROW = 30, BARH = 24, PADTOP = 6;
 
   // month gridlines and ruler ticks
   var ruler = document.createElement('div'); ruler.className = 'tl-ruler';
@@ -903,7 +913,7 @@ window.__initBoard = function(){
 (function(){
   var WP = [{"n": 1, "name": "Project management", "when": "Runs the full two years", "active": true, "body": "The management spine of the fellowship, built around documents that live and evolve with the project. The Mobility Declaration, the fellowship's first completed deliverable, was submitted and validated on the EU Funding and Tenders Portal in June 2026. The Career Development Plan, setting out the researcher's training, teaching, and publication goals, was signed with the supervisor on 24 June 2026 and is reviewed quarterly, with formal submission on the EU Funding and Tenders Portal in December. The Data Management Plan, which governs how research data is collected, protected, and shared, was reviewed with the University's Open Science Department in July and updates as the project evolves. Alongside them sit the project budget, this digital platform, and eight short progress reports, one every three months across the fellowship.", "codes": "Deliverables D.1.1 to D.1.10 · Milestone M.1.1, December 2026: plans and platform complete"}, {"n": 2, "name": "Training at ISSI", "when": "Months 1 to 9", "active": true, "body": "The training that equips the research. Four Doctoral School workshops run from October to December, covering quantitative methods, policy writing, leadership and project management, and integrated methods, with a summer of preparatory courses laying the ground first, from statistics with the University's IT Services to household survey design with the World Bank. The elective on financial inclusion is taken as an online course with the Inter-American Development Bank. Teaching runs alongside the training: a seminar within the Islands and Small States Institute's Master's programme in October, a virtual guest seminar at the University of Hildesheim in Germany in November, and the first massive open online course, Bridging Cultures with Reciprocity, which later travels to the partner universities.", "codes": "Deliverables D.2.1 to D.2.8 · Milestone M.2.1, February 2027: training complete"}, {"n": 3, "name": "Fieldwork preparation", "when": "Year one, from Malta", "active": true, "body": "Everything the fieldwork needs before a single flight is booked. Language practice in Tongan and Shikomori. Partnerships with The University of the West Indies, the University of the South Pacific, and the University of Comoros, opened in June 2026 and deepening through the summer. The selection of study sites. And at the centre of the year, the ethics application: before any interviews can happen, the University and all three countries review how the research treats the people in it, the questions asked, the consent given, the way answers are protected. The application goes to the University of Malta's research ethics committees and to the review bodies of Jamaica, Tonga, and Comoros at the end of August 2026.", "codes": "Deliverables D.3.1 to D.3.4 · Milestones M.3.1, project social media launched, March 2027, and M.3.2, preparation complete"}, {"n": 4, "name": "Ethnographic fieldwork", "when": "April to October 2027", "active": false, "body": "The heart of the project: roughly two months in each country in turn, Jamaica, then Tonga, then Comoros. Ethnography leads and the surveys follow, because the interviews shape what the surveys ask: ten to twenty interviews, three focus groups, and household surveys reaching 250 to 300 families in each country. Every stay closes with a secondment at the partner university, so the work is carried out with island institutions rather than merely in them.", "codes": "Deliverables D.4.1 to D.4.6 · Milestone M.4.1, October 2027: fieldwork and secondments complete"}, {"n": 5, "name": "Econometrics and analysis", "when": "Brackets the fieldwork", "active": true, "body": "The quantitative engine. Time series models trace how aid and remittance flows have moved with wellbeing indicators in each country, drawing on World Bank and OECD data reaching back to 1980, one model per country. A gender sensitive monitoring framework runs through the analysis, and the results are read through the Sustainable Livelihoods Framework, so the numbers are always interpreted alongside what communities themselves value. The systematic review under way now feeds this package directly, since it determines which variables the models should carry.", "codes": "Deliverables D.5.1 to D.5.3 · Milestones M.5.1, data review, November 2026, and M.5.2, modelling complete, 2028"}, {"n": 6, "name": "Two-way knowledge transfer", "when": "Across the two years", "active": false, "body": "Sharing the work in both directions as it happens, with island institutions and the wider research field. Four research seminars, at the Islands and Small States Institute and at each partner university. The project's three papers each travel to an international conference: the systematic review to DevNet 2026, the development studies conference at Te Herenga Waka Victoria University of Wellington in December; the methodology paper to the Adaptation Futures Conference in Cancún in 2027; and the results to the ISISA Islands of the World Congress in Gozo in 2028. A second massive open online course, Waves of Wealth, closes the package.", "codes": "Deliverables D.6.1 to D.6.7 · Milestone M.6.1, May 2028: knowledge transfer complete"}, {"n": 7, "name": "Dissemination and exploitation", "when": "A living plan, to May 2028", "active": true, "body": "Making sure the findings reach the people they are about. A newspaper or magazine article in each country, in the language its readers actually read. Policy briefs for governments, donors, and regional bodies. The project's three research papers, the systematic review, the methodology paper, and the results, each published in a peer reviewed journal after being presented at their conferences. And the project's public face, this website and the social media project Island Voices, Global Impact, which begins building now and launches formally in March 2027.", "codes": "Deliverables D.7.1 to D.7.7 · The package closes with the third journal article"}];
   var rooms = ['question','islands','approach','timeline','programme','research','people'];
-  var SUBS = { question:['q','why'], timeline:['horizon','chart','logbook'], research:['review','training','toolkit','library'] };
+  var SUBS = { question:['q','why'], timeline:['horizon','chart','logbook'], research:['review','library','training','resources','toolkit'] };
   var links = document.querySelectorAll('#railnav > a');
   function setSub(room, sub){
     var el = document.getElementById('room-' + room);
@@ -945,18 +955,30 @@ window.__initBoard = function(){
   var start = new Date('2026-06-15T00:00:00');
   var day = Math.min(730, Math.max(1, Math.floor((Date.now() - start.getTime())/86400000) + 1));
   document.querySelectorAll('[id^="dayline"]').forEach(function(el){ el.textContent = 'DAY ' + day + ' OF 730'; });
+  var dc = document.getElementById('daychip'); if(dc) dc.textContent = 'DAY ' + day + ' OF 730';
+  var dt = document.getElementById('daytrack'); if(dt) dt.style.width = Math.max(1, Math.round(day/730*100)) + '%';
 
   var YCOL = {"2026":"#0E4D5C","2027":"#E2664A","2028":"#1C8C9B"};
   var curYear = '2026';
   function esc(s){ return String(s).replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+  var curIdx = 0;
+  window.__portNav = function(d){
+    var n = FARSIDS.PORTS[curYear].length;
+    renderPort(curYear, (curIdx + d + n) % n);
+  };
   function renderPort(y, i){
-    var p = FARSIDS.PORTS[y][i];
+    curIdx = i;
+    var ports = FARSIDS.PORTS[y];
+    var p = ports[i];
     document.getElementById('portcard').innerHTML =
-      '<h3>' + esc(p.t) + '</h3><span class="pd">' + esc(p.d) + '</span><p>' + esc(p.s) + '</p>';
+      '<div class="portnav"><span class="pn">PORT ' + (i+1) + ' OF ' + ports.length + '</span>'
+      + '<span><button onclick="__portNav(-1)" aria-label="Previous">&larr;</button><button onclick="__portNav(1)" aria-label="Next">&rarr;</button></span></div>'
+      + '<h3>' + esc(p.t) + '</h3><span class="pd">' + esc(p.d) + '</span><p>' + esc(p.s) + '</p>';
     var svg = document.getElementById('routesvg');
     Array.prototype.forEach.call(svg.querySelectorAll('circle'), function(c, j){
       c.setAttribute('stroke', j === i ? '#FFCC00' : 'none');
       c.setAttribute('stroke-width', j === i ? '3' : '0');
+      c.classList.toggle('sel-port', j === i);
     });
   }
   function renderYear(y){
@@ -969,10 +991,12 @@ window.__initBoard = function(){
       var x = pad + (w - 2*pad) * (n === 1 ? 0.5 : i/(n-1));
       var t = n === 1 ? 0.5 : i/(n-1);
       var y1 = 34 + (16-34)*3*t*(1-t)*(1-t) + (44-34)*3*t*t*(1-t) + (22-34)*t*t*t;
-      html += '<circle cx="' + x + '" cy="' + y1 + '" r="6" fill="' + YCOL[y] + '" data-i="' + i + '"><title>' + esc(ports[i].t) + '</title></circle>';
+      var short = ports[i].t.length > 18 ? ports[i].t.slice(0, 17) + '…' : ports[i].t;
+      html += '<circle cx="' + x + '" cy="' + y1 + '" r="7" fill="' + YCOL[y] + '" data-i="' + i + '"><title>' + esc(ports[i].t) + '</title></circle>';
+      html += '<text x="' + x + '" y="' + (y1 + 20) + '" text-anchor="middle" data-i="' + i + '">' + esc(short) + '</text>';
     }
     svg.innerHTML = html;
-    Array.prototype.forEach.call(svg.querySelectorAll('circle'), function(c){
+    Array.prototype.forEach.call(svg.querySelectorAll('circle, text'), function(c){
       c.addEventListener('click', function(){ renderPort(curYear, parseInt(c.dataset.i, 10)); });
     });
     document.querySelectorAll('#yearchips button').forEach(function(b){ b.classList.toggle('on', b.dataset.year === y); });

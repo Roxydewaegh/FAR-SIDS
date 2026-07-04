@@ -336,7 +336,6 @@
       <h2 class="title" style="font-size:1.7rem;">Key resources</h2>
       <p class="lead-p muted" style="max-width:74ch;">The anchor references the project returns to, with room to grow as the work does.</p>
       <div style="max-width:760px;"><div class="resgroup">
-        <h3>Key resources</h3>
         <ul>
           <li><a href="https://www.worldbank.org/en/topic/migration/brief/remittances-knomad" target="_blank" rel="noopener">World Bank KNOMAD</a><span class="note">The canonical hub on migration and remittances, briefs and data.</span></li>
           <li><a href="https://odi.org/en/publications/the-state-of-sids-report-2026-defending-the-special-case/" target="_blank" rel="noopener">State of SIDS Report 2026</a><span class="note">ODI Global. The framing the review is read against.</span></li>
@@ -730,7 +729,7 @@ window.__initBoard = function(){
     if(ev.point || !ev.end){ return fmtOne(ev.start) + ' 2026'; }
     return fmtOne(ev.start) + ' to ' + fmtOne(ev.end) + ' 2026';
   }
-  var ROW = 30, BARH = 24, PADTOP = 6;
+  var ROW = 25, BARH = 20, PADTOP = 4;
 
   // month gridlines and ruler ticks
   var ruler = document.createElement('div'); ruler.className = 'tl-ruler';
@@ -992,8 +991,10 @@ window.__initBoard = function(){
       var t = n === 1 ? 0.5 : i/(n-1);
       var y1 = 34 + (16-34)*3*t*(1-t)*(1-t) + (44-34)*3*t*t*(1-t) + (22-34)*t*t*t;
       var short = ports[i].t.length > 18 ? ports[i].t.slice(0, 17) + '…' : ports[i].t;
+      var anch = i === 0 ? 'start' : (i === n-1 ? 'end' : 'middle');
+      var tx = i === 0 ? Math.max(2, x - 8) : (i === n-1 ? Math.min(w - 2, x + 8) : x);
       html += '<circle cx="' + x + '" cy="' + y1 + '" r="7" fill="' + YCOL[y] + '" data-i="' + i + '"><title>' + esc(ports[i].t) + '</title></circle>';
-      html += '<text x="' + x + '" y="' + (y1 + 20) + '" text-anchor="middle" data-i="' + i + '">' + esc(short) + '</text>';
+      html += '<text x="' + tx + '" y="' + (y1 + 20) + '" text-anchor="' + anch + '" data-i="' + i + '">' + esc(short) + '</text>';
     }
     svg.innerHTML = html;
     Array.prototype.forEach.call(svg.querySelectorAll('circle, text'), function(c){

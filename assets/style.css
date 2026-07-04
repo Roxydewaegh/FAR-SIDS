@@ -485,3 +485,6 @@
   .eufoot .eftxt b{color:#fff; font-size:.98rem; letter-spacing:.01em;}
   .eufoot .eftxt p{margin:6px 0 0; font-size:.73rem; color:#9fc0c9; line-height:1.6; max-width:100ch;}
   .eufoot .eftxt .gline{font-family:var(--mono); font-size:.67rem; color:#8fb3bd; margin-top:8px; line-height:1.7;}
+
+  /* SECTION: atlas v5.1 kill section padding inside atlas rooms */
+  section.room{padding:0;}

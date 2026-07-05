@@ -508,3 +508,29 @@
   .route .mstone{cursor:pointer;}
   .route .sub2{fill:var(--ink-soft); font-size:8.5px;}
   .zlib .zspines{margin-top:14px;}
+
+  /* SECTION: atlas v8, the outreach room (5 July 2026) */
+  .lp-list{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px;}
+  .lp-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 20px;}
+  .lp-head{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap;}
+  .lp-tag{font-family:var(--mono); font-size:.58rem; letter-spacing:.14em; text-transform:uppercase;
+    color:#fff; background:var(--deep); padding:3px 10px; border-radius:20px;}
+  .lp-when{font-family:var(--mono); font-size:.6rem; color:var(--coral); letter-spacing:.06em;}
+  .lp-card h3{font-family:var(--serif); font-weight:500; font-size:1.16rem; color:var(--abyss); margin:10px 0 8px;}
+  .lp-card p{margin:0; font-size:.87rem; color:var(--ink-soft); line-height:1.62;}
+  .lp-src{margin-top:12px; font-size:.76rem; line-height:1.7;}
+  .lp-src .lab{display:block; font-family:var(--mono); font-size:.54rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--lagoon); margin-bottom:2px;}
+  .lp-src a{color:var(--deep); font-weight:600;}
+  .lp-src a:hover{color:var(--lagoon);}
+  .lp-src .sep{color:var(--ink-soft);}
+  .vs-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:20px; max-width:820px;}
+  .vs-tile{border:1.6px dashed var(--lagoon); border-radius:14px; padding:18px 20px; background:#ffffffa8;}
+  .vs-place{font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--deep); background:var(--shoal); padding:3px 10px; border-radius:20px;}
+  .vs-tile p{margin:10px 0 0; font-size:.86rem; color:var(--ink-soft);}
+  .soonwrap{margin-top:20px; position:relative; max-width:760px;}
+  .soonwrap svg{display:block; width:100%; height:auto; border-radius:14px; box-shadow:0 18px 40px -26px #08293a66;}
+  .soonchip{position:absolute; left:16px; bottom:14px; font-family:var(--mono); font-size:.6rem; letter-spacing:.12em;
+    text-transform:uppercase; color:#08293A; background:var(--gold); padding:5px 12px; border-radius:20px;}
+  @media(max-width:900px){ .lp-list{grid-template-columns:1fr;} .vs-grid{grid-template-columns:1fr;} }

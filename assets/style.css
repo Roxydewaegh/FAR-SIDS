@@ -502,3 +502,9 @@
   .tl-detail{min-height:44px; padding:10px 16px; margin-top:8px;}
   .zlib .zscroll{max-height:33vh;}
   .toolgrid .resgroup{max-height:56vh;}
+
+  /* SECTION: atlas v7 milestones on the horizon (5 July 2026) */
+  .route .mlab{font-family:var(--mono); font-size:8.5px; fill:#0E4453; letter-spacing:.04em; cursor:pointer;}
+  .route .mstone{cursor:pointer;}
+  .route .sub2{fill:var(--ink-soft); font-size:8.5px;}
+  .zlib .zspines{margin-top:14px;}

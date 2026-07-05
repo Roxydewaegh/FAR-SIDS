@@ -554,3 +554,20 @@
   .lp-toggle{margin-top:10px; border:1px solid var(--line); background:#fff; color:var(--deep);
     border-radius:8px; padding:5px 12px; font-size:.72rem; cursor:pointer; font-family:var(--mono);}
   .lp-toggle:hover{border-color:var(--lagoon); color:var(--lagoon);}
+
+  /* SECTION: atlas v10, harbour overview and visual stories (5 July 2026) */
+  .harbour{margin:18px 0 4px; max-width:880px;}
+  .harbour svg{display:block; width:100%; height:auto; border-radius:14px; box-shadow:0 18px 40px -26px #08293a66;}
+  .harbour a g{transition:opacity .18s;}
+  .harbour a:hover g{opacity:.78;}
+  .harbour a text{cursor:pointer;}
+  .ovgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px 30px; margin-top:16px; max-width:880px;}
+  .ovgrid .ovi a{font-family:var(--serif); font-weight:500; font-size:1.06rem; color:var(--deep);}
+  .ovgrid .ovi a:hover{color:var(--lagoon);}
+  .ovgrid .ovi p{margin:3px 0 0; font-size:.85rem; color:var(--ink-soft); line-height:1.55;}
+  .ovnote{margin-top:16px; max-width:84ch; font-size:.9rem; color:var(--ink-soft); line-height:1.6;
+    border-top:1px dashed var(--line); padding-top:12px;}
+  .vst-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-top:18px; max-width:880px;}
+  .vst-card h3{font-family:var(--serif); font-weight:500; font-size:1.2rem; color:var(--abyss); margin:8px 0 10px;}
+  .vst-art svg{display:block; width:100%; height:auto; border-radius:8px; border:1px solid var(--line);}
+  @media(max-width:760px){ .ovgrid{grid-template-columns:1fr;} }

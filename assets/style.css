@@ -534,3 +534,23 @@
   .soonchip{position:absolute; left:16px; bottom:14px; font-family:var(--mono); font-size:.6rem; letter-spacing:.12em;
     text-transform:uppercase; color:#08293A; background:var(--gold); padding:5px 12px; border-radius:20px;}
   @media(max-width:900px){ .lp-list{grid-template-columns:1fr;} .vs-grid{grid-template-columns:1fr;} }
+
+  /* SECTION: atlas v9, rail trim and listening threads (5 July 2026) */
+  .lp-filters{display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 0;}
+  .lp-filters button{border-radius:16px; border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+    font-size:.78rem; padding:5px 12px; cursor:pointer; font-family:var(--sans);}
+  .lp-filters button.on{background:var(--deep); border-color:var(--deep); color:#fff;}
+  .lp-list{margin-top:14px;}
+  .lp-head{justify-content:flex-start; align-items:center; gap:10px;}
+  .lp-when{margin-left:auto;}
+  .lp-ic{width:44px; height:30px; flex-shrink:0; display:inline-flex;}
+  .lp-ic svg{width:44px; height:30px; display:block;}
+  .lp-card h3{margin:8px 0 6px; font-size:1.12rem;}
+  .lp-teaser{margin:0; font-size:.88rem; color:var(--ink-soft); line-height:1.6;}
+  .lp-more{display:none; margin-top:10px; border-top:1px dashed var(--line); padding-top:10px;}
+  .lp-card.open .lp-more{display:block;}
+  .lp-card.open .lp-teaser{display:none;}
+  .lp-more p{margin:0; font-size:.88rem; color:var(--ink-soft); line-height:1.62;}
+  .lp-toggle{margin-top:10px; border:1px solid var(--line); background:#fff; color:var(--deep);
+    border-radius:8px; padding:5px 12px; font-size:.72rem; cursor:pointer; font-family:var(--mono);}
+  .lp-toggle:hover{border-color:var(--lagoon); color:var(--lagoon);}

@@ -933,7 +933,7 @@ window.__initBoard = function(){
       if(placed === -1){ placed = rows.length; rows.push(ee); }
       e._row = placed;
     });
-    var nRows = Math.max(1, rows.length);
+    var nRows = Math.max(2, rows.length);
     var laneH = nRows * ROW + PADTOP;
 
     var lane = document.createElement('div'); lane.className = 'tl-laneblock';

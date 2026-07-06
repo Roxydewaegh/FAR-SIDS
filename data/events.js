@@ -10,7 +10,8 @@ FARSIDS.TL = {
     training:     {label:'Training',     colour:'#1C8C9B'},
     partnerships: {label:'Partnerships', colour:'#E2664A'},
     instruments:  {label:'Instruments',  colour:'#0E4D5C'},
-    milestone:    {label:'Milestone',    colour:'#08293A'}
+    milestone:    {label:'Milestone',    colour:'#08293A'},
+    projmgmt:     {label:'Project management', colour:'#B58A2E'}
   },
   EVENTS: [
     {track:'litreview', title:'Systematic review (Paper 1)', start:'2026-06-25', end:'2026-09-30',
@@ -83,6 +84,8 @@ FARSIDS.TL = {
       desc:'Virtual guest seminar at the University of Hildesheim on aid, remittances, and wellbeing in SIDS, part of the teaching deliverable (D.2.7).'},
     {track:'milestone', title:'FREC submission deadline', start:'2026-09-07', point:true,
       desc:'The formal Faculty Research Ethics Committee deadline of 7 September. The working plan stays a week ahead of it, with the package submitted by the end of August.'},
+    {track:'projmgmt', title:'First progress report (D.1.3)', start:'2026-09-15', point:true,
+      desc:'The first trimestral progress report to the supervisor, Professor Stefano Moncada, due 15 September. One to two pages on the opening three months. Deliverable D.1.3, the first of the reports that recur every three months across the fellowship.'},
     {track:'instruments', title:'Ethics corrections and possible resubmission', start:'2026-10-01', end:'2026-11-30',
       desc:'Reserved window for responding to FREC and data protection queries, and for a resubmission if one is needed. The committee\u2019s exact autumn meeting dates are not published; to confirm with the Faculty of Arts FREC secretary.'},
     {track:'milestone', title:'DevNet final registration', start:'2026-11-03', point:true,

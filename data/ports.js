@@ -2,6 +2,7 @@
 // Each entry: t = title, d = date label, s = the story shown on the card.
 // Optional: l = short label under the dot ("|" splits it onto two lines).
 // Optional: m = true marks a proposal milestone, drawn as a pennant with its code above the line.
+// Optional: r = true marks a recurring reporting deadline, drawn as a gold triangle; c = the short code shown above it.
 // Edit here and upload this one file to update the timeline room.
 window.FARSIDS = window.FARSIDS || {};
 FARSIDS.PORTS = {
@@ -12,6 +13,8 @@ FARSIDS.PORTS = {
       s: "Statistics courses with the University's IT Services in July lay the base for four Doctoral School workshops between October and December, covering quantitative methods, policy writing, leadership and project management, and integrated methods. Online courses run alongside, from household survey design with the World Bank to the financial inclusion elective with the Inter-American Development Bank." },
     { l: "Ethics", t: "The ethics application goes in", d: "end of August 2026",
       s: "Before any interviews can happen, the University of Malta and the review bodies of Jamaica, Tonga, and Comoros examine how the research treats the people in it: the questions asked, the consent given, the way answers are protected. The whole summer builds toward this application." },
+    { r: true, c: "D.1.3", t: "First progress report", d: "15 September 2026",
+      s: "The first trimestral progress report to the supervisor, Professor Stefano Moncada. One to two pages summarising the opening three months: the project management set up, the training under way, the systematic review, and the fieldwork preparation. Deliverable D.1.3, the first of the progress reports that recur every three months across the fellowship." },
     { l: "Teaching", t: "Teaching in two universities", d: "October and November 2026",
       s: "A teaching seminar within the Islands and Small States Institute's Master's programme in October, where students map how aid and remittances touch different livelihood assets, and a virtual guest seminar at the University of Hildesheim in Germany on 27 November." },
     { m: true, t: "M.5.1", d: "November 2026",

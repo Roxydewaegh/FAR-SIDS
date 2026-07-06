@@ -1180,7 +1180,7 @@ window.__initBoard = function(){
         html += '<g class="mstone" data-i="' + i + '"><line x1="' + x + '" y1="' + (y1 - 2) + '" x2="' + x + '" y2="' + (y1 - 16) + '" stroke="#0E4453" stroke-width="1.6"/>'
               + '<path d="M' + x + ',' + (y1 - 16) + ' L' + (x + 13) + ',' + (y1 - 12.5) + ' L' + x + ',' + (y1 - 9) + ' Z" fill="#E2664A"/>'
               + '<circle cx="' + x + '" cy="' + y1 + '" r="3.4" fill="#0E4453" data-i="' + i + '"/>'
-              + '<text class="mlab" x="' + x + '" y="' + (y1 - 21) + '" text-anchor="middle" data-i="' + i + '">' + esc(p.t) + '</text></g>';
+              + '<text class="mlab" x="' + tx + '" y="' + (y1 - 21) + '" text-anchor="' + anch + '" data-i="' + i + '">' + esc(p.t) + '</text></g>';
       } else {
         var lab = p.l || (p.t.length > 18 ? p.t.slice(0, 17) + '…' : p.t);
         var lines = lab.split('|');

@@ -27,12 +27,12 @@
     </div>
     <a href="#islands" data-room="islands">Three islands</a>
     <a href="#approach" data-room="approach">The approach</a>
+    <a href="#programme" data-room="programme">Work programme</a>
     <a href="#timeline" data-room="timeline">Project timeline</a>
     <div class="subnav" data-for="timeline">
       <a href="#timeline/chart" data-sub="chart">The chart · the months ahead</a>
       <a href="#timeline/logbook" data-sub="logbook">The logbook · done and ahead</a>
     </div>
-    <a href="#programme" data-room="programme">Work programme</a>
     <a href="#research" data-room="research">Literature review</a>
     <div class="subnav" data-for="research">
       <a href="#research/library" data-sub="library">The library</a>
@@ -920,7 +920,7 @@ window.__initBoard = function(){
   track.appendChild(ruler);
 
   // greedy stack each track's events into sub-rows so overlaps never collide
-  var order = ['litreview','training','partnerships','instruments','milestone','projmgmt'];
+  var order = ['projmgmt','training','fieldprep','fieldwork','econ','transfer','dissem','milestone'];
   var laneEls = {};
   order.forEach(function(key){
     var evs = EVENTS.filter(function(e){ return e.track === key; });
@@ -1003,7 +1003,7 @@ window.__initBoard = function(){
   }
 
   // filter chips
-  var activeTracks = {litreview:true, training:true, partnerships:true, instruments:true, milestone:true, projmgmt:true};
+  var activeTracks = {projmgmt:true, training:true, fieldprep:true, fieldwork:true, econ:true, transfer:true, dissem:true, milestone:true};
   order.forEach(function(key){
     var chip = document.createElement('button'); chip.className = 'tl-chip';
     chip.type = 'button'; chip.setAttribute('aria-pressed', 'true');

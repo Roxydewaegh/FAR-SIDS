@@ -920,7 +920,7 @@ window.__initBoard = function(){
   track.appendChild(ruler);
 
   // greedy stack each track's events into sub-rows so overlaps never collide
-  var order = ['litreview','training','partnerships','instruments','milestone'];
+  var order = ['litreview','training','partnerships','instruments','milestone','projmgmt'];
   var laneEls = {};
   order.forEach(function(key){
     var evs = EVENTS.filter(function(e){ return e.track === key; });
@@ -1003,7 +1003,7 @@ window.__initBoard = function(){
   }
 
   // filter chips
-  var activeTracks = {litreview:true, training:true, partnerships:true, instruments:true, milestone:true};
+  var activeTracks = {litreview:true, training:true, partnerships:true, instruments:true, milestone:true, projmgmt:true};
   order.forEach(function(key){
     var chip = document.createElement('button'); chip.className = 'tl-chip';
     chip.type = 'button'; chip.setAttribute('aria-pressed', 'true');
@@ -1149,7 +1149,7 @@ window.__initBoard = function(){
     curIdx = i;
     var ports = FARSIDS.PORTS[y];
     var p = ports[i];
-    var kind = p.m ? 'MILESTONE' : (p.r ? 'REPORT' : 'PORT');
+    var kind = p.m ? 'MILESTONE' : 'PORT';
     document.getElementById('portcard').innerHTML =
       '<div class="portnav"><span class="pn">' + kind + ' ' + (i+1) + ' OF ' + ports.length + '</span>'
       + '<span><button onclick="__portNav(-1)" aria-label="Previous">&larr;</button><button onclick="__portNav(1)" aria-label="Next">&rarr;</button></span></div>'
@@ -1180,11 +1180,6 @@ window.__initBoard = function(){
               + '<path d="M' + x + ',' + (y1 - 16) + ' L' + (x + 13) + ',' + (y1 - 12.5) + ' L' + x + ',' + (y1 - 9) + ' Z" fill="#E2664A"/>'
               + '<circle cx="' + x + '" cy="' + y1 + '" r="3.4" fill="#0E4453" data-i="' + i + '"/>'
               + '<text class="mlab" x="' + x + '" y="' + (y1 - 21) + '" text-anchor="middle" data-i="' + i + '">' + esc(p.t) + '</text></g>';
-      } else if(p.r){
-        html += '<g class="mstone rstone" data-i="' + i + '"><line x1="' + x + '" y1="' + (y1 - 2) + '" x2="' + x + '" y2="' + (y1 - 14) + '" stroke="#0E4453" stroke-width="1.6"/>'
-              + '<path d="M' + x + ',' + (y1 - 20) + ' L' + (x - 6.5) + ',' + (y1 - 8.5) + ' L' + (x + 6.5) + ',' + (y1 - 8.5) + ' Z" fill="#FFCC00" stroke="#0E4453" stroke-width="0.8"/>'
-              + '<circle cx="' + x + '" cy="' + y1 + '" r="3.4" fill="#0E4453" data-i="' + i + '"/>'
-              + '<text class="mlab" x="' + x + '" y="' + (y1 - 24) + '" text-anchor="middle" data-i="' + i + '">' + esc(p.c || p.t) + '</text></g>';
       } else {
         var lab = p.l || (p.t.length > 18 ? p.t.slice(0, 17) + '…' : p.t);
         var lines = lab.split('|');

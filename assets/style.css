@@ -571,3 +571,19 @@
   .vst-card h3{font-family:var(--serif); font-weight:500; font-size:1.2rem; color:var(--abyss); margin:8px 0 10px;}
   .vst-art svg{display:block; width:100%; height:auto; border-radius:8px; border:1px solid var(--line);}
   @media(max-width:760px){ .ovgrid{grid-template-columns:1fr;} }
+
+/* ============ atlas v7, 7 July 2026: island visual stories open from their tiles ============ */
+  .vs-tile.vs-live{cursor:pointer; border-style:solid; background:#fff;
+    transition:box-shadow .15s ease, transform .15s ease;}
+  .vs-tile.vs-live:hover{box-shadow:0 4px 14px rgba(14,77,92,.14); transform:translateY(-1px);}
+  .vs-mini{margin:12px 0 2px;}
+  .vs-mini svg{display:block; width:120px; height:auto;}
+  .vs-t{margin:8px 0 0; font-family:var(--serif); font-size:1.04rem; color:var(--abyss);}
+  .vs-paper{margin:6px 0 0; font-size:.78rem; line-height:1.45; color:var(--ink-soft);}
+  .vs-open{display:inline-block; margin-top:12px; font-family:var(--mono); font-size:.62rem;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--deep);
+    border-bottom:1px solid currentColor; padding-bottom:2px;}
+  #islandstories .vst-card.vst-hidden{display:none;}
+  .vst-close{display:inline-block; margin-top:12px; font-family:var(--mono); font-size:.62rem;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); background:none;
+    border:none; border-bottom:1px solid currentColor; padding:0 0 2px; cursor:pointer;}

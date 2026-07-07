@@ -35,7 +35,7 @@ FARSIDS.PORTS = {
     { l: "Fieldwork: Jamaica", t: "Fieldwork: Jamaica", d: "from April 2027",
       s: "Roughly two months with island communities in Jamaica, where the study design is tested before it travels onward. Interviews and focus groups lead, household surveys follow, and the stay closes with a secondment at The University of the West Indies, where a research seminar shares the emerging findings with Caribbean colleagues (D.6.1 to D.6.4)." },
     { l: "Fieldwork: Tonga", t: "Fieldwork: Tonga", d: "mid 2027",
-      s: "The second stay, built on long standing research relationships, in the country where remittances are among the highest in the world as a share of the economy. The visit closes with a secondment at the University of the South Pacific, including a research seminar on integrating ethnographic and econometric methods (D.6.1 to D.6.4)." },
+      s: "The second stay, built on long standing research relationships, in the country where remittances are among the highest in the world as a share of the economy. The visit closes with a secondment at Tonga National University, including a research seminar on integrating ethnographic and econometric methods (D.6.1 to D.6.4)." },
     { l: "Fieldwork: Comoros", t: "Fieldwork: Comoros", d: "from August 2027",
       s: "The final and least studied site, where the fieldwork is conducted in French and Shikomori. The stay closes with a secondment at the University of Comoros and a research seminar on aid effectiveness and remittance interactions (D.6.1 to D.6.4), and with it the fieldwork phase is complete." },
     { m: true, t: "M.4.1", d: "October 2027",

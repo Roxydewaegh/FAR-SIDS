@@ -42,7 +42,7 @@ FARSIDS.TL = {
     {track:'training', title:'Hildesheim seminar title due', start:'2026-09-27', point:true,
       desc:'Reminder: the seminar session title is due to the University of Hildesheim, ahead of the virtual guest seminar on 27 November, part of the teaching deliverable (D.2.7).'},
     {track:'fieldprep', title:'Building relationships with partner universities in Jamaica, Tonga and Comoros', start:'2026-06-24', end:'2026-08-31',
-      desc:'Building the partnerships with the three fieldwork hosts: The University of the West Indies in Jamaica, the University of the South Pacific for Tonga, and the University of Comoros. Opened in June 2026 and deepening through the summer. Senior leadership at the Comoros partner confirmed interest and opened an institutional partnership, the Tonga partnership is confirmed with the host campus still to settle, and first contact was made at UWI with formal confirmation awaited (D.3.2).'},
+      desc:'Building the partnerships with the three fieldwork hosts: The University of the West Indies in Jamaica, Tonga National University, and the University of Comoros. Opened in June 2026 and deepening through the summer. Senior leadership at the Comoros partner confirmed interest and opened an institutional partnership, Tonga National University is confirmed as the Tonga host, and first contact was made at UWI with formal confirmation awaited (D.3.2).'},
     {track:'fieldprep', title:'Review with Prof. Moncada', start:'2026-08-24', end:'2026-08-28',
       desc:'Final supervisory review of the complete ethics package before submission.'},
     {track:'projmgmt', title:'Data management plan', start:'2026-07-01', end:'2026-08-21',

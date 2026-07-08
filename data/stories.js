@@ -1,10 +1,12 @@
-// Visual stories for the Research storytelling page, newest first.
-// place: the tag · k: thread key (all, jm, to, km) · when: date label · title
+// Visual stories for the Research storytelling page, grouped into four threads by k
+// (all = Across SIDS, jm = Jamaica, to = Tonga, km = Comoros). Newest first within a thread.
+// Each entry carries: place (the tag) · k · when (date label) · title
+// paper: the study or data named on the thread tile · mini: a small inline SVG motif for the tile
 // svg: the visual itself, inline SVG markup · note: one short paragraph under the visual
 // sources: the research or data the story is drawn from, public links only.
-// Island stories (k of jm, to, km) also carry: paper (the article named on the island tile)
-// and mini (a small inline SVG motif for the tile). They render behind their island tile,
-// opened by a click, rather than stacked on the page; k 'all' stories render in full as before.
+// The page renders four equal tiles, one per thread, each showing its newest story;
+// clicking a tile swaps in that thread's full story list with a back link. Adding a story
+// here is all it takes: the tile and the thread pick it up automatically.
 // Circle areas in the first story are proportional to the amounts (radius scales with the square root).
 window.FARSIDS = window.FARSIDS || {};
 FARSIDS.STORIES = [
@@ -13,6 +15,8 @@ FARSIDS.STORIES = [
     "k": "all",
     "when": "July 2026",
     "title": "Remittances beside aid, drawn to scale",
+    "paper": "OECD preliminary 2025 aid data and World Bank KNOMAD remittances data",
+    "mini": "<svg viewBox='0 0 120 64' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><line x1='8' y1='53' x2='112' y2='53' stroke='#D7E6E6' stroke-width='2'/><circle cx='42' cy='32' r='21' fill='#1C8C9B' fill-opacity='0.92'/><circle cx='88' cy='43' r='10' fill='#E2664A' fill-opacity='0.92'/></svg>",
     "svg": "<svg viewBox='0 0 760 372' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Two circles drawn to scale. The large circle is money sent home by migrants, roughly 700 billion US dollars in 2025. The much smaller circle is official development assistance, roughly 160 billion after the largest cut on record.'><rect width='760' height='372' fill='#F6FBFB'/><line x1='40' y1='312' x2='720' y2='312' stroke='#D7E6E6' stroke-width='2'/><circle cx='240' cy='214' r='98' fill='#1C8C9B' fill-opacity='0.92'/><circle cx='240' cy='214' r='98' fill='none' stroke='#0E4D5C' stroke-width='2'/><text x='240' y='202' text-anchor='middle' font-family='Space Mono, monospace' font-size='13' letter-spacing='2' fill='#F6FBFB'>REMITTANCES</text><text x='240' y='226' text-anchor='middle' font-family='Fraunces, Georgia, serif' font-size='26' fill='#FFFFFF'>700 billion</text><text x='240' y='246' text-anchor='middle' font-family='Spline Sans, sans-serif' font-size='12' fill='#DFF2F1'>US dollars sent home, 2025</text><circle cx='560' cy='265' r='47' fill='#E2664A' fill-opacity='0.92'/><circle cx='560' cy='265' r='47' fill='none' stroke='#993C1D' stroke-width='2'/><text x='560' y='190' text-anchor='middle' font-family='Space Mono, monospace' font-size='11' letter-spacing='1.5' fill='#993C1D'>AID (ODA)</text><text x='560' y='208' text-anchor='middle' font-family='Fraunces, Georgia, serif' font-size='19' fill='#993C1D'>160 billion</text><line x1='560' y1='214' x2='560' y2='216' stroke='#993C1D' stroke-width='1.4'/><path d='M352,282 C400,296 460,298 500,290' fill='none' stroke='#3D5560' stroke-width='1.6' stroke-dasharray='5 5'/><text x='428' y='324' text-anchor='middle' font-family='Spline Sans, sans-serif' font-size='13.5' fill='#3D5560'>more than four times the size, and the gap is widening</text><text x='40' y='42' font-family='Fraunces, Georgia, serif' font-size='19' fill='#0B2530'>What actually arrives on the islands</text><text x='40' y='62' font-family='Spline Sans, sans-serif' font-size='12.5' fill='#3D5560'>Money sent home by migrants beside official development assistance,</text><text x='40' y='79' font-family='Spline Sans, sans-serif' font-size='12.5' fill='#3D5560'>world totals to low and middle income countries, drawn to scale</text><path d='M0,358 C140,350 300,362 460,356 C600,351 690,359 760,355 L760,372 L0,372 Z' fill='#BFE3E2' opacity='0.55'/></svg>",
     "note": "In 2025 migrants sent roughly 700 billion US dollars home to low and middle income countries, while official development assistance fell to roughly 160 billion, a 23 percent drop and the largest cut on record. The two circles are drawn to scale. Small Island Developing States lean on both flows more than any other group of developing countries, so as one recedes and the other holds, the balance of who finances island life is shifting fast.",
     "sources": [

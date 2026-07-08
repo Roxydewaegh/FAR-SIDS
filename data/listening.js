@@ -60,11 +60,17 @@ FARSIDS.LISTENING = [
     "when": "Logged July 2026",
     "title": "The price of sending money home",
     "art": "<svg viewBox='0 0 200 60' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><g transform='translate(20,16) scale(1)'><circle cx='13' cy='13' r='13' fill='#FFCC00' stroke='#993C1D' stroke-width='1.6'/><text x='13' y='18' text-anchor='middle' font-family='Space Mono, monospace' font-size='13' fill='#993C1D'>$</text></g><g transform='translate(62,16) scale(1)'><circle cx='6' cy='6' r='4.5' fill='none' stroke='#993C1D' stroke-width='2'/><circle cx='22' cy='22' r='4.5' fill='none' stroke='#993C1D' stroke-width='2'/><line x1='3' y1='25' x2='25' y2='3' stroke='#993C1D' stroke-width='2.4'/></g><g transform='translate(110,8) scale(1)'><rect x='0' y='0' width='26' height='44' rx='5' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2'/><line x1='8' y1='5' x2='18' y2='5' stroke='#0E4D5C' stroke-width='1.6'/></g><g transform='translate(150,18) scale(1)'><rect x='0' y='0' width='34' height='23' rx='3' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2'/><path d='M1,2 L17,14 L33,2' fill='none' stroke='#0E4D5C' stroke-width='1.7'/></g></svg>",
-    "teaser": "Sending 200 dollars home still costs around 6 percent on average, double the global target, and cash costs far more than apps. A new 1 percent US tax on cash remittances is pushing the conversation, and the money, toward digital channels.",
-    "body": "Beneath every remittance story sits a fee. The World Bank's price tracker puts the global average cost of sending 200 US dollars at roughly 6 percent, double the Sustainable Development Goal target of 3 percent, and the small corridors that serve islands tend to sit above the average. How you send matters as much as where you send it: digital transfers average around 5 percent while cash and bank channels run higher, with banks the most expensive route of all. Diaspora conversations are increasingly practical, which app, whose promotional rate, who still queues at an agent on a Saturday, and a new 1 percent US excise on cash based remittances from January 2026 is nudging even the loyal toward their phones.",
+    "teaser": "Which app, whose promotional rate, who still queues at the agent on Saturday: diaspora group chats trade fee advice constantly, because sending 200 dollars home still costs about 6 percent, and a new US tax on cash transfers is pushing the talk toward phones.",
+    "body": "Ask any diaspora group chat and the fee talk starts immediately: which app is cheapest this month, whose promotional rate is about to expire, who still queues at an agent on a Saturday because grandma trusts the counter. Public comparison sites built for exactly this conversation, like SendMoneyPacific, exist because the stakes are real. Sending 200 US dollars home still costs about 6 percent on average, double the global target, with cash and bank channels the dearest of all, and a new 1 percent US excise on cash based remittances from January 2026 is nudging even the loyal toward their phones.",
     "sources": [
-      {"t": "World Bank, Remittance Prices Worldwide", "u": "https://remittanceprices.worldbank.org/"},
-      {"t": "IOM World Migration Report, international remittances chapter", "u": "https://worldmigrationreport.iom.int/what-we-do/wmr-2026/chapter-2/international-remittances"}
+      {
+        "t": "SendMoneyPacific, the public fee comparison site diaspora communities use",
+        "u": "https://sendmoneypacific.org/"
+      },
+      {
+        "t": "World Bank, Remittance Prices Worldwide, the numbers behind the talk",
+        "u": "https://remittanceprices.worldbank.org/"
+      }
     ]
   },
   {
@@ -119,12 +125,21 @@ FARSIDS.LISTENING = [
     "when": "Logged July 2026",
     "title": "After Melissa, who rebuilds and how",
     "art": "<svg viewBox='0 0 200 60' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><g transform='translate(22,14) scale(1)'><path d='M30,15 C30,7 22,3 15,6 C8,9 6,17 11,22 C15,26 22,25 24,20 C26,16 22,12 18,14' fill='none' stroke='#E2664A' stroke-width='3' stroke-linecap='round'/></g><g transform='translate(76,16) scale(1)'><rect x='0' y='0' width='34' height='20' rx='9' fill='#BFE3E2'/><polygon points='8,19 8,27 16,19' fill='#BFE3E2'/></g><g transform='translate(96,28) scale(0.7)'><rect x='0' y='0' width='34' height='20' rx='9' fill='#BFE3E2'/><polygon points='8,19 8,27 16,19' fill='#BFE3E2'/></g><g transform='translate(150,16) scale(1)'><polygon points='0,14 14,2 28,14' fill='#1C8C9B'/><rect x='4' y='14' width='20' height='14' fill='#1C8C9B'/></g></svg>",
-    "teaser": "Months after Hurricane Melissa, the public conversation has moved from relief to reckoning: confidence is shaken, commentators ask whether storms like this are the new planning baseline, and the diaspora's generosity comes with a demand for transparent recovery.",
-    "body": "The storm has passed and the argument has started. Consumer confidence dipped in Melissa's wake, and Gleaner commentary now frames the hurricane as a moment of reckoning rather than a routine recovery, asking whether storms of this force should be treated as exceptions or as the conditions Jamaica must plan for as a matter of course. Proposals to decentralise disaster governance are back on the table, and the swift generosity of the diaspora, whose donations and supplies often moved faster than official channels, is being praised with a caveat attached: relief must be transparently and equitably managed or it risks becoming a source of division. Remittances themselves dipped when channels went down in October, then recovered as families abroad stepped in.",
+    "teaser": "Months after Hurricane Melissa, the public conversation has moved from relief to reckoning: diaspora voices ask whether storms like this are the new planning baseline, and the generosity that moved faster than official channels comes with a demand for transparent recovery.",
+    "body": "The storm has passed and the argument has started, much of it led by the diaspora itself. A Gleaner commentary by an Atlanta based diaspora attorney frames Melissa as a moment of reckoning rather than a routine recovery, asking whether storms of this force should be treated as exceptions or as the conditions Jamaica must now plan for, and diaspora community papers document the barrel drives, delegations, and rebuilding funds that moved faster than official channels. The generosity comes with a caveat the commentators state plainly: relief must be transparently and equitably managed or it risks becoming a source of division. Remittances themselves dipped when channels went down in October, then recovered as families abroad stepped in.",
     "sources": [
-      {"t": "Jamaica Gleaner, Hurricane Melissa and Jamaica's moment of reckoning", "u": "https://jamaica-gleaner.com/article/commentary/20260110/allan-alberga-hurricane-melissa-and-jamaicas-moment-reckoning"},
-      {"t": "Jamaica Gleaner, Jamaican confidence shaken by Hurricane Melissa", "u": "https://jamaica-gleaner.com/article/business/20260121/jamaican-confidence-shaken-hurricane-melissa"},
-      {"t": "Jamaica Gleaner, remittances slide as Melissa disrupts flows", "u": "https://jamaica-gleaner.com/article/news/20251231/jamaicas-remittances-slide-hurricane-melissa-disrupts-flows"}
+      {
+        "t": "Jamaica Gleaner, a diaspora voice on Melissa and Jamaica's moment of reckoning",
+        "u": "https://jamaica-gleaner.com/article/commentary/20260110/allan-alberga-hurricane-melissa-and-jamaicas-moment-reckoning"
+      },
+      {
+        "t": "Nashville PRIDE, Jamaicans on island and in diaspora join hands to rebuild",
+        "u": "https://pridepublishinggroup.com/2025/12/23/post-hurricane-melissa-jamaicans-on-island-and-in-diaspora-join-hands-to-rebuild/"
+      },
+      {
+        "t": "Jamaica Gleaner, remittances slide as Melissa disrupts flows",
+        "u": "https://jamaica-gleaner.com/article/news/20251231/jamaicas-remittances-slide-hurricane-melissa-disrupts-flows"
+      }
     ]
   },
   {
@@ -179,12 +194,21 @@ FARSIDS.LISTENING = [
     "when": "Logged July 2026",
     "title": "The seasonal work bargain",
     "art": "<svg viewBox='0 0 200 60' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><g transform='translate(20,14) scale(1)'><polygon points='0,16 34,4 18,20' fill='#3D5560'/><polygon points='18,20 22,30 26,12' fill='#8FA6AD'/></g><g transform='translate(80,10) scale(1)'><circle cx='14' cy='10' r='10' fill='#1C8C9B'/><rect x='11.5' y='18' width='5' height='16' fill='#993C1D'/><circle cx='8' cy='8' r='2.6' fill='#E2664A'/><circle cx='19' cy='12' r='2.6' fill='#E2664A'/></g><g transform='translate(126,16) scale(1)'><circle cx='13' cy='13' r='13' fill='#FFCC00' stroke='#993C1D' stroke-width='1.6'/><text x='13' y='18' text-anchor='middle' font-family='Space Mono, monospace' font-size='13' fill='#993C1D'>$</text></g><g transform='translate(156,18) scale(1)'><rect x='0' y='0' width='34' height='23' rx='3' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2'/><path d='M1,2 L17,14 L33,2' fill='none' stroke='#0E4D5C' stroke-width='1.7'/></g></svg>",
-    "teaser": "About 1,800 Tongans a year pick fruit in New Zealand and more head to Australia, and the money they send keeps the economy afloat. On Pacific radio the question has sharpened: who really benefits, and what happens to the villages managing without them.",
-    "body": "Seasonal work schemes are the loudest remittance machine in the Pacific. Around 1,800 Tongans a year travel under New Zealand's Recognised Seasonal Employer scheme, with more under Australia's PALM, and with remittance dependence around 44 percent of GDP the pay packets they send home are national infrastructure. But the talk on RNZ Pacific and in regional commentary has turned sharper. Labour experts argue Australia and New Zealand are the clear beneficiaries of their own schemes, Pacific governments say they no longer want to be outposts that grow workers for someone else's orchards, and at home the conversation is about absent parents, split families, and farms with nobody left to work them.",
+    "teaser": "About 1,800 Tongans a year pick fruit in New Zealand and more head to Australia, and the money they send keeps the economy afloat. On Pacific radio and in island commentary the question has sharpened: who really benefits, and what happens to the villages managing without them.",
+    "body": "Seasonal work schemes are the loudest remittance machine in the Pacific, and the loudest argument. On RNZ Pacific, labour voices argue Australia and New Zealand are the clear beneficiaries of their own schemes; in regional commentary, Pacific writers say their countries no longer want to be outposts that grow workers for someone else's orchards; and in the villages the conversation is about absent parents, split families, and farms with nobody left to work them. Around 1,800 Tongans a year travel under New Zealand's scheme alone, with more under Australia's, and with remittance dependence among the highest in the world, the pay packets they send home are national infrastructure.",
     "sources": [
-      {"t": "RNZ Pacific, Pacific nations too dependent on seasonal worker schemes", "u": "https://www.rnz.co.nz/international/pacific-news/587380/pacific-nations-too-dependent-on-seasonal-worker-schemes-labour-expert-warns"},
-      {"t": "The Conversation, Pacific nations no longer want to be the outposts that grow workers", "u": "https://theconversation.com/nz-wants-more-seasonal-workers-but-pacific-nations-no-longer-want-to-be-the-outposts-that-grow-them-217790"},
-      {"t": "RNZ, government reviews the RSE visa scheme", "u": "https://www.rnz.co.nz/news/political/592721/government-reviews-rse-visa-scheme-report-calls-for-reform"}
+      {
+        "t": "RNZ Pacific, Pacific nations too dependent on seasonal worker schemes",
+        "u": "https://www.rnz.co.nz/international/pacific-news/587380/pacific-nations-too-dependent-on-seasonal-worker-schemes-labour-expert-warns"
+      },
+      {
+        "t": "The Conversation, Pacific nations no longer want to be the outposts that grow workers",
+        "u": "https://theconversation.com/nz-wants-more-seasonal-workers-but-pacific-nations-no-longer-want-to-be-the-outposts-that-grow-them-217790"
+      },
+      {
+        "t": "RNZ, government reviews the RSE visa scheme",
+        "u": "https://www.rnz.co.nz/news/political/592721/government-reviews-rse-visa-scheme-report-calls-for-reform"
+      }
     ]
   },
   {
@@ -240,10 +264,16 @@ FARSIDS.LISTENING = [
     "title": "The Je viens season",
     "art": "<svg viewBox='0 0 200 60' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><g transform='translate(18,14) scale(1)'><polygon points='0,16 34,4 18,20' fill='#3D5560'/><polygon points='18,20 22,30 26,12' fill='#8FA6AD'/></g><g transform='translate(76,14) scale(1)'><rect x='0' y='8' width='30' height='22' rx='4' fill='#E2664A' stroke='#993C1D' stroke-width='1.8'/><path d='M10,8 v-5 h10 v5' fill='none' stroke='#993C1D' stroke-width='2.2'/></g><g transform='translate(126,14) scale(1)'><circle cx='14' cy='14' r='8' fill='#FFCC00'/><line x1='25.0' y1='14.0' x2='29.0' y2='14.0' stroke='#FFCC00' stroke-width='2.4'/><line x1='21.781270960839198' y1='21.775076992159025' x2='24.610824037507996' y2='24.60237771658049' stroke='#FFCC00' stroke-width='2.4'/><line x1='14.008759593818066' y1='24.99999651225018' x2='14.011944900661' y2='28.99999524397752' stroke='#FFCC00' stroke-width='2.4'/><line x1='6.231121906979943' y1='21.787459995132753' x2='3.406075327699922' y2='24.619263629726483' stroke='#FFCC00' stroke-width='2.4'/><line x1='3.000013950997065' y1='14.017519182081355' x2='-0.9999809759130933' y2='14.023889793747303' stroke='#FFCC00' stroke-width='2.4'/><line x1='6.2063559088849996' y1='6.237325732646756' x2='3.3723035121159075' y2='3.4145350899728495' stroke='#FFCC00' stroke-width='2.4'/><line x1='13.973721240764903' y1='3.0000313897351027' x2='13.964165328315778' y2='-0.9999571958157691' stroke='#FFCC00' stroke-width='2.4'/><line x1='21.75646551909265' y1='6.200176755135615' x2='24.57699843512634' y2='3.3638773933667476' stroke='#FFCC00' stroke-width='2.4'/></g><g transform='translate(162,16) scale(0.8)'><rect x='2' y='8' width='30' height='22' rx='4' fill='#EFE6D2' stroke='#993C1D' stroke-width='2'/><ellipse cx='17' cy='8' rx='15' ry='5' fill='#FFFFFF' stroke='#993C1D' stroke-width='2'/><line x1='6' y1='12' x2='11' y2='28' stroke='#993C1D' stroke-width='1.4'/><line x1='28' y1='12' x2='23' y2='28' stroke='#993C1D' stroke-width='1.4'/></g></svg>",
     "teaser": "Every French school summer the diaspora comes home. The Je viens arrive from Marseille with suitcases and savings, the islands fill with taarab orchestras and ceremonies, and for a few months the economy visibly runs on the season.",
-    "body": "In Comoros the summer has its own name for people: the Je viens, the diaspora members who arrive from Marseille and Paris when French schools close. Their return is an economic season in itself. Flights fill, prices rise, houses get their long awaited roofs, and the calendar packs with weddings and celebrations animated by taarab orchestras, the very ceremonies that a year of transfers has been saving toward. French Treasury figures put diaspora transfers near 19 percent of GDP in 2024, quietly supporting consumption all year round, but it is in July and August that the relationship between the two shores becomes something you can see on the street.",
+    "body": "In Comoros the summer has its own name for people: the Je viens, the diaspora members who arrive from Marseille and Paris when French schools close. Their return is an economic season in itself, and Comorian media write about it that way. Flights fill, prices rise, houses get their long awaited roofs, and the calendar packs with weddings and celebrations animated by taarab orchestras, the very ceremonies a year of transfers has been saving toward. Community news sites reckon the diaspora's transfers near a fifth of the economy, quietly supporting consumption all year round, but it is in July and August that the relationship between the two shores becomes something you can see on the street.",
     "sources": [
-      {"t": "HabarizaComores, je viens de Marseille et je vais a Ouellah", "u": "https://www.habarizacomores.com/2018/11/comores-je-viens-de-marseille-et-je.html"},
-      {"t": "Direction generale du Tresor, Comores, indicateurs et conjoncture", "u": "https://www.tresor.economie.gouv.fr/Pays/KM/indicateurs-et-conjoncture"}
+      {
+        "t": "HabarizaComores, je viens de Marseille et je vais a Ouellah",
+        "u": "https://www.habarizacomores.com/2018/11/comores-je-viens-de-marseille-et-je.html"
+      },
+      {
+        "t": "Comores Infos, les transferts de la diaspora, un appui de developpement",
+        "u": "https://www.comoresinfos.net/les-transferts-dargent-de-la-diaspora-un-appui-de-developpement-pour-les-comores/"
+      }
     ]
   },
   {
@@ -252,12 +282,21 @@ FARSIDS.LISTENING = [
     "when": "Logged July 2026",
     "title": "Aid retreats, remittances hold",
     "art": "<svg viewBox='0 0 200 60' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><g transform='translate(20,14) scale(1)'><rect x='0' y='6' width='9' height='26' rx='2' fill='#1C8C9B'/><rect x='13' y='14' width='9' height='18' rx='2' fill='#1C8C9B' fill-opacity='0.7'/><rect x='26' y='20' width='9' height='12' rx='2' fill='#1C8C9B' fill-opacity='0.45'/></g><g transform='translate(76,18) scale(1)'><rect x='0' y='0' width='34' height='23' rx='3' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2'/><path d='M1,2 L17,14 L33,2' fill='none' stroke='#0E4D5C' stroke-width='1.7'/></g><g transform='translate(126,14) scale(1)'><circle cx='13' cy='13' r='13' fill='#FFCC00' stroke='#993C1D' stroke-width='1.6'/><text x='13' y='18' text-anchor='middle' font-family='Space Mono, monospace' font-size='13' fill='#993C1D'>$</text></g><g transform='translate(160,16) scale(1)'><polygon points='0,14 14,2 28,14' fill='#1C8C9B'/><rect x='4' y='14' width='20' height='14' fill='#1C8C9B'/></g></svg>",
-    "teaser": "Aid fell 23 percent in 2025, the sharpest drop on record, while remittances passed roughly 700 billion US dollars, more than aid and foreign investment combined. The policy conversation has shifted to how much weight remittances can carry as aid recedes.",
-    "body": "Official development assistance fell by 23 percent in 2025, the largest annual contraction on record, while remittances kept rising, passing roughly 700 billion US dollars to low and middle income countries, more than aid and foreign direct investment combined. The development policy conversation has shifted from whether remittances matter to how much weight they can carry as aid recedes. SIDS rely on both flows more than any other group of developing countries, which is exactly the interaction this project studies.",
+    "teaser": "From island opinion pages to diaspora feeds, the talk of 2025 and 2026 is aid pulling back and family money holding the line. The commentary asks out loud how much weight remittances can carry as donors retreat.",
+    "body": "The retreat of aid is not just a statistic, it is a running public argument. Development media and diaspora commentary spent 2025 and 2026 asking the same question in different accents: with donor budgets falling by the sharpest margin on record, how much weight can family money carry? Bloggers and columnists point out that remittances now dwarf aid several times over, diaspora writers answer with a mix of pride and fatigue, and island commentators debate what it means when households, not donors, are the steadiest financiers of island life. SIDS lean on both flows more than any other group of developing countries, which is exactly the interaction this project studies.",
     "sources": [
-      {"t": "OECD, a historic decline in foreign aid", "u": "https://www.oecd.org/en/data/insights/data-explainers/2026/04/a-historic-decline-in-foreign-aid-preliminary-2025-oda-data.html"},
-      {"t": "Center for Global Development on aid cuts and remittances", "u": "https://www.cgdev.org/blog/after-aid-cuts-heres-how-make-most-out-remittances"},
-      {"t": "Devex, remittances outstrip aid three times over", "u": "https://www.devex.com/news/remittances-outstrip-aid-3-times-over-can-they-transform-development-107952"}
+      {
+        "t": "Devex, remittances outstrip aid three times over",
+        "u": "https://www.devex.com/news/remittances-outstrip-aid-3-times-over-can-they-transform-development-107952"
+      },
+      {
+        "t": "Center for Global Development blog, after aid cuts, make the most of remittances",
+        "u": "https://www.cgdev.org/blog/after-aid-cuts-heres-how-make-most-out-remittances"
+      },
+      {
+        "t": "ISS African Futures blog, rethinking remittances",
+        "u": "https://futures.issafrica.org/blog/2025/Rethinking-remittances-the-overlooked-billions-sustaining-African-households"
+      }
     ]
   },
   {
@@ -266,12 +305,17 @@ FARSIDS.LISTENING = [
     "when": "Logged July 2026",
     "title": "Taxing the lifeline",
     "art": "<svg viewBox='0 0 200 60' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><g transform='translate(24,18) scale(1)'><rect x='0' y='0' width='34' height='23' rx='3' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2'/><path d='M1,2 L17,14 L33,2' fill='none' stroke='#0E4D5C' stroke-width='1.7'/></g><g transform='translate(80,16) scale(1)'><circle cx='6' cy='6' r='4.5' fill='none' stroke='#993C1D' stroke-width='2'/><circle cx='22' cy='22' r='4.5' fill='none' stroke='#993C1D' stroke-width='2'/><line x1='3' y1='25' x2='25' y2='3' stroke='#993C1D' stroke-width='2.4'/></g><g transform='translate(126,16) scale(1)'><circle cx='13' cy='13' r='13' fill='#FFCC00' stroke='#993C1D' stroke-width='1.6'/><text x='13' y='18' text-anchor='middle' font-family='Space Mono, monospace' font-size='13' fill='#993C1D'>$</text></g></svg>",
-    "teaser": "A new US law puts a one percent excise on money sent home from the United States, and the diaspora is pushing back hard. Remittances bring Jamaica around 3.4 billion US dollars a year, roughly 15 percent of GDP.",
-    "body": "The loudest remittance conversation in the Jamaican diaspora right now is a tax. Under a new US law, money sent home from the United States carries a one percent excise from the end of 2025, and diaspora voices have called it devastating for the poorest receiving households. Remittances bring Jamaica around 3.4 billion US dollars a year, roughly 15 percent of GDP, and alongside the tax debate runs an older, franker conversation about trust, barrels, and whether money sent for school fees is spent on school fees.",
+    "teaser": "A new US law puts a one percent excise on money sent home from the United States, and the diaspora is pushing back hard, in columns, call-ins, and comment sections. Alongside the tax runs an older, franker conversation about trust and expectation.",
+    "body": "The loudest remittance conversation in the Jamaican diaspora right now is a tax. Under a new US law, money sent home from the United States carries a one percent excise from the end of 2025, and diaspora voices, in newspaper columns, radio call-ins, and long comment threads, have called it devastating for the poorest receiving households. Alongside the tax debate runs an older, franker conversation that diaspora writers keep returning to: trust, barrels, whether money sent for school fees is spent on school fees, and what the sender is owed in return.",
     "sources": [
-      {"t": "Jamaica Gleaner on the US remittance tax", "u": "https://jamaica-gleaner.com/article/news/20250704/impending-us-tax-remittances-expected-impact-jamaican-households-and"},
-      {"t": "Bank of Jamaica remittance statistics", "u": "https://boj.org.jm/statistics/external-sector/remittances/"},
-      {"t": "A diaspora commentary on remittances and expectation", "u": "https://leogilling.substack.com/p/the-jamaican-diaspora-remittances"}
+      {
+        "t": "Jamaica Gleaner on the US remittance tax",
+        "u": "https://jamaica-gleaner.com/article/news/20250704/impending-us-tax-remittances-expected-impact-jamaican-households-and"
+      },
+      {
+        "t": "A diaspora commentary on remittances and expectation",
+        "u": "https://leogilling.substack.com/p/the-jamaican-diaspora-remittances"
+      }
     ]
   },
   {
@@ -280,12 +324,21 @@ FARSIDS.LISTENING = [
     "when": "Logged July 2026",
     "title": "The misinale question",
     "art": "<svg viewBox='0 0 200 60' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><g transform='translate(24,18) scale(1)'><rect x='4' y='16' width='28' height='20' fill='#1C8C9B'/><polygon points='0,16 18,2 36,16' fill='#0E4D5C'/><line x1='18' y1='-6' x2='18' y2='2' stroke='#0E4D5C' stroke-width='2.4'/><line x1='14' y1='-2' x2='22' y2='-2' stroke='#0E4D5C' stroke-width='2.4'/></g><g transform='translate(84,18) scale(1)'><rect x='0' y='0' width='34' height='23' rx='3' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2'/><path d='M1,2 L17,14 L33,2' fill='none' stroke='#0E4D5C' stroke-width='1.7'/></g><g transform='translate(140,10) scale(1)'><text x='0' y='26' font-family='Fraunces, Georgia, serif' font-size='30' fill='#993C1D'>?</text></g><g transform='translate(166,16) scale(1)'><circle cx='13' cy='13' r='13' fill='#FFCC00' stroke='#993C1D' stroke-width='1.6'/><text x='13' y='18' text-anchor='middle' font-family='Space Mono, monospace' font-size='13' fill='#993C1D'>$</text></g></svg>",
-    "teaser": "Tonga is the most remittance dependent country in the world, and diaspora conversations keep circling the tension between kavenga, the web of family and church obligations, and saving for children's futures.",
-    "body": "Tongan families in Auckland, Sydney, and Salt Lake City send home not only household remittances but misinale, the annual church donation given publicly and often competitively. Diaspora conversations return again and again to the tension between kavenga, the web of family and church obligations, and saving for children's futures. Tonga is the most remittance dependent country in the world, with flows around 40 percent of GDP, so how these obligations are negotiated is not a private matter, it is the national economy.",
+    "teaser": "Tonga is the most remittance dependent country in the world, and community conversations keep circling the tension between kavenga, the web of family and church obligations, and saving for children's futures.",
+    "body": "Tongan families in Auckland, Sydney, and Salt Lake City send home not only household remittances but misinale, the annual church donation given publicly and often competitively. The tension between kavenga, the web of family and church obligations, and saving for children's futures is argued out in the community's own spaces: Tongan community news sites in New Zealand cover church finance controversies at length, expatriate bloggers describe the collection season with affection and alarm in equal measure, and the debate resurfaces every giving season. Tonga is the most remittance dependent country in the world, so how these obligations are negotiated is not a private matter, it is the national economy.",
     "sources": [
-      {"t": "Devpolicy on Tongan remittances", "u": "https://devpolicy.org/three-questions-on-tongan-remittances-20220720/"},
-      {"t": "World Bank Migration and Development Brief 40", "u": "https://documents1.worldbank.org/curated/en/099714008132436612/pdf/IDU1a9cf73b51fcad1425a1a0dd1cc8f2f3331ce.pdf"},
-      {"t": "ADB on Tongan remittance channels and costs", "u": "https://www.adb.org/publications/remittances-from-tongan-migrant-workers-channels-costs-and-potential-gains-from-switching"}
+      {
+        "t": "Devpolicy blog, three questions on Tongan remittances",
+        "u": "https://devpolicy.org/three-questions-on-tongan-remittances-20220720/"
+      },
+      {
+        "t": "Kaniva Tonga, community news where church finance debates play out",
+        "u": "https://www.kanivatonga.co.nz/2020/11/obituary-tokaikolo-church-leader-dogged-by-questions-over-finances-miracle-pills-and-departures-from-doctrine-will-be-buried-in-auckland/"
+      },
+      {
+        "t": "A community blog on misinale season in Tonga",
+        "u": "http://harrisonintonga.blogspot.com/2013/09/its-that-time-of-year-again.html"
+      }
     ]
   },
   {
@@ -294,12 +347,21 @@ FARSIDS.LISTENING = [
     "when": "Logged July 2026",
     "title": "The price of the grand mariage",
     "art": "<svg viewBox='0 0 200 60' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><g transform='translate(22,10) scale(0.9)'><circle cx='13' cy='13' r='13' fill='#FFCC00' stroke='#993C1D' stroke-width='1.6'/><text x='13' y='18' text-anchor='middle' font-family='Space Mono, monospace' font-size='13' fill='#993C1D'>$</text></g><g transform='translate(36,20) scale(0.9)'><circle cx='13' cy='13' r='13' fill='#FFCC00' stroke='#993C1D' stroke-width='1.6'/><text x='13' y='18' text-anchor='middle' font-family='Space Mono, monospace' font-size='13' fill='#993C1D'>$</text></g><g transform='translate(50,10) scale(0.9)'><circle cx='13' cy='13' r='13' fill='#FFCC00' stroke='#993C1D' stroke-width='1.6'/><text x='13' y='18' text-anchor='middle' font-family='Space Mono, monospace' font-size='13' fill='#993C1D'>$</text></g><g transform='translate(86,16) scale(1)'><path d='M0,4 C10,16 30,16 40,4' fill='none' stroke='#1C8C9B' stroke-width='2'/><polygon points='6,12.5 9,20.5 3,20.5' fill='#E2664A'/><polygon points='13,10.3 16,18.3 10,18.3' fill='#FFCC00'/><polygon points='20,8.1 23,16.1 17,16.1' fill='#1C8C9B'/><polygon points='27,8.1 30,16.1 24,16.1' fill='#E2664A'/><polygon points='34,10.3 37,18.3 31,18.3' fill='#FFCC00'/></g><g transform='translate(150,16) scale(1)'><rect x='2' y='16' width='30' height='18' fill='#1C8C9B'/><path d='M4,16 A13,13 0 0 1 30,16 Z' fill='#0E4D5C'/><path d='M25,4 A6,6 0 1 0 29,10 A5,5 0 0 1 25,4 Z' fill='#FFCC00'/></g></svg>",
-    "teaser": "From Marseille, remittances flow back to Grande Comore at a scale that exceeds foreign aid, much of it toward the grand mariage, and a generational debate asks whether that wealth should build something else.",
-    "body": "From Marseille, home to the largest Comorian community outside the islands, money flows back to Grande Comore at a scale that exceeds foreign aid, above a quarter of GDP by most estimates. Much of it funds the grand mariage, the customary marriage that secures full social standing and can cost the equivalent of 30,000 euros. A generational debate now runs through the diaspora, with younger Comorians publicly asking whether that wealth should go into productive investment instead, while others defend the anda as the social infrastructure that binds the diaspora to home.",
+    "teaser": "From Marseille, money flows back to Grande Comore at a scale beyond what any donor sends, much of it toward the grand mariage, and a generational debate in the Comorian press and diaspora asks whether that wealth should build something else.",
+    "body": "From Marseille, home to the largest Comorian community outside the islands, money flows back to Grande Comore on a scale beyond what any donor sends, and much of it funds the grand mariage, the customary marriage that secures full social standing and can cost the equivalent of tens of thousands of euros. The debate is fully public and fully Comorian: community news sites run reportage on weddings that sell for auction level sums in France, Comorian magazines weigh tradition and prestige against contemporary costs, and younger voices in the diaspora ask openly whether that wealth should go into productive investment instead, while others defend the anda as the social infrastructure that binds the diaspora to home.",
     "sources": [
-      {"t": "ritimo on the Comorian diaspora's contribution", "u": "https://www.ritimo.org/La-contribution-de-la-diaspora-a-la-vie-economique-et-sociale-du-pays-est"},
-      {"t": "Cairn, les transferts de fonds des migrants aux Comores", "u": "https://shs.cairn.info/revue-techniques-financieres-et-developpement-2014-1-page-69?lang=fr"},
-      {"t": "World Bank, remittances to Comoros", "u": "https://documents1.worldbank.org/curated/en/957391468772177750/pdf/312750PAPER0Comoros0AFR0wp75.pdf"}
+      {
+        "t": "HabarizaComores, reportage on the grand mariage among Comorians in France",
+        "u": "https://www.habarizacomores.com/2013/03/le-mariage-ou-la-vente-aux-encheres.html"
+      },
+      {
+        "t": "Masiwa Comores, le grand mariage entre tradition, prestige et defis contemporains",
+        "u": "https://masiwa-comores.com/societe/le-grand-mariage-comorien-entre-tradition-prestige-et-defis-contemporains/"
+      },
+      {
+        "t": "ritimo on the Comorian diaspora's contribution",
+        "u": "https://www.ritimo.org/La-contribution-de-la-diaspora-a-la-vie-economique-et-sociale-du-pays-est"
+      }
     ]
   }
 ];

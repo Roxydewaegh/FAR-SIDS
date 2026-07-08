@@ -11,12 +11,56 @@ FARSIDS.LISTENING = [
     "place": "Across the islands",
     "k": "all",
     "when": "Logged July 2026",
+    "title": "Crowdfunding the disaster",
+    "teaser": "When storms and eruptions hit, diasporas now open GoFundMe and GlobalGiving pages within hours. Platform giving has become the newest channel beside barrels and wire transfers, moving millions after Maria and Melissa.",
+    "body": "The past decade added a new channel to the disaster playbook. Within hours of a hurricane or eruption, fundraising pages appear, opened by cousins abroad, church groups, and school alumni associations, and shared through the same feeds that carry the first photos of the damage. Millions moved through such pages after Hurricane Maria, and GoFundMe now runs a dedicated relief hub whenever a storm like Melissa strikes, routing donations to verified fundraisers. It is remittance behaviour wearing new clothes, fast, personal, and trust based, moving house to house while institutional pledges are still being drafted. The open question in the commentary is coverage, since platform giving follows networks and visibility rather than need.",
+    "sources": [
+      {
+        "t": "GoFundMe, Hurricane Melissa relief hub",
+        "u": "https://www.gofundme.com/c/act/hurricane-melissa"
+      },
+      {
+        "t": "GlobalGiving, Caribbean hurricane relief fund",
+        "u": "https://www.globalgiving.org/projects/hurricane-maria-caribbean-relief-fund/"
+      },
+      {
+        "t": "Giving Compass, how crowdfunding is redefining disaster relief",
+        "u": "https://givingcompass.org/article/how-gofundme-is-redefining-the-business-of-disaster-relief"
+      }
+    ]
+  },
+  {
+    "place": "Across the islands",
+    "k": "all",
+    "when": "Logged July 2026",
     "title": "The price of sending money home",
     "teaser": "Sending 200 dollars home still costs around 6 percent on average, double the global target, and cash costs far more than apps. A new 1 percent US tax on cash remittances is pushing the conversation, and the money, toward digital channels.",
     "body": "Beneath every remittance story sits a fee. The World Bank's price tracker puts the global average cost of sending 200 US dollars at roughly 6 percent, double the Sustainable Development Goal target of 3 percent, and the small corridors that serve islands tend to sit above the average. How you send matters as much as where you send it: digital transfers average around 5 percent while cash and bank channels run higher, with banks the most expensive route of all. Diaspora conversations are increasingly practical, which app, whose promotional rate, who still queues at an agent on a Saturday, and a new 1 percent US excise on cash based remittances from January 2026 is nudging even the loyal toward their phones.",
     "sources": [
       {"t": "World Bank, Remittance Prices Worldwide", "u": "https://remittanceprices.worldbank.org/"},
       {"t": "IOM World Migration Report, international remittances chapter", "u": "https://worldmigrationreport.iom.int/what-we-do/wmr-2026/chapter-2/international-remittances"}
+    ]
+  },
+  {
+    "place": "Jamaica",
+    "k": "jm",
+    "when": "Logged July 2026",
+    "title": "The barrel, filmed",
+    "teaser": "Packing a barrel for Jamaica is now a TikTok and YouTube genre: the multi-day ritual of tinned food, school shoes, and toothpaste filmed for millions, with comment sections debating whether the tradition is fading as cash apps take over.",
+    "body": "The barrel is the remittance you can hold. For decades Jamaicans abroad have packed drums with groceries, clothes, and school supplies for Easter, back to school, and Christmas, and in the last decade the ritual went public: packing videos are a genre of their own on TikTok and YouTube, complete with reveal shots, cost breakdowns, and grandmothers inspecting the contents on camera. The comment sections carry the real debate, whether barrels still make sense as shipping costs climb and money apps deliver in minutes, and what is lost if the answer is no, because a barrel carries care in a way a transfer notification does not. Remittances in kind, long invisible in the statistics, now play to an audience of millions.",
+    "sources": [
+      {
+        "t": "Jamaicans.com, the barrel from foreign",
+        "u": "https://jamaicans.com/the-barrel-from-farin-foreign/"
+      },
+      {
+        "t": "34th Street Magazine, packing barrels with care",
+        "u": "https://www.34st.com/article/2024/11/love-sent-across-seas-caribbean-african-immigrants-penn-museum-center-for-experimental-ethnography"
+      },
+      {
+        "t": "TikTok, packing a barrel to send to Jamaica (public topic page)",
+        "u": "https://www.tiktok.com/discover/packing-a-barrel-to-send-to-jamaica"
+      }
     ]
   },
   {
@@ -36,6 +80,28 @@ FARSIDS.LISTENING = [
     "place": "Tonga",
     "k": "to",
     "when": "Logged July 2026",
+    "title": "Sending pa'anga, the island way",
+    "teaser": "Since 2017 Tonga Development Bank's 'Ave Pa'anga Pau voucher has moved tens of thousands of transfers from New Zealand and Australia at well below the usual cost. An island institution building its own remittance rails.",
+    "body": "'Ave Pa'anga Pau means send money securely, and it is Tonga's own answer to the cost of remitting. Developed by the Tonga Development Bank with the World Bank Group and launched in 2017, the digital voucher lets Tongans in New Zealand and Australia pay local dollars into the bank and have family redeem pa'anga at home, cutting out the chain of cash agents whose fees eat into every pay packet. Tens of thousands of transfers have moved this way at costs well below the traditional operators. In a country where remittances run above 40 percent of GDP, a few percentage points of fees are national income, and the wider story is the trend: island institutions building their own rails rather than renting someone else's.",
+    "sources": [
+      {
+        "t": "IFC, a new financial lifeline for Tongans",
+        "u": "https://www.ifc.org/en/stories/2020/tonga-remittances-2020"
+      },
+      {
+        "t": "EUDiF, the 'Ave Pa'anga Pau remittance voucher",
+        "u": "https://diasporafordevelopment.eu/cpt_practices/ave-paanga-pau-remittance-voucher/"
+      },
+      {
+        "t": "'Ave Pa'anga Pau, the service itself",
+        "u": "https://www.avepaanga.co.nz/"
+      }
+    ]
+  },
+  {
+    "place": "Tonga",
+    "k": "to",
+    "when": "Logged July 2026",
     "title": "The seasonal work bargain",
     "teaser": "About 1,800 Tongans a year pick fruit in New Zealand and more head to Australia, and the money they send keeps the economy afloat. On Pacific radio the question has sharpened: who really benefits, and what happens to the villages managing without them.",
     "body": "Seasonal work schemes are the loudest remittance machine in the Pacific. Around 1,800 Tongans a year travel under New Zealand's Recognised Seasonal Employer scheme, with more under Australia's PALM, and with remittance dependence around 44 percent of GDP the pay packets they send home are national infrastructure. But the talk on RNZ Pacific and in regional commentary has turned sharper. Labour experts argue Australia and New Zealand are the clear beneficiaries of their own schemes, Pacific governments say they no longer want to be outposts that grow workers for someone else's orchards, and at home the conversation is about absent parents, split families, and farms with nobody left to work them.",
@@ -43,6 +109,28 @@ FARSIDS.LISTENING = [
       {"t": "RNZ Pacific, Pacific nations too dependent on seasonal worker schemes", "u": "https://www.rnz.co.nz/international/pacific-news/587380/pacific-nations-too-dependent-on-seasonal-worker-schemes-labour-expert-warns"},
       {"t": "The Conversation, Pacific nations no longer want to be the outposts that grow workers", "u": "https://theconversation.com/nz-wants-more-seasonal-workers-but-pacific-nations-no-longer-want-to-be-the-outposts-that-grow-them-217790"},
       {"t": "RNZ, government reviews the RSE visa scheme", "u": "https://www.rnz.co.nz/news/political/592721/government-reviews-rse-visa-scheme-report-calls-for-reform"}
+    ]
+  },
+  {
+    "place": "Comoros",
+    "k": "km",
+    "when": "Logged July 2026",
+    "title": "The Sunday madjilissi goes online",
+    "teaser": "More than 350 Comorian village associations in France run tontines and Sunday gatherings that finance mosques, schools, and water back home, and the decade's twist is the move onto public crowdfunding pages.",
+    "body": "Beside the family transfer sits a second, collective economy. France counts more than 350 Comorian associations, most organised around a single village, and their Sunday madjilissi, tontine circles, and toirab evenings raise the sums that build what the state does not: mosques, classrooms, water systems, health posts. A toirab evening can gather thousands of euros, the larger madjlis ceremonies considerably more. The newest chapter is digital, with association fundraisers now running on public platforms like HelloAsso alongside the hall collections, making a very old solidarity visible to anyone with the link. It is development finance from below, village by village, and it rarely appears in any aid statistic.",
+    "sources": [
+      {
+        "t": "Cairn, institutions et acteurs religieux chez les Comoriens de Marseille",
+        "u": "https://www.cairn.info/revue-migrations-societe-2007-3-page-17.htm"
+      },
+      {
+        "t": "HelloAsso, a Comorian association's public fundraising page",
+        "u": "https://www.helloasso.com/associations/association-comorienne-culturelle-et-musulmane-de-marseille"
+      },
+      {
+        "t": "Marseille, directory of Comorian village associations",
+        "u": "https://maisondesassociations.marseille.fr/services/annuaire/association-de-la-diaspora-comorienne-de-foumbouni"
+      }
     ]
   },
   {

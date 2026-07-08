@@ -1321,6 +1321,7 @@ window.__initBoard = function(){
         }).join('<span class="sep"> · </span>');
         card.innerHTML = '<div class="lp-head"><span class="lp-ic">' + (LPICON[e.k] || LPICON.all) + '</span><span class="lp-tag">' + esc(e.place) + '</span><span class="lp-when">' + esc(e.when) + '</span></div>'
           + '<h3>' + esc(e.title) + '</h3>'
+          + (e.art ? '<div class="lp-artstrip">' + e.art + '</div>' : '')
           + '<p class="lp-teaser" style="margin-top:10px;">' + esc(e.body) + '</p>'
           + (srcs ? '<div class="lp-src"><span class="lab">Listening via</span>' + srcs + '</div>' : '');
         return card;

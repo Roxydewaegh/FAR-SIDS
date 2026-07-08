@@ -621,3 +621,10 @@
   .vs-mini-lp svg{width:84px;}
   .vs-tile .vs-paper{display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;}
   #lpthread .vst-card .lp-teaser{font-size:.95rem; line-height:1.65;}
+
+/* ============ atlas v10, 8 July 2026: slider arrows moved clear of the card text ============ */
+  .th-prev{left:-60px;} .th-next{right:-60px;}
+  @media(max-width:1180px){
+    .th-nav{display:none;}
+    .th-count::after{content:' · swipe sideways to move';}
+  }

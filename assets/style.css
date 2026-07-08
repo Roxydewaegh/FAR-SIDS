@@ -600,3 +600,24 @@
     margin:16px 0 0;}
   #storythread .vst-card{margin-top:18px;}
   #storythread > .vs-back:last-child{margin-top:22px;}
+
+/* ============ atlas v9, 8 July 2026: horizontal thread sliders, listening post tiles ============ */
+  .th-slider{position:relative; margin-top:18px;}
+  .th-track{display:flex; gap:24px; overflow-x:auto; scroll-snap-type:x mandatory;
+    scrollbar-width:none; -webkit-overflow-scrolling:touch;}
+  .th-track::-webkit-scrollbar{display:none;}
+  .th-track > .vst-card{flex:0 0 100%; max-width:none; scroll-snap-align:start;
+    margin-top:0; box-sizing:border-box;}
+  .th-nav{position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px;
+    border-radius:50%; background:#FFFFFF; border:1.6px solid var(--deep); color:var(--deep);
+    font-size:1.1rem; line-height:1; cursor:pointer; z-index:2;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 3px 12px rgba(14,77,92,.16); transition:opacity .15s ease;}
+  .th-prev{left:-16px;} .th-next{right:-16px;}
+  .th-nav:hover:not([disabled]){background:var(--paper);}
+  .th-nav[disabled]{opacity:.3; cursor:default;}
+  .th-count{margin-top:12px; text-align:center; font-family:var(--mono); font-size:.66rem;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft);}
+  .vs-mini-lp svg{width:84px;}
+  .vs-tile .vs-paper{display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;}
+  #lpthread .vst-card .lp-teaser{font-size:.95rem; line-height:1.65;}

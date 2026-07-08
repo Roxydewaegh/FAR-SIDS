@@ -733,14 +733,11 @@
     <div class="sub" data-sub="stories">
       <p class="eyebrow">Outreach · Visualising stories</p>
       <h2 class="title" style="font-size:1.7rem;">Research storytelling</h2>
-      <p class="lead-p muted" style="max-width:82ch; font-size:.95rem;">Academic research rarely leaves academia in a form people can use. Each entry here takes one study or report on aid, remittances, and wellbeing and turns its central finding into a visual story, a chart, a map, or an illustrated figure that speaks for itself. The opening set is one story for each island and one for Small Island Developing States as a whole, and the collection grows from there.</p>
-      <div id="storylist"></div>
-      <div class="vs-grid">
-        <div class="vs-tile" data-k="jm"><span class="vs-place">Jamaica</span><p>First story in preparation.</p></div>
-        <div class="vs-tile" data-k="to"><span class="vs-place">Tonga</span><p>First story in preparation.</p></div>
-        <div class="vs-tile" data-k="km"><span class="vs-place">Comoros</span><p>First story in preparation.</p></div>
+      <div id="vshome">
+        <p class="lead-p muted" style="max-width:82ch; font-size:.95rem;">Academic research rarely leaves academia in a form people can use. Each entry here takes one study or report on aid, remittances, and wellbeing and turns its central finding into a visual story, a chart, a map, or an illustrated figure that speaks for itself. The stories run as four growing threads, one for each island and one for Small Island Developing States as a whole. Open a thread to read its stories.</p>
+        <div class="vs-grid" id="vsgrid"></div>
       </div>
-      <div id="islandstories"></div>
+      <div id="storythread" class="vst-hidden"></div>
     </div>
     <div class="sub" data-sub="voices">
       <p class="eyebrow">Outreach · Island voices</p>
@@ -1264,10 +1261,14 @@ window.__initBoard = function(){
     }
   }
 
-  var sl = document.getElementById('storylist');
-  var isl = document.getElementById('islandstories');
-  if(sl && window.FARSIDS && FARSIDS.STORIES){
-    FARSIDS.STORIES.forEach(function(e){
+  var vshome = document.getElementById('vshome');
+  var vsgrid = document.getElementById('vsgrid');
+  var vsthread = document.getElementById('storythread');
+  if(vsgrid && vshome && vsthread && window.FARSIDS && FARSIDS.STORIES){
+    var VS_THREADS = [['all', 'Across SIDS'], ['jm', 'Jamaica'], ['to', 'Tonga'], ['km', 'Comoros']];
+    var vsByK = {};
+    FARSIDS.STORIES.forEach(function(e){ (vsByK[e.k] = vsByK[e.k] || []).push(e); });
+    function vsCard(e){
       var card = document.createElement('article'); card.className = 'vst-card';
       var srcs = (e.sources || []).map(function(x){
         return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>';
@@ -1277,33 +1278,52 @@ window.__initBoard = function(){
         + '<div class="vst-art">' + e.svg + '</div>'
         + '<p class="lp-teaser" style="margin-top:10px;">' + esc(e.note) + '</p>'
         + (srcs ? '<div class="lp-src"><span class="lab">Drawn from</span>' + srcs + '</div>' : '');
-      var tile = (e.k && e.k !== 'all' && isl) ? document.querySelector('.vs-tile[data-k="' + e.k + '"]') : null;
-      if(tile){
-        card.classList.add('vst-hidden');
-        card.insertAdjacentHTML('beforeend', '<button type="button" class="vst-close">Close the story</button>');
-        isl.appendChild(card);
-        tile.classList.add('vs-live');
-        tile.innerHTML = '<span class="vs-place">' + esc(e.place) + '</span>'
-          + (e.mini ? '<div class="vs-mini">' + e.mini + '</div>' : '')
-          + '<p class="vs-t">' + esc(e.title) + '</p>'
-          + (e.paper ? '<p class="vs-paper">Drawn from: ' + esc(e.paper) + '</p>' : '')
-          + '<span class="vs-open">Open the story</span>';
-        tile.addEventListener('click', function(){
-          var wasOpen = !card.classList.contains('vst-hidden');
-          isl.querySelectorAll('.vst-card').forEach(function(c){ c.classList.add('vst-hidden'); });
-          if(!wasOpen){
-            card.classList.remove('vst-hidden');
-            card.scrollIntoView({behavior: 'smooth', block: 'start'});
-          }
-        });
-        card.querySelector('.vst-close').addEventListener('click', function(ev){
-          ev.stopPropagation();
-          card.classList.add('vst-hidden');
-          tile.scrollIntoView({behavior: 'smooth', block: 'center'});
-        });
+      return card;
+    }
+    function vsBackBtn(){
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'vs-back';
+      b.innerHTML = '&larr; All story threads';
+      b.addEventListener('click', function(){
+        vsthread.classList.add('vst-hidden'); vsthread.innerHTML = '';
+        vshome.classList.remove('vst-hidden');
+        vsgrid.scrollIntoView({behavior: 'smooth', block: 'center'});
+      });
+      return b;
+    }
+    function vsOpenThread(k, name){
+      var list = vsByK[k] || [];
+      vsthread.innerHTML = '';
+      vsthread.appendChild(vsBackBtn());
+      var h = document.createElement('h3'); h.className = 'vs-thread-h';
+      h.textContent = name + ' · ' + (list.length === 1 ? 'one story so far' : list.length + ' stories');
+      vsthread.appendChild(h);
+      list.forEach(function(e){ vsthread.appendChild(vsCard(e)); });
+      if(list.length > 1){ vsthread.appendChild(vsBackBtn()); }
+      vshome.classList.add('vst-hidden');
+      vsthread.classList.remove('vst-hidden');
+      var top = document.querySelector('.sub[data-sub="stories"] .title');
+      (top || vsthread).scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+    VS_THREADS.forEach(function(t){
+      var k = t[0], name = t[1], list = vsByK[k] || [];
+      var tile = document.createElement('div'); tile.className = 'vs-tile';
+      if(!list.length){
+        tile.innerHTML = '<span class="vs-place">' + esc(name) + '</span><p>First story in preparation.</p>';
       } else {
-        sl.appendChild(card);
+        var latest = list[0];
+        tile.className += ' vs-live';
+        tile.setAttribute('role', 'button'); tile.setAttribute('tabindex', '0');
+        tile.innerHTML = '<span class="vs-place">' + esc(name) + '</span>'
+          + (latest.mini ? '<div class="vs-mini">' + latest.mini + '</div>' : '')
+          + '<p class="vs-t">' + esc(latest.title) + '</p>'
+          + (latest.paper ? '<p class="vs-paper">Drawn from: ' + esc(latest.paper) + '</p>' : '')
+          + '<span class="vs-open">' + (list.length === 1 ? 'Open the story' : 'Open the thread · ' + list.length + ' stories') + '</span>';
+        tile.addEventListener('click', function(){ vsOpenThread(k, name); });
+        tile.addEventListener('keydown', function(ev){
+          if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); vsOpenThread(k, name); }
+        });
       }
+      vsgrid.appendChild(tile);
     });
   }
 

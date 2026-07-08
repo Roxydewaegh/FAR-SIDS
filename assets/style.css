@@ -587,3 +587,16 @@
   .vst-close{display:inline-block; margin-top:12px; font-family:var(--mono); font-size:.62rem;
     letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); background:none;
     border:none; border-bottom:1px solid currentColor; padding:0 0 2px; cursor:pointer;}
+
+/* ============ atlas v8, 8 July 2026: story threads open from four equal tiles ============ */
+  .vst-hidden{display:none;}
+  .vs-tile.vs-live{display:flex; flex-direction:column; align-items:flex-start;}
+  .vs-tile.vs-live .vs-open{margin-top:auto; padding-top:14px;}
+  .vs-back{display:inline-block; font-family:var(--mono); font-size:.66rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--deep); background:none; border:none;
+    border-bottom:1px solid currentColor; padding:0 0 2px; cursor:pointer; margin:6px 0 2px;}
+  .vs-back:hover{color:var(--lagoon);}
+  .vs-thread-h{font-family:var(--serif); font-weight:500; font-size:1.35rem; color:var(--abyss);
+    margin:16px 0 0;}
+  #storythread .vst-card{margin-top:18px;}
+  #storythread > .vs-back:last-child{margin-top:22px;}

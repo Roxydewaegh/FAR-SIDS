@@ -632,3 +632,8 @@
 /* ============ atlas v11, 8 July 2026: little icon strips on listening notes ============ */
   .lp-artstrip{margin:12px 0 0; padding:10px 14px; background:var(--paper); border:1px solid var(--line); border-radius:10px; display:inline-block;}
   .lp-artstrip svg{display:block; width:210px; height:auto;}
+
+/* ============ atlas v12, 8 July 2026: one spot illustration per listening note ============ */
+  .lp-artstrip{float:left; margin:4px 26px 6px 0; padding:0; background:none; border:none; display:block;}
+  .lp-artstrip svg{display:block; width:112px; height:auto;}
+  #lpthread .vst-card .lp-src{clear:both;}

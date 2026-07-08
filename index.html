@@ -726,9 +726,11 @@
     <div class="sub" data-sub="listening">
       <p class="eyebrow">Outreach · The listening post</p>
       <h2 class="title" style="font-size:1.7rem;">Listening before speaking</h2>
-      <p class="lead-p muted" style="max-width:82ch; font-size:.95rem;">Before the project can say anything worth hearing, it listens. These are running threads of what island communities and their diasporas say in public about aid and money from away, one thread per island, growing as the project listens. Themes are paraphrased rather than quoted, private posts are never reproduced, and nothing here is research data.</p>
-      <div class="lp-filters" id="lpfilters"></div>
-      <div class="lp-list" id="listenlist"></div>
+      <div id="lphome">
+        <p class="lead-p muted" style="max-width:82ch; font-size:.95rem;">Before the project can say anything worth hearing, it listens. These are running threads of what island communities and their diasporas say in public about aid and money from away, one thread per island, growing as the project listens. Themes are paraphrased rather than quoted, private posts are never reproduced, and nothing here is research data.</p>
+        <div class="vs-grid" id="lpgrid"></div>
+      </div>
+      <div id="lpthread" class="vst-hidden"></div>
     </div>
     <div class="sub" data-sub="stories">
       <p class="eyebrow">Outreach · Visualising stories</p>
@@ -1220,110 +1222,137 @@ window.__initBoard = function(){
     FARSIDS.LOG.filter(function(e){ return e.up; }).sort(function(a,b){ return logDate(a.d) - logDate(b.d); }).forEach(function(e){ aheadEl.appendChild(logEntry(e)); });
   }
 
-  var lp = document.getElementById('listenlist');
-  if(lp && window.FARSIDS && FARSIDS.LISTENING){
-    var LPICON = {
-      jm: '<svg viewBox="0 0 44 30" aria-hidden="true"><path d="M8,20 C13,15 24,14 31,17 C37,19 37,22 30,23 C22,25 12,24 8,22 Z" fill="#3C9A5F"/><path d="M14,10 C17,7 21,7 24,9" fill="none" stroke="#E2664A" stroke-width="1.6" stroke-linecap="round"/></svg>',
-      to: '<svg viewBox="0 0 44 30" aria-hidden="true"><circle cx="15" cy="19" r="4" fill="#2AA7B5"/><circle cx="24" cy="22" r="2.6" fill="#2AA7B5"/><circle cx="29" cy="16" r="3.2" fill="#2AA7B5"/><path d="M14,9 C17,6 21,6 24,8" fill="none" stroke="#E2664A" stroke-width="1.6" stroke-linecap="round"/></svg>',
-      km: '<svg viewBox="0 0 44 30" aria-hidden="true"><path d="M10,14 C13,10 18,11 18,16 C18,20 14,23 11,21 C8,19 8,16 10,14 Z" fill="#3C9A5F"/><path d="M24,20 C27,17 32,18 32,21 C32,24 26,25 24,23 Z" fill="#3C9A5F"/><path d="M22,9 C25,6 29,6 32,8" fill="none" stroke="#E2664A" stroke-width="1.6" stroke-linecap="round"/></svg>',
-      all: '<svg viewBox="0 0 44 30" aria-hidden="true"><path d="M4,22 C9,18 14,19 17,22 Z" fill="#3C9A5F"/><path d="M18,21 C22,17 27,18 29,21 Z" fill="#2AA7B5"/><path d="M30,22 C34,18 38,19 40,22 Z" fill="#3C9A5F"/><path d="M17,11 C20,8 24,8 27,10" fill="none" stroke="#FFCC00" stroke-width="1.6" stroke-linecap="round"/></svg>'
-    };
-    FARSIDS.LISTENING.forEach(function(e){
-      var card = document.createElement('article'); card.className = 'lp-card'; card.dataset.k = e.k || 'all';
-      var srcs = (e.sources || []).map(function(s){
-        return '<a href="' + esc(s.u) + '" target="_blank" rel="noopener">' + esc(s.t) + '</a>';
-      }).join('<span class="sep"> · </span>');
-      card.innerHTML = '<div class="lp-head"><span class="lp-ic">' + (LPICON[e.k] || LPICON.all) + '</span><span class="lp-tag">' + esc(e.place) + '</span><span class="lp-when">' + esc(e.when) + '</span></div>'
-        + '<h3>' + esc(e.title) + '</h3><p class="lp-teaser">' + esc(e.teaser || e.body) + '</p>'
-        + '<div class="lp-more"><p>' + esc(e.body) + '</p>'
-        + (srcs ? '<div class="lp-src"><span class="lab">Listening via</span>' + srcs + '</div>' : '') + '</div>'
-        + '<button class="lp-toggle" type="button">Read the full note</button>';
-      var tg = card.querySelector('.lp-toggle');
-      tg.addEventListener('click', function(){
-        var open = card.classList.toggle('open');
-        tg.textContent = open ? 'Close the note' : 'Read the full note';
-      });
-      lp.appendChild(card);
-    });
-    var lf = document.getElementById('lpfilters');
-    if(lf){
-      [['*','All threads'],['all','Across the islands'],['jm','Jamaica'],['to','Tonga'],['km','Comoros']].forEach(function(f, i){
-        var b = document.createElement('button'); b.type = 'button'; b.textContent = f[1];
-        if(i === 0) b.className = 'on';
-        b.addEventListener('click', function(){
-          lf.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x === b); });
-          lp.querySelectorAll('.lp-card').forEach(function(c){
-            c.style.display = (f[0] === '*' || c.dataset.k === f[0]) ? '' : 'none';
-          });
-        });
-        lf.appendChild(b);
-      });
-    }
-  }
+  var LPICON = {
+    jm: '<svg viewBox="0 0 44 30" aria-hidden="true"><path d="M8,20 C13,15 24,14 31,17 C37,19 37,22 30,23 C22,25 12,24 8,22 Z" fill="#3C9A5F"/><path d="M14,10 C17,7 21,7 24,9" fill="none" stroke="#E2664A" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    to: '<svg viewBox="0 0 44 30" aria-hidden="true"><circle cx="15" cy="19" r="4" fill="#2AA7B5"/><circle cx="24" cy="22" r="2.6" fill="#2AA7B5"/><circle cx="29" cy="16" r="3.2" fill="#2AA7B5"/><path d="M14,9 C17,6 21,6 24,8" fill="none" stroke="#E2664A" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    km: '<svg viewBox="0 0 44 30" aria-hidden="true"><path d="M10,14 C13,10 18,11 18,16 C18,20 14,23 11,21 C8,19 8,16 10,14 Z" fill="#3C9A5F"/><path d="M24,20 C27,17 32,18 32,21 C32,24 26,25 24,23 Z" fill="#3C9A5F"/><path d="M22,9 C25,6 29,6 32,8" fill="none" stroke="#E2664A" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    all: '<svg viewBox="0 0 44 30" aria-hidden="true"><path d="M4,22 C9,18 14,19 17,22 Z" fill="#3C9A5F"/><path d="M18,21 C22,17 27,18 29,21 Z" fill="#2AA7B5"/><path d="M30,22 C34,18 38,19 40,22 Z" fill="#3C9A5F"/><path d="M17,11 C20,8 24,8 27,10" fill="none" stroke="#FFCC00" stroke-width="1.6" stroke-linecap="round"/></svg>'
+  };
 
-  var vshome = document.getElementById('vshome');
-  var vsgrid = document.getElementById('vsgrid');
-  var vsthread = document.getElementById('storythread');
-  if(vsgrid && vshome && vsthread && window.FARSIDS && FARSIDS.STORIES){
-    var VS_THREADS = [['all', 'Across SIDS'], ['jm', 'Jamaica'], ['to', 'Tonga'], ['km', 'Comoros']];
-    var vsByK = {};
-    FARSIDS.STORIES.forEach(function(e){ (vsByK[e.k] = vsByK[e.k] || []).push(e); });
-    function vsCard(e){
-      var card = document.createElement('article'); card.className = 'vst-card';
-      var srcs = (e.sources || []).map(function(x){
-        return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>';
-      }).join('<span class="sep"> · </span>');
-      card.innerHTML = '<div class="lp-head"><span class="lp-tag">' + esc(e.place) + '</span><span class="lp-when">' + esc(e.when) + '</span></div>'
-        + '<h3>' + esc(e.title) + '</h3>'
-        + '<div class="vst-art">' + e.svg + '</div>'
-        + '<p class="lp-teaser" style="margin-top:10px;">' + esc(e.note) + '</p>'
-        + (srcs ? '<div class="lp-src"><span class="lab">Drawn from</span>' + srcs + '</div>' : '');
-      return card;
-    }
-    function vsBackBtn(){
+  // Shared tile-and-thread renderer for the listening post and the visual stories.
+  // Each room shows four equal tiles; a tile opens its thread as a horizontal slider,
+  // one entry in view, arrows and sideways swipe to move, newest entry first.
+  function threadRoom(cfg){
+    var home = document.getElementById(cfg.home), grid = document.getElementById(cfg.grid), thread = document.getElementById(cfg.thread);
+    if(!home || !grid || !thread || !cfg.data) return;
+    var byK = {};
+    cfg.data.forEach(function(e){ (byK[e.k] = byK[e.k] || []).push(e); });
+    function backBtn(){
       var b = document.createElement('button'); b.type = 'button'; b.className = 'vs-back';
-      b.innerHTML = '&larr; All story threads';
+      b.innerHTML = '&larr; ' + cfg.backLabel;
       b.addEventListener('click', function(){
-        vsthread.classList.add('vst-hidden'); vsthread.innerHTML = '';
-        vshome.classList.remove('vst-hidden');
-        vsgrid.scrollIntoView({behavior: 'smooth', block: 'center'});
+        thread.classList.add('vst-hidden'); thread.innerHTML = '';
+        home.classList.remove('vst-hidden');
+        grid.scrollIntoView({behavior: 'smooth', block: 'center'});
       });
       return b;
     }
-    function vsOpenThread(k, name){
-      var list = vsByK[k] || [];
-      vsthread.innerHTML = '';
-      vsthread.appendChild(vsBackBtn());
+    function openThread(k, name){
+      var list = byK[k] || [];
+      thread.innerHTML = '';
+      thread.appendChild(backBtn());
       var h = document.createElement('h3'); h.className = 'vs-thread-h';
-      h.textContent = name + ' · ' + (list.length === 1 ? 'one story so far' : list.length + ' stories');
-      vsthread.appendChild(h);
-      list.forEach(function(e){ vsthread.appendChild(vsCard(e)); });
-      if(list.length > 1){ vsthread.appendChild(vsBackBtn()); }
-      vshome.classList.add('vst-hidden');
-      vsthread.classList.remove('vst-hidden');
-      var top = document.querySelector('.sub[data-sub="stories"] .title');
-      (top || vsthread).scrollIntoView({behavior: 'smooth', block: 'start'});
+      h.textContent = name + ' · ' + (list.length === 1 ? 'one ' + cfg.noun + ' so far' : list.length + ' ' + cfg.nounPl);
+      thread.appendChild(h);
+      var slider = document.createElement('div'); slider.className = 'th-slider';
+      var track = document.createElement('div'); track.className = 'th-track';
+      list.forEach(function(e){ track.appendChild(cfg.card(e)); });
+      slider.appendChild(track);
+      thread.appendChild(slider);
+      if(list.length > 1){
+        var prev = document.createElement('button'); prev.type = 'button'; prev.className = 'th-nav th-prev';
+        prev.innerHTML = '&larr;'; prev.setAttribute('aria-label', 'Previous ' + cfg.noun);
+        var next = document.createElement('button'); next.type = 'button'; next.className = 'th-nav th-next';
+        next.innerHTML = '&rarr;'; next.setAttribute('aria-label', 'Next ' + cfg.noun);
+        slider.appendChild(prev); slider.appendChild(next);
+        var count = document.createElement('div'); count.className = 'th-count';
+        thread.appendChild(count);
+        function sync(){
+          var w = track.clientWidth || 1;
+          var i = Math.max(0, Math.min(list.length - 1, Math.round(track.scrollLeft / w)));
+          count.textContent = cfg.nounCap + ' ' + (i + 1) + ' of ' + list.length + ' · newest first';
+          prev.disabled = (i === 0); next.disabled = (i === list.length - 1);
+        }
+        prev.addEventListener('click', function(){ track.scrollBy({left: -(track.clientWidth + 24), behavior: 'smooth'}); });
+        next.addEventListener('click', function(){ track.scrollBy({left: track.clientWidth + 24, behavior: 'smooth'}); });
+        track.addEventListener('scroll', sync);
+        sync();
+      }
+      home.classList.add('vst-hidden');
+      thread.classList.remove('vst-hidden');
+      var top = document.querySelector(cfg.top);
+      (top || thread).scrollIntoView({behavior: 'smooth', block: 'start'});
     }
-    VS_THREADS.forEach(function(t){
-      var k = t[0], name = t[1], list = vsByK[k] || [];
+    cfg.threads.forEach(function(t){
+      var k = t[0], name = t[1], list = byK[k] || [];
       var tile = document.createElement('div'); tile.className = 'vs-tile';
       if(!list.length){
-        tile.innerHTML = '<span class="vs-place">' + esc(name) + '</span><p>First story in preparation.</p>';
+        tile.innerHTML = '<span class="vs-place">' + esc(name) + '</span><p>First ' + cfg.noun + ' in preparation.</p>';
       } else {
-        var latest = list[0];
         tile.className += ' vs-live';
         tile.setAttribute('role', 'button'); tile.setAttribute('tabindex', '0');
-        tile.innerHTML = '<span class="vs-place">' + esc(name) + '</span>'
+        tile.innerHTML = cfg.tile(name, list[0], list.length);
+        tile.addEventListener('click', function(){ openThread(k, name); });
+        tile.addEventListener('keydown', function(ev){
+          if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); openThread(k, name); }
+        });
+      }
+      grid.appendChild(tile);
+    });
+  }
+
+  if(window.FARSIDS && FARSIDS.LISTENING){
+    threadRoom({
+      home: 'lphome', grid: 'lpgrid', thread: 'lpthread', data: FARSIDS.LISTENING,
+      threads: [['all', 'Across the islands'], ['jm', 'Jamaica'], ['to', 'Tonga'], ['km', 'Comoros']],
+      noun: 'note', nounPl: 'notes', nounCap: 'Note', backLabel: 'All listening threads',
+      top: '.sub[data-sub="listening"] .title',
+      tile: function(name, latest, n){
+        return '<span class="vs-place">' + esc(name) + '</span>'
+          + '<div class="vs-mini vs-mini-lp">' + (LPICON[latest.k] || LPICON.all) + '</div>'
+          + '<p class="vs-t">' + esc(latest.title) + '</p>'
+          + '<p class="vs-paper">' + esc(latest.teaser || '') + '</p>'
+          + '<span class="vs-open">' + (n === 1 ? 'Open the note' : 'Open the thread · ' + n + ' notes') + '</span>';
+      },
+      card: function(e){
+        var card = document.createElement('article'); card.className = 'vst-card';
+        var srcs = (e.sources || []).map(function(s){
+          return '<a href="' + esc(s.u) + '" target="_blank" rel="noopener">' + esc(s.t) + '</a>';
+        }).join('<span class="sep"> · </span>');
+        card.innerHTML = '<div class="lp-head"><span class="lp-ic">' + (LPICON[e.k] || LPICON.all) + '</span><span class="lp-tag">' + esc(e.place) + '</span><span class="lp-when">' + esc(e.when) + '</span></div>'
+          + '<h3>' + esc(e.title) + '</h3>'
+          + '<p class="lp-teaser" style="margin-top:10px;">' + esc(e.body) + '</p>'
+          + (srcs ? '<div class="lp-src"><span class="lab">Listening via</span>' + srcs + '</div>' : '');
+        return card;
+      }
+    });
+  }
+
+  if(window.FARSIDS && FARSIDS.STORIES){
+    threadRoom({
+      home: 'vshome', grid: 'vsgrid', thread: 'storythread', data: FARSIDS.STORIES,
+      threads: [['all', 'Across SIDS'], ['jm', 'Jamaica'], ['to', 'Tonga'], ['km', 'Comoros']],
+      noun: 'story', nounPl: 'stories', nounCap: 'Story', backLabel: 'All story threads',
+      top: '.sub[data-sub="stories"] .title',
+      tile: function(name, latest, n){
+        return '<span class="vs-place">' + esc(name) + '</span>'
           + (latest.mini ? '<div class="vs-mini">' + latest.mini + '</div>' : '')
           + '<p class="vs-t">' + esc(latest.title) + '</p>'
           + (latest.paper ? '<p class="vs-paper">Drawn from: ' + esc(latest.paper) + '</p>' : '')
-          + '<span class="vs-open">' + (list.length === 1 ? 'Open the story' : 'Open the thread · ' + list.length + ' stories') + '</span>';
-        tile.addEventListener('click', function(){ vsOpenThread(k, name); });
-        tile.addEventListener('keydown', function(ev){
-          if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); vsOpenThread(k, name); }
-        });
+          + '<span class="vs-open">' + (n === 1 ? 'Open the story' : 'Open the thread · ' + n + ' stories') + '</span>';
+      },
+      card: function(e){
+        var card = document.createElement('article'); card.className = 'vst-card';
+        var srcs = (e.sources || []).map(function(x){
+          return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>';
+        }).join('<span class="sep"> · </span>');
+        card.innerHTML = '<div class="lp-head"><span class="lp-tag">' + esc(e.place) + '</span><span class="lp-when">' + esc(e.when) + '</span></div>'
+          + '<h3>' + esc(e.title) + '</h3>'
+          + '<div class="vst-art">' + e.svg + '</div>'
+          + '<p class="lp-teaser" style="margin-top:10px;">' + esc(e.note) + '</p>'
+          + (srcs ? '<div class="lp-src"><span class="lab">Drawn from</span>' + srcs + '</div>' : '');
+        return card;
       }
-      vsgrid.appendChild(tile);
     });
   }
 

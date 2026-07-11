@@ -277,7 +277,11 @@ themes.filter(t=>t.id!=='T1'&&t.id!=='T2').forEach(t=>{
       (${related.length} studies).</div>`
     + artList(related);
   const card=document.getElementById('overlapcard');
-  card.querySelector('.head').addEventListener('click',()=>card.classList.toggle('open'));
+  card.querySelector('.head').addEventListener('click',()=>{
+    const was=card.classList.contains('open');
+    document.querySelectorAll('.card.open').forEach(c=>{ if(c!==card) c.classList.remove('open'); });
+    card.classList.toggle('open', !was);
+  });
 })();
 
 /* ---------- theme cards ---------- */
@@ -296,13 +300,15 @@ function buildCard(t, container){
     <div class="body"></div>`;
   const body=card.querySelector('.body');
   if(t.extra && t.extra.length){
+    const example = t.id==='T1' ? 'impact of aid on disaster resilience, filed under climate change, disasters and resilience'
+                                : 'impact of remittances on rural development, filed under economy, growth and finance';
     const ex=document.createElement('div');
     ex.className='sub extra';
     ex.style.background=t.color+'22';
     ex.innerHTML=`<div class="srow"><span class="badge" style="background:${t.color}">+${t.extra.length} studies</span>
       <span class="sname" style="flex:1"><strong>${t.extra.length} of the ${t.nArticles} studies</strong> are counted
-      in this category through compound labels filed under other themes, for example impact of remittances on rural
-      development. Click to see them.</span></div><div class="arts"></div>`;
+      in this category through compound labels filed under other themes, for example ${example}.
+      Click to see them.</span></div><div class="arts"></div>`;
     ex.querySelector('.srow').addEventListener('click',()=>{
       const av=ex.querySelector('.arts');
       if(av.classList.contains('show')){av.classList.remove('show');return;}
@@ -335,7 +341,12 @@ function buildCard(t, container){
     });
     body.appendChild(sd);
   });
-  card.querySelector('.head').addEventListener('click',()=>card.classList.toggle('open'));
+  /* accordion: opening one card closes the others, so the page stays tidy */
+  card.querySelector('.head').addEventListener('click',()=>{
+    const was=card.classList.contains('open');
+    document.querySelectorAll('.card.open').forEach(c=>{ if(c!==card) c.classList.remove('open'); });
+    card.classList.toggle('open', !was);
+  });
   container.appendChild(card);
 }
 const twrap=document.getElementById('themes'), fwrap=document.getElementById('facets');
@@ -344,6 +355,7 @@ facets.forEach(t=>buildCard(t,fwrap));
 
 function openTheme(id){
   const c=document.getElementById('card-'+id);
+  document.querySelectorAll('.card.open').forEach(x=>{ if(x!==c) x.classList.remove('open'); });
   c.classList.add('open');
   c.scrollIntoView({behavior:'smooth',block:'start'});
 }

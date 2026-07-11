@@ -286,6 +286,17 @@ themes.filter(t=>t.id!=='T1'&&t.id!=='T2').forEach(t=>{
 
 /* ---------- theme cards ---------- */
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+/* fold a sub-theme back to clean: close it, hide its article list, release its chips */
+function resetSub(s){
+  s.classList.remove('open');
+  s.querySelectorAll('.arts').forEach(a=>a.classList.remove('show'));
+  s.querySelectorAll('.chip.active').forEach(c=>{c.classList.remove('active');c.style.background='';c.style.borderColor='';});
+}
+/* fold a whole card back to clean */
+function resetCard(c){
+  c.querySelectorAll('.sub.open').forEach(resetSub);
+  c.querySelectorAll('.arts.show').forEach(a=>a.classList.remove('show'));
+}
 function artList(idxs){
   return idxs.map(i=>arts[i]).sort((a,b)=>(b.year||'0').localeCompare(a.year||'0'))
     .map(a=>`<div class="art">${esc(a.title)} <span class="yr">(${esc(a.authors||'')}${a.authors?', ':''}${esc(a.year||'n.d.')})</span>${a.journal?` <span class="jr">${esc(a.journal)}</span>`:''}</div>`).join('');
@@ -312,6 +323,7 @@ function buildCard(t, container){
     ex.querySelector('.srow').addEventListener('click',()=>{
       const av=ex.querySelector('.arts');
       if(av.classList.contains('show')){av.classList.remove('show');return;}
+      body.querySelectorAll('.sub.open').forEach(resetSub);   /* opening this list folds the sub-themes */
       av.innerHTML=artList(t.extra); av.classList.add('show');
     });
     body.appendChild(ex);
@@ -326,7 +338,13 @@ function buildCard(t, container){
       <div class="chips">${s.labels.map((l,li)=>
         `<span class="chip" data-k="${t.id}|${s.name}|${li}">${esc(l.name)}<b>${l.count}</b></span>`).join('')}</div>
       <div class="arts"></div>`;
-    sd.querySelector('.srow').addEventListener('click',()=>sd.classList.toggle('open'));
+    /* accordion within the card: opening one sub-theme folds the others, and the compound-label list */
+    sd.querySelector('.srow').addEventListener('click',()=>{
+      const was=sd.classList.contains('open');
+      body.querySelectorAll('.sub.open').forEach(s=>{ if(s!==sd) resetSub(s); });
+      body.querySelectorAll('.sub.extra .arts.show').forEach(a=>a.classList.remove('show'));
+      if(was){ resetSub(sd); } else { sd.classList.add('open'); }
+    });
     sd.querySelectorAll('.chip').forEach((ch,li)=>{
       ch.addEventListener('click',()=>{
         const artsDiv=sd.querySelector('.arts');
@@ -341,11 +359,12 @@ function buildCard(t, container){
     });
     body.appendChild(sd);
   });
-  /* accordion: opening one card closes the others, so the page stays tidy */
+  /* accordion: opening one card closes and folds the others, so the page stays tidy */
   card.querySelector('.head').addEventListener('click',()=>{
     const was=card.classList.contains('open');
-    document.querySelectorAll('.card.open').forEach(c=>{ if(c!==card) c.classList.remove('open'); });
+    document.querySelectorAll('.card.open').forEach(c=>{ if(c!==card){ c.classList.remove('open'); resetCard(c); } });
     card.classList.toggle('open', !was);
+    if(was) resetCard(card);
   });
   container.appendChild(card);
 }
@@ -355,7 +374,7 @@ facets.forEach(t=>buildCard(t,fwrap));
 
 function openTheme(id){
   const c=document.getElementById('card-'+id);
-  document.querySelectorAll('.card.open').forEach(x=>{ if(x!==c) x.classList.remove('open'); });
+  document.querySelectorAll('.card.open').forEach(x=>{ if(x!==c){ x.classList.remove('open'); resetCard(x); } });
   c.classList.add('open');
   c.scrollIntoView({behavior:'smooth',block:'start'});
 }

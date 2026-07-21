@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAR-SIDS systematic review, the full text reading map</title>
+<style>
+:root{--bg:#faf4e6;--card:#fffdf8;--ink:#2b2723;--mut:#5a5348;--acc:#8a5a2b;--sand:#e4dccb;--line:#b9ad92;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+.wrap{max-width:1560px;margin:0 auto;padding:0 28px}
+header{padding:34px 0 10px}
+h1{font-size:30px;font-weight:normal;letter-spacing:.3px;margin:0 0 8px}
+.sub{color:var(--mut);font-size:15px;max-width:95ch;line-height:1.55}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0 8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 20px;min-width:150px}
+.stat b{display:block;font-size:26px;color:var(--acc);font-family:'Helvetica Neue',Arial,sans-serif}
+.stat span{font-size:12.5px;color:var(--mut);font-family:'Helvetica Neue',Arial,sans-serif}
+.hint{font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--mut);margin:14px 0 0}
+#netwrap{position:relative;margin:8px 0 12px}
+svg{display:block;width:100%;height:auto}
+.edge{stroke:var(--line);stroke-width:1.4;opacity:.5}
+.edge.gapedge{stroke-dasharray:6 5;stroke:var(--acc);opacity:.8}
+.node circle{stroke:var(--mut);stroke-width:1.5;cursor:pointer;transition:transform .12s}
+.node:hover circle,.node.active circle{stroke:var(--ink);stroke-width:2.6}
+.node.gap circle{stroke:var(--acc);stroke-dasharray:5 4}
+.node text{font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:bold;fill:var(--ink);pointer-events:none}
+.node .cnt{font-weight:normal;font-size:11.5px;fill:var(--mut)}
+.center circle{fill:var(--ink)}
+.center text{fill:#faf4e6;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:bold;font-size:17px}
+.center .q{font-weight:normal;font-size:13px;fill:var(--sand)}
+#panel{position:fixed;right:0;top:0;height:100%;width:430px;max-width:94vw;background:var(--card);border-left:3px solid var(--acc);box-shadow:-6px 0 24px rgba(43,39,35,.18);padding:26px 26px 44px;overflow-y:auto;transform:translateX(105%);transition:transform .25s ease;z-index:20}
+#panel.open{transform:translateX(0)}
+#panel h2{margin:0 40px 2px 0;font-size:21px;font-weight:normal}
+#panel .psub{color:var(--acc);font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;margin:0 0 16px}
+.ref{border-left:3px solid var(--sand);padding:8px 12px;margin:0 0 10px;background:var(--bg)}
+.ref b{display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13.5px}
+.ref i{display:block;font-size:12.5px;color:var(--acc);margin:1px 0 3px}
+.ref span{font-size:13.5px;color:var(--mut);line-height:1.45}
+#close{position:absolute;top:14px;right:16px;border:1px solid var(--line);background:var(--sand);border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;color:var(--ink)}
+.listview{margin:30px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 12px;overflow:hidden}
+.card .head{display:flex;align-items:center;gap:12px;padding:13px 18px;cursor:pointer}
+.card .dot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--mut);flex:none}
+.card h3{margin:0;font-size:17px;font-weight:normal;flex:1}
+.card .hsub{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:var(--mut)}
+.card .body{display:none;padding:2px 18px 14px 46px}
+.card.open .body{display:block}
+.methods{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:26px 0;font-size:14.5px;line-height:1.6;color:var(--mut)}
+.methods b{color:var(--ink)}
+footer{padding:18px 0 40px;color:var(--mut);font-size:12.5px;font-family:'Helvetica Neue',Arial,sans-serif}
+footer a{color:var(--acc)}
+@media (max-width:820px){#netwrap{display:none}}
+.mobilenote{display:none;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--mut);margin:10px 0}
+@media (max-width:820px){.mobilenote{display:block}}
+</style></head>
+<body>
+<div class="wrap">
+<header>
+  <h1>FAR-SIDS systematic review, the full text reading map</h1>
+  <p class="sub">Map two of the review: the themes that emerged from reading the full texts, drawn from the screening log's reading notes (adjudication in progress, July 2026). Twelve themes ring the project's central question; each bubble opens the studies that carry it, with one line on why each study matters. The dashed bubble holds what the reading has not found, which is the space the fieldwork in Jamaica, Tonga, and Comoros exists to fill.</p>
+  <div class="stats">
+    <div class="stat"><b>272</b><span>full texts screened</span></div>
+    <div class="stat"><b>12</b><span>themes in the network</span></div>
+    <div class="stat"><b>45</b><span>works featured in the map</span></div>
+    <div class="stat"><b>13</b><span>works carrying 2+ themes</span></div>
+    <div class="stat"><b>5</b><span>named gaps in the literature</span></div>
+  </div>
+  <p class="hint">Click any bubble for its studies. The same study can appear under several themes; the strongest connector (a Tonga migration lottery study) carries four.</p>
+</header>
+<p class="mobilenote">On a small screen the network is shown as the list below; open each theme to see its studies.</p>
+<div id="netwrap"><svg viewBox="0 0 1560 1120" id="net"></svg></div>
+<div class="listview" id="list"></div>
+<div class="methods"><b>How this map was made.</b> During full text screening and adjudication, every study received a written reading note recording what it is, what it found, and what it offers the FAR-SIDS design (variables, methods, warnings, and context). The themes above were drawn out of those notes rather than from keywords: a study appears under a theme only where its note carries a concrete contribution to it. Counts will move as adjudication closes; the map is dated July 2026 and will be redrawn at data extraction. The title and abstract stage has its own map, linked below.</div>
+<footer>FAR-SIDS · MSCA Grant Agreement No 101244526 · Islands and Small States Institute, University of Malta · <a href="evidence-map-title-abstract-screening.html">map one: title and abstract screening</a> · <a href="index.html#research/evidence">back to the atlas</a></footer>
+</div>
+<div id="panel"><button id="close" aria-label="Close">×</button><h2 id="pt"></h2><p class="psub" id="ps"></p><div id="prefs"></div></div>
+<script>
+const NODES=[{"name": "Wellbeing beyond GDP", "sub": "Two layers: outcomes and autonomy", "color": "#c3dde8", "refs": [{"a": "Connell 2015", "t": "Food security in the island Pacific", "w": "self-reliance appears in the record mainly when external money fails; the forced versus chosen distinction begins here"}, {"a": "Marrero, Nicoson & Mattei 2023", "t": "Food laborers as stewards of island biocultural diversity", "w": "measured income can rise while the reciprocity networks that carried households through shocks dissolve"}, {"a": "Nowak 2017", "t": "Growth disasters in least developed countries", "w": "Comoros: GDP per capita fell 4.4 percent over 15 years while electricity access rose 32 points; growth alone misdescribes wellbeing"}, {"a": "Dunn 2011", "t": "The impact of political dependence on small island jurisdictions", "w": "a Human Development Report outcome set: infant mortality, life expectancy, fertility, tuberculosis"}, {"a": "Weiler, McLaughlin & Cole 2017", "t": "Food security at whose expense?", "w": "food security is access, food sovereignty is control; a household can gain one while losing the other"}, {"a": "Gibson, McKenzie & Stillman 2011", "t": "Migration lottery, diet and child health", "w": "anthropometry and food recall as direct, comparable wellbeing measures"}], "x": 780, "y": 240, "gap": false}, {"name": "Remittance insurance, and when it breaks", "sub": "Counter-cyclical versus pro-cyclical flows", "color": "#dcebf0", "refs": [{"a": "Gounder & Cox 2022", "t": "Tourism dependency and the COVID shock", "w": "remittances cushioned the pandemic shock across SIDS"}, {"a": "Connell 2021", "t": "Tuvalu and COVID", "w": "the same pandemic cut the remittance lifeline where the shock reached the host economies"}, {"a": "Nakatani 2021", "t": "Fiscal rules for disaster-prone small states", "w": "Tonga and Samoa import the business cycles of Australia and New Zealand; insurance holds only while sender and receiver shocks stay uncorrelated"}, {"a": "Caruso, Cucagna & Ladronis 2021", "t": "COVID remittance reductions in Central America", "w": "predicted a 14 percent Jamaica drop for 2020; realized flows rose about 20 percent, a falsified forecast worth re-testing"}, {"a": "Naufal (IZA WP)", "t": "Why remit? The case of Nicaragua", "w": "after a shock at home, only female migrants significantly raise remittances"}], "x": 980, "y": 283, "gap": false}, {"name": "The counterfactual problem", "sub": "What would have happened without the flow", "color": "#e4dccb", "refs": [{"a": "Gibson, McKenzie & Stillman 2011", "t": "Tonga migration lottery", "w": "remittances to left-behind households rose, and per capita income still fell about 25 percent"}, {"a": "Acosta, Calderon, Fajnzylber & Lopez 2008", "t": "Remittances, poverty and inequality in Latin America", "w": "the measured poverty effect collapses from 14 to 3 percent under a proper no-migration counterfactual"}, {"a": "Chea 2023", "t": "Remittances and poverty in Cambodia", "w": "the methods template: Heckman correction, imputed non-migration income, FGT measures"}, {"a": "Cohen & Werker 2008", "t": "The political economy of natural disasters", "w": "expected relief can crowd out prevention; the counterfactual question applied to aid"}, {"a": "di Giovanni, Levchenko & Ortega 2014", "t": "A global view of cross-border migration", "w": "Jamaica gains and Trinidad loses in the same model; the sign is corridor-specific"}], "x": 1126, "y": 400, "gap": false}, {"name": "Aid quality beyond volume", "sub": "Volatility, predictability, modality, fragmentation", "color": "#c9d8c4", "refs": [{"a": "Dornan & Pryke 2017", "t": "Foreign aid to the Pacific", "w": "a menu of measurable aid dimensions; technical assistance is a third of Pacific ODA"}, {"a": "Sharma 2011", "t": "Foreign aid, governance and development in Nepal", "w": "the unpredictability ratio: about 40 percent of promised aid never arrived in the year promised"}, {"a": "Hansen & Headey 2010", "t": "Short-run macro impact of aid to small states", "w": "aid shocks are half transitory; roughly half of aid is neither absorbed nor spent"}, {"a": "Burnett & Suluma 2024", "t": "Formal education in Nauru", "w": "about 90 percent of Australian ODA flows first to a handful of foreign contractors"}, {"a": "Wood, Otor & Dornan 2022", "t": "Why are aid projects less effective in the Pacific?", "w": "the Pacific project deficit is explained by remoteness and small population, not governance"}, {"a": "Cefas authors 2019", "t": "Commonwealth SIDS sustainable fisheries programmes", "w": "implementers state plainly that benefits are unmeasured; the evaluation gap from inside"}], "x": 1180, "y": 560, "gap": false}, {"name": "Aid allocation politics", "sub": "Small-country bias, selectivity, geopolitics", "color": "#d9c9b8", "refs": [{"a": "Weiler, Klock & Dornan 2018", "t": "Allocation of adaptation aid", "w": "per capita adaptation aid: Tonga 66 dollars, Comoros 18, Jamaica 2; the project's three cases in one row"}, {"a": "Gani 2009", "t": "Governance and foreign aid in Pacific island countries", "w": "more corruption went with more aid per head; the selectivity paradox in Pacific data"}, {"a": "Dornan & Pryke 2017", "t": "Foreign aid to the Pacific", "w": "allocation tracks smallness and donor presence, not poverty"}, {"a": "Hannan & Firth 2015", "t": "Trading with the dragon", "w": "Tonga's Eximbank loan story: two fifths of GDP owed abroad, 64 percent of it to one lender"}, {"a": "Malji 2025", "t": "Small states and the geopolitical chessboard", "w": "recognition switching buys infrastructure from the Solomons to Dominica"}, {"a": "Van Grieken & Kantorowicz 2021", "t": "Determinants of China's official financing to the Pacific", "w": "the donor-side allocation study for the non-DAC flow"}], "x": 1126, "y": 720, "gap": false}, {"name": "Sovereignty, dependence, autonomy", "sub": "Welfare colonialism and its price", "color": "#d8cfe0", "refs": [{"a": "Murray & Overton 2011", "t": "The inverse sovereignty effect", "w": "the aid effectiveness agenda increased compliance demands; roughly 1,200 aid visitors a year to Tuvalu"}, {"a": "Connell 2016", "t": "Greenland and the Pacific islands", "w": "welfare colonialism: generosity that debilitates; in mature corridors like Tonga remittances reduced poverty and inequality"}, {"a": "Dunn 2011", "t": "Political dependence and small island jurisdictions", "w": "dependence buys about 4.5 years of life expectancy; sovereignty has a measurable material price"}, {"a": "Carroll & Hameiri 2007", "t": "The limits of Australia's new aid programme", "w": "good governance aid as power without responsibility"}, {"a": "Vunibola 2023", "t": "Want to help someone? Shut up and listen", "w": "community control as the repair; a documented maladaptation case and its reversal"}], "x": 980, "y": 837, "gap": false}, {"name": "The social life of remittances", "sub": "Obligation, visibility, monetized care", "color": "#e8d4c4", "refs": [{"a": "Harper & Zubida 2016", "t": "Remittance as a social visibility tool", "w": "remitting buys presence in the home network; stopping is a social event, not just a financial one"}, {"a": "Marrero, Nicoson & Mattei 2023", "t": "Island biocultural diversity", "w": "monetization of care: cash transfers replacing shared meals, pooled labour, communal cooking"}, {"a": "Aminuddin et al 2019", "t": "Left-behind parents in East Java", "w": "the daughter's marriage redirects remittances away from her parents; money up, presence down"}, {"a": "Borovnik 2006", "t": "Seafarers' remittances in Kiribati", "w": "61 percent of allotments go to seafarers' own accounts; bubuti requests and botaki feasts redistribute onward"}, {"a": "Wilson 2013", "t": "Diverse development strategies on Aniwa, Vanuatu", "w": "remittances hold up the poorest half inside portfolios of seven livelihood activities"}, {"a": "Connell 2014", "t": "The two cultures of health worker migration", "w": "families deliberately place nurses abroad; remittances as the return on a household strategy"}], "x": 780, "y": 880, "gap": false}, {"name": "Managed migration channels", "sub": "Schemes as revocable remittance infrastructure", "color": "#cfe0d8", "refs": [{"a": "Weiler, McLaughlin & Cole 2017", "t": "Canada's seasonal agricultural worker program", "w": "conditional remittances: earned inside a regime that can revoke them; the template for reading RSE and PALM"}, {"a": "Weber 2017", "t": "Trade agreements, labour mobility and climate change", "w": "quotas are negotiated inside trade agreements; New Zealand raised the RSE cap as a PACER Plus incentive"}, {"a": "Gibson, McKenzie & Stillman 2011", "t": "The Pacific Access Category lottery", "w": "a policy ballot that doubles as the cleanest natural experiment in the corpus"}, {"a": "Connell 2014", "t": "Health worker migration", "w": "training calibrated to destination registries; scholarships as migration precursors"}], "x": 580, "y": 837, "gap": false}, {"name": "Econometrics for small islands", "sub": "ARDL justification, breaks, pooled traps", "color": "#c4cede", "refs": [{"a": "Hansen & Headey 2010", "t": "Agnostic time series on aid in small states", "w": "country-by-country estimation at about 30 observations validated, including Comoros and Tonga; differencing loses the long run ARDL recovers"}, {"a": "McFarlane, Das, Brown & Campbell 2022", "t": "Remittance and food security in Jamaica", "w": "the nearest neighbour to the FAR-SIDS design; drops aid for data availability and skips break testing, the two things to fix"}, {"a": "Seury, McFarlane & Singh 2023", "t": "Remittances and energy in Jamaica", "w": "a cautionary template: hidden coefficients, no break tests, aggregate outcomes read as household claims"}, {"a": "Jongwanich 2007", "t": "Remittances, growth and poverty in Asia-Pacific", "w": "a Pacific title carried by four Tonga data points in a 17-country pool"}, {"a": "Feeny, Iamsiraroj & McGillivray 2014; Cannonier & Burke 2026", "t": "Pooled versus SIDS results", "w": "the pooled answer is the wrong answer for islands, twice demonstrated"}, {"a": "Sharma 2011", "t": "Nepal case study", "w": "the written defence of single-country designs against cross-country averages"}], "x": 434, "y": 720, "gap": false}, {"name": "Household survey toolkit", "sub": "Instruments worth copying", "color": "#d5e3ea", "refs": [{"a": "Borovnik 2006", "t": "Kiribati seafarer households", "w": "transfer lines by recipient, in-kind goods, requests received; administrative lists cross-checked with interviews"}, {"a": "Gibson, McKenzie & Stillman 2011", "t": "PINZMS survey", "w": "a 30-item one-day food recall and direct anthropometry, asked identically across countries"}, {"a": "Naufal (IZA WP)", "t": "Nicaragua LSMS", "w": "counting migrants per household enables the altruism versus self-interest test almost for free"}, {"a": "Jimenez, Correa-Velez & Brown 2008", "t": "Wealthy and healthy in the South Pacific", "w": "PCA asset index and leave-one-out community instruments; land items break under communal tenure"}, {"a": "Wilson 2013", "t": "Aniwa village census", "w": "building-mapped full census of 40 households; multi-sited follow-up of migrants"}, {"a": "Aminuddin et al 2019", "t": "Left-behind parents", "w": "a ready topic guide: decision, motivation, communication, social impact, economic impact, health"}], "x": 380, "y": 560, "gap": false}, {"name": "Gender dimension", "sub": "Corridors, care work, remitter sex", "color": "#e6d8d0", "refs": [{"a": "Antonopoulos 2009", "t": "The crisis, a gender perspective", "w": "feminised corridors transmit crises through service employment; time use gaps of five hours a day"}, {"a": "Naufal (IZA WP)", "t": "Why remit?", "w": "female migrants respond to home shocks; male migrants do not"}, {"a": "Aminuddin et al 2019", "t": "East Java parents", "w": "grandmothers absorb the care reversal when mothers migrate"}, {"a": "Weiler, McLaughlin & Cole 2017", "t": "Farm labour migration", "w": "gendered cooking norms shape migrant food insecurity"}], "x": 434, "y": 400, "gap": false}, {"name": "Data provenance traps", "sub": "What the numbers silently miss", "color": "#ddd3c2", "refs": [{"a": "Dornan & Pryke 2017", "t": "Foreign aid to the Pacific", "w": "Chinese aid absent from DAC data; net ODA subtracts loan repayments"}, {"a": "Brant 2016 / Lowy Pacific Aid Map", "t": "Chinese aid in the Pacific", "w": "the correction source for non-DAC flows"}, {"a": "OECD 2005", "t": "Pro-poor money transfer box", "w": "informal remittances estimated roughly equal to recorded flows"}, {"a": "Connell 2015", "t": "Micronesia", "w": "in-kind remittances, food parcels off the plane, invisible in balance of payments"}, {"a": "Hansen & Headey 2010", "t": "Kiribati accounts", "w": "national accounts built from fixed expenditure ratios; check before trusting any SIDS series"}, {"a": "The screening itself", "t": "SIDS evidence field", "w": "16 of 271 studies never state their own sample"}], "x": 580, "y": 283, "gap": false}, {"name": "What the readings have not covered", "sub": "The missing pieces, and why the fieldwork exists", "color": "#f0d9bd", "refs": [{"a": "Comoros evidence", "t": "the largest gap", "w": "beyond Nowak's aggregate figures, Comoros is absent from samples, from all 79 studies in the remittance-resilience review, and from most regional frames; the French-language corridor literature remains unread"}, {"a": "Aid and remittances in one model", "t": "the project's core question", "w": "Fraenkel 2006 (flagged for citation searching) is the only candidate found so far that holds both flows in one analytical frame"}, {"a": "Intra-household allocation", "t": "who controls the money", "w": "no study read so far opens the household to ask who receives, holds, and decides"}, {"a": "Subjective wellbeing in SIDS", "t": "the missing instrument", "w": "the Satisfaction With Life Scale appeared once (Schott 2018); no island validation work has surfaced"}, {"a": "The ceremonial economy, quantified", "t": "named everywhere, measured nowhere", "w": "church donations, feasts, kavenga obligations recur across the Pacific literature without a single measurement attempt"}], "x": 1330, "y": 980, "gap": true}];const CX=780,CY=560;
+const svg=document.getElementById('net');const NS='http://www.w3.org/2000/svg';
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+NODES.forEach(nd=>{svg.appendChild(el('line',{x1:CX,y1:CY,x2:nd.x,y2:nd.y,class:'edge'+(nd.gap?' gapedge':'')}));});
+const c=el('g',{class:'center'});
+c.appendChild(el('circle',{cx:CX,cy:CY,r:124}));
+[['Do aid and remittances',-34],['complement, substitute,',-12],['or work at cross purposes',10],['for island wellbeing?',32]].forEach(([s,dy])=>{const t=el('text',{x:CX,y:CY+dy,'text-anchor':'middle'});t.textContent=s;c.appendChild(t);});
+const t5=el('text',{x:CX,y:CY+58,'text-anchor':'middle',class:'q'});t5.textContent='Jamaica · Tonga · Comoros';c.appendChild(t5);
+svg.appendChild(c);
+function wrap(txt,max){const w=txt.split(' ');const L=[];let cur='';w.forEach(x=>{if((cur+' '+x).trim().length>max){L.push(cur.trim());cur=x;}else cur+=' '+x;});if(cur.trim())L.push(cur.trim());return L;}
+NODES.forEach((nd,ix)=>{
+  const g=el('g',{class:'node'+(nd.gap?' gap':'')});
+  const circle=el('circle',{cx:nd.x,cy:nd.y,r:nd.gap?100:92,fill:nd.color});
+  g.appendChild(circle);
+  const lines=wrap(nd.name,16);const start=nd.y-(lines.length-1)*9-8;
+  lines.forEach((ln,i)=>{const t=el('text',{x:nd.x,y:start+i*19,'text-anchor':'middle'});t.textContent=ln;g.appendChild(t);});
+  const cnt=el('text',{x:nd.x,y:start+lines.length*19+3,'text-anchor':'middle',class:'cnt'});cnt.textContent=(nd.gap?nd.refs.length+' gaps':nd.refs.length+' studies');g.appendChild(cnt);
+  g.addEventListener('click',()=>show(nd,g));
+  svg.appendChild(g);
+});
+const panel=document.getElementById('panel');
+function show(nd,g){
+  document.querySelectorAll('.node').forEach(x=>x.classList.remove('active'));
+  if(g)g.classList.add('active');
+  document.getElementById('pt').textContent=nd.name;
+  document.getElementById('ps').textContent=nd.sub;
+  const pr=document.getElementById('prefs');pr.innerHTML='';
+  nd.refs.forEach(r=>{const d=document.createElement('div');d.className='ref';
+    d.innerHTML='<b>'+r.a+'</b><i>'+r.t+'</i><span>'+r.w+'</span>';pr.appendChild(d);});
+  panel.classList.add('open');
+}
+document.getElementById('close').addEventListener('click',()=>{panel.classList.remove('open');document.querySelectorAll('.node').forEach(x=>x.classList.remove('active'));});
+// list view
+const list=document.getElementById('list');
+NODES.forEach(nd=>{
+  const card=document.createElement('div');card.className='card';
+  const head=document.createElement('div');head.className='head';
+  head.innerHTML='<span class="dot" style="background:'+nd.color+'"></span><h3>'+nd.name+'</h3><span class="hsub">'+nd.sub+' · '+nd.refs.length+(nd.gap?' gaps':' studies')+'</span>';
+  const body=document.createElement('div');body.className='body';
+  nd.refs.forEach(r=>{const d=document.createElement('div');d.className='ref';
+    d.innerHTML='<b>'+r.a+'</b><i>'+r.t+'</i><span>'+r.w+'</span>';body.appendChild(d);});
+  head.addEventListener('click',()=>card.classList.toggle('open'));
+  card.appendChild(head);card.appendChild(body);list.appendChild(card);
+});
+</script>
+</body></html>

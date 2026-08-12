@@ -330,7 +330,7 @@
         <div class="strand">
           <div class="n">Map two · live</div>
           <h3>The model-building matrix of the included studies</h3>
-          <p>The analysis of all 201 included studies, in seven tabs: the themes that repeat across the literature, the channels through which aid and remittances reach people, the variables the 2027 household survey needs to measure, the methods the data can support, and where the studies disagree. Every point names the paper it comes from and the exact file it sits in. Version of 12 August 2026, carrying the sixteen studies that entered when the review closed.</p>
+          <p>The analysis of all 201 included studies, in seven tabs. It maps the themes that repeat across the literature, the channels through which aid and remittances reach people, the variables the 2027 household survey needs to measure, the methods the data can support, and where the studies disagree. Every point names the paper it comes from and the exact file it sits in. The matrix was last updated on 12 August 2026, when the review closed and sixteen new studies entered.</p>
           <p style="margin-top:14px;"><a href="evidence-map-full-text-reading.html" target="_blank" rel="noopener">Open the map</a></p>
         </div>
       </div>
@@ -1097,9 +1097,10 @@ window.__initBoard = function(){
       };
     });
     var seen = {};
-    rows.forEach(function(r){ seen[norm(r.title)] = true; });
-    picksAsRows().forEach(function(r){ if(!seen[norm(r.title)]) rows.push(r); });
-    el.innerHTML = renderList(rows);
+    var deduped = [];
+    rows.forEach(function(r){ var k = norm(r.title); if(!seen[k]){ seen[k] = true; deduped.push(r); } });
+    picksAsRows().forEach(function(r){ var k = norm(r.title); if(!seen[k]){ seen[k] = true; deduped.push(r); } });
+    el.innerHTML = renderList(deduped);
   })
   .catch(function(){
     el.innerHTML = renderList(picksAsRows())

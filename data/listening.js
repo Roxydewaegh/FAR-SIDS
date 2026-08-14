@@ -11,6 +11,98 @@ FARSIDS.LISTENING = [
   {
     "place": "Across the islands",
     "k": "all",
+    "when": "Logged August 2026",
+    "title": "Both lines soften in the same year",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><line x1='16' y1='92' x2='96' y2='92' stroke='#3D5560' stroke-width='2'/><line x1='16' y1='92' x2='16' y2='16' stroke='#3D5560' stroke-width='2'/><path d='M20,64 C36,50 52,42 66,42 C78,42 86,48 92,58' fill='none' stroke='#1C8C9B' stroke-width='3' stroke-linecap='round'/><path d='M20,80 C36,72 52,64 66,62 C78,60 86,66 92,76' fill='none' stroke='#E2664A' stroke-width='3' stroke-linecap='round' stroke-dasharray='6 4'/><circle cx='66' cy='42' r='3.4' fill='#1C8C9B'/><circle cx='66' cy='62' r='3.4' fill='#E2664A'/><rect x='60' y='20' width='34' height='12' rx='6' fill='#BFE3E2'/></svg>",
+    "teaser": "For two years the public argument was that family money would hold the line as donors pulled back. The 2026 figures are the first to suggest both flows are easing at once, and island commentary has started to say so.",
+    "body": "The Inter-American Development Bank's first quarter reading, carried in the Jamaican business pages in August, put Caribbean remittance growth at 5.9 per cent against 10.8 per cent for the previous year, and attributed the slowdown to the exhaustion of the two things that drove the post-pandemic surge: savings that migrants had built up, and the extra hours they were working. Jamaica's own growth came in at 4.1 per cent. The OECD's June projections point the same way on the other side, with development assistance falling again into 2026 and the near term. The commentary that ran through 2025 assumed one flow could compensate for the other. The 2026 numbers are the first test of that assumption, and the early answer is that the two are not moving in opposite directions.",
+    "sources": [
+      {
+        "t": "Jamaica Gleaner, 5 August 2026, Caribbean remittance growth cools as uncertainty rises",
+        "u": "https://jamaica-gleaner.com/article/business/20260805/caribbean-remittance-growth-cools-uncertainty-rises-and-pandemic-momentum"
+      },
+      {
+        "t": "OECD, ODA projections for 2026 and the near term, 19 June 2026",
+        "u": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/06/oda-projections-for-2026-and-the-near-term_10979bc6/d7c74fa2-en.pdf"
+      },
+      {
+        "t": "Devpolicy, remittances and aid in small states, the stability trap, 28 July 2026",
+        "u": "https://devpolicy.org/remittances-and-aid-in-small-states-the-stability-trap-20260729/"
+      }
+    ]
+  },
+  {
+    "place": "Jamaica",
+    "k": "jm",
+    "when": "Logged August 2026",
+    "title": "Send less, own more",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><path d='M18,54 L48,30 L78,54' fill='none' stroke='#0E4D5C' stroke-width='2.6' stroke-linejoin='round'/><rect x='26' y='54' width='44' height='36' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><rect x='42' y='68' width='13' height='22' fill='#1C8C9B'/><circle cx='84' cy='40' r='11' fill='none' stroke='#E2664A' stroke-width='2.6'/><line x1='84' y1='51' x2='84' y2='72' stroke='#E2664A' stroke-width='2.6'/><line x1='84' y1='60' x2='93' y2='60' stroke='#E2664A' stroke-width='2.6'/><line x1='84' y1='67' x2='91' y2='67' stroke='#E2664A' stroke-width='2.6'/><rect x='14' y='18' width='26' height='17' rx='2' fill='#FFCC00' stroke='#993C1D' stroke-width='1.8'/><path d='M15,19 L27,28 L39,19' fill='none' stroke='#993C1D' stroke-width='1.6'/></svg>",
+    "teaser": "At the diaspora conference in Montego Bay the message from government was that remittances alone do not build generational wealth and ownership does. In the same months, households were still using transfers to put roofs back on after Melissa.",
+    "body": "The eleventh biennial Jamaica Diaspora Conference met in Montego Bay in June, and the line from the Ministry of Industry, Investment and Commerce was that the diaspora should move from sending money to owning things: property, agriculture, agro-processing, logistics, technology. The pitch was made on the strength of net international reserves of about 6.5 billion US dollars and an economy described as resilient after Hurricane Melissa. The same economy contracted by 5.9 per cent in the first quarter while remittances grew by 4.1 per cent, which is the sequence that gives the appeal its edge. Remittances are roughly 15 per cent of GDP and about two thirds of them come from the United States. Whether a household rebuilding a roof can also become an investor is the question the conversation keeps arriving at.",
+    "sources": [
+      {
+        "t": "Jamaica Gleaner, 15 June 2026, Seiveright urges diaspora to move beyond remittances",
+        "u": "https://jamaica-gleaner.com/article/news/20260615/diaspora-conference-seiveright-urges-diaspora-move-beyond-remittances"
+      },
+      {
+        "t": "Jamaica Gleaner, 5 August 2026, Caribbean remittance growth cools",
+        "u": "https://jamaica-gleaner.com/article/business/20260805/caribbean-remittance-growth-cools-uncertainty-rises-and-pandemic-momentum"
+      },
+      {
+        "t": "Caribbean National Weekly, diaspora urged to move from remittances to strategic investment",
+        "u": "https://www.caribbeannationalweekly.com/community-news/diaspora-urged-to-move-from-remittances-to-strategic-investment-in-jamaica/"
+      }
+    ]
+  },
+  {
+    "place": "Tonga",
+    "k": "to",
+    "when": "Logged August 2026",
+    "title": "When the aid is a loan",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><rect x='22' y='20' width='56' height='68' rx='4' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><line x1='32' y1='34' x2='68' y2='34' stroke='#D7E2E6' stroke-width='3'/><line x1='32' y1='44' x2='60' y2='44' stroke='#D7E2E6' stroke-width='3'/><circle cx='42' cy='64' r='5' fill='none' stroke='#E2664A' stroke-width='2.4'/><circle cx='60' cy='76' r='5' fill='none' stroke='#E2664A' stroke-width='2.4'/><line x1='63' y1='60' x2='39' y2='80' stroke='#E2664A' stroke-width='2.6' stroke-linecap='round'/><path d='M86,30 C98,44 98,64 86,78' fill='none' stroke='#1C8C9B' stroke-width='2.6'/><polygon points='86,78 92,70 80,71' fill='#1C8C9B'/></svg>",
+    "teaser": "Tonga's own news site led in late July with the finding that aid to the Pacific is rebounding but increasingly debt driven. In a country where development assistance funds about half the national budget, that distinction is not technical.",
+    "body": "The Lowy Institute's 2026 Pacific Aid Map, which tracks 60 billion US dollars across 50,000 projects since 2008, found aid to the region recovering while the growth in it comes increasingly through lending rather than grants, with Australia and the multilateral banks now dominating that lending and China shifting toward frequent small grants. Matangi Tonga carried the finding at the end of July under the headline that the aid is increasingly debt driven. The reason it matters here is arithmetic. Development assistance has run at around 35 per cent of GDP for Tonga and accounted for roughly 51 per cent of the national budget in 2023 and 2024, against remittances of about 43 per cent of GDP. Money that arrives as a loan and money that arrives from a relative sit on opposite sides of a household's future.",
+    "sources": [
+      {
+        "t": "Matangi Tonga, 29 July 2026, aid to the Pacific region is increasingly debt-driven",
+        "u": "https://matangitonga.to/2026/07/29/aid-pacific-region-increasingly-debt-driven"
+      },
+      {
+        "t": "Lowy Institute, 2026 Pacific Aid Map Report",
+        "u": "https://www.lowyinstitute.org/publications/2026-pacific-aid-map-report"
+      },
+      {
+        "t": "Devpolicy, remittances and aid in small states, the stability trap, 28 July 2026",
+        "u": "https://devpolicy.org/remittances-and-aid-in-small-states-the-stability-trap-20260729/"
+      }
+    ]
+  },
+  {
+    "place": "Comoros",
+    "k": "km",
+    "when": "Logged August 2026",
+    "title": "The circular and the season",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><rect x='14' y='16' width='50' height='62' rx='3' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><line x1='23' y1='30' x2='55' y2='30' stroke='#D7E2E6' stroke-width='3'/><line x1='23' y1='40' x2='55' y2='40' stroke='#D7E2E6' stroke-width='3'/><line x1='23' y1='50' x2='45' y2='50' stroke='#D7E2E6' stroke-width='3'/><circle cx='46' cy='64' r='11' fill='none' stroke='#E2664A' stroke-width='2.4'/><path d='M40,64 L45,69 L53,59' fill='none' stroke='#E2664A' stroke-width='2.4' stroke-linecap='round'/><rect x='66' y='44' width='34' height='34' rx='3' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.2'/><line x1='66' y1='53' x2='100' y2='53' stroke='#0E4D5C' stroke-width='2.2'/><rect x='70' y='58' width='7' height='7' fill='#BFE3E2'/><rect x='80' y='58' width='7' height='7' fill='#BFE3E2'/><rect x='89' y='58' width='7' height='7' fill='#FFCC00'/><rect x='70' y='68' width='7' height='7' fill='#D7E2E6'/><rect x='80' y='68' width='7' height='7' fill='#FFCC00'/><rect x='89' y='68' width='7' height='7' fill='#FFCC00'/></svg>",
+    "teaser": "In July the interior ministry banned customary ceremonies on weekday afternoons, because offices empty when a grand mariage is on. The measure lands in the middle of the July and August season, and the public argument it started is not really about opening hours.",
+    "body": "A circular from the Minister of the Interior, dated mid July, prohibits customary events on the afternoons of working days. The reasoning given is administrative: public servants leave their posts or do not turn up at all when a family or village ceremony is running, people come back to an office two and three times to finish a piece of paperwork, and July and August are the worst months for it because that is the grand mariage season. Prefects and mayors are told to work with customary authorities to move events to non working days, public holidays or the evening. What the circular puts in writing is a claim about priority between customary obligation and the state, in a country where the ceremonies it names are financed substantially from Marseille. Youth debating competitions in the same weeks took the grand mariage, governance and citizenship as their set topic.",
+    "sources": [
+      {
+        "t": "Comores Infos, 18 July 2026, mariages en pleine semaine, une mesure du ministre pour la continuite du service public",
+        "u": "https://www.comoresinfos.net/mariages-en-pleine-semaine-une-mesure-courageuse-du-ministre-pour-garantir-la-continuite-du-service-public/"
+      },
+      {
+        "t": "Comores Infos, la jeunesse debat du grand mariage, de la gouvernance et de la citoyennete",
+        "u": "https://www.comoresinfos.net/la-jeunesse-debat-sans-violence-et-defend-ses-convictions-sur-le-grand-mariage-la-gouvernance-et-la-citoyennete-au-coeur-du-concours/"
+      },
+      {
+        "t": "Al-Watwan, 44.8 pour cent de la population sous le seuil de pauvrete",
+        "u": "https://alwatwan.net/societe/pauvret%C3%A9-aux-comores-%C2%AB44.8-de-la-population%C2%BB-vivent-en-dessous-du-seuil-de-pauvret%C3%A9.html"
+      }
+    ]
+  },
+  {
+    "place": "Across the islands",
+    "k": "all",
     "when": "Logged July 2026",
     "title": "The obligation debate goes viral",
     "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><line x1='55' y1='0' x2='55' y2='26' stroke='#3D5560' stroke-width='2'/><rect x='17' y='26' width='76' height='52' rx='5' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><path d='M19,30 L55,58 L91,30' fill='none' stroke='#0E4D5C' stroke-width='2'/><path d='M55,72 C46,64 43,58 46,53 C49,49 55,52 55,55 C55,52 61,49 64,53 C67,58 64,64 55,72 Z' fill='#E2664A'/><line x1='30' y1='92' x2='80' y2='92' stroke='#BFE3E2' stroke-width='3'/></svg>",

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FAR-SIDS, thought provoking questions from the systematic review</title>
+<style>
+  :root{--paper:#faf6ee; --ink:#2b2723; --muted:#7a7266; --line:#e4dccb;}
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--paper); color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.55}
+  .wrap{max-width:1000px; margin:0 auto; padding:34px 28px 80px}
+  header h1{font-size:30px; font-weight:normal; letter-spacing:.3px; line-height:1.2}
+  header .sub{color:var(--muted); font-size:15px; margin-top:12px; max-width:860px}
+  header .sub p{margin-bottom:9px}
+  a{color:#8a5a2b}
+  header .stats{margin-top:16px; font-size:14px; color:var(--muted); border-top:1px solid var(--line); padding-top:14px}
+  header .stats b{color:var(--ink); font-size:17px}
+  .qlist{margin-top:30px}
+  .q{background:#fffdf8; border:1px solid var(--line); border-left:6px solid #8a5a2b; border-radius:8px;
+     margin-bottom:16px; overflow:hidden}
+  .q:nth-child(3n+2){border-left-color:#2f6f7e}
+  .q:nth-child(3n+3){border-left-color:#a8863c}
+  .q>.head{display:flex; align-items:flex-start; gap:16px; padding:18px 22px; cursor:pointer}
+  .q>.head:hover{background:#faf4e6}
+  .q .num{font-family:'Helvetica Neue',Arial,sans-serif; font-size:12.5px; color:var(--muted); padding-top:6px; flex:0 0 26px}
+  .q .qt{font-size:20px; flex:1; line-height:1.35}
+  .q .chev{font-size:13px; color:var(--muted); padding-top:7px}
+  .q .body{display:none; padding:0 22px 20px 64px}
+  .q.open .body{display:block}
+  .q.open .chev{transform:rotate(90deg)}
+  .q .chev{display:inline-block; transition:transform .15s ease}
+  .q .body p.ctx{font-size:15.5px; max-width:82ch; margin-bottom:14px}
+  .q .body .from{font-size:13.5px; color:var(--muted); font-style:italic; border-top:1px dotted var(--line); padding-top:10px}
+  .q .body .from b{font-style:normal; font-weight:normal; color:var(--ink)}
+  .q .when{font-family:'Helvetica Neue',Arial,sans-serif; font-size:11.5px; color:var(--muted);
+           letter-spacing:.4px; text-transform:uppercase; margin-top:8px}
+  .hint{font-size:13px; color:var(--muted); font-style:italic; margin:6px 0 0}
+  .tools{margin-top:14px; font-size:13.5px}
+  .tools button{font:inherit; font-size:13.5px; background:none; border:1px solid var(--line); border-radius:16px;
+    padding:4px 14px; color:#8a5a2b; cursor:pointer; margin-right:8px}
+  .tools button:hover{background:#f4eede}
+  footer{margin-top:46px; border-top:1px solid var(--line); padding-top:18px; font-size:14px; color:var(--muted); max-width:900px}
+  footer p{margin-bottom:10px}
+  footer .footnote{font-size:11.5px; margin-top:18px; letter-spacing:.2px}
+  @media(max-width:700px){ .q .body{padding-left:22px} .q .qt{font-size:18px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Thought provoking questions</h1>
+  <div class="sub">
+    <p>Reading 270 full texts for the FAR-SIDS systematic review answered some questions and raised others. The ones
+    collected here are the second kind. Each came out of a specific study or out of two studies disagreeing, and none
+    of them is settled by the literature the review gathered.</p>
+    <p>They are here because a systematic review reports what has been found, and the questions a reader is left with
+    tend to disappear in that reporting. Some of these will turn into hypotheses the 2027 fieldwork can test, some
+    will turn out to have been answered in work the review did not reach, and some will stay open. Each entry gives
+    the question, why it came up, and the studies behind it, so anyone can follow it back.</p>
+    <p>This page is added to as the reading continues.</p>
+  </div>
+  <div class="stats"><b id="n"></b> questions &nbsp;·&nbsp; from the full text reading of 270 studies &nbsp;·&nbsp; last updated 15 August 2026</div>
+  <div class="tools"><button id="all">Open all</button><button id="none">Close all</button></div>
+  <p class="hint">Click a question to read why it came up.</p>
+</header>
+<main class="qlist" id="out"></main>
+<footer>
+  <p>Compiled by Roxane de Waegh from notes written while reading the included studies of the FAR-SIDS systematic
+  review, between July and August 2026. The review itself is mapped on the
+  <a href="evidence-map-title-abstract-screening.html">thematic map of title and abstract screening</a> and in the
+  <a href="evidence-map-full-text-reading.html">model-building matrix of the included studies</a>, and the terms used
+  here are defined in the <a href="review-glossary.html">glossary</a>.</p>
+  <p class="footnote">FAR-SIDS is funded by the European Union under Marie Sklodowska-Curie Actions grant agreement
+  No. 101244526, hosted at the Islands and Small States Institute, University of Malta.</p>
+</footer>
+</div>
+<script>
+// ADD A NEW QUESTION BY COPYING ONE BLOCK AND EDITING IT. Newest first is fine; the page keeps the order below.
+// q     the question itself
+// c     the context, one or two short paragraphs
+// s     where it came from, the studies behind the question
+// when  the month it was added
+var QUESTIONS = [
+{
+  q: "Has any country ever grown out of aid on remittances?",
+  c: "Aid tapers when a country moves from low income to middle income, and the countries that make that move have usually built something at home first, a manufacturing base, an export sector, jobs. Remittances raise national income without doing any of that, because the labour that earns them is working somewhere else. The flow depends on continued emigration and on families living apart.<br><br>The Philippines has been sending workers abroad for longer than any small island state, and the economy is still shaped by what they send home. If remittances were going to be reinvested into domestic sectors on their own, that is where it should already be visible. The claim that they eventually will be is the same claim aid carried for decades before the evidence on aid dependence caught up with it.",
+  s: "Connell on the shift from subsistence to subsidy; Baldacchino on MIRAB and PROFIT economies.",
+  when: "August 2026"
+},
+{
+  q: "Why is aid spent and remittances saved, when both are temporary?",
+  c: "Neither flow is money a household can count on. Aid arrives on a project cycle and stops when the cycle ends, and remittances arrive while a relative abroad is working and able to send. Standard economics says temporary income gets saved rather than absorbed into everyday spending, and the remittance studies find exactly that.<br><br>The aid studies do not. In the case where an oil price windfall was channelled through government into villages, the money was consumed. Both flows are temporary, so transience cannot be what separates them. What differs is where the money comes from. Money sent by a relative who is working for it, often at real cost to themselves, may be harder to spend loosely than money that arrives from an institution.",
+  s: "Werker and colleagues on an oil price windfall channelled through government; Acosta, Calderon, Fajnzylber and Lopez (2008) on remittances, poverty and inequality.",
+  when: "August 2026"
+},
+{
+  q: "Does educating people in a small island state mainly equip them to leave?",
+  c: "Education helps development, education makes migration possible, and migration changes the country people leave. Each of those three links is reasonably well understood on its own. What happens when all three operate at once is not, and small island states are where all three operate at once.<br><br>The uncomfortable version of the question is what it means for aid. If education aid raises the qualifications that make emigration possible, then a donor funding schools may also be funding the brain drain that the same donor's policy papers treat as a problem. Tonga is where this is sharpest, because schooling, emigration and remittances are tied together there more tightly than almost anywhere.",
+  s: "The education, migration and development literature for the Pacific; Murray and Overton on the inverse sovereignty effect in Oceanian education systems.",
+  when: "August 2026"
+},
+{
+  q: "Are aid and remittances substitutes or complements?",
+  c: "If they are substitutes, a rise in remittances reduces what a country needs from donors, and a donor could reasonably scale aid back as remittances grow. If they are complements, aid works on the conditions that make people leave while remittances support the households they left, and each makes the other more effective.<br><br>The policy consequences run in opposite directions, and the question has not been settled empirically. It is the question this project exists to answer, which is why it sits here rather than in the findings.",
+  s: "Xenogiani (2006), OECD Development Centre, on migration policy and its interactions with aid, trade and foreign investment.",
+  when: "August 2026"
+},
+{
+  q: "Is a MIRAB economy locked in, or can it move?",
+  c: "A MIRAB economy runs on migration, remittances, aid and bureaucracy, meaning it lives on what it receives from outside rather than on what it produces at home. A PROFIT economy makes money from the powers a state holds rather than from transfers it receives, through control over migration and citizenship, resource management, overseas engagement, finance, and transportation. The first is about what a small economy receives, the second about what it can decide.<br><br>Comoros and Tonga sit close to the MIRAB pattern, and Jamaica combines tourism and remittances with less aid. The question worth asking is not only whether the flows raise living standards, but whether an economy shaped by them retains any capacity to act on its own terms, through a fisheries jurisdiction, a transport role, or something else.",
+  s: "Baldacchino on MIRAB and PROFIT as ideal types on a continuum, not as descriptions of real economies.",
+  when: "August 2026"
+},
+{
+  q: "Do remittances fade across generations?",
+  c: "Remittances are usually studied as a flow that either helps or harms, and rarely as a flow with a lifespan. The people sending money are migrants with living ties to a place. Their children, raised somewhere else, often hold the language less firmly and the obligation less closely, and what they send reflects that.<br><br>If this is right, the sustainability of a remittance dependent economy depends on how a diaspora settles rather than on how many people leave, and continued emigration would not be enough to hold the flow steady. For Tonga the question is whether the money arriving now is a durable foundation or a receding one.",
+  s: "Connell on remittance decay and the dynamics of settlement.",
+  when: "August 2026"
+},
+{
+  q: "Can remittances protect a household and hold a country back at the same time?",
+  c: "Two credible studies of Jamaica point in opposite directions. One finds that remittances fully absorb the cost of a health shock at household level, working as consumption insurance where no public equivalent exists. The other finds that capital inflows, remittances among them, are associated with lower labour productivity nationally, with a ten per cent rise in remittances tracking a fall of about 0.9 per cent in the short run, and traces the mechanism to lower labour force participation and wages.<br><br>They are not actually in conflict. Money can shield a family from a crisis and reduce the incentive to work in the wider economy at the same time, and both effects are real. Whether a policy answer exists that keeps the first without the second is the harder question.",
+  s: "McCloud and Ivey (2025), International Economics 182: 100595, on capital flows and labour productivity in Jamaica; Beuermann and colleagues on remittances and health shocks in Jamaica.",
+  when: "August 2026"
+},
+{
+  q: "Does external money substitute for the state itself?",
+  c: "Aid dependence is usually discussed as a relationship between a donor and a government. Remittances create a different one, between a family abroad and a household at home, and it bypasses the state entirely. A household whose school fees, medicines and roof repairs are paid from overseas has less reason to press a government for any of them.<br><br>That makes remittances a private safety net operating where a public one is absent, which is good for the household and ambiguous for the country, because the pressure that produces functioning public services is exactly the pressure that private transfers relieve.",
+  s: "The literature on remittances as a private safety net; the deep Dutch disease argument that external money reduces the incentive to reform.",
+  when: "August 2026"
+},
+{
+  q: "Whose definition of a good life is being measured?",
+  c: "Fakalakalaka, the Tongan idea of development, means the total development of the whole person, physical, mental and spiritual, extending outward to family and community rather than accumulating in an individual bank balance. It is not a softer version of income. It measures something else.<br><br>A micro-credit programme in Tonga was recorded as a failure because the women taking part did not build the market businesses the scheme was designed to produce. They used it instead to build koloa, the textile wealth women control, and to meet the obligations that carry social and political life. Koloa is accepted as collateral by banks and traded by pawnshops in Tonga and in Auckland, so it holds value in a way a financial inclusion indicator counting bank accounts will not register. The programme succeeded against the outcome the women were pursuing and failed against the one it had written down.",
+  s: "Horan (2002) on micro-credit schemes in Tonga, drawing on 'Iliau (1997); read against Marrero and colleagues (2023) on remittances and cultural change.",
+  when: "August 2026"
+},
+{
+  q: "Is ordinary development the best climate adaptation?",
+  c: "Poor countries suffer more from the same storm largely because they have fewer resources and weaker institutions to absorb it, not because the storm is worse. That gap has a name in the literature, the adaptation deficit, and it means that raising incomes, health, education and institutional capacity is itself adaptation. One screening of aid projects found that over eighty per cent had strong potential to build long term climate resilience before any climate specific component was added.<br><br>If that holds, aid and remittances may already be building resilience under a different name, and a climate finance budget that funds only what is labelled climate leaves the structural causes untouched.",
+  s: "Ranger, Harvey and Garbett-Shiels (2014), drawing on Fankhauser and McDermott on the adaptation deficit.",
+  when: "August 2026"
+},
+{
+  q: "Does emigration serve the government of the country people leave?",
+  c: "Emigration lowers unemployment, relieves pressure on public services, and brings in foreign currency without a government having to raise or spend anything. A state facing those incentives has limited reason to address the conditions people are leaving because of.<br><br>This is worth stating carefully, because it cuts against an assumption embedded in most work on dependence, that the country experiencing it wants to reduce it. Samoa and Tonga have both spoken publicly about slowing emigration, so the position is not uniform, and the question of which governments hold which view is open.",
+  s: "The literature on emigration as a political safety valve.",
+  when: "August 2026"
+},
+{
+  q: "Does development raise emigration before it lowers it, and has anyone shown this for island states?",
+  c: "Migration costs money, so the poorest people cannot afford to leave. Rising income makes leaving possible, and emigration rises with development before it eventually falls once a country passes a higher threshold, producing a hump rather than a straight line. The pattern has been traced in Italy, South Korea, Ireland and Taiwan.<br><br>Whether it holds for small island states is a separate question. Distance, the size of the domestic labour market, and existing migration agreements all work differently there, and a curve fitted to large economies may not transfer.",
+  s: "The migration hump, named by Martin and Taylor (1996) and developed in de Haas's work on the mobility transition.",
+  when: "August 2026"
+},
+{
+  q: "Through what does the money actually work?",
+  c: "Asking whether remittances improve a child's nutrition gives one number and hides the route. The money might buy food directly, or it might raise household income which then buys food, or it might free the time of an adult who then cooks differently. Those are different mechanisms and they call for different policy.<br><br>The variable in the middle is a mediator, and separating the direct route from the indirect one is a standard step in a path model. The reason it matters here is practical. If aid can reach the same mediator that remittances currently reach, remittances could be freed for something a community would rather do with them.",
+  s: "The structural equation modelling literature on direct and indirect effects; applied in a study of disaster risk perception, public aid and international cooperation.",
+  when: "August 2026"
+},
+{
+  q: "Is counting consumption as waste a measurement error?",
+  c: "National accounts file spending on food, health and school fees under consumption, and a literature that looks for investment then reports that remittances are consumed rather than invested. School fees are the clearest case. Paying for a child's education is a transfer into human capital, which is one of the better established engines of long run growth, and it is counted as consumption because of where the accounting convention puts it rather than because of what it does.<br><br>The same money also circulates. A household buying food locally is paying somebody else's wage. Treating remittance financed consumption as a failure to invest may be measuring the wrong thing and then drawing a policy conclusion from it.",
+  s: "Connell on remittances funding land, shops, transport and above all children's schooling.",
+  when: "August 2026"
+}
+];
+
+var out=document.getElementById('out');
+document.getElementById('n').textContent = QUESTIONS.length;
+out.innerHTML = QUESTIONS.map(function(x,i){
+  return '<article class="q"><div class="head"><div class="num">'+(i+1)+'</div><div class="qt">'+x.q+
+    '</div><div class="chev">&#9656;</div></div><div class="body"><p class="ctx">'+x.c+
+    '</p><div class="from"><b>Where it came from.</b> '+x.s+'</div><div class="when">Added '+x.when+'</div></div></article>';
+}).join('');
+out.addEventListener('click', function(e){
+  var h = e.target.closest('.head'); if(!h) return;
+  h.parentNode.classList.toggle('open');
+});
+document.getElementById('all').addEventListener('click', function(){
+  [].forEach.call(document.querySelectorAll('.q'), function(q){ q.classList.add('open') }) });
+document.getElementById('none').addEventListener('click', function(){
+  [].forEach.call(document.querySelectorAll('.q'), function(q){ q.classList.remove('open') }) });
+</script>
+</body>
+</html>

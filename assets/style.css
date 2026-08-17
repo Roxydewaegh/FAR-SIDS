@@ -647,3 +647,8 @@
 /* ---- atlas v10, 15 August 2026: toolkit reduced to four cards ---- */
   .tk-grid{grid-template-columns:repeat(2, 1fr); max-width:940px;}
   @media(max-width:900px){ .tk-grid{grid-template-columns:1fr;} }
+
+/* ---- atlas v11, 17 August 2026: done badge on completed courses ---- */
+  .resgroup .done{font-family:var(--mono); font-size:.54rem; letter-spacing:.1em; text-transform:uppercase;
+    font-weight:700; color:#fff; background:#0E4D5C; padding:1px 7px; border-radius:999px;
+    margin-left:7px; vertical-align:middle;}

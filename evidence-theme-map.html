@@ -67,7 +67,7 @@ footer a:hover{text-decoration:underline}
  </div>
 </header>
 <div class="wrap">
- <div id="stage"><svg id="map" viewBox="0 0 1400 1040"></svg><div id="tip"></div></div>
+ <div id="stage"><svg id="map" viewBox="0 0 1520 1060"></svg><div id="tip"></div></div>
  <aside id="panel"></aside>
 </div>
 <footer>
@@ -86,7 +86,7 @@ const LAYERS=[
 const LNAME=Object.fromEntries(LAYERS.map(l=>[l[0],l[1]]));
 let flow="all", arrange="layer", sel=null;
 const svg=document.getElementById("map"), tip=document.getElementById("tip"), panel=document.getElementById("panel");
-const CX=700, CY=520;
+const CX=760, CY=530;
 function visible(t){return flow==="all"||t.flow===flow||t.flow==="both"}
 function positions(){
  const pos={};
@@ -145,13 +145,13 @@ function draw(){
    const th=T.filter(t=>t.lay===k);
    const cm=Math.cos(mid);
    const anchor=cm>0.2?"start":(cm<-0.2?"end":"middle");
-   const lines=wrapLabel(name,33);
-   const wide=Math.max(...lines.map(l=>l.length))*10.1;
+   const lines=wrapLabel(name,34);
+   const wide=Math.max(...lines.map(l=>l.length))*11.2;
    let lx=CX+430*cm;
-   if(anchor==="start")lx=Math.max(1055,Math.min(lx,1385-wide));
-   else if(anchor==="end")lx=Math.min(345,Math.max(lx,15+wide));
-   else lx=Math.min(Math.max(lx,15+wide/2),1385-wide/2);
-   const ly=Math.max(80,Math.min(980,CY+430*Math.sin(mid)));
+   if(anchor==="start")lx=Math.max(1120,Math.min(lx,1505-wide));
+   else if(anchor==="end")lx=Math.min(400,Math.max(lx,15+wide));
+   else lx=Math.min(Math.max(lx,15+wide/2),1505-wide/2);
+   const ly=Math.max(80,Math.min(1000,CY+430*Math.sin(mid)));
    lines.forEach((ln,i)=>{ s+=`<text class="famlab" x="${lx}" y="${ly+i*22-((lines.length-1)*11)}" text-anchor="${anchor}">${ln}</text>` });
    s+=`<text class="famsub" x="${lx}" y="${ly+lines.length*22-((lines.length-1)*11)+2}" text-anchor="${anchor}">${th.length} themes</text>`;
   });

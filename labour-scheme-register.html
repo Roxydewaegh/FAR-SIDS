@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAR-SIDS labour scheme ledger</title>
+<style>
+  .viz-root{
+    color-scheme: light;
+    --surface-1:#fcfcfb; --page:#f9f9f7;
+    --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4;
+    --yes:rgba(27,175,122,.15); --part:rgba(237,161,0,.18); --no:#e1e0d9;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])) .viz-root{
+      color-scheme: dark;
+      --surface-1:#1a1a19; --page:#0d0d0d;
+      --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+      --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
+      --yes:rgba(25,158,112,.22); --part:rgba(201,133,0,.25); --no:#2c2c2a;
+    }
+  }
+  :root[data-theme="dark"] .viz-root{
+    color-scheme: dark;
+    --surface-1:#1a1a19; --page:#0d0d0d;
+    --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
+    --yes:rgba(25,158,112,.22); --part:rgba(201,133,0,.25); --no:#2c2c2a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--page,#f9f9f7);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+  .viz-root{background:var(--page);color:var(--text-primary);min-height:100vh;padding:28px 20px 56px}
+  .wrap{max-width:1060px;margin:0 auto}
+  h1{font-size:23px;line-height:1.3;margin:0 0 6px;font-weight:650;letter-spacing:-0.01em}
+  h2{font-size:17px;margin:32px 0 8px;font-weight:650}
+  .sub{color:var(--text-secondary);font-size:14px;line-height:1.6;margin:0 0 4px}
+  .sub a{color:var(--s1);text-decoration:none}
+  .sub a:hover{text-decoration:underline}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0 4px}
+  .group{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--surface-1)}
+  button{font:inherit;font-size:13px;padding:7px 13px;background:transparent;border:0;color:var(--text-secondary);cursor:pointer}
+  button+button{border-left:1px solid var(--border)}
+  button[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1);font-weight:600}
+  .spacer{flex:1}
+  .pick{background:var(--surface-1);border:1px solid var(--border);border-left:3px solid var(--s1);border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13.5px;line-height:1.6}
+  .pick b{font-weight:650}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:12px 0}
+  .tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 18px}
+  .tile .v{font-size:26px;font-weight:700;line-height:1.1}
+  .tile .l{color:var(--text-secondary);font-size:12.5px;margin-top:4px;line-height:1.4}
+  .card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:12px}
+  .charthead{font-size:14px;font-weight:650;margin:0 0 4px}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 10px;padding:0;list-style:none}
+  .legend li{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text-secondary)}
+  .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
+  .tl{overflow-x:auto}
+  svg{display:block}
+  .note{color:var(--muted);font-size:12.5px;line-height:1.55;margin:8px 0 0}
+  table.data{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;background:var(--surface-1)}
+  table.data th,table.data td{border-bottom:1px solid var(--grid);padding:9px 10px;text-align:left;vertical-align:top}
+  table.data thead th{color:var(--text-secondary);font-weight:600;font-size:12.5px}
+  .tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin-top:12px}
+  .badge{display:inline-block;font-size:11px;font-weight:650;border-radius:5px;padding:2px 8px;white-space:nowrap}
+  .b-yes{background:var(--yes)} .b-part{background:var(--part)} .b-no{background:var(--no);color:var(--text-secondary)}
+  .dchip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .dchip .sw{width:10px;height:10px}
+  tr.mainrow{cursor:pointer}
+  tr.mainrow:hover td{background:rgba(127,127,127,0.05)}
+  tr.mainrow td.chev{color:var(--muted);width:22px}
+  tr.detail td{background:rgba(127,127,127,0.035);padding:14px 16px 16px 32px}
+  .dl{display:grid;grid-template-columns:150px 1fr;gap:5px 14px;font-size:12.5px;line-height:1.55}
+  .dl dt{color:var(--muted)} .dl dd{margin:0;color:var(--text-secondary)}
+  .dl dd b{color:var(--text-primary);font-weight:600}
+  .dl a{color:var(--s1);text-decoration:none}
+  p{font-size:14px;line-height:1.65;color:var(--text-primary);margin:0 0 12px}
+  details{margin-top:10px}
+  summary{cursor:pointer;font-size:13px;color:var(--text-secondary)}
+  .twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-top:10px}
+  table.num{width:100%;border-collapse:collapse;font-size:12.5px}
+  table.num th,table.num td{border-bottom:1px solid var(--grid);padding:6px 9px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.num th:first-child,table.num td:first-child{text-align:left}
+  table.num thead th{color:var(--text-secondary);font-weight:600}
+  .foot{color:var(--muted);font-size:12px;line-height:1.6;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="viz-root">
+<div class="wrap">
+
+  <h1>FAR-SIDS labour scheme ledger</h1>
+  <p class="sub">The schemes under which people from Jamaica, Tonga and Comoros go abroad to work on terms arranged before they leave. These belong to the remittance side of the study, not the aid side: a household member recruited under one of these schemes becomes a sender. It serves question A2c of the household survey, which asks how many family members abroad left on such a scheme, and it supplies the real names the question is asked with. A scheme makes the pick list only where the destination government, or an agreement between governments, sets the places or the terms, because that is what makes the flow of workers a cause rather than a consequence of what happens at home.</p>
+
+  <div class="controls">
+    <div class="group" role="group" aria-label="Country">
+      <button data-country="Tonga" aria-pressed="true">Tonga</button>
+      <button data-country="Jamaica" aria-pressed="false">Jamaica</button>
+      <button data-country="Comoros" aria-pressed="false">Comoros</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="group"><button id="theme">Dark</button></div>
+  </div>
+
+  <div class="pick" id="picklist"></div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="card" id="chartcard">
+    <div class="charthead" id="charthead"></div>
+    <ul class="legend" id="chartlegend"></ul>
+    <div class="tl" id="chart"></div>
+    <p class="note" id="chartnote"></p>
+    <div id="chartfold"></div>
+  </div>
+
+  <div class="tablewrap">
+    <table class="data">
+      <thead><tr><th></th><th>Scheme</th><th>Destination</th><th>On the pick list</th><th>Read out at A2c as</th><th>Started</th><th>Places set by</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <p class="note">Click a row for the full record: who runs the scheme on each side, the sectors and contract, what people call it, the aid roster overlap, the key informant check and the official source.</p>
+
+  <h2>Are the schemes aid? The live argument</h2>
+  <p>The destination governments place these schemes inside their own development policy. New Zealand's Ministry of Foreign Affairs and Trade lists labour mobility under its aid and development programme, and Australia frames PALM within its Pacific development strategy.</p>
+  <p>The scholarship has read them the same way for twenty years. Kapur (2004, page 10) wrote that immigrants, rather than governments, become the biggest provider of foreign aid; Curtain, Dornan, Doyle and Howes (2016, page xi) put the income gain from Pacific labour mobility at five to ten times the value of Australia and New Zealand's aid to the region; Huckstep and Beynon (2024) propose counting the remittances that new labour mobility places generate as mobilised climate finance; and Huckstep and Dempster (2025) record that remittances and aid often substitute for each other.</p>
+  <p>Against that reading stands the accounting ruling. The OECD Development Assistance Committee has ruled, on PALM specifically, that migrants sending remittances home is not in itself sufficient for a programme to qualify as official development assistance, and the Addis Ababa Action Agenda (2015, paragraph 40) states that remittances cannot be equated to it. The study therefore records transfers arising from these schemes by the same four facts as every other transfer, assigns them to one flow by a written rule fixed before fieldwork, and computes every result a second time with the assignment flipped, so a conclusion that depends on the filing is reported as a finding rather than hidden inside one.</p>
+
+  <p class="foot">The pick list names are confirmed with the key informants and the pilot before the A2c wording is frozen. Where a scheme touches the aid roster its record says so; everywhere else the two registers describe different machinery: aid programmes pay for things on the household payment map, and labour schemes recruit the people who become senders. Worker figures: Immigration New Zealand RSE arrivals and visa approvals; palmscheme.gov.au quarterly data; US Department of State visa issuance tables; Employment and Social Development Canada, Table 28.</p>
+
+</div>
+</div>
+<script>
+const DATA = [{"Country": "Tonga", "Scheme name": "Recognised Seasonal Employer scheme (RSE)", "Destination": "New Zealand", "Runs it, destination side": "Immigration New Zealand, Ministry of Business, Innovation and Employment", "Runs it, sending side": "Ministry of Internal Affairs, Overseas Employment Division", "Sectors": "Horticulture and viticulture: planting, pruning, thinning, picking, packing", "Contract length": "Up to 7 months in any 11-month period, extendable to 9 months for some workers since 2024", "Who sets the number of places": "New Zealand sets one national cap across all sending countries, negotiated since 2022; there is no Tongan quota, so Tonga's share follows employer recruitment decisions. The cap rose from 14,400 in 2020/21 to 20,750 from 2024/25.", "Started": "2007, ongoing", "What people call it": "RSE. People say going RSE, or name the New Zealand employer.", "On the A2c pick list (24 August forms)": "Yes", "Read-out name for A2c": "RSE", "Overlap with the aid roster": "On no aid register, yet inside both destination governments' Pacific development policy, with worker support services funded from the aid budget; the aid roster's Skills and Employment for Tongans programme trained workers for these schemes. Whether that makes the schemes part of aid strategy is the argument set out below.", "Source URL": "https://www.immigration.govt.nz/assets/inz/documents/statistics/statistics-rse-arrivals.pdf", "Key informant check": "Confirm RSE is the word households use in this community, and whether people name the employer instead."}, {"Country": "Tonga", "Scheme name": "Pacific Australia Labour Mobility scheme (PALM)", "Destination": "Australia", "Runs it, destination side": "Department of Employment and Workplace Relations, with DFAT and the Australian High Commission in Nuku\u02bbalofa", "Runs it, sending side": "Ministry of Internal Affairs, Overseas Employment Division", "Sectors": "Agriculture, horticulture, aquaculture, meat processing, accommodation and tourism on the short-term stream; aged care added 2024", "Contract length": "Short-term stream up to 9 months; long-term stream up to 4 years since 2022", "Who sets the number of places": "Australian employer demand, approved by DEWR; demand driven with no country quota. Published quarterly by country as a stock of workers onshore at quarter end.", "Started": "Seasonal Worker Programme 2012 after a 2008 pilot; Pacific Labour Scheme 2018; merged into PALM April 2022", "What people call it": "PALM, but many still say seasonal work, SWP or Pacific Labour Scheme.", "On the A2c pick list (24 August forms)": "Partly", "Read-out name for A2c": "PALM, formerly the Seasonal Worker Programme or Pacific Labour Scheme", "Overlap with the aid roster": "On no aid register, yet inside both destination governments' Pacific development policy, with worker support services funded from the aid budget; the aid roster's Skills and Employment for Tongans programme trained workers for these schemes. Whether that makes the schemes part of aid strategy is the argument set out below.", "Source URL": "https://www.palmscheme.gov.au/palm-scheme-data", "Key informant check": "Ask which of the three names, PALM, SWP or seasonal work, this community actually uses."}, {"Country": "Tonga", "Scheme name": "New Zealand Accredited Employer Work Visa (AEWV), care and construction pathway", "Destination": "New Zealand", "Runs it, destination side": "Immigration New Zealand", "Runs it, sending side": "None formal; individual or agency arranged, now tracked by the Overseas Employment Division", "Sectors": "Aged care, disability support, construction, meat and seafood processing, seasonal tourism", "Contract length": "Set by the employment contract, typically one to three years, renewable", "Who sets the number of places": "No cap. Employer driven and accreditation gated, so places are not set by government or by agreement.", "Started": "Mid-2022, ongoing", "What people call it": "Not recognised as AEWV. People say a work visa, or nursing or care work in New Zealand.", "On the A2c pick list (24 August forms)": "No", "Read-out name for A2c": "Off the list; falls to the no answer", "Overlap with the aid roster": "None. Employer demand migration, with no aid financing behind it.", "Source URL": "https://www.mted.gov.to/wp-content/uploads/2023/07/FINAL_Final-TLMSMS_23-March-20231.pdf", "Key informant check": "Confirm households distinguish this from RSE when a family member is in New Zealand on a work visa."}, {"Country": "Jamaica", "Scheme name": "United States Farm Work Programme, under the Overseas Employment Programme", "Destination": "United States", "Runs it, destination side": "US Department of Labor, under H-2A visa authority", "Runs it, sending side": "Ministry of Labour and Social Security, Overseas Employment Programme", "Sectors": "Agriculture: shade tobacco, cherry, sweet corn, oranges, tomatoes, apples, general farm, greenhouse, nursery and horticulture", "Contract length": "Seasonal, tied to H-2A terms", "Who sets the number of places": "US employer demand, certified by the US Department of Labor; no bilateral quota.", "Started": "Traced to 1953 by MLSS; NIS eligibility for US workers dates from 1980", "What people call it": "Farm work.", "On the A2c pick list (24 August forms)": "Yes", "Read-out name for A2c": "Farm work in the United States, distinguished from Canada farm work", "Overlap with the aid roster": "None. Employer demand migration, with no aid financing behind it.", "Source URL": "https://www.lmis.gov.jm/article/51", "Key informant check": "Both US and Canada schemes are called farm work; confirm the wording this community uses to tell them apart."}, {"Country": "Jamaica", "Scheme name": "Seasonal Agricultural Worker Program (SAWP), the Canadian Farm and Factory Programme", "Destination": "Canada", "Runs it, destination side": "Employment and Social Development Canada, through FARMS in Ontario and equivalents elsewhere", "Runs it, sending side": "Ministry of Labour and Social Security, through the Jamaican Liaison Service in Canada", "Sectors": "Fruit and vegetable farming, greenhouse flowers and vegetables, tobacco, nursery and orchard work; MLSS materials also describe a factory component", "Contract length": "Up to 8 months, between 1 January and 15 December", "Who sets the number of places": "Canadian employer demand, approved under the Temporary Foreign Worker Program agricultural stream and administered bilaterally. The ministry placed 8,877 workers in 2025 against 10,353 approved positions.", "Started": "1966, ongoing", "What people call it": "Farm work, or Canada farm work. SAWP is an official term rather than a worker\u2019s term.", "On the A2c pick list (24 August forms)": "Yes", "Read-out name for A2c": "Canada farm work", "Overlap with the aid roster": "None. Employer demand migration, with no aid financing behind it.", "Source URL": "https://www.canada.ca/en/employment-social-development/services/foreign-workers/agricultural/seasonal-agricultural.html", "Key informant check": "Confirm the factory component is recognised here, and under what name."}, {"Country": "Jamaica", "Scheme name": "United States Hospitality Programme, the Hotel Workers Programme", "Destination": "United States", "Runs it, destination side": "US Department of Labor and USCIS, under the H-2B non-agricultural visa", "Runs it, sending side": "Ministry of Labour and Social Security, Overseas Employment Programme", "Sectors": "Hotel and hospitality: housekeeping, waiting, kitchen stewarding, landscaping", "Contract length": "Seasonal, typically up to nine or ten months under H-2B terms", "Who sets the number of places": "US employer demand under the federal H-2B cap of 66,000 a year, split half-yearly with supplemental allocations in some years.", "Started": "NIS eligibility for US-bound workers dates from 1980", "What people call it": "Hotel work, or the hospitality programme.", "On the A2c pick list (24 August forms)": "Yes", "Read-out name for A2c": "Hotel work in the United States", "Overlap with the aid roster": "None. Employer demand migration, with no aid financing behind it.", "Source URL": "https://www.mlss.gov.jm/departments/overseas-employment/", "Key informant check": "Confirm hotel work is understood as the US programme rather than local hotel employment."}, {"Country": "Jamaica", "Scheme name": "Canadian Skills Programme, Jamaican participation in Canada\u2019s Temporary Foreign Worker Program", "Destination": "Canada", "Runs it, destination side": "Employment and Social Development Canada", "Runs it, sending side": "Ministry of Labour and Social Security", "Sectors": "Healthcare, transportation, hotel and food service, and other shortage occupations", "Contract length": "Set by the LMIA-approved job offer, typically one to two years", "Who sets the number of places": "Canadian employer demand through Labour Market Impact Assessment approval. No Jamaica quota.", "Started": "2010 per the Labour Market Information System", "What people call it": "Not recognised under this name. People say a work permit to Canada, or name the sector.", "On the A2c pick list (24 August forms)": "Fallback line", "Read-out name for A2c": "A work permit arranged before leaving", "Overlap with the aid roster": "None. Employer demand migration, with no aid financing behind it.", "Source URL": "https://www.lmis.gov.jm/article/51", "Key informant check": "Ask what people call an MLSS-arranged work permit to Canada, since no scheme name is recognised."}, {"Country": "Jamaica", "Scheme name": "United States Exchange Visitor Program, J-1, Summer Work Travel and hospitality categories", "Destination": "United States", "Runs it, destination side": "US Department of State", "Runs it, sending side": "Private sponsor agencies, listed among MLSS-approved overseas job placement agencies", "Sectors": "Hospitality, tourism, seasonal resort and summer work", "Contract length": "Typically up to four months for Summer Work Travel, longer for other categories", "Who sets the number of places": "US Department of State sponsor caps, set globally rather than per country.", "Started": "Long-standing; Jamaican participation documented through MLSS-approved agencies", "What people call it": "J-1, or the work and travel programme.", "On the A2c pick list (24 August forms)": "Yes, with caution", "Read-out name for A2c": "J-1, the work and travel programme", "Overlap with the aid roster": "None; a cultural exchange visa rather than a labour agreement, so it sits at the edge of what A2c asks.", "Source URL": "https://j1visa.state.gov/basics/facts-and-figures", "Key informant check": "Confirm households treat J-1 work and travel as a scheme arranged before leaving."}, {"Country": "Jamaica", "Scheme name": "Cruise industry recruitment drive, Ministry of Tourism", "Destination": "International, cruise vessels", "Runs it, destination side": "The cruise operator; Royal Caribbean named in 2022 reporting", "Runs it, sending side": "Ministry of Tourism, not the Ministry of Labour", "Sectors": "Cruise ship crew and hospitality roles", "Contract length": "Not disclosed in the sources found", "Who sets the number of places": "Cruise line hiring targets announced in phases; a target of up to 10,000 was cited in 2022 and 3,609 Jamaicans were reported employed by July 2022. Whether it recurs annually as a named programme could not be confirmed.", "Started": "The drive dates to 2022", "What people call it": "Cruise ship work. No formal programme name is used.", "On the A2c pick list (24 August forms)": "No", "Read-out name for A2c": "Off the list; captured in the other line", "Overlap with the aid roster": "None. Employer demand migration, with no aid financing behind it.", "Source URL": "https://jis.gov.jm/cruise-industry-recruitment-drive-results-in-3609-jamaicans-being-employed/", "Key informant check": "Confirm whether cruise recruitment recurs under a name households would recognise."}, {"Country": "Comoros", "Scheme name": "No named scheme exists", "Destination": "Not applicable", "Runs it, destination side": "Not applicable", "Runs it, sending side": "Not applicable", "Sectors": "Not applicable", "Contract length": "Not applicable", "Who sets the number of places": "France\u2019s published list of bilateral professional mobility agreements does not include Comoros; the France to Comoros instruments that exist concern migration control rather than labour, and movement from Anjouan to Mayotte is governed by the visa Balladur of 1995, a restriction rather than a recruitment mechanism. No Gulf, Madagascar or Tanzania labour agreement specific to Comoros was found.", "Started": "Not applicable", "What people call it": "Not applicable", "On the A2c pick list (24 August forms)": "No pick list is possible", "Read-out name for A2c": "A2c in Comoros separates an individual work visa or permit arranged before leaving from movement to Mayotte or France under family or nationality rights, and records the employer or recruiter as open text where one exists.", "Overlap with the aid roster": "None. The one adjacent aid roster row is the PDFC diaspora partnership project, which co-finances diaspora projects and recruits nobody.", "Source URL": "https://www.immigration.interieur.gouv.fr/", "Key informant check": "Ask whether any recruiter, agency or employer arranges work abroad from this community, and record the name as open text."}];
+
+const DESTC = {'New Zealand':'--s3','Australia':'--s2','United States':'--s1','Canada':'--s5'};
+const PICK = {
+ Tonga: '<b>The A2c pick list for Tonga:</b> RSE, read out as RSE · PALM, read out as PALM, formerly the Seasonal Worker Programme or Pacific Labour Scheme. The Accredited Employer Work Visa stays off the list, and a family member on one falls to the no answer.',
+ Jamaica: '<b>The A2c pick list for Jamaica:</b> farm work in the United States · Canada farm work · hotel work in the United States · J-1, the work and travel programme, with caution · plus a fallback line, a work permit arranged before leaving. The two farm work lines are read separately, because both are called farm work and only the destination tells them apart.',
+ Comoros: '<b>No pick list is possible for Comoros,</b> and reading one out would produce false positives. A2c in Comoros separates an individual work visa or permit arranged before leaving from movement to Mayotte or France under family or nationality rights, and records the employer or recruiter as open text where one exists.'
+};
+const CHART = {
+ Tonga: {
+   head: 'Tongan workers abroad on the schemes, New Zealand and Australia side by side',
+   sharedMax: 7000,
+   panels: [
+     {title:'New Zealand, RSE by season', years:['07/08','08/09','09/10','10/11','11/12','12/13','13/14','14/15','15/16','16/17','17/18','18/19','19/20','20/21','21/22','22/23','23/24','24/25','25/26'],
+      series:[
+        {label:'RSE arrivals', css:'--s1', vals:{'07/08':805,'08/09':1355,'09/10':1142,'10/11':1411,'11/12':1398,'12/13':1573,'13/14':1538,'14/15':1563,'15/16':1687,'16/17':1822,'17/18':1899,'18/19':2037,'19/20':1807,'20/21':957}},
+        {label:'RSE visas approved', css:'--s5', vals:{'16/17':2034,'17/18':2160,'18/19':2148,'19/20':2427,'20/21':3903,'21/22':2988,'22/23':2100,'23/24':1836,'24/25':1842,'25/26':1680}}
+      ]},
+     {title:'Australia, SWP and PLS, then PALM', years:['18/19','19/20','20/21','21/22','2022-04','2024-08','2024-12','2025-03','2025-06','2025-09','2025-12','2026-06'],
+      series:[
+        {label:'SWP and PLS workers, per season', css:'--s2', vals:{'18/19':3738,'19/20':2351,'20/21':2201,'21/22':2719}},
+        {label:'PALM workers onshore at quarter end', css:'--s4', vals:{'2022-04':6035,'2024-08':3680,'2024-12':2725,'2025-03':3480,'2025-06':3600,'2025-09':3315,'2025-12':2680,'2026-06':3715}}
+      ]}
+   ],
+   note: 'The two panels share one scale, so the countries can be compared by eye. Arrivals, visa approvals, season worker totals and quarter-end stocks are four different quantities and are never added together; the New Zealand arrivals record ends at 2020/21, and the Australian record switches from season totals to quarter-end stocks when PALM began publishing in 2022. The Australian season figures are a Tongan ministry compilation, checked against the Department of Employment and Workplace Relations before any use in estimation.'
+ },
+ Jamaica: {
+   head: 'Jamaican workers and visas each year, by scheme',
+   sharedMax: 16000,
+   panels: [
+     {title:'', years:['2019','2020','2021','2022','2023','2024'],
+      series:[
+        {label:'Canada SAWP, approved positions', css:'--s5', vals:{'2019':10645,'2020':11541,'2021':11519,'2022':11966,'2023':13811,'2024':10603}},
+        {label:'US H-2B hotel and hospitality visas', css:'--s1', vals:{'2019':10076,'2020':5504,'2021':8950,'2022':12791,'2023':11884,'2024':12059}},
+        {label:'US J-1 work and travel visas', css:'--s4', vals:{'2019':8501,'2020':691,'2021':493,'2022':7291,'2023':9584,'2024':10477}},
+        {label:'US H-2A farm work visas', css:'--s2', vals:{'2019':5030,'2020':4659,'2021':4872,'2022':4826,'2023':4612,'2024':4718}}
+      ]}
+   ],
+   note: 'US figures are visas issued to Jamaican nationals by fiscal year; the Canadian figures are approved seasonal agricultural positions by calendar year. The 2020 and 2021 collapse in J-1 is the COVID border closure.'
+ },
+ Comoros: null
+};
+const TONGA_FOLD = `<details><summary>Show the numbers behind the chart, and the Australian PALM figures</summary>
+  <div class="twocol">
+    <div><table class="num"><thead><tr><th>RSE year</th><th>Arrivals</th><th>Visas approved</th><th>National cap</th></tr></thead><tbody>
+      <tr><td>2007/08</td><td>805</td><td></td><td></td></tr><tr><td>2008/09</td><td>1,355</td><td></td><td></td></tr>
+      <tr><td>2009/10</td><td>1,142</td><td></td><td></td></tr><tr><td>2010/11</td><td>1,411</td><td></td><td></td></tr>
+      <tr><td>2011/12</td><td>1,398</td><td></td><td></td></tr><tr><td>2012/13</td><td>1,573</td><td></td><td></td></tr>
+      <tr><td>2013/14</td><td>1,538</td><td></td><td></td></tr><tr><td>2014/15</td><td>1,563</td><td></td><td></td></tr>
+      <tr><td>2015/16</td><td>1,687</td><td></td><td></td></tr><tr><td>2016/17</td><td>1,822</td><td>2,034</td><td></td></tr>
+      <tr><td>2017/18</td><td>1,899</td><td>2,160</td><td></td></tr><tr><td>2018/19</td><td>2,037</td><td>2,148</td><td></td></tr>
+      <tr><td>2019/20</td><td>1,807</td><td>2,427</td><td></td></tr><tr><td>2020/21</td><td>957</td><td>3,903</td><td>14,400</td></tr>
+      <tr><td>2021/22</td><td></td><td>2,988</td><td>16,000</td></tr><tr><td>2022/23</td><td></td><td>2,100</td><td>19,000</td></tr>
+      <tr><td>2023/24</td><td></td><td>1,836</td><td>19,500</td></tr><tr><td>2024/25</td><td></td><td>1,842</td><td>20,750</td></tr>
+      <tr><td>2025/26</td><td></td><td>1,680</td><td>20,750</td></tr></tbody></table>
+      <p class="note">The national cap covers all sending countries together, which is why it sits far above the Tongan numbers.</p></div>
+    <div><table class="num"><thead><tr><th>Australia</th><th>Quantity</th><th>Workers</th></tr></thead><tbody>
+      <tr><td>2018/19</td><td>SWP 3,738 + PLS 0, season</td><td>3,738</td></tr>
+      <tr><td>2019/20</td><td>SWP 2,284 + PLS 67, season</td><td>2,351</td></tr>
+      <tr><td>2020/21</td><td>SWP 2,076 + PLS 125, season</td><td>2,201</td></tr>
+      <tr><td>2021/22</td><td>SWP 2,032 + PLS 687, season</td><td>2,719</td></tr>
+      <tr><td>2022-04</td><td>PALM stock, quarter end</td><td>6,035</td></tr>
+      <tr><td>2024-08</td><td>PALM stock, quarter end</td><td>3,680</td></tr>
+      <tr><td>2024-12</td><td>PALM stock, quarter end</td><td>2,725</td></tr>
+      <tr><td>2025-03</td><td>PALM stock, quarter end</td><td>3,480</td></tr>
+      <tr><td>2025-06</td><td>PALM stock, quarter end</td><td>3,600</td></tr>
+      <tr><td>2025-09</td><td>PALM stock, quarter end</td><td>3,315</td></tr>
+      <tr><td>2025-12</td><td>PALM stock, quarter end</td><td>2,680</td></tr>
+      <tr><td>2026-06</td><td>PALM stock, quarter end</td><td>3,715</td></tr></tbody></table>
+      <p class="note">The season rows are the Seasonal Worker Programme plus the Pacific Labour Scheme added together, with the split shown; both are a Tongan ministry compilation, checked against the Department of Employment and Workplace Relations before any use in estimation. The June 2026 PALM data carries the full monthly series by stream and sex, and it already reflects the methodology revision that lowered the Tongan 2023/24 counts by about a quarter.</p></div>
+  </div></details>`;
+
+const $ = s => document.querySelector(s);
+let state = {country:'Tonga'};
+
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+function badge(v){
+  const t = (v||'').toLowerCase();
+  if (t.startsWith('yes')) return '<span class="badge b-yes">on the pick list'+(t.includes('caution')?', with caution':'')+'</span>';
+  if (t.startsWith('partly')) return '<span class="badge b-part">yes, read the full name</span>';
+  if (t.startsWith('fallback')) return '<span class="badge b-part">fallback line</span>';
+  return '<span class="badge b-no">off the pick list</span>';
+}
+function destChip(d){
+  const css = DESTC[d];
+  return css ? `<span class="dchip"><span class="sw" style="background:var(${css})"></span>${esc(d)}</span>` : esc(d);
+}
+function shortName(n){
+  return n.split(',')[0].replace(' scheme','').replace(' Programme, under the Overseas Employment Programme','');
+}
+function placesShort(t){
+  const cut = t.indexOf('.');
+  return esc(cut>0 && cut<130 ? t.slice(0,cut+1) : t.slice(0,130));
+}
+
+function renderTiles(rows){
+  const onlist = rows.filter(d=>/^(yes|partly)/i.test(d['On the A2c pick list (24 August forms)'])).length;
+  const dests = new Set(rows.map(d=>d['Destination']).filter(d=>d && d!=='Not applicable'));
+  $('#tiles').innerHTML =
+    `<div class="tile"><div class="v">${rows.length}</div><div class="l">schemes recorded</div></div>`+
+    `<div class="tile"><div class="v">${onlist}</div><div class="l">on the A2c pick list</div></div>`+
+    `<div class="tile"><div class="v">${dests.size}</div><div class="l">destination ${dests.size===1?'country':'countries'}</div></div>`;
+}
+
+function renderChart(){
+  const cfg = CHART[state.country];
+  const card = $('#chartcard');
+  if (!cfg){
+    card.style.display = '';
+    $('#charthead').textContent = 'No scheme, so no numbers';
+    $('#chartlegend').innerHTML = '';
+    $('#chart').innerHTML = '';
+    $('#chartnote').textContent = 'No labour agreement specific to Comoros exists in any register consulted: France\u2019s bilateral professional mobility agreements do not include Comoros, and no Gulf, Madagascar or Tanzania agreement was found. That absence is itself a finding, and A2c in Comoros therefore asks about individually arranged work visas rather than reading out scheme names.';
+    $('#chartfold').innerHTML = '';
+    return;
+  }
+  $('#charthead').textContent = cfg.head;
+  const allSeries = cfg.panels.flatMap(pn=>pn.series);
+  $('#chartlegend').innerHTML = allSeries.map(se=>
+    `<li><span class="sw" style="background:var(${se.css})"></span>${se.label}</li>`).join('');
+  const ymax = cfg.sharedMax;
+  const step = ymax > 8000 ? 4000 : 1000;
+  const panelHtml = cfg.panels.map(pn=>{
+    const years = pn.years, S = pn.series;
+    const W = 520, H = 250, L = 46, R = 6, T = 14, B = 34;
+    const yy = v => T + (1 - v/ymax)*(H-T-B);
+    const gw = (W-L-R)/years.length;
+    const bw = Math.min(18, Math.max(6,(gw-6)/S.length));
+    let out = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${pn.title||cfg.head}">`;
+    for (let v=0; v<=ymax; v+=step){
+      out += `<line x1="${L}" x2="${W-R}" y1="${yy(v)}" y2="${yy(v)}" stroke="var(--grid)"/>`+
+             `<text x="${L-5}" y="${yy(v)+4}" font-size="10" fill="var(--muted)" text-anchor="end">${v>=1000? (v/1000)+'k' : v}</text>`;
+    }
+    years.forEach((yr,i)=>{
+      const present = S.filter(se=>se.vals[yr]!==undefined);
+      const x0 = L + i*gw + (gw - bw*present.length)/2;
+      present.forEach((se,j)=>{
+        const v = se.vals[yr];
+        out += `<rect x="${(x0+j*bw).toFixed(1)}" y="${yy(v).toFixed(1)}" width="${(bw-1.5).toFixed(1)}" height="${(yy(0)-yy(v)).toFixed(1)}" rx="2" fill="var(${se.css})"><title>${se.label}, ${yr}: ${v.toLocaleString('en')}</title></rect>`;
+      });
+      if (i % Math.ceil(years.length/8) === 0)
+        out += `<text x="${L+i*gw+gw/2}" y="${H-12}" font-size="9.5" fill="var(--muted)" text-anchor="middle">${yr}</text>`;
+    });
+    out += `<line x1="${L}" x2="${W-R}" y1="${yy(0)}" y2="${yy(0)}" stroke="var(--axis)"/></svg>`;
+    return `<div>${pn.title? `<div style="font-size:12.5px;font-weight:650;color:var(--text-secondary);margin-bottom:4px">${pn.title}</div>`:''}${out}</div>`;
+  }).join('');
+  $('#chart').innerHTML = cfg.panels.length>1
+    ? `<div class="twocol">${panelHtml}</div>` : panelHtml;
+  $('#chartnote').textContent = cfg.note;
+  $('#chartfold').innerHTML = state.country==='Tonga' ? TONGA_FOLD : '';
+}
+function renderTable(rows){
+  $('#tbody').innerHTML = rows.map((d,i)=>{
+    const det = `
+      <dl class="dl">
+        <dt>Full name</dt><dd><b>${esc(d['Scheme name'])}</b></dd>
+        <dt>Runs it, there</dt><dd>${esc(d['Runs it, destination side'])}</dd>
+        <dt>Runs it, at home</dt><dd>${esc(d['Runs it, sending side'])}</dd>
+        <dt>Sectors</dt><dd>${esc(d['Sectors'])}</dd>
+        <dt>Contract</dt><dd>${esc(d['Contract length'])}</dd>
+        <dt>Places set by</dt><dd>${esc(d['Who sets the number of places'])}</dd>
+        <dt>What people call it</dt><dd>${esc(d['What people call it'])}</dd>
+        <dt>Aid roster overlap</dt><dd>${esc(d['Overlap with the aid roster'])}</dd>
+        <dt>Key informants</dt><dd>${esc(d['Key informant check'])}</dd>
+        <dt>Source</dt><dd><a href="${d['Source URL']}" target="_blank" rel="noopener">${d['Source URL'].replace(/^https?:\/\//,'').split('/')[0]}</a></dd>
+      </dl>`;
+    return `<tr class="mainrow" data-i="${i}" tabindex="0" aria-expanded="false">
+      <td class="chev">▸</td>
+      <td><b>${esc(shortName(d['Scheme name']))}</b></td>
+      <td>${destChip(d['Destination'])}</td>
+      <td>${badge(d['On the A2c pick list (24 August forms)'])}</td>
+      <td>${esc(d['Read-out name for A2c'])}</td>
+      <td>${esc(d['Started'])}</td>
+      <td>${placesShort(d['Who sets the number of places'])}</td>
+    </tr>
+    <tr class="detail" data-for="${i}" hidden><td colspan="7">${det}</td></tr>`;
+  }).join('');
+  document.querySelectorAll('tr.mainrow').forEach(tr=>{
+    const toggle = ()=>{
+      const det = document.querySelector(`tr.detail[data-for="${tr.dataset.i}"]`);
+      const open = det.hidden;
+      det.hidden = !open;
+      tr.querySelector('.chev').textContent = open ? '▾' : '▸';
+      tr.setAttribute('aria-expanded', String(open));
+    };
+    tr.addEventListener('click', e=>{ if (!e.target.closest('a')) toggle(); });
+    tr.addEventListener('keydown', e=>{ if (e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } });
+  });
+}
+
+function render(){
+  $('#picklist').innerHTML = PICK[state.country];
+  const rows = DATA.filter(d=>d['Country']===state.country && d['Scheme name']!=='No named scheme exists');
+  renderTiles(rows);
+  renderChart();
+  renderTable(rows);
+  const empty = rows.length===0;
+  document.querySelector('.tablewrap').style.display = empty ? 'none' : '';
+  document.querySelector('.tablewrap').nextElementSibling.style.display = empty ? 'none' : '';
+}
+document.querySelectorAll('[data-country]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    state.country = b.dataset.country;
+    b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.country===state.country)));
+    render();
+  });
+});
+$('#theme').addEventListener('click', ()=>{
+  const dark = document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme', dark?'light':'dark');
+  $('#theme').textContent = dark?'Dark':'Light';
+});
+render();
+
+</script>
+</body>
+</html>

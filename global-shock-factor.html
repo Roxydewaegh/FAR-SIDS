@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAR-SIDS global shock ledger</title>
+<style>
+  .viz-root{
+    color-scheme: light;
+    --surface-1:#fcfcfb; --page:#f9f9f7;
+    --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
+    --s1:#2a78d6; --s2:#eb6834; --gshade:rgba(227,73,72,0.12); --crisis:#e34948;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])) .viz-root{
+      color-scheme: dark;
+      --surface-1:#1a1a19; --page:#0d0d0d;
+      --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+      --s1:#3987e5; --s2:#d95926; --gshade:rgba(230,103,103,0.16); --crisis:#e66767;
+    }
+  }
+  :root[data-theme="dark"] .viz-root{
+    color-scheme: dark;
+    --surface-1:#1a1a19; --page:#0d0d0d;
+    --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+    --s1:#3987e5; --s2:#d95926; --gshade:rgba(230,103,103,0.16); --crisis:#e66767;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--page,#f9f9f7);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+  .viz-root{background:var(--page);color:var(--text-primary);min-height:100vh;padding:28px 20px 56px}
+  .wrap{max-width:1020px;margin:0 auto}
+  h1{font-size:23px;line-height:1.3;margin:0 0 6px;font-weight:650;letter-spacing:-0.01em}
+  h2{font-size:16.5px;margin:28px 0 8px;font-weight:650}
+  .sub{color:var(--text-secondary);font-size:14px;line-height:1.6;margin:0 0 4px}
+  p{font-size:14px;line-height:1.65;margin:0 0 12px}
+  .controls{display:flex;justify-content:flex-end;margin:14px 0 0}
+  .group{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--surface-1)}
+  button{font:inherit;font-size:13px;padding:7px 13px;background:transparent;border:0;color:var(--text-secondary);cursor:pointer}
+  .card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-top:12px}
+  .note{color:var(--muted);font-size:12.5px;line-height:1.55;margin:10px 0 0}
+  .strip{display:grid;grid-template-columns:repeat(46,1fr);gap:2px;margin-top:8px}
+  .cell{height:22px;border-radius:3px;background:var(--grid)}
+  .cell.on{background:var(--crisis)}
+  .striplabels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
+  table.data{border-collapse:collapse;font-size:13px;margin-top:6px}
+  table.data th,table.data td{border-bottom:1px solid var(--grid);padding:6px 12px;text-align:left}
+  table.data td:nth-child(2){font-variant-numeric:tabular-nums;text-align:right}
+  table.data thead th{color:var(--text-secondary);font-weight:600}
+  .rulebox{border-left:3px solid var(--s1);padding:2px 0 2px 14px;margin:12px 0}
+  .foot{color:var(--muted);font-size:12px;line-height:1.6;margin-top:24px}
+  .twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+  .ptitle{font-size:12.5px;font-weight:650;color:var(--text-secondary);margin-bottom:4px}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:6px 0 10px;padding:0;list-style:none}
+  .legend li{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text-secondary)}
+  .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
+</style>
+</head>
+<body>
+<div class="viz-root">
+<div class="wrap">
+
+  <h1>FAR-SIDS global shock ledger</h1>
+  <p class="sub">The global shock factor G, in its two built forms: world output growth and the dated crisis years. G is what every country is exposed to at the same time, and its job in every model is to be removed, so that whatever remains between the aid and remittance series is not their shared response to the world. It is the input the common shock pre-test runs on, and that pre-test decides whether the macro strand estimates a relationship or becomes descriptive.</p>
+  <div class="controls"><div class="group"><button id="theme">Dark</button></div></div>
+
+  <div class="card">
+    <h2 style="margin-top:0">World output growth, 1980 to 2025</h2>
+    <div id="gchart"></div>
+    <p class="note">Indicator NY.GDP.MKTP.KD.ZG for the world aggregate, retrieved from the World Bank API on 25 August 2026, 46 observations, no gaps. The 2025 value is carried as published and treated as provisional until the World Development Indicators close the year. Shaded bands are the two dated crisis episodes.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">The dated crisis indicator</h2>
+    <div class="strip" id="strip"></div>
+    <div class="strip" style="margin-top:4px"><div style="font-size:11px;color:var(--muted);text-align:left">1980</div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left">1990</div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left">2000</div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left">2010</div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left">2020</div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div><div style="font-size:11px;color:var(--muted);text-align:left"></div></div>
+    <p class="note">The crisis dummy equals one in 2008, 2009, 2020 and 2021, and zero elsewhere. It is the crude form of the control that anyone can replicate, reported beside the world growth form; the pre-test reports raw and conditioned estimates under both.</p>
+  </div>
+
+  <h2>Why these four years, and no others</h2>
+  <table class="data"><thead><tr><th>Years</th><th>World growth</th><th>What happened to the two flows</th></tr></thead><tbody>
+    <tr><td>2008 to 2009</td><td>2.09%, then −1.33%</td><td>Remittances fell while emergency finance rose, so the years read as substitution on their own.</td></tr>
+    <tr><td>2020 to 2021</td><td>−2.89%, then +6.49%</td><td>Remittances rose strongly in all three countries, partly because closed borders pushed hand-carried cash into recorded channels, and aid more than doubled in Comoros and spiked in Tonga, so for most of the sample the years read as complementarity on their own. Jamaican net aid fell across the episode, because repayments net off much of what arrives there.</td></tr>
+  </tbody></table>
+
+  <div class="card" style="margin-top:16px">
+    <h2 style="margin-top:0">What the two flows did in those episodes, in the project's own data</h2>
+    <ul class="legend"><li><span class="sw" style="background:var(--s1)"></span>Remittances</li><li><span class="sw" style="background:var(--s2)"></span>Net aid</li></ul>
+    <div class="twocol" id="episodes"></div>
+    <p class="note">The change in each flow over each episode, in current US dollars, from the project's own series: remittances are the series each country's models estimate on, and aid is net official development assistance received. In 2008 to 2009 remittances fell and aid rose in all three countries. In 2019 to 2021 remittances rose strongly everywhere and aid more than doubled in Comoros; Tongan aid rose 51 per cent in 2020 and gave most of it back in 2021, and Jamaican net aid fell across the episode. Read alone, the first episode looks like substitution and the second looks like complementarity, and that reversal is what the pre-test removes before any estimate is believed.</p>
+  </div>
+
+  <p style="margin-top:12px">A sample containing both episodes averages them and reports the average as though it were a relationship between the two flows, when it is a relationship between each of them and the world. That is the error the pre-test exists to catch, and it is why the decision rule is fixed before any estimate is seen: if the aid coefficient survives conditioning on G, the strand estimates as designed; if it collapses toward zero, what the literature calls substitution is shock covariance and the strand becomes descriptive; if it changes sign, the crisis years were driving the raw correlation and the years responsible are named.</p>
+
+  <div class="rulebox">
+    <p style="margin-bottom:0">G is never confused with S, the country shock index in the folder beside this one. G is what everybody is exposed to at once, and it is removed. S is what one island was exposed to and its neighbours were not, a cyclone, an eruption, an epidemic, and it is kept and used, because it is the closest thing to an experiment these series contain. The two never share a term in any model.</p>
+  </div>
+
+  <p class="foot">Sources. World output growth: World Development Indicators, world aggregate, 1980 to 2025, 46 observations, no gaps. The crisis indicator is constructed, not downloaded: 1 in 2008, 2009, 2020 and 2021, 0 elsewhere, so anyone can rebuild it from the dates alone.</p>
+
+</div>
+</div>
+<script>
+const WG = [[1980,1.82],[1981,1.89],[1982,0.41],[1983,2.58],[1984,4.73],[1985,3.66],[1986,3.31],[1987,3.75],[1988,4.53],[1989,3.64],[1990,2.71],[1991,1.23],[1992,2.06],[1993,1.86],[1994,3.42],[1995,3.18],[1996,3.59],[1997,4.0],[1998,2.78],[1999,3.58],[2000,4.57],[2001,2.03],[2002,2.32],[2003,3.07],[2004,4.5],[2005,4.06],[2006,4.49],[2007,4.43],[2008,2.09],[2009,-1.33],[2010,4.52],[2011,3.31],[2012,2.75],[2013,2.89],[2014,3.17],[2015,3.13],[2016,2.79],[2017,3.45],[2018,3.29],[2019,2.68],[2020,-2.89],[2021,6.49],[2022,3.44],[2023,2.86],[2024,2.9],[2025,2.92]];
+function renderG(){
+  const W=960, H=220, L=42, R=14, T=14, B=28;
+  const ys = WG.map(d=>d[1]); const ymin=Math.floor(Math.min(...ys))-1, ymax=Math.ceil(Math.max(...ys))+1;
+  const x = y => L + (y-1980)/(2025-1980)*(W-L-R);
+  const yy = v => T + (ymax-v)/(ymax-ymin)*(H-T-B);
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="World output growth 1980 to 2025 with crisis years shaded">`;
+  [[2008,2009],[2020,2021]].forEach(([a,b])=>{ s += `<rect x="${x(a-0.5)}" y="${T}" width="${x(b+0.5)-x(a-0.5)}" height="${H-T-B}" fill="var(--gshade)"/>`; });
+  for (let v = Math.ceil(ymin/2)*2; v<=ymax; v+=2){ s += `<line x1="${L}" x2="${W-R}" y1="${yy(v)}" y2="${yy(v)}" stroke="var(--grid)"/>`+
+    `<text x="${L-6}" y="${yy(v)+4}" font-size="11" fill="var(--muted)" text-anchor="end">${v}%</text>`; }
+  s += `<line x1="${L}" x2="${W-R}" y1="${yy(0)}" y2="${yy(0)}" stroke="var(--axis)" stroke-width="1.5"/>`;
+  for (let y=1980; y<=2025; y+=5) s += `<text x="${x(y)}" y="${H-8}" font-size="11" fill="var(--muted)" text-anchor="middle">${y}</text>`;
+  s += `<path d="${WG.map((d,i)=>(i?'L':'M')+x(d[0])+' '+yy(d[1])).join(' ')}" fill="none" stroke="var(--s1)" stroke-width="2"/>`;
+  WG.filter(d=>[2009,2020,2021].includes(d[0])).forEach(d=>{
+    s += `<circle cx="${x(d[0])}" cy="${yy(d[1])}" r="4" fill="var(--s1)" stroke="var(--surface-1)" stroke-width="2"/>`+
+         `<text x="${x(d[0])}" y="${yy(d[1])+(d[0]===2021?-9:16)}" font-size="11" fill="var(--text-secondary)" text-anchor="middle">${d[1]}%</text>`;
+  });
+  s += `</svg>`;
+  document.querySelector('#gchart').innerHTML = s;
+}
+function renderStrip(){
+  let h = '';
+  for (let y=1980; y<=2025; y++){
+    const on = [2008,2009,2020,2021].includes(y);
+    h += `<div class="cell${on?' on':''}" title="${y}: G = ${on?1:0}"></div>`;
+  }
+  document.querySelector('#strip').innerHTML = h;
+}
+document.querySelector('#theme').addEventListener('click', ()=>{
+  const dark = document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme', dark?'light':'dark');
+  document.querySelector('#theme').textContent = dark?'Dark':'Light';
+});
+const EP = [
+  {title:'2008 to 2009, change from 2008 to 2009',
+   rows:[{c:'Jamaica', r:-12.4, a:69.6},{c:'Tonga', r:-21.4, a:43.7},{c:'Comoros', r:-0.9, a:20.8}]},
+  {title:'2020 to 2021, change from 2019 to 2021',
+   rows:[{c:'Jamaica', r:44.6, a:-52.4},{c:'Tonga', r:44.9, a:4.7},{c:'Comoros', r:70.9, a:109.9}]}
+];
+function renderEpisodes(){
+  const vmin=-60, vmax=120, W=480, H=250, L=44, R=8, T=16, B=26;
+  const yy = v => T + (vmax-v)/(vmax-vmin)*(H-T-B);
+  document.getElementById('episodes').innerHTML = EP.map(ep=>{
+    let out = `<div><div class="ptitle">${ep.title}</div><svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${ep.title}">`;
+    for (let v=vmin; v<=vmax; v+=30){
+      out += `<line x1="${L}" x2="${W-R}" y1="${yy(v)}" y2="${yy(v)}" stroke="var(--grid)"/>`+
+             `<text x="${L-5}" y="${yy(v)+4}" font-size="10" fill="var(--muted)" text-anchor="end">${v>0?'+':''}${v}%</text>`;
+    }
+    const gw = (W-L-R)/ep.rows.length, bw = 34;
+    ep.rows.forEach((d,i)=>{
+      const cx = L + i*gw + gw/2;
+      [['r','--s1'],['a','--s2']].forEach(([k,css],j)=>{
+        const v = d[k], x = cx - bw + j*bw + 2;
+        const y0 = yy(Math.max(0,v)), h = Math.abs(yy(v)-yy(0));
+        out += `<rect x="${x.toFixed(1)}" y="${y0.toFixed(1)}" width="${bw-4}" height="${h.toFixed(1)}" rx="2" fill="var(${css})"><title>${d.c}, ${k==='r'?'remittances':'net aid'}: ${v>0?'+':''}${v}%</title></rect>`+
+               `<text x="${(x+(bw-4)/2).toFixed(1)}" y="${(v>=0? y0-4 : y0+h+11).toFixed(1)}" font-size="10" fill="var(--text-secondary)" text-anchor="middle">${v>0?'+':''}${Math.round(v)}%</text>`;
+      });
+      out += `<text x="${cx}" y="${H-8}" font-size="11" fill="var(--muted)" text-anchor="middle">${d.c}</text>`;
+    });
+    out += `<line x1="${L}" x2="${W-R}" y1="${yy(0)}" y2="${yy(0)}" stroke="var(--axis)" stroke-width="1.5"/></svg></div>`;
+    return out;
+  }).join('');
+}
+renderG(); renderStrip(); renderEpisodes();
+</script>
+</body>
+</html>

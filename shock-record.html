@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAR-SIDS shock ledger</title>
+<style>
+  .viz-root{
+    color-scheme: light;
+    --surface-1:#fcfcfb; --page:#f9f9f7;
+    --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300;
+    --cell:#ececea; --gshade:rgba(227,73,72,0.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])) .viz-root{
+      color-scheme: dark;
+      --surface-1:#1a1a19; --page:#0d0d0d;
+      --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+      --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300;
+      --cell:#262624; --gshade:rgba(230,103,103,0.16);
+    }
+  }
+  :root[data-theme="dark"] .viz-root{
+    color-scheme: dark;
+    --surface-1:#1a1a19; --page:#0d0d0d;
+    --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300;
+    --cell:#262624; --gshade:rgba(230,103,103,0.16);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--page,#f9f9f7);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+  .viz-root{background:var(--page);color:var(--text-primary);min-height:100vh;padding:28px 20px 56px}
+  .wrap{max-width:1000px;margin:0 auto}
+  h1{font-size:23px;line-height:1.3;margin:0 0 6px;font-weight:650;letter-spacing:-0.01em}
+  h2{font-size:17px;margin:34px 0 8px;font-weight:650}
+  h3{font-size:14.5px;margin:20px 0 6px;font-weight:650}
+  .sub{color:var(--text-secondary);font-size:14px;line-height:1.6;margin:0 0 4px}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0 6px}
+  .group{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--surface-1)}
+  button{font:inherit;font-size:13px;padding:7px 13px;background:transparent;border:0;color:var(--text-secondary);cursor:pointer}
+  button+button{border-left:1px solid var(--border)}
+  button[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1);font-weight:600}
+  button:focus-visible{outline:2px solid var(--s1);outline-offset:-2px}
+  .spacer{flex:1}
+  .card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:12px}
+  .striphead{font-size:14px;font-weight:650;margin:0 0 10px}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 14px;padding:0;list-style:none}
+  .legend li{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text-secondary)}
+  .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
+  .decades{display:flex;flex-direction:column;gap:8px}
+  .drow{display:flex;align-items:center;gap:10px}
+  .dlab{flex:0 0 52px;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .dcells{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;flex:1}
+  .ycell{aspect-ratio:1/0.9;border-radius:6px;background:var(--cell);display:flex;align-items:center;justify-content:center;
+         font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .ycell.on{color:#fff;font-weight:650;cursor:pointer}
+  .ycell.on:focus-visible{outline:2px solid var(--text-primary);outline-offset:1px}
+  .ycell.ghost{visibility:hidden}
+  .tl{overflow-x:auto}
+  svg{display:block}
+  #tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .09s;background:var(--surface-1,#fcfcfb);
+       color:var(--text-primary,#0b0b0b);border:1px solid var(--border,rgba(11,11,11,.15));border-radius:9px;padding:10px 12px;font-size:12.5px;
+       box-shadow:0 8px 26px rgba(0,0,0,.28);z-index:9;max-width:300px;line-height:1.5}
+  #tip .t{font-weight:650;margin-bottom:3px}
+  table.data{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+  table.data th,table.data td{border-bottom:1px solid var(--grid);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.data th:nth-child(-n+3),table.data td:nth-child(-n+3){text-align:left;font-variant-numeric:normal;white-space:normal}
+  table.data th.why,table.data td.why{text-align:left;white-space:normal;font-variant-numeric:normal;min-width:220px}
+  table.data thead th{color:var(--text-secondary);font-weight:600;position:sticky;top:0;background:var(--surface-1)}
+  td .dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:7px;vertical-align:0}
+  .tablewrap{overflow-x:auto;max-height:460px;overflow-y:auto;border:1px solid var(--grid);border-radius:8px;margin-top:8px}
+  details{margin-top:10px}
+  summary{cursor:pointer;font-size:13px;color:var(--text-secondary)}
+  p{font-size:14px;line-height:1.65;color:var(--text-primary);margin:0 0 12px}
+  .note{color:var(--muted);font-size:12.5px;line-height:1.55;margin:10px 0 0}
+  .eqbox{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:22px 20px;margin:12px 0;overflow-x:auto}
+  .eq{font-size:17px;line-height:2.3;white-space:nowrap;font-family:Georgia,'Times New Roman',serif}
+  .term{padding:3px 7px;border-radius:7px;margin:0 1px}
+  .t-r{background:rgba(42,120,214,.14);border-bottom:3px solid var(--s1)}
+  .t-mem{background:rgba(42,120,214,.07);border-bottom:3px dashed var(--s1)}
+  .t-a{background:rgba(235,104,52,.14);border-bottom:3px solid var(--s2)}
+  .t-x{background:rgba(27,175,122,.13);border-bottom:3px solid var(--s3)}
+  .t-s{background:rgba(237,161,0,.15);border-bottom:3px solid var(--s4)}
+  .t-g{background:rgba(232,123,164,.15);border-bottom:3px solid var(--s5)}
+  .t-e{background:transparent;border-bottom:3px solid var(--axis)}
+  .termcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;margin-top:12px}
+  .tc{background:var(--surface-1);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+  .tc .h{font-weight:650;font-size:13.5px;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+  .tc .chip{width:14px;height:14px;border-radius:4px;flex:0 0 auto}
+  .tc p{font-size:13px;line-height:1.6;color:var(--text-secondary);margin:0}
+  .steps{counter-reset:step;margin:12px 0}
+  .step{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--grid);font-size:13.5px;line-height:1.55}
+  .step:last-child{border-bottom:0}
+  .step .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--surface-1);border:1.5px solid var(--axis);
+           display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:650;color:var(--text-secondary)}
+  .step .b{color:var(--text-primary)} .step .b b{font-weight:650}
+  .bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:14px 0}
+  .bar{background:var(--surface-1);border:1px solid var(--border);border-radius:10px;padding:13px 15px}
+  .bar .bh{font-weight:650;font-size:13.5px;margin-bottom:4px}
+  .bar p{font-size:12.5px;color:var(--text-secondary);margin:0;line-height:1.55}
+  .foot{color:var(--muted);font-size:12px;line-height:1.6;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="viz-root">
+<div class="wrap">
+
+  <h1>FAR-SIDS shock ledger</h1>
+  <p class="sub">The disaster years of Jamaica, Tonga and Comoros from 1980 to 2025, the rule that decides which of them enter the models as country shocks, and a plain explanation of the model they feed. Events are from EM-DAT (CRED / UCLouvain, public.emdat.be); population and GDP behind the thresholds are from the World Development Indicators.</p>
+
+  <div class="controls">
+    <div class="group" role="group" aria-label="Country">
+      <button data-country="jamaica" aria-pressed="true">Jamaica</button>
+      <button data-country="tonga" aria-pressed="false">Tonga</button>
+      <button data-country="comoros" aria-pressed="false">Comoros</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="group"><button id="theme">Dark</button></div>
+  </div>
+
+  <div class="card">
+    <div class="striphead" id="striphead"></div>
+    <ul class="legend" id="legend"></ul>
+    <div class="decades" id="decades"></div>
+    <p class="note">Each cell is one year, one row per decade. A coloured year is a year where S equals 1, in the colour of the hazard behind it; a year with two different hazards carries both colours. Hover or tab to a coloured year for the event and its figures.</p>
+  </div>
+
+  <h2>What S is and when it equals 1</h2>
+  <p>S is the country shock index: one value per country per year, 1 or 0. S equals 1 in a year where at least one natural hazard was large for the country it struck, and 0 in every other year. Large is decided by a written rule, applied the same way in all three countries, so that no event is added or dropped by judgement. An event clears the rule if it passes any one of three bars, each measured against the population and GDP of the year it happened.</p>
+  <div class="bars">
+    <div class="bar"><div class="bh">It reached many people</div><p>At least 1 person in every 200 was affected, which is half of one per cent of that year's population.</p></div>
+    <div class="bar"><div class="bh">It killed at a national scale</div><p>At least 1 death per 100,000 people, and never fewer than 5 deaths in total.</p></div>
+    <div class="bar"><div class="bh">It destroyed real wealth</div><p>Reported damage worth at least 1 per cent of that year's GDP.</p></div>
+  </div>
+  <p>Measuring against the year's own population and GDP is what makes the rule fair across three very different economies. A cyclone that reaches four thousand people is a national event in Tonga and a neighbourhood event in Jamaica, and the rule sees that difference. The damage bar follows the definition of a large disaster in IMF Working Paper 2025/046, and the table below gives, for every event, the figures behind the decision.</p>
+  <p>The model needs S because a disaster year is not an ordinary year for either flow. Families abroad send more when the island is hit, and donors respond to the same event, so in those years both flows move for a reason that started outside the economy. S marks exactly those years, which lets the model account for them instead of mistaking a disaster response for the everyday relationship between aid and remittances.</p>
+
+  <h2 id="coretitle"></h2>
+  <div class="tablewrap"><table class="data" id="coretable"></table></div>
+  <details><summary>Show every recorded event for this country, including the ones below the thresholds and the technological events</summary>
+    <div class="tablewrap"><table class="data" id="fulltable"></table></div>
+  </details>
+
+  <h2>G is the opposite object: the years the whole world moved</h2>
+  <p>Aid and remittances both respond to the state of the world. In 2008 and 2009 the wages of migrants fell while emergency finance rose, and in 2020 and 2021 both flows rose together, so in those years every country's aid and remittance series moved at the same time whether or not the two flows had anything to do with each other. G marks that shared movement: it is world output growth, together with those two crisis episodes. The model removes what G explains, and only what survives that removal can count as a relationship between the two flows.</p>
+  <div class="card">
+    <div class="tl" id="gchart"></div>
+    <p class="note">World output growth, 1980 to 2025 (World Development Indicators). The shaded bands are 2008 to 2009 and 2020 to 2021.</p>
+  </div>
+  <p style="margin-top:12px">So S and G do opposite jobs and the models never mix them. A cyclone year moved one island and not the others, which is the closest thing to an experiment these series contain, so the model keeps S and reads it. A world crisis moved every island at once, which can only masquerade as a relationship, so the model removes G before believing anything. Keeping the two apart is a design decision, fixed before any estimate was run.</p>
+
+  <h2>The model, written out and explained</h2>
+  <p>The models run one country at a time, on annual data, and the three countries are never averaged together. Every letter below is one of the project's own data series, held under the same symbol. The equation is shown for the case where remittances are being explained, and the same equation is then run the other way round, with aid as the series being explained, because the question runs in both directions. Estimation does not start from this equation; it starts from a test, set out in step 0 below, that decides what the equation is allowed to mean.</p>
+
+  <div class="eqbox"><div class="eq">
+    <span class="term t-r">R<sub>t</sub></span> &nbsp;=&nbsp; c
+    &nbsp;+&nbsp; <span class="term t-mem">b&thinsp;&middot;&thinsp;R<sub>t−1</sub></span>
+    &nbsp;+&nbsp; <span class="term t-a">d₀&thinsp;&middot;&thinsp;A<sub>t</sub> + d₁&thinsp;&middot;&thinsp;A<sub>t−1</sub></span>
+    &nbsp;+&nbsp; <span class="term t-x">f₁&thinsp;&middot;&thinsp;Y<sub>t</sub> + f₂&thinsp;&middot;&thinsp;P<sub>t</sub> + f₃&thinsp;&middot;&thinsp;O<sub>t</sub></span>
+    &nbsp;+&nbsp; <span class="term t-s">s&thinsp;&middot;&thinsp;S<sub>t</sub></span>
+    &nbsp;+&nbsp; <span class="term t-g">g&thinsp;&middot;&thinsp;G<sub>t</sub></span>
+    &nbsp;+&nbsp; <span class="term t-e">e<sub>t</sub></span>
+  </div></div>
+
+  <div class="termcards">
+    <div class="tc"><div class="h"><span class="chip" style="background:var(--s1)"></span>R<sub>t</sub>, remittances this year</div>
+      <p>The series being explained: the money families abroad sent to this country in year t. The little t means this year and t−1 means last year. R is the project's remittance series for this country, 44 usable years for Jamaica, 31 for Tonga, 23 for Comoros.</p></div>
+    <div class="tc"><div class="h"><span class="chip" style="background:var(--s1);opacity:.55"></span>b · R<sub>t−1</sub>, last year's remittances</div>
+      <p>Remittances this year look a lot like remittances last year, because the same families are sending for the same reasons. The number b measures that carry-over. Without this term, the model would credit aid with patterns that are really the series repeating itself. This is the autoregressive part of the model's name.</p></div>
+    <div class="tc"><div class="h"><span class="chip" style="background:var(--s2)"></span>d₀·A<sub>t</sub> + d₁·A<sub>t−1</sub>, the aid terms</div>
+      <p>The question the model exists to answer. When aid this year, or aid last year, is higher than usual, do remittances sit higher or lower than their own history predicts? Aid enters with last year's value as well because families take time to notice and respond; that delay is the distributed lag part of the model's name.</p></div>
+    <div class="tc"><div class="h"><span class="chip" style="background:var(--s3)"></span>Y, P and O, the ordinary economy</div>
+      <p>Three of the project's own series: Y is income per person, P is consumer prices, O is trade openness. They absorb ordinary economic change, so the aid terms are not given credit for inflation or a good growth year.</p></div>
+    <div class="tc"><div class="h"><span class="chip" style="background:var(--s4)"></span>s · S<sub>t</sub>, this island's disaster years</div>
+      <p>S comes from this ledger: 1 in the coloured years of the grid above, 0 otherwise. Disasters pull money in from families abroad and from donors at once, so S lets the model account for those years honestly instead of mistaking a disaster response for the ordinary relationship between the flows. This is the variation the model keeps.</p></div>
+    <div class="tc"><div class="h"><span class="chip" style="background:var(--s5)"></span>g · G<sub>t</sub>, the world's crisis years</div>
+      <p>G covers what the whole world felt at once. The model is estimated twice, once without G and once with it, under a rule fixed in advance: if the aid terms only matter before G is included, what looked like a relationship was the world, and the project says so. This is the variation the model removes.</p></div>
+    <div class="tc"><div class="h"><span class="chip" style="background:var(--axis)"></span>e<sub>t</sub>, what is left over</div>
+      <p>Everything the equation cannot explain in year t. The model's checks test that this remainder behaves like noise; if it still contains a pattern, the model is missing something and is not reported as it stands.</p></div>
+  </div>
+
+  <h3>How the estimation runs, in the order the project fixed</h3>
+  <div class="steps">
+    <div class="step"><div class="n">0</div><div class="b"><b>The common shock pre-test.</b> Before anything else, the aid and remittance series are conditioned on G, and a decision rule fixed in advance says what each outcome means. If the aid terms survive conditioning, the programme estimates the relationship as designed. If they collapse, what the literature calls substitution was shock covariance, and the strand reports that instead. This step decides what every later step is allowed to claim.</div></div>
+    <div class="step"><div class="n">1</div><div class="b"><b>Plot everything before testing anything.</b> Every series is drawn, and the S years from this ledger are marked on the plots, so that when a later test reports something strange, the eye can check whether a real event sits underneath it.</div></div>
+    <div class="step"><div class="n">2</div><div class="b"><b>Ask whether each series wanders or returns.</b> Some series come back to a level after a shock and some wander, making every shock permanent. The tests are run three ways and reported in full, because the method in step 6 is chosen precisely for coping with a mixture of the two.</div></div>
+    <div class="step"><div class="n">3</div><div class="b"><b>Test again allowing for a break,</b> because a series that looks like it wanders may instead have snapped once, in a cyclone year or a policy year. The break test hands back a year, and that year is read against this ledger to see whether something real happened then.</div></div>
+    <div class="step"><div class="n">4</div><div class="b"><b>Check nothing wanders twice over,</b> which would make the method invalid. Taking logarithms usually settles it, and the result is written down either way.</div></div>
+    <div class="step"><div class="n">5</div><div class="b"><b>Choose how many lags,</b> which for samples of 44, 31 and 23 years means at most two. A small sample supports a small model, and every reported number travels with the sample size that produced it.</div></div>
+    <div class="step"><div class="n">6</div><div class="b"><b>The bounds test:</b> does a long-run relationship between the flows exist at all? It is the one question everything else waits on, and it is run with critical values computed for samples this small (Narayan 2005) rather than the textbook ones, because the textbook values find relationships that are not there at 44, 31 and 23 observations.</div></div>
+    <div class="step"><div class="n">7</div><div class="b"><b>Estimate the error correction model.</b> One equation produces both answers. The coefficients on this year's changes are the short run, read directly. The long run is computed from the coefficients on last year's levels: if last year's remittances carry 0.04 and last year's outcome carries −0.35, the long-run coefficient is 0.04 divided by 0.35, which is 0.114. The −0.35 is itself a finding twice over. It must be negative and statistically significant, or there is no stable long-run relationship whatever the bounds test said, and its size is the speed at which the system returns toward its long-run path each year, so it says how many years a shock takes to work through.</div></div>
+    <div class="step"><div class="n">8</div><div class="b"><b>Run every diagnostic, every time,</b> including the stability check across the whole sample (CUSUM), because a 45-year window spanning aid regimes, mobile money and COVID has no business being assumed stable. A coefficient without its tests is a number, not a result, and a model that fails them is fixed or reported as failed, never quietly kept.</div></div>
+    <div class="step"><div class="n">9</div><div class="b"><b>Report the sample and what it costs.</b> Then the asymmetric version splits aid rises from aid falls and asks whether a fall hurts more than an equal rise helps, where the sample can carry it.</div></div>
+  </div>
+
+  <h3>Three things to hold on to when reading any result</h3>
+  <p>First, moving together is not proof that one flow causes the other, and the project's write-ups use the words "moves with", never "causes". Second, the three countries are estimated separately and reported side by side, because averaging Jamaica, Tonga and Comoros would produce a number that describes none of them. Third, every threshold, rule and decision on this page was fixed before any estimate was seen, which is what stops the results being chosen after the fact.</p>
+
+  <p class="foot">Sources. Events: EM-DAT, CRED / UCLouvain, public.emdat.be, 106 records for the three countries, 1980 to 2026. Population and GDP behind the thresholds: World Development Indicators. The damage bar follows IMF Working Paper 2025/046. EM-DAT records an event at ten deaths, one hundred affected, a declared emergency or an international appeal, and its reporting rises over time with institutional capacity, so no analysis in this project uses a count of events as a variable; S marks large, well-documented events only. The Anjouan disruption of 1997 to 2008 is shown for Comoros as context and never enters S, because S is defined on natural hazards only.</p>
+
+</div>
+<div id="tip" role="status" aria-live="polite"></div>
+</div>
+
+<script>
+const DATA = {"jamaica":[{"y":1980,"m":5,"ey":1980,"grp":"Technological","type":"Fire (Miscellaneous)","sub":"Fire (Miscellaneous)","name":"","deaths":187,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":1980,"m":7,"ey":1980,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Allen'","deaths":6,"aff":30009,"affp":1.399,"dmgp":2.389,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":1981,"m":1,"ey":1981,"grp":"Technological","type":"Fire (Industrial)","sub":"Fire (Industrial)","name":"Esso Plant fire","deaths":null,"aff":null,"affp":null,"dmgp":0.47,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":1985,"m":11,"ey":1985,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Kate","deaths":7,"aff":300,"affp":0.013,"dmgp":0.248,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1986,"m":5,"ey":1986,"grp":"Natural","type":"Flood","sub":"Flood (General)","name":"","deaths":54,"aff":40000,"affp":1.73,"dmgp":2.759,"core":1,"crit":"affected>=0.5%pop+deaths>=1per100k+damage>=1%GDP","src":"EM-DAT","note":""},{"y":1987,"m":10,"ey":1987,"grp":"Natural","type":"Flood","sub":"Riverine flood","name":"","deaths":9,"aff":26000,"affp":1.116,"dmgp":0.943,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":1988,"m":1,"ey":1988,"grp":"Natural","type":"Flood","sub":"Flood (General)","name":"","deaths":null,"aff":null,"affp":null,"dmgp":0.011,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1988,"m":9,"ey":1988,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Gilbert'","deaths":49,"aff":810000,"affp":34.53,"dmgp":26.121,"core":1,"crit":"affected>=0.5%pop+deaths>=1per100k+damage>=1%GDP","src":"EM-DAT","note":""},{"y":1990,"m":12,"ey":1990,"grp":"Natural","type":"Epidemic","sub":"Bacterial disease","name":"Typhoid","deaths":null,"aff":300,"affp":0.013,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1991,"m":5,"ey":1991,"grp":"Natural","type":"Flood","sub":"Flash flood","name":"","deaths":15,"aff":551340,"affp":22.964,"dmgp":0.731,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":1993,"m":5,"ey":1993,"grp":"Natural","type":"Flood","sub":"Flood (General)","name":"","deaths":9,"aff":4372,"affp":0.178,"dmgp":0.202,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1994,"m":11,"ey":1994,"grp":"Natural","type":"Storm","sub":"Storm (General)","name":"Gordon","deaths":4,"aff":null,"affp":null,"dmgp":0.018,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1994,"m":11,"ey":1994,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Gordon'","deaths":4,"aff":null,"affp":null,"dmgp":0.216,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1995,"m":8,"ey":1995,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Erin'","deaths":7,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1996,"m":11,"ey":1996,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Marco","deaths":null,"aff":800,"affp":0.032,"dmgp":0.041,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1998,"m":10,"ey":1998,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Mitch'","deaths":3,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2000,"m":3,"ey":2000,"grp":"Natural","type":"Drought","sub":"Drought","name":"","deaths":null,"aff":null,"affp":null,"dmgp":0.067,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2001,"m":11,"ey":2001,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Michelle'","deaths":1,"aff":200,"affp":0.008,"dmgp":0.603,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2002,"m":5,"ey":2002,"grp":"Natural","type":"Flood","sub":"Riverine flood","name":"","deaths":9,"aff":25000,"affp":0.947,"dmgp":0.206,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2002,"m":9,"ey":2002,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Isidore","deaths":null,"aff":null,"affp":null,"dmgp":0.01,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2002,"m":9,"ey":2002,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Lili","deaths":4,"aff":1500,"affp":0.057,"dmgp":0.0,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2004,"m":8,"ey":2004,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Charley","deaths":1,"aff":126,"affp":0.005,"dmgp":2.949,"core":1,"crit":"damage>=1%GDP","src":"EM-DAT","note":"EM-DAT damage figure looks high for Charley's Jamaica impact; kept as recorded, verify before quoting"},{"y":2004,"m":9,"ey":2004,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Ivan'","deaths":15,"aff":350000,"affp":13.098,"dmgp":5.848,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":2005,"m":7,"ey":2005,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane \"Dennis\"","deaths":1,"aff":8000,"affp":0.298,"dmgp":0.267,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2005,"m":7,"ey":2005,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Emily","deaths":4,"aff":2296,"affp":0.085,"dmgp":0.009,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2005,"m":10,"ey":2005,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane \"Wilma\"","deaths":1,"aff":100,"affp":0.004,"dmgp":0.031,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2006,"m":11,"ey":2006,"grp":"Natural","type":"Flood","sub":"Riverine flood","name":"","deaths":1,"aff":5000,"affp":0.185,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2006,"m":11,"ey":2007,"grp":"Natural","type":"Epidemic","sub":"Parasitic disease","name":"","deaths":3,"aff":280,"affp":0.01,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2007,"m":8,"ey":2007,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Dean'","deaths":4,"aff":33188,"affp":1.223,"dmgp":2.344,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":2007,"m":10,"ey":2007,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Noel","deaths":1,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2008,"m":8,"ey":2008,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Tropical Storm \"Fay\"","deaths":1,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2008,"m":8,"ey":2008,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane \"Gustav\"","deaths":12,"aff":4000,"affp":0.147,"dmgp":0.483,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2010,"m":9,"ey":2010,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Tropical storm 'Nicole'","deaths":15,"aff":2506,"affp":0.091,"dmgp":1.815,"core":1,"crit":"damage>=1%GDP","src":"EM-DAT","note":""},{"y":2012,"m":10,"ey":2012,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Sandy'","deaths":2,"aff":218850,"affp":7.894,"dmgp":0.675,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2014,"m":1,"ey":2014,"grp":"Natural","type":"Drought","sub":"Drought","name":"","deaths":null,"aff":91545,"affp":3.277,"dmgp":0.072,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2016,"m":9,"ey":2016,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Matthew'","deaths":null,"aff":125000,"affp":4.449,"dmgp":null,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2017,"m":4,"ey":2017,"grp":"Natural","type":"Storm","sub":"Storm (General)","name":"","deaths":null,"aff":5000,"affp":0.178,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2024,"m":7,"ey":2024,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Beryl'","deaths":4,"aff":618556,"affp":21.786,"dmgp":1.608,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":2024,"m":11,"ey":2024,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Tropical cyclone 'Rafael'","deaths":2,"aff":null,"affp":null,"dmgp":0.036,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2025,"m":10,"ey":2025,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Hurricane 'Melissa'","deaths":62,"aff":1900340,"affp":66.982,"dmgp":53.865,"core":1,"crit":"affected>=0.5%pop+deaths>=1per100k+damage>=1%GDP","src":"EM-DAT","note":""}],"tonga":[{"y":1982,"m":3,"ey":1982,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Isaac","deaths":6,"aff":146512,"affp":149.533,"dmgp":34.156,"core":1,"crit":"affected>=0.5%pop+deaths>=1per100k+damage>=1%GDP","src":"EM-DAT","note":""},{"y":1982,"m":5,"ey":1982,"grp":"Natural","type":"Storm","sub":"Storm (General)","name":"","deaths":1,"aff":2,"affp":0.002,"dmgp":1.772,"core":1,"crit":"damage>=1%GDP","src":"EM-DAT","note":""},{"y":1990,"m":2,"ey":1990,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone 'Ofa'","deaths":1,"aff":3103,"affp":3.112,"dmgp":2.201,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":1993,"m":1,"ey":1993,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone 'Kina'","deaths":3,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1997,"m":3,"ey":1997,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone 'Hina'","deaths":null,"aff":3000,"affp":2.98,"dmgp":7.07,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":1998,"m":1,"ey":1998,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Ron","deaths":null,"aff":500,"affp":0.493,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1998,"m":12,"ey":1998,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cora","deaths":null,"aff":3071,"affp":3.029,"dmgp":null,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2001,"m":12,"ey":2001,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Waka","deaths":null,"aff":16500,"affp":15.975,"dmgp":28.324,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":2004,"m":1,"ey":2004,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Heta","deaths":null,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2009,"m":8,"ey":2009,"grp":"Technological","type":"Water","sub":"Water","name":"Ferry \"Princess Ashika\"","deaths":75,"aff":54,"affp":0.05,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2009,"m":9,"ey":2009,"grp":"Natural","type":"Earthquake","sub":"Tsunami","name":"","deaths":9,"aff":507,"affp":0.473,"dmgp":3.041,"core":1,"crit":"deaths>=1per100k+damage>=1%GDP","src":"EM-DAT","note":""},{"y":2011,"m":1,"ey":2011,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Tropical cyclone Wilma","deaths":3,"aff":7600,"affp":7.065,"dmgp":0.724,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2014,"m":1,"ey":2014,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Ian","deaths":1,"aff":4014,"affp":3.765,"dmgp":7.03,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":2015,"m":8,"ey":2015,"grp":"Natural","type":"Drought","sub":"Drought","name":"","deaths":null,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2016,"m":1,"ey":2016,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone Ulla","deaths":null,"aff":392,"affp":0.371,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2016,"m":2,"ey":2016,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone Winston","deaths":null,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2016,"m":4,"ey":2016,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Tropical cyclone Zena","deaths":null,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2018,"m":2,"ey":2018,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone Gita","deaths":null,"aff":87000,"affp":82.412,"dmgp":null,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2019,"m":10,"ey":2019,"grp":"Natural","type":"Epidemic","sub":"Viral disease","name":"Measles","deaths":null,"aff":394,"affp":0.373,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2019,"m":10,"ey":2019,"grp":"Natural","type":"Epidemic","sub":"Viral disease","name":"Measles","deaths":null,"aff":107,"affp":0.101,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2020,"m":4,"ey":2020,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone 'Harold'","deaths":null,"aff":25000,"affp":23.651,"dmgp":21.912,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":2022,"m":1,"ey":2022,"grp":"Natural","type":"Volcanic activity","sub":"Ash fall","name":"Hunga-Tonga-Hunga-Ha'apai","deaths":4,"aff":84176,"affp":80.136,"dmgp":21.203,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""}],"comoros":[{"y":1983,"m":1,"ey":1983,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Elinah","deaths":33,"aff":30052,"affp":8.183,"dmgp":11.723,"core":1,"crit":"affected>=0.5%pop+deaths>=1per100k+damage>=1%GDP","src":"EM-DAT","note":""},{"y":1984,"m":4,"ey":1984,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Kamisy","deaths":1,"aff":25012,"affp":6.623,"dmgp":null,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":1985,"m":2,"ey":1985,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"","deaths":2,"aff":35000,"affp":9.012,"dmgp":2.901,"core":1,"crit":"affected>=0.5%pop+damage>=1%GDP","src":"EM-DAT","note":""},{"y":1987,"m":1,"ey":1987,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Jan","deaths":24,"aff":50000,"affp":12.182,"dmgp":2.873,"core":1,"crit":"affected>=0.5%pop+deaths>=1per100k+damage>=1%GDP","src":"EM-DAT","note":""},{"y":1989,"m":1,"ey":1989,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Kalafandji, Firinga","deaths":null,"aff":null,"affp":null,"dmgp":1.593,"core":1,"crit":"damage>=1%GDP","src":"EM-DAT","note":""},{"y":1989,"m":2,"ey":1989,"grp":"Natural","type":"Epidemic","sub":"Bacterial disease","name":"Typhoid","deaths":3,"aff":450,"affp":0.104,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1991,"m":7,"ey":1991,"grp":"Natural","type":"Volcanic activity","sub":"Ash fall","name":"Kartala","deaths":null,"aff":200,"affp":0.044,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":1996,"m":7,"ey":1996,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":72,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":1996,"m":11,"ey":1996,"grp":"Technological","type":"Air","sub":"Air","name":"Boeing 767-260","deaths":127,"aff":null,"affp":null,"dmgp":10.191,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":1997,"m":8,"ey":2008,"grp":"Political","type":"Political disruption (period)","sub":"","name":"Anjouan secession crisis, through to the 2008 intervention","deaths":null,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"project","note":"project-added period marker for plots and break tests, not an EM-DAT record and never in S"},{"y":1998,"m":2,"ey":1998,"grp":"Natural","type":"Epidemic","sub":"Bacterial disease","name":"Cholera","deaths":40,"aff":3200,"affp":0.619,"dmgp":null,"core":1,"crit":"affected>=0.5%pop+deaths>=1per100k","src":"EM-DAT","note":""},{"y":1998,"m":5,"ey":1998,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":41,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":1999,"m":11,"ey":1999,"grp":"Natural","type":"Epidemic","sub":"Bacterial disease","name":"Cholera","deaths":14,"aff":140,"affp":0.027,"dmgp":null,"core":1,"crit":"deaths>=1per100k","src":"EM-DAT","note":""},{"y":2002,"m":10,"ey":2002,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":16,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2003,"m":4,"ey":2003,"grp":"Natural","type":"Storm","sub":"Storm (General)","name":"","deaths":null,"aff":300,"affp":0.053,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2005,"m":3,"ey":2005,"grp":"Natural","type":"Epidemic","sub":"Viral disease","name":"Chikungunya virus disease","deaths":null,"aff":1358,"affp":0.229,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2005,"m":4,"ey":2005,"grp":"Natural","type":"Volcanic activity","sub":"Ash fall","name":"Karthala","deaths":null,"aff":39000,"affp":6.58,"dmgp":null,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2005,"m":8,"ey":2005,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":25,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2005,"m":11,"ey":2005,"grp":"Natural","type":"Volcanic activity","sub":"Ash fall","name":"Karthala","deaths":1,"aff":245000,"affp":41.338,"dmgp":null,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2006,"m":null,"ey":2006,"grp":"Natural","type":"Epidemic","sub":"Viral disease","name":"Chikungunya virus disease","deaths":null,"aff":924,"affp":0.153,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2006,"m":5,"ey":2006,"grp":"Natural","type":"Volcanic activity","sub":"Ash fall","name":"Karthala","deaths":null,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2006,"m":9,"ey":2006,"grp":"Technological","type":"Water","sub":"Water","name":"Boat \"Al-Moubark\"","deaths":30,"aff":43,"affp":0.007,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2006,"m":9,"ey":2006,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":11,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2007,"m":3,"ey":2007,"grp":"Natural","type":"Epidemic","sub":"Bacterial disease","name":"Cholera","deaths":29,"aff":1490,"affp":0.242,"dmgp":null,"core":1,"crit":"deaths>=1per100k","src":"EM-DAT","note":""},{"y":2007,"m":7,"ey":2007,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":29,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2007,"m":8,"ey":2007,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":36,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2007,"m":12,"ey":2007,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":10,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2009,"m":4,"ey":2009,"grp":"Natural","type":"Flood","sub":"Riverine flood","name":"","deaths":2,"aff":2500,"affp":0.389,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2009,"m":6,"ey":2009,"grp":"Technological","type":"Air","sub":"Air","name":"Airbus 310-300","deaths":152,"aff":1,"affp":0.0,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2009,"m":11,"ey":2009,"grp":"Technological","type":"Water","sub":"Water","name":"Boat \"Kwassa Kwassa\"","deaths":30,"aff":11,"affp":0.002,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2011,"m":8,"ey":2011,"grp":"Technological","type":"Water","sub":"Water","name":"Ship \"Madjriha\"","deaths":120,"aff":74,"affp":0.011,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2012,"m":4,"ey":2012,"grp":"Natural","type":"Flood","sub":"Riverine flood","name":"","deaths":4,"aff":65137,"affp":9.556,"dmgp":0.492,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2012,"m":5,"ey":2012,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":20,"aff":19,"affp":0.003,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2012,"m":10,"ey":2012,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":16,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2013,"m":3,"ey":2013,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":35,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2014,"m":3,"ey":2014,"grp":"Natural","type":"Earthquake","sub":"Ground movement","name":"","deaths":null,"aff":10000,"affp":1.405,"dmgp":null,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2014,"m":3,"ey":2014,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone Helen","deaths":null,"aff":9511,"affp":1.337,"dmgp":null,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2019,"m":4,"ey":2019,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone 'Kenneth'","deaths":8,"aff":345311,"affp":43.9,"dmgp":null,"core":1,"crit":"affected>=0.5%pop+deaths>=1per100k","src":"EM-DAT","note":""},{"y":2019,"m":12,"ey":2019,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Cyclone 'Belna'","deaths":null,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":""},{"y":2022,"m":2,"ey":2022,"grp":"Technological","type":"Air","sub":"Air","name":"","deaths":14,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2024,"m":1,"ey":2024,"grp":"Natural","type":"Epidemic","sub":"Bacterial disease","name":"Cholera","deaths":149,"aff":10342,"affp":1.193,"dmgp":null,"core":1,"crit":"affected>=0.5%pop+deaths>=1per100k","src":"EM-DAT","note":""},{"y":2024,"m":11,"ey":2024,"grp":"Technological","type":"Water","sub":"Water","name":"Migrants","deaths":25,"aff":5,"affp":0.001,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2024,"m":12,"ey":2024,"grp":"Natural","type":"Storm","sub":"Tropical cyclone","name":"Tropical cyclone 'Chido'","deaths":null,"aff":64155,"affp":7.403,"dmgp":null,"core":1,"crit":"affected>=0.5%pop","src":"EM-DAT","note":""},{"y":2025,"m":6,"ey":2025,"grp":"Technological","type":"Water","sub":"Water","name":"","deaths":19,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"},{"y":2026,"m":3,"ey":2026,"grp":"Technological","type":"Water","sub":"Water","name":"Migrants","deaths":18,"aff":null,"affp":null,"dmgp":null,"core":0,"crit":"none","src":"EM-DAT","note":"technological event, never enters S"}]};
+const WG = [[1980,1.82],[1981,1.89],[1982,0.41],[1983,2.58],[1984,4.73],[1985,3.66],[1986,3.31],[1987,3.75],[1988,4.53],[1989,3.64],[1990,2.71],[1991,1.23],[1992,2.06],[1993,1.86],[1994,3.42],[1995,3.18],[1996,3.59],[1997,4.0],[1998,2.78],[1999,3.58],[2000,4.57],[2001,2.03],[2002,2.32],[2003,3.07],[2004,4.5],[2005,4.06],[2006,4.49],[2007,4.43],[2008,2.09],[2009,-1.33],[2010,4.52],[2011,3.31],[2012,2.75],[2013,2.89],[2014,3.17],[2015,3.13],[2016,2.79],[2017,3.45],[2018,3.29],[2019,2.68],[2020,-2.89],[2021,6.49],[2022,3.44],[2023,2.86],[2024,2.9],[2025,2.92]];
+
+const TYPES = [
+  {key:'Storm', label:'Storm or tropical cyclone', css:'--s1'},
+  {key:'Flood', label:'Flood', css:'--s3'},
+  {key:'Volcanic activity', label:'Volcanic ash fall', css:'--s2'},
+  {key:'Drought', label:'Drought', css:'--s4'},
+  {key:'Epidemic', label:'Epidemic', css:'--s5'},
+  {key:'Earthquake', label:'Earthquake or tsunami', css:'--s6'}
+];
+const SUBWORD = {'Tropical cyclone':'tropical cyclone','Storm (General)':'severe storm','Flood (General)':'flood',
+ 'Riverine flood':'riverine flood','Flash flood':'flash flood','Ash fall':'volcanic ash fall','Drought':'drought',
+ 'Bacterial disease':'epidemic, bacterial','Viral disease':'epidemic, viral','Tsunami':'tsunami','Ground movement':'earthquake'};
+const CNAMES = {jamaica:'Jamaica', tonga:'Tonga', comoros:'Comoros'};
+let state = {country:'jamaica'};
+const $ = s => document.querySelector(s);
+const tip = $('#tip');
+const fmt = n => n===null||n===undefined||n===''? '' : Number(n).toLocaleString('en');
+const r1 = v => Math.round(v*10)/10;
+function typeOf(ev){ return TYPES.find(t=>ev.type===t.key) || TYPES[5]; }
+function subWord(e){ return SUBWORD[e.sub] || (e.type||'').toLowerCase(); }
+
+function whyText(e){
+  const parts = [];
+  if (e.crit.includes('affected') && e.affp!==null) parts.push('affected ' + r1(e.affp) + '% of the population');
+  if (e.crit.includes('deaths') && e.deaths!==null) parts.push('killed ' + fmt(e.deaths) + (e.deaths===1?' person':' people'));
+  if (e.crit.includes('damage') && e.dmgp!==null) parts.push('damage worth ' + r1(e.dmgp) + '% of GDP');
+  return parts.join('; ');
+}
+function coreOf(c){ return DATA[c].filter(e=>e.grp==='Natural' && e.core===1 && e.y<=2025); }
+
+function renderLegend(){
+  const core = coreOf(state.country);
+  const present = TYPES.filter(t => core.some(e=>typeOf(e).key===t.key));
+  $('#legend').innerHTML = present.map(t=>
+    `<li><span class="sw" style="background:var(${t.css})"></span>${t.label}</li>`).join('') +
+    `<li><span class="sw" style="background:var(--cell)"></span>Year where S = 0</li>`;
+}
+
+function renderDecades(){
+  const core = coreOf(state.country);
+  const years = new Set(core.map(e=>e.y));
+  $('#striphead').textContent = `${CNAMES[state.country]}: S equals 1 in ${years.size} of the 46 years, from ${core.length} qualifying events`;
+  let out = '';
+  for (let d=1980; d<=2020; d+=10){
+    let cells = '';
+    for (let y=d; y<d+10; y++){
+      if (y>2025){ cells += `<div class="ycell ghost"></div>`; continue; }
+      if (!years.has(y)){ cells += `<div class="ycell" aria-hidden="true">${String(y).slice(2)}</div>`; continue; }
+      const evTypes = [...new Set(core.filter(e=>e.y===y).map(e=>typeOf(e).css))];
+      const bg = evTypes.length===1
+        ? `background:var(${evTypes[0]})`
+        : `background:linear-gradient(135deg, var(${evTypes[0]}) 0 50%, var(${evTypes[1]}) 50% 100%)`;
+      cells += `<div class="ycell on" tabindex="0" data-y="${y}" style="${bg}" role="img" aria-label="S equals 1 in ${y}">${String(y).slice(2)}</div>`;
+    }
+    out += `<div class="drow"><div class="dlab">${d}s</div><div class="dcells">${cells}</div></div>`;
+  }
+  $('#decades').innerHTML = out;
+}
+
+function renderTables(){
+  const evs = DATA[state.country];
+  const core = evs.filter(e=>e.core===1);
+  $('#coretitle').textContent = `The events behind those years`;
+  const head = `<thead><tr><th>Year</th><th>Event</th><th>Type</th><th class="why">Why it counts</th><th>Deaths</th><th>Affected</th><th>Damage, % of GDP</th></tr></thead>`;
+  $('#coretable').innerHTML = head + '<tbody>' + core.map(e=>{
+    const t = typeOf(e);
+    return `<tr><td>${e.y}</td><td>${e.name || e.sub || e.type}</td><td><span class="dot" style="background:var(${t.css})"></span>${subWord(e)}</td><td class="why">${whyText(e)}</td><td>${fmt(e.deaths)}</td><td>${fmt(e.aff)}</td><td>${e.dmgp??''}</td></tr>`;
+  }).join('') + '</tbody>';
+  $('#fulltable').innerHTML = `<thead><tr><th>Year</th><th>Event</th><th>Type</th><th>Group</th><th>Deaths</th><th>Affected</th><th>In S</th><th>Note</th></tr></thead><tbody>` +
+    evs.map(e=>`<tr><td>${e.y}</td><td>${e.name || e.sub || e.type}</td><td>${e.grp==='Natural'? subWord(e) : e.type}</td><td>${e.grp}</td><td>${fmt(e.deaths)}</td><td>${fmt(e.aff)}</td><td>${e.core? 'yes':''}</td><td style="white-space:normal;text-align:left">${e.note||''}</td></tr>`).join('') + '</tbody>';
+}
+
+function renderG(){
+  const W=1000, H=190, L=40, R=14, T=12, B=26;
+  const ys = WG.map(d=>d[1]); const ymin=Math.floor(Math.min(...ys))-1, ymax=Math.ceil(Math.max(...ys))+1;
+  const x = y => L + (y-1980)/(2025-1980)*(W-L-R);
+  const yy = v => T + (ymax-v)/(ymax-ymin)*(H-T-B);
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="World output growth 1980 to 2025 with global crisis years shaded">`;
+  [[2008,2009],[2020,2021]].forEach(([a,b])=>{ s += `<rect x="${x(a-0.5)}" y="${T}" width="${x(b+0.5)-x(a-0.5)}" height="${H-T-B}" fill="var(--gshade)"/>`; });
+  for (let v = Math.ceil(ymin/2)*2; v<=ymax; v+=2){ s += `<line x1="${L}" x2="${W-R}" y1="${yy(v)}" y2="${yy(v)}" stroke="var(--grid)"/>`+
+    `<text x="${L-6}" y="${yy(v)+4}" font-size="11" fill="var(--muted)" text-anchor="end">${v}%</text>`; }
+  s += `<line x1="${L}" x2="${W-R}" y1="${yy(0)}" y2="${yy(0)}" stroke="var(--axis)" stroke-width="1.5"/>`;
+  for (let y=1980; y<=2025; y+=5) s += `<text x="${x(y)}" y="${H-8}" font-size="11" fill="var(--muted)" text-anchor="middle">${y}</text>`;
+  s += `<path d="${WG.map((d,i)=>(i?'L':'M')+x(d[0])+' '+yy(d[1])).join(' ')}" fill="none" stroke="var(--s1)" stroke-width="2"/>`;
+  WG.filter(d=>[2009,2020,2021].includes(d[0])).forEach(d=>{
+    s += `<circle cx="${x(d[0])}" cy="${yy(d[1])}" r="4" fill="var(--s1)" stroke="var(--surface-1)" stroke-width="2"/>`+
+         `<text x="${x(d[0])}" y="${yy(d[1])+(d[0]===2021?-9:16)}" font-size="11" fill="var(--text-secondary)" text-anchor="middle">${d[1]}%</text>`;
+  });
+  s += `</svg>`;
+  $('#gchart').innerHTML = s;
+}
+
+function render(){ renderLegend(); renderDecades(); renderTables(); renderG(); }
+
+function showTip(el, cx, cyv){
+  const y = +el.dataset.y;
+  const evs = coreOf(state.country).filter(e=>e.y===y);
+  tip.innerHTML = `<div class="t">${y}: S = 1</div>` + evs.map(e=>
+    `<div>${e.name || e.sub || e.type} (${subWord(e)}): ${whyText(e)}</div>`).join('');
+  tip.style.opacity = 1;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = Math.min(Math.max(8, cx+14), innerWidth-w-8) + 'px';
+  tip.style.top = Math.max(8, cyv-h-14) + 'px';
+}
+document.addEventListener('pointermove', e=>{
+  const d = e.target.closest('.ycell.on');
+  if (d) showTip(d, e.clientX, e.clientY); else tip.style.opacity = 0;
+});
+document.addEventListener('focusin', e=>{
+  const d = e.target.closest('.ycell.on');
+  if (d){ const b = d.getBoundingClientRect(); showTip(d, b.right, b.top); }
+});
+document.addEventListener('focusout', ()=> tip.style.opacity = 0);
+document.addEventListener('scroll', ()=> tip.style.opacity = 0, {passive:true});
+
+document.querySelectorAll('[data-country]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    state.country = b.dataset.country;
+    b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.country===state.country)));
+    render();
+  });
+});
+$('#theme').addEventListener('click', ()=>{
+  const dark = document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme', dark?'light':'dark');
+  $('#theme').textContent = dark?'Dark':'Light';
+});
+render();
+
+</script>
+</body>
+</html>

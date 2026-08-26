@@ -26,6 +26,12 @@
       <a href="#question/why" data-sub="why">Why it matters</a>
     </div>
     <a href="#islands" data-room="islands">Three islands</a>
+    <div class="subnav" data-for="islands">
+      <a href="#islands/jamaica" data-sub="jamaica">Jamaica</a>
+      <a href="#islands/tonga" data-sub="tonga">Tonga</a>
+      <a href="#islands/comoros" data-sub="comoros">Comoros</a>
+      <a href="#islands/compare" data-sub="compare">Side by side</a>
+    </div>
     <a href="#approach" data-room="approach">The approach</a>
     <a href="#programme" data-room="programme">Work programme</a>
     <a href="#timeline" data-room="timeline">Project timeline</a>
@@ -103,9 +109,9 @@
   <div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline1"></span></div></div>
 </section>
 
-<section class="room" id="room-islands"><div class="roomwrap"><p class="eyebrow">Where</p>
+<section class="room" id="room-islands"><div class="roomwrap"><div class="sub on" data-sub="map"><p class="eyebrow">Where</p>
     <h2 class="title">Three islands, three oceans</h2>
-    <p class="lead-p muted">Fieldwork runs for about two months in each country, in sequence, timed to avoid peak cyclone and hurricane seasons.</p>
+    <p class="lead-p muted">Fieldwork runs for about two months in each country, in sequence, timed to avoid peak cyclone and hurricane seasons. Each island opens into its own profile: the full record of aid and remittances for that country, drawn from the same data the project models on.</p>
     <div class="islands-grid">
 
       <article class="isle">
@@ -131,6 +137,7 @@
           <div class="ocean">Caribbean Sea</div>
           <p>Fieldwork begins in Jamaica, where the study design is tested before it is used in the other two countries. Jamaican labour migration and remittances to North America and the United Kingdom go back generations.</p>
           <span class="tag">Partner: UWI · Apr 2027</span>
+          <a class="profgo" href="#islands/jamaica">Open the island profile &rarr;</a>
         </div>
       </article>
 
@@ -157,6 +164,7 @@
           <div class="ocean">South Pacific Ocean</div>
           <p>Remittances to Tonga are among the highest in the world as a share of the economy. The fieldwork there builds on research relationships already established in the country.</p>
           <span class="tag">Partner: TNU · Jun 2027</span>
+          <a class="profgo" href="#islands/tonga">Open the island profile &rarr;</a>
         </div>
       </article>
 
@@ -189,10 +197,16 @@
           <div class="ocean">Indian Ocean</div>
           <p>Comoros is the least studied of the three countries, so building relationships there starts before anything else does. Fieldwork is conducted in French and Shikomori, and translation is part of the design rather than something added later.</p>
           <span class="tag">Partner: U. Comoros · Aug 2027</span>
+          <a class="profgo" href="#islands/comoros">Open the island profile &rarr;</a>
         </div>
       </article>
 
     </div>
+    </div>
+    <div class="sub" data-sub="jamaica"><div class="prof" id="prof-jm"></div></div>
+    <div class="sub" data-sub="tonga"><div class="prof" id="prof-to"></div></div>
+    <div class="sub" data-sub="comoros"><div class="prof" id="prof-km"></div></div>
+    <div class="sub" data-sub="compare"><div class="prof" id="prof-compare"></div></div>
   </div><div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline2"></span></div></div></section>
 
 <section class="room" id="room-approach"><div class="roomwrap"><p class="eyebrow">How</p>
@@ -934,6 +948,7 @@
 <script src="data/now.js"></script>
 <script src="data/listening.js"></script>
 <script src="data/stories.js"></script>
+<script src="data/profiles.js"></script>
 <script>
 window.__initBoard = function(){
   if(window.__boardDone || !window.FARSIDS || !FARSIDS.TL) return;
@@ -1142,7 +1157,7 @@ window.__initBoard = function(){
 (function(){
   var WP = [{"n": 1, "name": "Project management", "when": "Runs the full two years", "active": true, "body": "The administrative core of the fellowship, built around four documents that are revised as the project runs. The Mobility Declaration, the fellowship's first completed deliverable, was submitted and validated on the EU Funding and Tenders Portal in June 2026. The Career Development Plan, setting out the researcher's training, teaching, and publication goals, was signed with the supervisor on 24 June 2026 and is reviewed quarterly, with formal submission on the EU Funding and Tenders Portal in December. The Data Management Plan, which governs how research data is collected, protected, and shared, was reviewed with the University's Open Science Department in July and updates as the project evolves. The package also covers the project budget, this website, and eight short progress reports, one every three months across the fellowship.", "codes": "Deliverables D.1.1 to D.1.10 · Milestone M.1.1, December 2026: plans and platform complete"}, {"n": 2, "name": "Training at ISSI", "when": "Months 1 to 9", "active": true, "body": "Formal training in the methods the research needs. Four Doctoral School workshops run from October to December, covering quantitative methods, policy writing, leadership and project management, and integrated methods, and preparatory courses run over the summer before them, from statistics with the University's IT Services to household survey design with the World Bank. The elective on financial inclusion is taken as an online course with the Inter-American Development Bank. Teaching runs alongside the training. There is a seminar within the Islands and Small States Institute's Master's programme in October, a virtual guest seminar at the University of Hildesheim in Germany in November, and the first massive open online course, Bridging Cultures with Reciprocity, which later travels to the partner universities.", "codes": "Deliverables D.2.1 to D.2.8 · Milestone M.2.1, February 2027: training complete"}, {"n": 3, "name": "Fieldwork preparation", "when": "Year one, from Malta", "active": true, "body": "Everything the fieldwork needs in place before any travel begins. Language practice in Tongan and Shikomori runs through the year, and the partnerships with The University of the West Indies, Tonga National University and the University of Comoros were opened in June 2026 and have deepened over the summer. The study sites are chosen in the same period. The largest piece is the ethics application, because before any interviews can happen the University and all three countries review how the research treats the people in it, the questions asked, the consent given and the way answers are protected. The application goes to the University of Malta's research ethics committees and to the review bodies of Jamaica, Tonga, and Comoros at the end of August 2026.", "codes": "Deliverables D.3.1 to D.3.4 · Milestones M.3.1, project social media launched, March 2027, and M.3.2, preparation complete"}, {"n": 4, "name": "Ethnographic fieldwork", "when": "April to October 2027", "active": false, "body": "Roughly two months in each country in turn, Jamaica, then Tonga, then Comoros. The ethnography comes first and the surveys follow, because the interviews decide what the surveys ask. Each country takes ten to twenty interviews, three focus groups, and a household survey reaching 250 to 300 families. Every stay closes with a secondment at the partner university, so each country’s work ends inside an island institution rather than only in the field.", "codes": "Deliverables D.4.1 to D.4.6 · Milestone M.4.1, October 2027: fieldwork and secondments complete"}, {"n": 5, "name": "Econometrics and analysis", "when": "Brackets the fieldwork", "active": true, "body": "The statistical side of the project. Time series models trace how aid and remittance flows have moved with wellbeing indicators in each country, drawing on World Bank and OECD data reaching back to 1980, one model per country. A gender sensitive monitoring framework runs through the analysis, and the results are read through the Sustainable Livelihoods Framework, so the numbers are interpreted alongside what communities themselves value. The systematic review under way now feeds this package directly, since it determines which variables the models should carry.", "codes": "Deliverables D.5.1 to D.5.3 · Milestones M.5.1, data review, November 2026, and M.5.2, modelling complete, 2028"}, {"n": 6, "name": "Two-way knowledge transfer", "when": "Across the two years", "active": false, "body": "Sharing the work in both directions as it happens, with island institutions and the wider research field. Four research seminars, at the Islands and Small States Institute and at each partner university. The project's three papers each travel to an international conference: the systematic review to DevNet 2026, the development studies conference at Te Herenga Waka Victoria University of Wellington in December; the methodology paper to the Adaptation Futures Conference in Cancún in 2027; and the results to the ISISA Islands of the World Congress in Gozo in 2028. A second massive open online course, Waves of Wealth, launches in spring 2028, completing the knowledge transfer.", "codes": "Deliverables D.6.1 to D.6.7 · Milestone M.6.1, May 2028: knowledge transfer complete"}, {"n": 7, "name": "Dissemination and exploitation", "when": "A living plan, to May 2028", "active": true, "body": "Getting the findings to the people they are about. Each country gets a newspaper or magazine article, written in the language its readers use, and policy briefs go to governments, donors and regional bodies. The project's three research papers, the systematic review, the methodology paper, and the results, each published in a peer reviewed journal after being presented at their conferences. This website and the social media project Island Voices, Global Impact carry the work publicly, and both are being built now for a formal launch in March 2027.", "codes": "Deliverables D.7.1 to D.7.7 · The package closes with the third journal article"}];
   var rooms = ['question','islands','approach','timeline','programme','research','training','outreach','people'];
-  var SUBS = { question:['q','why'], timeline:['horizon','chart','logbook'], research:['review','library','toolkit','evidence'], outreach:['about','listening','stories','voices','notebook'] };
+  var SUBS = { question:['q','why'], islands:['map','jamaica','tonga','comoros','compare'], timeline:['horizon','chart','logbook'], research:['review','library','toolkit','evidence'], outreach:['about','listening','stories','voices','notebook'] };
   var links = document.querySelectorAll('#railnav > a');
   function setSub(room, sub){
     var el = document.getElementById('room-' + room);
@@ -1428,5 +1443,198 @@ window.__initBoard = function(){
   }
 })();
 </script>
+<script>
+(function(){
+  if(!window.FARSIDS || !FARSIDS.PROFILES) return;
+  var P = FARSIDS.PROFILES;
+  var TEAL = '#1795A6', CORAL = '#E2664A', INK = '#0B2530', SOFT = '#3D5560', FAINT = '#7d8f98', GRID = '#e2ecec';
+  function esc(s){ return String(s).replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+  function fmt(n){ return n.toLocaleString('en-US'); }
+  function money(m){ return m >= 1000 ? (m/1000).toFixed(1).replace(/\.0$/,'') + ' billion' : Math.round(m) + ' million'; }
+
+  function mainChart(p, opts){
+    opts = opts || {};
+    var W = 880, H = opts.small ? 240 : 320, padL = 46, padR = 12, padT = 16, padB = 46;
+    var iw = W - padL - padR, ih = H - padT - padB;
+    var years = p.series.map(function(r){ return r[0]; });
+    var y0 = years[0], y1 = years[years.length-1];
+    var ymax = opts.ymax || 10 * Math.ceil(Math.max.apply(null, p.series.map(function(r){ return Math.max(r[1]||0, r[2]||0); })) / 10);
+    function X(y){ return padL + (y - y0) / (y1 - y0) * iw; }
+    function Y(v){ return padT + ih - v / ymax * ih; }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(p.name) + ', remittances and aid across the record">';
+    s += '<rect x="' + X(Math.max(2020, y0)) + '" y="' + padT + '" width="' + (X(Math.min(2021, y1)) - X(Math.max(2020, y0)) + iw/(y1-y0)) + '" height="' + ih + '" fill="#0E4D5C" fill-opacity="0.06"/>';
+    if(p.name === 'Comoros'){
+      s += '<rect x="' + (X(1997) - iw/(y1-y0)/2) + '" y="' + padT + '" width="' + (iw/(y1-y0)) + '" height="' + ih + '" fill="#E2664A" fill-opacity="0.08"/>';
+    }
+    for(var g = 0; g <= ymax; g += 10){
+      s += '<line x1="' + padL + '" y1="' + Y(g) + '" x2="' + (W - padR) + '" y2="' + Y(g) + '" stroke="' + GRID + '" stroke-width="1"/>';
+      s += '<text x="' + (padL - 8) + '" y="' + (Y(g) + 4) + '" text-anchor="end" font-size="11" fill="' + FAINT + '" font-family="Space Mono,monospace">' + g + (g === ymax ? '%' : '') + '</text>';
+    }
+    var ticks = [];
+    for(var yy = Math.ceil(y0/10)*10; yy <= y1; yy += 10) ticks.push(yy);
+    if(ticks.indexOf(y0) < 0) ticks.unshift(y0);
+    ticks.forEach(function(t){
+      s += '<text x="' + X(t) + '" y="' + (H - padB + 26) + '" text-anchor="middle" font-size="11" fill="' + FAINT + '" font-family="Space Mono,monospace">' + t + '</text>';
+    });
+    function path(idx){
+      var d = '', pen = false;
+      p.series.forEach(function(r){
+        var v = r[idx];
+        if(v === null || v === undefined){ pen = false; return; }
+        d += (pen ? ' L' : ' M') + X(r[0]).toFixed(1) + ',' + Y(v).toFixed(1);
+        pen = true;
+      });
+      return d;
+    }
+    s += '<path d="' + path(2) + '" fill="none" stroke="' + CORAL + '" stroke-width="2" stroke-linejoin="round"/>';
+    s += '<path d="' + path(1) + '" fill="none" stroke="' + TEAL + '" stroke-width="2.4" stroke-linejoin="round"/>';
+    var lastR = null, lastA = null;
+    p.series.forEach(function(r){ if(r[1] != null) lastR = r; if(r[2] != null) lastA = r; });
+    if(lastR) s += '<circle cx="' + X(lastR[0]) + '" cy="' + Y(lastR[1]) + '" r="4" fill="' + TEAL + '"/>';
+    if(lastA) s += '<circle cx="' + X(lastA[0]) + '" cy="' + Y(lastA[2]) + '" r="4" fill="' + CORAL + '"/>';
+    (p.shocks || []).forEach(function(sh){
+      var x = Math.min(X(sh[0]), X(y1));
+      s += '<path d="M' + (x-5) + ',' + (H - padB + 12) + ' L' + (x+5) + ',' + (H - padB + 12) + ' L' + x + ',' + (H - padB + 3) + ' Z" fill="#B5493F"><title>' + esc(sh[1] + ', ' + sh[0]) + '</title></path>';
+    });
+    var colw = iw / (y1 - y0);
+    p.series.forEach(function(r){
+      var tip = r[0] + ' · remittances ' + (r[1] == null ? 'no record' : r[1] + '% of GDP') + ' · aid ' + (r[2] == null ? 'not yet reported' : r[2] + '% of GNI');
+      s += '<rect x="' + (X(r[0]) - colw/2) + '" y="' + padT + '" width="' + colw + '" height="' + ih + '" fill="transparent"><title>' + esc(tip) + '</title></rect>';
+    });
+    s += '</svg>';
+    return s;
+  }
+
+  function seasChart(p){
+    if(!p.seas) return '';
+    var W = 720, H = 170, padL = 10, padT = 26, bw = 44, gap = 14, base = 104, scale = 190;
+    var months = ['J','F','M','A','M','J','J','A','S','O','N','D'];
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(p.name) + ', remittances through the year">';
+    s += '<line x1="' + padL + '" y1="' + base + '" x2="' + (W - 10) + '" y2="' + base + '" stroke="' + GRID + '" stroke-width="1.4"/>';
+    p.seas.forEach(function(f, i){
+      var d = f - 1, x = padL + 6 + i * (bw + gap), h = Math.abs(d) * scale;
+      var y = d >= 0 ? base - h : base;
+      s += '<rect x="' + x + '" y="' + y.toFixed(1) + '" width="' + bw + '" height="' + Math.max(h,1.5).toFixed(1) + '" rx="3" fill="' + TEAL + '" fill-opacity="' + (d >= 0 ? '0.95' : '0.4') + '"><title>' + esc(months[i] + ': ' + Math.round((f-1)*100) + '% against an average month') + '</title></rect>';
+      s += '<text x="' + (x + bw/2) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="12" fill="' + FAINT + '" font-family="Space Mono,monospace">' + months[i] + '</text>';
+      if(i === 11) s += '<text x="' + (x + bw/2) + '" y="' + (y - 8) + '" text-anchor="middle" font-size="13" font-weight="700" fill="' + INK + '" font-family="Spline Sans,sans-serif">+' + Math.round((f-1)*100) + '%</text>';
+    });
+    s += '</svg>';
+    return s;
+  }
+
+  var CIRC_MAX = 3601;
+  function circles(p){
+    var W = 720, H = 240, R = 92, cy = 118;
+    var l = p.latest;
+    function r(v){ return Math.max(6, R * Math.sqrt(v / CIRC_MAX)); }
+    var r1 = r(l.remit_usd_m), r2 = r(l.aid_usd_m);
+    var c1 = 180, c2 = 470;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(p.name) + ', the two flows in ' + l.year + ' drawn to scale">';
+    s += '<circle cx="' + c1 + '" cy="' + cy + '" r="' + r1.toFixed(1) + '" fill="' + TEAL + '" fill-opacity="0.85"/>';
+    s += '<circle cx="' + c2 + '" cy="' + cy + '" r="' + r2.toFixed(1) + '" fill="' + CORAL + '" fill-opacity="0.85"/>';
+    s += '<text x="' + c1 + '" y="' + (cy + R + 26) + '" text-anchor="middle" font-size="14" fill="' + INK + '" font-family="Spline Sans,sans-serif">Remittances · ' + money(l.remit_usd_m) + ' US dollars</text>';
+    s += '<text x="' + c2 + '" y="' + (cy + R + 26) + '" text-anchor="middle" font-size="14" fill="' + INK + '" font-family="Spline Sans,sans-serif">Net aid · ' + money(l.aid_usd_m) + ' US dollars</text>';
+    s += '</svg>';
+    return s;
+  }
+
+  function lendChart(p){
+    var W = 720, H = 170, padL = 40, padT = 14, padB = 34;
+    var iw = W - padL - 12, ih = H - padT - padB;
+    var vmax = Math.max.apply(null, p.lend.map(function(r){ return r[1]; }));
+    var step = iw / p.lend.length;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(p.name) + ', World Bank disbursements by year">';
+    s += '<line x1="' + padL + '" y1="' + (padT + ih) + '" x2="' + (W - 12) + '" y2="' + (padT + ih) + '" stroke="' + GRID + '" stroke-width="1.4"/>';
+    p.lend.forEach(function(r, i){
+      var h = Math.max(1.5, r[1] / vmax * ih);
+      var x = padL + i * step + 3;
+      s += '<rect x="' + x.toFixed(1) + '" y="' + (padT + ih - h).toFixed(1) + '" width="' + (step - 6).toFixed(1) + '" height="' + h.toFixed(1) + '" rx="3" fill="#0E4D5C" fill-opacity="0.85"><title>' + esc(r[0] + ': ' + r[1].toFixed(1) + ' million US dollars') + '</title></rect>';
+      if(i === 0 || i === p.lend.length - 1) s += '<text x="' + (x + (step-6)/2) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="11" fill="' + FAINT + '" font-family="Space Mono,monospace">' + r[0] + '</text>';
+    });
+    s += '<text x="' + (padL - 6) + '" y="' + (padT + 8) + '" text-anchor="end" font-size="11" fill="' + FAINT + '" font-family="Space Mono,monospace">' + Math.round(vmax) + '</text>';
+    s += '</svg>';
+    return s;
+  }
+
+  function figures(row){
+    var count = Math.round(row.n / row.unit);
+    var per = 20, size = 24, s = '';
+    var rows = Math.ceil(count / per);
+    var W = 700, H = rows * (size + 8) + 4;
+    s += '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(row.line) + '">';
+    for(var i = 0; i < count; i++){
+      var x = 6 + (i % per) * 34, y = 2 + Math.floor(i / per) * (size + 8);
+      s += '<g transform="translate(' + x + ',' + y + ')" fill="' + TEAL + '">'
+        + '<circle cx="9" cy="5" r="4.4"/>'
+        + '<path d="M2,22 C2,13 5.5,10.5 9,10.5 C12.5,10.5 16,13 16,22 Z"/></g>';
+    }
+    s += '</svg>';
+    return s;
+  }
+
+  function legend(){
+    return '<div class="proflegend"><span><i style="background:' + TEAL + '"></i>Remittances, share of GDP</span>'
+         + '<span><i style="background:' + CORAL + '"></i>Net aid, share of national income</span></div>';
+  }
+
+  function tiles(p){
+    var l = p.latest;
+    var rShare = null, aShare = null;
+    p.series.forEach(function(r){ if(r[0] === l.year){ rShare = r[1]; aShare = r[2]; } });
+    return '<div class="proftiles">'
+      + '<div class="pt"><span class="v">' + rShare.toFixed(1) + '%</span><span class="k">of GDP arrived as remittances in ' + l.year + '</span></div>'
+      + '<div class="pt"><span class="v">' + aShare.toFixed(1) + '%</span><span class="k">of national income arrived as net aid in ' + l.year + '</span></div>'
+      + '<div class="pt"><span class="v">' + fmt(l.pop) + '</span><span class="k">people at home, ' + l.pop_year + '</span></div>'
+      + '<div class="pt"><span class="v">' + p.programmes + '</span><span class="k">aid programmes documented, 2026</span></div>'
+      + '</div>';
+  }
+
+  function panel(title, inner, cap){
+    return '<div class="profpanel"><h3>' + esc(title) + '</h3>' + inner + (cap ? '<p class="profcap">' + esc(cap) + '</p>' : '') + '</div>';
+  }
+
+  function profile(key, mount){
+    var p = P[key];
+    var el = document.getElementById(mount);
+    if(!el) return;
+    var years = p.series.filter(function(r){ return r[1] != null; });
+    var span = years[0][0] + ' to ' + years[years.length-1][0];
+    var h = '<p class="eyebrow">Island profile</p><h2 class="title">' + esc(p.name) + '</h2>'
+      + '<p class="lead-p profintro">' + esc(p.intro) + '</p>'
+      + tiles(p)
+      + panel('Aid and remittances, ' + span, legend() + mainChart(p), p.shockcap)
+      + panel('The two flows in ' + p.latest.year + ', drawn to scale', circles(p), 'The circles share one scale across all three island profiles, so Jamaica’s remittances set the largest circle anywhere on these pages.')
+      + (p.seas
+          ? panel('Remittances through the year', seasChart(p), p.seascap)
+          : '<div class="profpanel profempty"><h3>Remittances through the year</h3><p>' + esc(p.seasempty) + '</p></div>')
+      + (p.labour.length
+          ? panel('Workers on the schemes', p.labour.map(function(row){ return '<p class="profrowline">' + esc(row.line) + '</p>' + figures(row); }).join(''), p.labourcap)
+          : '<div class="profpanel profempty"><h3>Workers on the schemes</h3><p>' + esc(p.labourempty) + '</p></div>')
+      + panel('The one aid flow published month by month', lendChart(p), p.lendcap)
+      + '<div class="profpanel"><h3>The fieldwork</h3><p class="profrowline">' + esc(p.field) + '</p><p class="profrowline">' + esc(p.prog) + '</p></div>'
+      + '<div class="profsources"><h3>Sources</h3><ul>' + p.sources.map(function(sr){ return '<li><a href="' + sr[1] + '" target="_blank" rel="noopener">' + esc(sr[0]) + '</a></li>'; }).join('') + '</ul>'
+      + '<p class="profcap">Recorded remittances count what passes through formal channels. Money carried home by hand, goods sent in kind and transfers between family members abroad are not in these series, and measuring what the official record cannot see is one of the things the household survey is for.</p></div>'
+      + '<p class="profback"><a href="#islands">All three islands</a></p>';
+    el.innerHTML = h;
+  }
+
+  profile('jm', 'prof-jm');
+  profile('to', 'prof-to');
+  profile('km', 'prof-km');
+
+  var cmp = document.getElementById('prof-compare');
+  if(cmp){
+    var h = '<p class="eyebrow">Island profile</p><h2 class="title">Side by side</h2>'
+      + '<p class="lead-p profintro">The three records on one scale, remittances as a share of GDP and net aid as a share of national income. Jamaica’s aid falls toward zero while its remittances climb, Tonga keeps both flows large for the whole record, and the Comoros crosses from one to the other in the middle of the period.</p>'
+      + legend();
+    ['jm','to','km'].forEach(function(k){
+      h += '<div class="profpanel"><h3>' + esc(P[k].name) + '</h3>' + mainChart(P[k], {small:true, ymax:60}) + '</div>';
+    });
+    h += '<p class="profback"><a href="#islands">All three islands</a></p>';
+    cmp.innerHTML = h;
+  }
+})();
+</script>
+
 </body>
 </html>

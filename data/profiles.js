@@ -346,8 +346,8 @@ FARSIDS.PROFILES = {
   "name": "Jamaica",
   "adj": "Jamaican",
   "col": "#3C9A5F",
-  "intro": "In 1980 aid was the larger flow: net official development assistance was worth 4.5 per cent of Jamaica's national income, and remittances 3.6 per cent of GDP. The two lines crossed in the following decade and never met again. In 2023 Jamaican families abroad sent 3.6 billion US dollars, 16.8 per cent of GDP, while net aid came to 86 million dollars, 0.4 per cent of national income. The chart carries the whole record from 1980, with the hurricanes marked along the base.",
-  "seascap": "December brings 18 per cent more remittance inflow than an average month, measured over the 32 complete years of the Bank of Jamaica's monthly record, which runs from 1994.",
+  "intro": "In 1980 aid was the larger flow: net official development assistance was worth 4.5 per cent of Jamaica's national income, and remittances 3.6 per cent of GDP. The two lines crossed in the following decade and never met again. In 2023 Jamaican families abroad sent 3.6 billion US dollars, 16.8 per cent of GDP, while net aid came to 86 million dollars, 0.4 per cent of national income. The chart carries the whole record from 1980, with the hurricanes marked along the base. The Bank of Jamaica's monthly record already puts 2025 at 3.74 billion US dollars, a figure that joins the chart when the World Bank publishes its 2025 series on the same basis as the line.",
+  "seascap": "December brings 18 per cent more remittance inflow than an average month, on average across the 32 complete years of the Bank of Jamaica's monthly record, which runs from 1994.",
   "labour": [
    {
     "n": 10353,
@@ -364,7 +364,7 @@ FARSIDS.PROFILES = {
   "lendcap": "World Bank disbursements to Jamaica in millions of US dollars a year, from the monthly IBRD loan statements. One lender only, shown because no other aid flow is published month by month.",
   "prog": "59 aid programmes documented for Jamaica on the project's register in August 2026, compiled from the OECD Creditor Reporting System, ministry project lists and the Jamaica Social Investment Fund's reports.",
   "field": "Fieldwork opens in Jamaica in April 2027 with The University of the West Indies: about two months of interviews, focus groups and a household survey of 250 to 300 families.",
-  "shockcap": "The marks along the base, left to right: Hurricane Allen 1980, Gilbert 1988, Ivan 2004, Dean 2007, Storm Nicole 2010, Beryl 2024 and Melissa 2025. The shaded band is the pandemic border closure period, 2020 to 2021.",
+  "shockcap": "The marks along the base, left to right: Hurricane Allen 1980, Gilbert 1988, Ivan 2004, Dean 2007, Storm Nicole 2010, Beryl 2024 and Melissa 2025. The shaded band is the pandemic border closure period, 2020 to 2021. The aid line ends in 2023 because donors report to the OECD with a delay of one to two years, and later years appear here as they are published.",
   "sources": [
    [
     "World Bank, personal remittances received, Jamaica",
@@ -394,7 +394,8 @@ FARSIDS.PROFILES = {
     "EM-DAT, the international disaster database",
     "https://www.emdat.be"
    ]
-  ]
+  ],
+  "download": "data/downloads/far-sids island profile data - jamaica.csv"
  },
  "to": {
   "series": [
@@ -747,7 +748,7 @@ FARSIDS.PROFILES = {
   "adj": "Tongan",
   "col": "#E2664A",
   "intro": "Tonga is the country where both flows stay large. In 2023 remittances came to 228 million US dollars, 38.6 per cent of GDP, more than a third of the economy, and net aid to 130 million dollars, 20.3 per cent of national income. The remittance record begins in 1993, where the National Reserve Bank's series starts, while the aid record reaches back to 1981, and the chart carries the cyclones and the January 2022 Hunga Tonga eruption along its base.",
-  "seascap": "December brings 29 per cent more remittance inflow than an average month and February 22 per cent less, measured over the 33 complete years of the National Reserve Bank's monthly record.",
+  "seascap": "December brings 29 per cent more remittance inflow than an average month and February 22 per cent less, on average across the 33 complete years of the National Reserve Bank's monthly record.",
   "labour": [
    {
     "n": 3715,
@@ -764,7 +765,7 @@ FARSIDS.PROFILES = {
   "lendcap": "World Bank disbursements to Tonga in millions of US dollars a year, from the monthly IDA statements of credits and grants. One lender only, shown because no other aid flow is published month by month.",
   "prog": "72 aid programmes documented for Tonga on the project's register in August 2026, compiled from the OECD Creditor Reporting System, the Lowy Institute Pacific Aid Map and Tonga's own budget papers.",
   "field": "Fieldwork reaches Tonga in June 2027 with Tonga National University: about two months of interviews, focus groups and a household survey of 250 to 300 families, fielded in Tongan.",
-  "shockcap": "The marks along the base, left to right: Cyclone Isaac 1982, Ofa 1990, Hina 1997, Waka 2001, Ian 2014, Gita 2018, Harold 2020 and the Hunga Tonga Hunga Ha'apai eruption of January 2022. The shaded band is the pandemic border closure period, 2020 to 2021.",
+  "shockcap": "The marks along the base, left to right: Cyclone Isaac 1982, Ofa 1990, Hina 1997, Waka 2001, Ian 2014, Gita 2018, Harold 2020 and the Hunga Tonga Hunga Ha'apai eruption of January 2022. The shaded band is the pandemic border closure period, 2020 to 2021. The aid line ends in 2023 because donors report to the OECD with a delay of one to two years, and later years appear here as they are published.",
   "sources": [
    [
     "National Reserve Bank of Tonga, remittance statistics",
@@ -794,7 +795,8 @@ FARSIDS.PROFILES = {
     "EM-DAT, the international disaster database",
     "https://www.emdat.be"
    ]
-  ]
+  ],
+  "download": "data/downloads/far-sids island profile data - tonga.csv"
  },
  "km": {
   "series": [
@@ -1113,7 +1115,7 @@ FARSIDS.PROFILES = {
   "lendcap": "World Bank disbursements to the Comoros in millions of US dollars a year, from the monthly IDA statements of credits and grants. One lender only, shown because no other aid flow is published month by month.",
   "prog": "66 aid programmes documented for the Comoros on the project's register in August 2026, compiled from the OECD Creditor Reporting System, the World Bank project database and ministry lists.",
   "field": "Fieldwork closes in the Comoros in August 2027 with the University of the Comoros: about two months of interviews, focus groups and a household survey of 250 to 300 families, fielded in Shikomori with French alongside.",
-  "shockcap": "The marks along the base, left to right: Cyclone Elinah 1983, Kalafandji 1989 and Kenneth 2019. The narrow band at 1997 is the Anjouan secession crisis, and the wider shaded band is the pandemic border closure period, 2020 to 2021.",
+  "shockcap": "The marks along the base, left to right: Cyclone Elinah 1983, Kalafandji 1989 and Kenneth 2019. The narrow band at 1997 is the Anjouan secession crisis, and the wider shaded band is the pandemic border closure period, 2020 to 2021. The aid line ends in 2023 because donors report to the OECD with a delay of one to two years, and later years appear here as they are published.",
   "sources": [
    [
     "World Bank, personal remittances received, Comoros",
@@ -1143,6 +1145,7 @@ FARSIDS.PROFILES = {
     "EM-DAT, the international disaster database",
     "https://www.emdat.be"
    ]
-  ]
+  ],
+  "download": "data/downloads/far-sids island profile data - comoros.csv"
  }
 };

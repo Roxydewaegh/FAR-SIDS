@@ -706,6 +706,7 @@
 .isle .profgo:hover{color:var(--coral);}
 @media (max-width:860px){ .proftiles{grid-template-columns:repeat(2,1fr);} }
 
+
 /* ---- atlas v15, 26 August 2026: rail shows sub-pages only for the open room; profile data downloads ---- */
 .rail .subnav{display:none;}
 .rail .subnav.openset{display:flex;}
@@ -713,3 +714,9 @@
 .profdl{font-size:.88rem; color:var(--ink-soft); line-height:1.6; margin:12px 0 4px; border-top:1px solid var(--line); padding-top:12px;}
 .profdl a{color:var(--lagoon); font-weight:600;}
 .profdl a:hover{text-decoration:underline;}
+
+  /* ---- atlas v16, 26 August 2026: approach subrooms and profile register links ---- */
+  #room-approach .ecards{margin-top:26px;}
+  .proftoolline{margin:12px 0 26px; font-size:.93rem;}
+  .proftoolline a{color:var(--lagoon); font-weight:600; text-decoration:underline; text-underline-offset:3px;}
+  .proftoolline a:hover{color:var(--deep);}

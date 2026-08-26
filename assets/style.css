@@ -679,3 +679,29 @@
   .elink{display:inline-block; margin-top:auto; padding-top:16px; color:var(--lagoon); font-weight:600; font-size:.95rem;}
   .ecard:hover .elink{text-decoration:underline;}
   @media(max-width:820px){ .ecards{grid-template-columns:1fr;} }
+
+/* ---- atlas v14, 25 August 2026: island profile pages ---- */
+.prof{max-width:920px; margin:0 auto; width:100%;}
+.prof .title{margin-bottom:6px;}
+.profintro{max-width:82ch;}
+.proftiles{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 22px;}
+.proftiles .pt{background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 16px;}
+.proftiles .pt .v{display:block; font-family:var(--serif); font-size:1.65rem; color:var(--abyss); line-height:1.15;}
+.proftiles .pt .k{display:block; font-size:.78rem; color:var(--ink-soft); margin-top:4px; line-height:1.35;}
+.profpanel{background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 24px 16px; margin:0 0 16px;}
+.profpanel h3{margin:0 0 10px; font-size:1.12rem; color:var(--abyss);}
+.profpanel svg{display:block; width:100%; height:auto;}
+.profcap{font-size:.82rem; color:var(--ink-soft); line-height:1.5; margin:10px 0 4px;}
+.profrowline{font-size:.95rem; color:var(--ink); margin:6px 0 8px;}
+.proflegend{display:flex; gap:22px; flex-wrap:wrap; margin:0 0 10px; font-size:.82rem; color:var(--ink-soft);}
+.proflegend i{display:inline-block; width:14px; height:4px; border-radius:2px; margin-right:7px; vertical-align:middle;}
+.profempty p{font-size:.95rem; color:var(--ink-soft); border-left:3px solid var(--sand-deep); padding-left:14px;}
+.profsources{background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 24px 14px; margin:0 0 16px;}
+.profsources h3{margin:0 0 8px; font-size:1.12rem; color:var(--abyss);}
+.profsources ul{margin:0; padding-left:20px; font-size:.88rem;}
+.profsources li{margin:4px 0;}
+.profback{margin:6px 0 20px;}
+.profback a{font-family:var(--mono); font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--deep);}
+.isle .profgo{display:inline-block; margin-top:10px; font-family:var(--mono); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; color:var(--deep);}
+.isle .profgo:hover{color:var(--coral);}
+@media (max-width:860px){ .proftiles{grid-template-columns:repeat(2,1fr);} }

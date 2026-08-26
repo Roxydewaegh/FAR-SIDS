@@ -1613,6 +1613,7 @@ window.__initBoard = function(){
       + panel('The one aid flow published month by month', lendChart(p), p.lendcap)
       + '<div class="profpanel"><h3>The fieldwork</h3><p class="profrowline">' + esc(p.field) + '</p><p class="profrowline">' + esc(p.prog) + '</p></div>'
       + '<div class="profsources"><h3>Sources</h3><ul>' + p.sources.map(function(sr){ return '<li><a href="' + sr[1] + '" target="_blank" rel="noopener">' + esc(sr[0]) + '</a></li>'; }).join('') + '</ul>'
+      + (p.download ? '<p class="profdl">Download <a href="' + p.download + '" download>the data behind this page</a>, <a href="data/downloads/far-sids island profile data - all three countries.csv" download>the three islands in one file</a>, <a href="data/downloads/far-sids island profile data - monthly pattern.csv" download>the monthly pattern</a> or <a href="data/downloads/far-sids island profile data - world bank monthly lending.csv" download>the monthly lending record</a>. Each file names the source of every value.</p>' : '')
       + '<p class="profcap">Recorded remittances count what passes through formal channels. Money carried home by hand, goods sent in kind and transfers between family members abroad are not in these series, and measuring what the official record cannot see is one of the things the household survey is for.</p></div>'
       + '<p class="profback"><a href="#islands">All three islands</a></p>';
     el.innerHTML = h;
@@ -1630,6 +1631,7 @@ window.__initBoard = function(){
     ['jm','to','km'].forEach(function(k){
       h += '<div class="profpanel"><h3>' + esc(P[k].name) + '</h3>' + mainChart(P[k], {small:true, ymax:60}) + '</div>';
     });
+    h += '<p class="profdl">Download <a href="data/downloads/far-sids island profile data - all three countries.csv" download>the three records in one file</a>. Each row names the source of its value.</p>';
     h += '<p class="profback"><a href="#islands">All three islands</a></p>';
     cmp.innerHTML = h;
   }

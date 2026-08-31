@@ -875,3 +875,14 @@ h3.hsec{margin:40px 0 4px; font-family:var(--mono); font-size:.72rem; letter-spa
 .claimbody{display:grid; grid-template-columns:1fr 1fr; gap:8px 30px; margin-top:2px;}
 .sub[data-sub="hypothesis"] .lead-p{max-width:78ch;}
 @media(max-width:900px){ .claimbody{grid-template-columns:1fr;} }
+
+/* Glossary and questions, second pass: purpose before counts. 31 August 2026 */
+.gqbanner{border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:24px 0 0; line-height:0;}
+.gqbanner svg{display:block; width:100%; height:190px;}
+.gqcard h3{margin:0;}
+.gqterms{display:flex; flex-wrap:wrap; gap:6px; margin:18px 0 0;}
+.gqterms span{font-family:var(--mono); font-size:.66rem; letter-spacing:.04em; color:#CFE7E6;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.10); border-radius:20px; padding:5px 10px; line-height:1;}
+.gqfootn{display:block; margin-top:14px; font-family:var(--mono); font-size:.66rem;
+  letter-spacing:.08em; color:#7fb6b5;}
+.gqcard .gqopen{padding-top:20px;}

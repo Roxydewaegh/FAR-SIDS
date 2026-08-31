@@ -774,7 +774,7 @@
 
 /* Literature review, maps and analysis rebuilt as two features and a record band, 31 August 2026 */
 #room-research .efeat{grid-template-columns:1fr; gap:22px; margin-top:26px;}
-#room-research .efeat .ecard.ewide .ethumb{width:30%;}
+#room-research .efeat .ecard.ewide .ethumb{width:38%;}
 .estats{display:flex; flex-wrap:wrap; gap:6px 20px; margin:16px 0 0; padding:0; list-style:none;}
 .estats li{font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);}
 .estats li b{font-family:var(--serif); font-size:1.05rem; font-weight:500; color:var(--abyss); letter-spacing:0; margin-right:6px;}

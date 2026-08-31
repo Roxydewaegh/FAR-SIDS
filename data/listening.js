@@ -12,6 +12,25 @@ FARSIDS.LISTENING = [
     "place": "Across the islands",
     "k": "all",
     "when": "Logged August 2026",
+    "title": "Routing around the one per cent",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><rect x='14' y='40' width='46' height='28' rx='4' fill='#BFE3E2' stroke='#0E4D5C' stroke-width='2'/><circle cx='37' cy='54' r='8' fill='none' stroke='#0E4D5C' stroke-width='2'/><rect x='66' y='30' width='6' height='50' rx='2' fill='#E2664A'/><path d='M60,26 C74,10 88,10 98,24' fill='none' stroke='#1C8C9B' stroke-width='3' stroke-linecap='round'/><polygon points='94,18 102,26 92,29' fill='#1C8C9B'/><path d='M60,84 C74,98 88,98 98,86' fill='none' stroke='#1C8C9B' stroke-width='3' stroke-linecap='round' stroke-dasharray='6 4'/><polygon points='94,92 102,84 92,81' fill='#1C8C9B'/><text x='69' y='24' font-family='Georgia,serif' font-size='11' fill='#993C1D'>1%</text></svg>",
+    "teaser": "A 1 per cent tax on cash sent from the United States has applied since January. The people it touches spent the year before it arrived pricing the workarounds out loud.",
+    "body": "The budget act signed in Washington in July 2025 put a 1 per cent tax on cash remittances sent from the United States, and it has applied since 1 January. The public conversation started long before the first dollar was collected. On Blind, the forum where migrant tech workers post anonymously, threads priced each draft as the rate moved from 5 per cent to 3.5 and finally to 1, and traded the ways around it: send everything before January, switch to transfers funded from a bank account or card, which the final act does not tax, hold the money in crypto, or carry cash across, which other posters warned is illegal above a threshold. African tech newsletters ran the same arithmetic for their readers. The tax reaches Kingston, Nuku'alofa and Moroni through the same corridors, and people began working out ways around it the day it was announced.",
+    "sources": [
+      {
+        "t": "Techlabari, an African tech newsletter, on the 1 per cent remittance tax in the budget act",
+        "u": "https://techlabari.substack.com/p/donald-trumps-big-beautiful-bill"
+      },
+      {
+        "t": "Blind, the tech workers' forum, a public thread pricing the tax and the ways around it",
+        "u": "https://www.teamblind.com/post/35-tax-on-remittances-sent-outside-us-from-2026-twfvo0c4"
+      }
+    ]
+  },
+  {
+    "place": "Across the islands",
+    "k": "all",
+    "when": "Logged August 2026",
     "title": "Both lines soften in the same year",
     "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><line x1='16' y1='92' x2='96' y2='92' stroke='#3D5560' stroke-width='2'/><line x1='16' y1='92' x2='16' y2='16' stroke='#3D5560' stroke-width='2'/><path d='M20,64 C36,50 52,42 66,42 C78,42 86,48 92,58' fill='none' stroke='#1C8C9B' stroke-width='3' stroke-linecap='round'/><path d='M20,80 C36,72 52,64 66,62 C78,60 86,66 92,76' fill='none' stroke='#E2664A' stroke-width='3' stroke-linecap='round' stroke-dasharray='6 4'/><circle cx='66' cy='42' r='3.4' fill='#1C8C9B'/><circle cx='66' cy='62' r='3.4' fill='#E2664A'/><rect x='60' y='20' width='34' height='12' rx='6' fill='#BFE3E2'/></svg>",
     "teaser": "For two years the public argument was that family money would hold the line as donors pulled back. The 2026 figures are the first to suggest both flows are easing at once, and island commentary has started to say so.",
@@ -28,6 +47,25 @@ FARSIDS.LISTENING = [
       {
         "t": "Devpolicy, remittances and aid in small states, the stability trap, 28 July 2026",
         "u": "https://devpolicy.org/remittances-and-aid-in-small-states-the-stability-trap-20260729/"
+      }
+    ]
+  },
+  {
+    "place": "Jamaica",
+    "k": "jm",
+    "when": "Logged August 2026",
+    "title": "The barrels go back to school",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><path d='M26,44 L38,32 L62,32 L74,44 L74,88 L26,88 Z' fill='#1C8C9B' stroke='#0E4D5C' stroke-width='2.4' stroke-linejoin='round'/><rect x='40' y='50' width='20' height='14' rx='3' fill='#F6FBFB' stroke='#0E4D5C' stroke-width='1.6'/><path d='M38,32 C38,22 62,22 62,32' fill='none' stroke='#0E4D5C' stroke-width='2.4'/><rect x='80' y='52' width='16' height='34' rx='3' fill='#E4D6B8' stroke='#993C1D' stroke-width='2'/><line x1='80' y1='62' x2='96' y2='62' stroke='#993C1D' stroke-width='1.6'/><line x1='80' y1='76' x2='96' y2='76' stroke='#993C1D' stroke-width='1.6'/><line x1='16' y1='96' x2='96' y2='96' stroke='#3D5560' stroke-width='2'/><rect x='14' y='36' width='8' height='44' rx='2' fill='#FFCC00' stroke='#993C1D' stroke-width='1.4'/><polygon points='18,28 14,36 22,36' fill='#993C1D'/></svg>",
+    "teaser": "August is when the diaspora's help turns physical. Supply drives pack backpacks for twenty schools across five parishes, and the public back to school pages fill with lists and barrels timed for the new term.",
+    "body": "Every August part of the remittance turns into exercise books. The Jamaica Awareness Association of California and the Jamaica Diaspora Taskforce Action Network run a back to school supplies drive with partner organisations across the United States and Canada, packing backpacks with notebooks, pens, geometry sets and hygiene items for infant and primary students at twenty schools across Clarendon, St James, Kingston, St Andrew and Westmoreland, at about 25 US dollars a child, timed from mid August to the start of term. The public back to school topic pages carry the same season from the family side, packing lists and barrels aimed at the first day of school. A drive like this is a remittance in kind, organised so the help arrives as supplies in a child's hands rather than as cash in an account, and August is the month that kind of sending has a date.",
+    "sources": [
+      {
+        "t": "Jamaica Awareness Association of California, the back to school supplies drive",
+        "u": "https://jamaicaawareness.org/back-to-school-supplies-drive/"
+      },
+      {
+        "t": "TikTok, Jamaican back to school lists (public topic page)",
+        "u": "https://www.tiktok.com/discover/jamaican-back-to-school-list"
       }
     ]
   },
@@ -58,6 +96,29 @@ FARSIDS.LISTENING = [
     "place": "Tonga",
     "k": "to",
     "when": "Logged August 2026",
+    "title": "What a farewell asks for",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><rect x='18' y='46' width='58' height='40' rx='4' fill='#E4D6B8' stroke='#9A7442' stroke-width='2'/><path d='M18,54 L76,54 M18,62 L76,62 M18,70 L76,70 M18,78 L76,78' stroke='#9A7442' stroke-width='1.2'/><path d='M26,46 L26,86 M36,46 L36,86 M46,46 L46,86 M56,46 L56,86 M66,46 L66,86' stroke='#C9A46A' stroke-width='1.2'/><rect x='62' y='24' width='30' height='20' rx='3' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2'/><path d='M62,26 L77,38 L92,26' fill='none' stroke='#0E4D5C' stroke-width='1.8'/><path d='M14,30 C24,16 40,16 48,26' fill='none' stroke='#1C8C9B' stroke-width='3' stroke-linecap='round'/><polygon points='44,20 52,27 42,31' fill='#1C8C9B'/></svg>",
+    "teaser": "When someone dies, the diaspora moves first. Public fundraisers ask for fares, for bringing the person home, and for the putu itself, and the funeral topic pages carry the ceremonies in public view.",
+    "body": "A funeral is the obligation that mobilises a Tongan family fastest, and the public record of that is now online. A search of GoFundMe for Tongan funerals returns page after page of campaigns asking for the same things: the cost of bringing a family member home, fares for relatives flying in, and the putu itself. The public funeral topic pages carry the ceremonies in open view, the processions and the fine mats. A community explainer sets out what the mats say: the ta'ovala a mourner wears tells how they stand to the person who died, the father's eldest sister outranks everyone present, and the oldest, most worn mats mark the closest grief. The kavenga, the obligations, are often described as a weight, and in the fundraisers families decide in public, and in numbers, that this one is worth carrying.",
+    "sources": [
+      {
+        "t": "GoFundMe, public fundraisers for Tongan funerals",
+        "u": "https://www.gofundme.com/s?q=tongan%20funeral"
+      },
+      {
+        "t": "TikTok, Tongan funerals (public topic page)",
+        "u": "https://www.tiktok.com/discover/tongan-funeral-2026"
+      },
+      {
+        "t": "Polynesian Cultural Center blog, Tongan wedding and funeral ceremonies",
+        "u": "https://www.polynesia.com/blog/tongan-wedding-and-funeral-ceremonies"
+      }
+    ]
+  },
+  {
+    "place": "Tonga",
+    "k": "to",
+    "when": "Logged August 2026",
     "title": "When the aid is a loan",
     "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><rect x='22' y='20' width='56' height='68' rx='4' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><line x1='32' y1='34' x2='68' y2='34' stroke='#D7E2E6' stroke-width='3'/><line x1='32' y1='44' x2='60' y2='44' stroke='#D7E2E6' stroke-width='3'/><circle cx='42' cy='64' r='5' fill='none' stroke='#E2664A' stroke-width='2.4'/><circle cx='60' cy='76' r='5' fill='none' stroke='#E2664A' stroke-width='2.4'/><line x1='63' y1='60' x2='39' y2='80' stroke='#E2664A' stroke-width='2.6' stroke-linecap='round'/><path d='M86,30 C98,44 98,64 86,78' fill='none' stroke='#1C8C9B' stroke-width='2.6'/><polygon points='86,78 92,70 80,71' fill='#1C8C9B'/></svg>",
     "teaser": "Tonga's own news site led in late July with the finding that aid to the Pacific is rebounding but increasingly debt driven. In a country where development assistance funds about half the national budget, that distinction is not technical.",
@@ -74,6 +135,25 @@ FARSIDS.LISTENING = [
       {
         "t": "Devpolicy, remittances and aid in small states, the stability trap, 28 July 2026",
         "u": "https://devpolicy.org/remittances-and-aid-in-small-states-the-stability-trap-20260729/"
+      }
+    ]
+  },
+  {
+    "place": "Comoros",
+    "k": "km",
+    "when": "Logged August 2026",
+    "title": "The price of the anda",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><circle cx='44' cy='52' r='18' fill='none' stroke='#C9A46A' stroke-width='5'/><circle cx='44' cy='30' r='6' fill='#FFCC00' stroke='#9A7442' stroke-width='1.6'/><rect x='68' y='58' width='28' height='8' rx='2' fill='#1C8C9B'/><rect x='70' y='48' width='24' height='8' rx='2' fill='#1C8C9B' fill-opacity='0.75'/><rect x='72' y='38' width='20' height='8' rx='2' fill='#1C8C9B' fill-opacity='0.5'/><line x1='14' y1='84' x2='96' y2='84' stroke='#3D5560' stroke-width='2'/><path d='M20,84 C26,72 38,72 44,84' fill='#3C9A5F'/><path d='M52,84 C58,74 68,74 74,84' fill='#3C9A5F'/></svg>",
+    "teaser": "Community press prices a grand mariage at anywhere from 6,000 to 235,000 euros, and in July the interior minister said out loud that nobody intends to ban it.",
+    "body": "After the circular that moved ceremonies off weekday working hours, the interior minister told the press in July that the government has no intention of banning the grand mariage. What the custom costs is public conversation. HabarizaComores, citing a range the anthropologist Damir Ben Ali priced at 6,000 to 235,000 euros, describes the savings of a working lifetime going into one celebration, gold for the bride and hand embroidered draguila worth up to 2,000 euros apiece, and names the je viens, the diaspora members home for the season, as the ones who keep the ceremonies at that scale. The same press reminds its readers that remittances stand near 30 per cent of GDP while 45 per cent of the population lives under a poverty line of about 100 euros a month, and the same households and the same diaspora stand behind both figures.",
+    "sources": [
+      {
+        "t": "HabarizaComores, le grand mariage, jusqu'à 235,000 euros",
+        "u": "https://www.habarizacomores.com/2025/08/grand-mariage-jusqua-235000-euros.html"
+      },
+      {
+        "t": "HabarizaComores, le gouvernement n'a pas l'intention d'interdire le grand mariage",
+        "u": "https://www.habarizacomores.com/2026/07/le-gouvernement-na-pas-lintention.html"
       }
     ]
   },

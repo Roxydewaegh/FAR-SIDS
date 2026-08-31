@@ -756,3 +756,7 @@
 /* v17d, 31 August 2026: the flows move */
 .nowbig .track i{transition:width 1.6s ease-out;}
 @media (prefers-reduced-motion: reduce){ .qhero circle{display:none;} }
+
+/* v17e, 31 August 2026: why it matters, the allocation diagram */
+.whyflow{display:block; width:100%; max-width:880px; margin:18px auto 10px;}
+@media (prefers-reduced-motion: reduce){ .whyflow circle{display:none;} }

@@ -39,12 +39,21 @@ footer a{color:var(--gold);text-decoration:none}
 footer a:hover{text-decoration:underline}
 .disc{cursor:pointer}
 .disc circle{fill:#fff;stroke:#b9b2a2;stroke-width:1}
+.disc.l-access circle{fill:#E7F1F2;stroke:#2A6F7C;stroke-width:1.5}
+.disc.l-arrival circle{fill:#FAEAE3;stroke:#C9552F;stroke-width:1.5}
+.disc.l-interaction circle{fill:#EEEBF7;stroke:#6F62A6;stroke-width:1.5}
+.disc.l-seeing circle{fill:#ECF1E9;stroke:#5F7A4E;stroke-width:1.5}
 .disc:hover circle,.disc.sel circle{stroke:var(--gold);stroke-width:2;fill:#fdf4e0}
 .disc.dim{opacity:.18;pointer-events:none}
 .disc text{font:12px Georgia,serif;fill:var(--ink);text-anchor:middle;dominant-baseline:central;pointer-events:none}
 .famlab{font:600 20px Georgia,serif;fill:var(--ink)}
 .famsub{font:10px Georgia,serif;fill:var(--gold);letter-spacing:.15em;text-transform:uppercase}
-.hair{stroke:#8a8272;stroke-width:.4;opacity:.28}
+.hair{stroke:#8a8272}
+.hair.on{opacity:.95}
+.legend{display:flex;gap:8px 26px;flex-wrap:wrap;padding:10px 30px 14px;border-bottom:1px solid var(--line);font-size:12px;color:var(--soft);background:#fcfaf6}
+.legend b{color:var(--ink);font-weight:600}
+.legend .sw{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1.5px solid}
+.legend .lay{white-space:nowrap}
 .arc{fill:none;stroke:#d9a94e;stroke-width:1.1;opacity:.75}
 #tip{position:absolute;background:#fffdf8;border:1px solid var(--line);box-shadow:0 2px 8px rgba(60,50,20,.12);padding:8px 12px;font-size:13px;max-width:260px;pointer-events:none;display:none;border-radius:3px}
 </style>
@@ -66,6 +75,14 @@ footer a:hover{text-decoration:underline}
   </span>
  </div>
 </header>
+<div class="legend">
+  <span><b>Each disc is one pattern.</b> Its size is the number of studies behind it, from one to six.</span>
+  <span class="lay"><i class="sw" style="background:#E7F1F2;border-color:#2A6F7C"></i>Who sends the money</span>
+  <span class="lay"><i class="sw" style="background:#FAEAE3;border-color:#C9552F"></i>What it is spent on</span>
+  <span class="lay"><i class="sw" style="background:#EEEBF7;border-color:#6F62A6"></i>How the two relate</span>
+  <span class="lay"><i class="sw" style="background:#ECF1E9;border-color:#5F7A4E"></i>What we can see</span>
+  <span><b>A line</b> joins two patterns read out of the same paper. Click a disc to see its own lines.</span>
+</div>
 <div class="wrap">
  <div id="stage"><svg id="map" viewBox="0 0 1520 1060"></svg><div id="tip"></div></div>
  <aside id="panel"></aside>
@@ -84,6 +101,7 @@ const LAYERS=[
  ["seeing","What we can see, given how everything is measured","The largest layer, and the review's main finding"]
 ];
 const LNAME=Object.fromEntries(LAYERS.map(l=>[l[0],l[1]]));
+const LCOL={access:"#2A6F7C",arrival:"#C9552F",interaction:"#6F62A6",seeing:"#5F7A4E"};
 let flow="all", arrange="layer", sel=null;
 const svg=document.getElementById("map"), tip=document.getElementById("tip"), panel=document.getElementById("panel");
 const CX=760, CY=530;
@@ -99,7 +117,7 @@ function positions(){
    th.sort((a,b)=>b.ev.length-a.ev.length);
    th.forEach((t,i)=>{
     const a=start+span*(i+0.5)/th.length;
-    const ring=250+((i%3)-1)*58+(i%2?16:-12);
+    const ring=(i%2)?316:196;
     pos[t.id]=[CX+ring*Math.cos(a),CY+ring*Math.sin(a)];
    });
    pos["__arc_"+k]=[start,start+span];
@@ -140,7 +158,7 @@ function draw(){
    const [a0,a1]=pos["__arc_"+k], R=390;
    const x0=CX+R*Math.cos(a0+0.06),y0=CY+R*Math.sin(a0+0.06),x1=CX+R*Math.cos(a1-0.06),y1=CY+R*Math.sin(a1-0.06);
    const large=(a1-a0)>Math.PI?1:0;
-   s+=`<path class="arc" d="M ${x0} ${y0} A ${R} ${R} 0 ${large} 1 ${x1} ${y1}"/>`;
+   s+=`<path class="arc" style="stroke:${LCOL[k]};stroke-width:2.4;opacity:.85" d="M ${x0} ${y0} A ${R} ${R} 0 ${large} 1 ${x1} ${y1}"/>`;
    const mid=(a0+a1)/2;
    const th=T.filter(t=>t.lay===k);
    const cm=Math.cos(mid);
@@ -152,28 +170,39 @@ function draw(){
    else if(anchor==="end")lx=Math.min(400,Math.max(lx,15+wide));
    else lx=Math.min(Math.max(lx,15+wide/2),1505-wide/2);
    const ly=Math.max(80,Math.min(1000,CY+430*Math.sin(mid)));
-   lines.forEach((ln,i)=>{ s+=`<text class="famlab" x="${lx}" y="${ly+i*22-((lines.length-1)*11)}" text-anchor="${anchor}">${ln}</text>` });
-   s+=`<text class="famsub" x="${lx}" y="${ly+lines.length*22-((lines.length-1)*11)+2}" text-anchor="${anchor}">${th.length} themes</text>`;
+   lines.forEach((ln,i)=>{ s+=`<text class="famlab" style="fill:${LCOL[k]}" x="${lx}" y="${ly+i*22-((lines.length-1)*11)}" text-anchor="${anchor}">${ln}</text>` });
+   s+=`<text class="famsub" style="fill:${LCOL[k]}" x="${lx}" y="${ly+lines.length*22-((lines.length-1)*11)+2}" text-anchor="${anchor}">${th.length} themes</text>`;
   });
  }
- // hairlines: shared files
+ // a line joins two themes read out of the same paper; only themes showing under the filter
  const byFile={};
- T.forEach(t=>t.files.forEach(f=>{(byFile[f]=byFile[f]||[]).push(t.id)}));
- const seen=new Set();
+ T.forEach(t=>{ if(!visible(t)) return; t.files.forEach(f=>{(byFile[f]=byFile[f]||[]).push(t.id)}) });
+ const share={};
  Object.values(byFile).forEach(ids=>{
-  for(let i=0;i<ids.length;i++)for(let j=i+1;j<ids.length;j++){
-   const key=ids[i]+"-"+ids[j];
-   if(seen.has(key))continue; seen.add(key);
-   const p=pos[ids[i]],q=pos[ids[j]];
-   if(p&&q)s+=`<line class="hair" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/>`;
+  const u=[...new Set(ids)];
+  for(let i=0;i<u.length;i++)for(let j=i+1;j<u.length;j++){
+   const a=Math.min(u[i],u[j]), b=Math.max(u[i],u[j]);
+   share[a+"-"+b]=(share[a+"-"+b]||0)+1;
   }});
+ let hot="";
+ Object.keys(share).forEach(key=>{
+  const a=+key.split("-")[0], b=+key.split("-")[1];
+  const p=pos[a], q=pos[b]; if(!p||!q) return;
+  const n=Math.min(share[key],4);
+  if(sel===a||sel===b){
+   const other=T[(sel===a?b:a)-1];
+   hot+=`<line class="hair on" style="stroke:${LCOL[other.lay]}" stroke-width="${(1.5+n*0.5).toFixed(2)}" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/>`;
+  }else{
+   s+=`<line class="hair" stroke-width="${(0.45+n*0.35).toFixed(2)}" opacity="${(0.14+n*0.07).toFixed(2)}" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/>`;
+  }});
+ s+=hot;
  s+=`<circle cx="${CX}" cy="${CY}" r="52" fill="none" stroke="#d9a94e" stroke-width="1.1"/>
      <text x="${CX}" y="${CY-6}" text-anchor="middle" style="font:600 30px Georgia,serif" fill="#22201c">${T.length}</text>
      <text x="${CX}" y="${CY+18}" text-anchor="middle" class="famsub">themes</text>`;
  T.forEach(t=>{
   const p=pos[t.id]; if(!p) return;
-  const r=13+Math.min(14,t.ev.length*2.4);
-  s+=`<g class="disc ${visible(t)?"":"dim"} ${sel===t.id?"sel":""}" data-id="${t.id}" transform="translate(${p[0]},${p[1]})"><circle r="${r}"/><text>${t.id}</text></g>`;
+  const r=11.5+Math.min(11,t.ev.length*2.1);
+  s+=`<g class="disc l-${t.lay} ${visible(t)?"":"dim"} ${sel===t.id?"sel":""}" data-id="${t.id}" transform="translate(${p[0]},${p[1]})"><circle r="${r}"/><text>${t.id}</text></g>`;
  });
  svg.innerHTML=s;
  svg.querySelectorAll(".disc").forEach(g=>{
@@ -195,8 +224,20 @@ function showHome(){
  <p>Forty-six patterns recur across the 201 studies included in the review, often in studies that used unrelated methods and looked at different countries. Each disc on the map is one of those patterns. Click a disc to read what the studies found, what the pattern means for the FAR-SIDS design, and which papers it was drawn from.</p>
  <p>The four layers come from four separate blind readings of the corpus, which between them sorted the themes into four questions rather than into the five families used on the earlier map. The questions are who sends the money and on what terms, what the money is spent on and what that changes, how aid and remittances relate and why almost nobody has looked, and what we can see given how everything is measured. Fifteen of the forty-six themes fall into that fourth question, so what this literature is able to measure accounts for almost a third of everything the reading found.</p>
  <div class="k">Four layers</div>${f}
+ <div class="k">How to read the map</div>
+ <p>Each disc is one pattern, and how big it is says how many studies sit behind it, from one to six. Its colour says which of the four layers it belongs to, and the coloured arc around the outside marks where that layer begins and ends. Where a disc sits inside its own band carries no meaning at all, because the two rings exist only to stop the discs overlapping.</p>
+ <p>A line joins two patterns that were read out of at least one paper in common, and the more papers two patterns share the heavier the line. Seventy-one of these lines exist between the forty-six patterns, forty-seven of them crossing from one layer into another, which is the reason the map looks busy in the middle. Seven patterns rest on papers no other pattern uses, so nothing joins them to anything. Clicking a disc draws only its own lines and lists, underneath, every pattern it shares a paper with. Filtering to aid or to remittances removes the lines belonging to the patterns that disappear.</p>
  <p style="margin-top:14px;font-size:12.5px;color:var(--soft)">Thirteen of these themes were added on 20 August 2026 from the four blind readings. Figures quoted inside a theme are as the readers found them, and none of them is published anywhere else until I have checked it against the source. Agreement between studies is counted in research programmes rather than in papers, because several papers often report the same underlying work.</p>`;
  draw();
+}
+function sharedWith(t){
+ const out=[];
+ T.forEach(o=>{ if(o.id===t.id) return;
+  const c=o.files.filter(f=>t.files.indexOf(f)>=0);
+  if(c.length) out.push([o,c]); });
+ if(!out.length) return `<p>No other pattern was drawn from any of these papers, so nothing on the map joins to this disc.</p>`;
+ out.sort((a,b)=>b[1].length-a[1].length);
+ return out.map(([o,c])=>`<div class="paper"><b>${o.id}. ${esc(o.n)}</b><br><i style="color:${LCOL[o.lay]}">${c.length} paper${c.length>1?"s":""} in common</i></div>`).join("");
 }
 function showTheme(t){
  panel.innerHTML=`<span class="backlink" onclick="showHome()">&larr; back to the map</span>
@@ -204,7 +245,8 @@ function showTheme(t){
  <div class="k">What the studies show</div><p>${esc(t.w)}</p>
  <div class="k">What this means for FAR-SIDS</div><p>${esc(t.u)}</p>
  <div class="k">Papers (${t.ev.length})</div>${t.ev.map(e=>`<div class="paper">${esc(e.t)}</div>`).join("")}
- <div class="k">Which layer</div><p>${LNAME[t.lay]}. This theme is about ${t.flow==="both"?"aid and remittances together":(t.flow==="aid"?"aid":"remittances")}.</p></div>`;
+ <div class="k">Which layer</div><p>${LNAME[t.lay]}. This theme is about ${t.flow==="both"?"aid and remittances together":(t.flow==="aid"?"aid":"remittances")}.</p>
+ <div class="k">Read out of the same papers as</div>${sharedWith(t)}</div>`;
 }
 document.getElementById("flowseg").addEventListener("click",e=>{
  if(e.target.dataset.f===undefined)return;

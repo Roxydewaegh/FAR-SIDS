@@ -752,3 +752,7 @@
 .qroom .sub[data-sub=q] .eyebrow{margin-bottom:22px;}
 .qroom .sub[data-sub=q] h1{margin-top:22px; line-height:1.28;}
 .qroom .sub[data-sub=q] .qhero{margin-top:30px;}
+
+/* v17d, 31 August 2026: the flows move */
+.nowbig .track i{transition:width 1.6s ease-out;}
+@media (prefers-reduced-motion: reduce){ .qhero circle{display:none;} }

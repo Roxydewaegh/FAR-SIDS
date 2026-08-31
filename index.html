@@ -1207,9 +1207,8 @@ window.__initBoard = function(){
       sp.appendChild(b);
     }
   })();
-  var TAG = 'website'; // set to '' to show the whole library
-  var url = 'https://api.zotero.org/groups/' + GROUP + '/items/top?format=json&sort=date&direction=desc&limit=60'
-            + (TAG ? '&tag=' + encodeURIComponent(TAG) : '');
+  var COLLECTION = '928DJMJH'; // the outreach website references collection in the group library
+  var url = 'https://api.zotero.org/groups/' + GROUP + '/collections/' + COLLECTION + '/items/top?format=json&sort=date&direction=desc&limit=100';
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   if(typeof fetch === 'undefined'){ el.innerHTML = renderList(picksAsRows()); return; }
   fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })

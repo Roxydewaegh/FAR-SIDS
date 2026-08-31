@@ -734,3 +734,16 @@
 .arccards .tk-card p{margin-top:6px;}
 
 .whyparts{display:block; width:100%; max-width:860px; height:auto; margin:16px 0 8px;}
+
+/* v17b, 31 August 2026: centred question hero */
+.qroom .sub[data-sub=q]{text-align:center;}
+.qroom .sub[data-sub=q] h1{margin-left:auto; margin-right:auto;}
+.qroom .sub[data-sub=q] .qhero{margin-left:auto; margin-right:auto;}
+.qroom .sub[data-sub=q] .qchips{justify-content:center;}
+.qroom .sub[data-sub=q] .lede{margin-left:auto; margin-right:auto;}
+.qroom .sub[data-sub=q] .meta{justify-content:center;}
+.nowbig{margin:28px auto 0; padding:20px 26px 22px;}
+.nowbig .daybig{font-family:'Fraunces',Georgia,serif; font-size:1.35rem; color:#EAFAF8; letter-spacing:.02em;}
+.nowbig .daybig span{color:#FFCC00; font-size:2.5rem; font-weight:600; padding:0 4px;}
+.nowbig .track{margin:14px 0 14px;}
+.nowbig p{color:#B9DAD8;}

@@ -747,3 +747,8 @@
 .nowbig .daybig span{color:#FFCC00; font-size:2.5rem; font-weight:600; padding:0 4px;}
 .nowbig .track{margin:14px 0 14px;}
 .nowbig p{color:#B9DAD8;}
+
+/* v17c, 31 August 2026: air around the question title */
+.qroom .sub[data-sub=q] .eyebrow{margin-bottom:22px;}
+.qroom .sub[data-sub=q] h1{margin-top:22px; line-height:1.28;}
+.qroom .sub[data-sub=q] .qhero{margin-top:30px;}

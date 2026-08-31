@@ -720,3 +720,15 @@
   .proftoolline{margin:12px 0 26px; font-size:.93rem;}
   .proftoolline a{color:var(--lagoon); font-weight:600; text-decoration:underline; text-underline-offset:3px;}
   .proftoolline a:hover{color:var(--deep);}
+
+/* ---- atlas v17, 31 August 2026: island card alignment, question hero, approach arc ---- */
+.isle{display:flex; flex-direction:column;}
+.isle .body{display:flex; flex-direction:column; flex:1;}
+.isle .body p{flex:1;}
+.qroom .sub[data-sub=q] h1{font-size:clamp(1.7rem,3.1vw,2.4rem); max-width:34ch; margin-top:10px;}
+.qhero{display:block; width:100%; max-width:900px; height:auto; margin:20px 0 4px;}
+.qchips{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 4px;}
+.qchips span{font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:#BFE9E6; border:1px solid #2C6B76; border-radius:999px; padding:6px 14px;}
+.arcpipe{display:block; width:100%; max-width:980px; height:auto; margin:6px 0 18px;}
+.arccards{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; margin-top:8px;}
+.arccards .tk-card p{margin-top:6px;}

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAR-SIDS household survey ledger · the three country forms</title>
+<style>
+  :root {
+    --ink:#16130f; --soft:#4a423a; --faint:#7d7268; --rule:#ddd5ca; --paper:#faf7f2; --card:#fff;
+    --accent:#7a4b2a; --accent-s:#f0e6db; --good:#2f5d3a; --good-s:#e3efe6;
+    --warn:#8a5a12; --warn-s:#f7ecd8; --stop:#7d2f2f; --stop-s:#f6e3e0;
+    --jm:#2f5d3a; --to:#7d2f2f; --km:#2c4a6e;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; font-size:16px; line-height:1.55; }
+  .wrap { max-width:1060px; margin:0 auto; padding:42px 32px 96px; }
+  header.page { border-bottom:2px solid var(--ink); padding-bottom:22px; margin-bottom:20px; }
+  header.page h1 { font-size:30px; line-height:1.2; margin:0 0 8px; font-weight:600; letter-spacing:-0.01em; }
+  .sub { font-size:18px; color:var(--soft); margin:0 0 10px; }
+  .date { font-size:14px; color:var(--faint); letter-spacing:0.04em; text-transform:uppercase; }
+  .banner { background:var(--good-s); border-left:4px solid var(--good); padding:14px 18px; margin:18px 0; }
+  .banner p { margin:6px 0; }
+  h2.sect { font-size:15px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent);
+    border-bottom:1px solid var(--rule); padding-bottom:6px; margin:38px 0 14px; }
+  .lede { color:var(--soft); margin:0 0 16px; }
+  .controls { position:sticky; top:0; z-index:5; background:var(--paper); padding:12px 0 10px;
+    border-bottom:1px solid var(--rule); margin-bottom:16px; }
+  .search { width:100%; font:inherit; font-size:17px; padding:10px 14px; border:1.5px solid var(--accent);
+    border-radius:8px; background:var(--card); color:var(--ink); }
+  .search:focus { outline:2px solid var(--accent-s); }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+  .chip { font-family:inherit; font-size:13.5px; border:1px solid var(--rule); background:var(--card);
+    color:var(--soft); border-radius:999px; padding:4px 12px; cursor:pointer; }
+  .chip.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .count { font-size:13.5px; color:var(--faint); margin-top:8px; }
+  .q { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:16px 20px; margin:0 0 12px; }
+  .q .head { display:flex; gap:12px; align-items:baseline; }
+  .qno { flex:none; font-weight:700; color:#fff; background:var(--accent); border-radius:6px;
+    padding:2px 9px; font-size:14px; transform:translateY(-1px); }
+  .qtext { font-weight:600; font-size:17px; }
+  .ans { color:var(--soft); margin:8px 0 0; }
+  .ans b, .note b { color:var(--ink); }
+  .note { margin:8px 0 0; color:var(--soft); }
+  .rule-note { background:var(--warn-s); border-left:3px solid var(--warn); padding:8px 12px; margin:10px 0 0; color:var(--soft); }
+  .diff { margin:10px 0 0; display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+  .diff .cc { border:1px solid var(--rule); border-radius:8px; padding:8px 12px; font-size:14.5px; color:var(--soft); background:var(--paper); }
+  .cc .cn { font-weight:700; font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:3px; }
+  .cc.jm .cn { color:var(--jm); } .cc.to .cn { color:var(--to); } .cc.km .cn { color:var(--km); }
+  .src { margin:9px 0 0; font-size:13.5px; color:var(--faint); }
+  .src .tag { display:inline-block; border:1px solid var(--rule); border-radius:4px; padding:0 6px; margin-right:6px;
+    font-size:12px; letter-spacing:0.04em; text-transform:uppercase; }
+  .src .ours { color:var(--accent); border-color:var(--accent-s); background:var(--accent-s); }
+  table { border-collapse:collapse; width:100%; margin:10px 0 18px; background:var(--card); font-size:14.5px; }
+  th, td { border:1px solid var(--rule); padding:7px 10px; text-align:left; vertical-align:top; }
+  th { background:var(--accent-s); color:var(--ink); font-size:13.5px; letter-spacing:0.03em; }
+  .tablewrap { overflow-x:auto; }
+  .hidden { display:none; }
+  footer { margin-top:44px; border-top:1px solid var(--rule); padding-top:14px; color:var(--faint); font-size:13.5px; }
+  @media (max-width:720px) { .diff { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="page">
+  <h1>FAR-SIDS household survey ledger</h1>
+  <p class="sub">The three country forms, Jamaica, Tonga and Comoros: every question, how it is answered, where it differs by country, where it comes from, and what it serves.</p>
+  <p class="date">Ledger dated 25 August 2026 · University of Malta, Islands and Small States Institute · Grant Agreement 101244526</p>
+</header>
+
+<div class="banner">
+  <p><b>One instrument, three country forms.</b> The same questions under the same numbers: a front page the enumerator fills, consent and an age check, then 41 questions in six blocks, A to F, with two closing records. The interview takes 45 minutes to an hour, answered by whoever knows best how the household pays for the things it needs. Jamaica is fielded in English with the Patois renderings fixed in training; Tonga is fielded in Tongan and Comoros in Shikomori with French as the fallback, both translated and back-translated.</p>
+  <p><b>Three rules on every page.</b> Read every question exactly as written. Say the not sure option aloud on every question about money or programmes. Never say the word aid and never name a donor or a funder, because who stands behind a programme is joined afterwards from the community roster, never asked at the door. No name of any person is written anywhere on the form.</p>
+</div>
+
+<div class="controls">
+  <input class="search" id="s" type="search" placeholder="Search the questions: try remittances, church, shocks, programme, satisfied, Mayotte, band…" aria-label="Search questions">
+  <div class="chips" id="chips">
+    <button class="chip on" data-b="all">All</button>
+    <button class="chip" data-b="front">Front page</button>
+    <button class="chip" data-b="A">A · Background</button>
+    <button class="chip" data-b="B">B · Who paid</button>
+    <button class="chip" data-b="C">C · What comes with it</button>
+    <button class="chip" data-b="D">D · Payer changed</button>
+    <button class="chip" data-b="E">E · How doing</button>
+    <button class="chip" data-b="F">F · Programmes</button>
+    <button class="chip" data-b="Z">Close</button>
+  </div>
+  <p class="count" id="count"></p>
+</div>
+
+<div id="cards">
+
+<div class="q" id="q-FRONT" data-b="front" data-k="front page enumerator census block stratum household number date language time programmes area sheet">
+  <div class="head"><span class="qno">FRONT</span><span class="qtext">Filled in by the enumerator before the interview, not asked.</span></div>
+  <p class="ans">Census block and stratum from the sampling sheet, household number in this community, date, enumerator, interview language, times started and finished, and the programme names read out at Block F, copied from the area sheet, up to three.</p>
+  <p class="note">The programme names come from the area sheet built at the mapping workshop, chosen by a written rule and never by the supervisor's judgement.</p>
+</div>
+
+<div class="q" id="q-CONSENT" data-b="front" data-k="consent age check adult verbal script stop withdraw">
+  <div class="head"><span class="qno">CONSENT</span><span class="qtext">The consent script, read aloud and never summarised, then two gates.</span></div>
+  <p class="ans">The script names the University of Malta, the length, the right to skip, pause or stop, that no name is written, that there is no payment and no programme attached, and that nothing said changes what help anyone receives. CONSENT records agreement or stops; the AGE CHECK confirms the person answering is 18 or older or asks for an adult.</p>
+</div>
+
+<div class="q" id="q-A1" data-b="A" data-k="A1 household size people under 15 over 65 counts">
+  <div class="head"><span class="qno">A1</span><span class="qtext">How many people normally live and eat here?</span></div>
+  <p class="ans">Three counts: people altogether, under 15, and 65 or older.</p>
+  <p class="src"><span class="tag">adapted</span>All three national instruments, asked as counts rather than a person by person roster.</p>
+</div>
+
+<div class="q" id="q-A2" data-b="A" data-k="A2 family outside country abroad migrant close family scheme RSE PALM farm work hotel contract Mayotte A2c">
+  <div class="head"><span class="qno">A2</span><span class="qtext">Is there anyone in your close family who lives outside this country?</span></div>
+  <p class="ans">Yes, no or not sure, then three counts: in another country, elsewhere in this country, and the scheme count at A2c, which is the question the labour schemes pick list serves.</p>
+  <div class="diff">
+    <div class="cc jm"><span class="cn">Jamaica</span>A2c asks how many went on a farm work or hotel programme, arranged before they left.</div>
+    <div class="cc to"><span class="cn">Tonga</span>A2c asks how many went on the seasonal work scheme, the RSE or PALM, arranged before they left.</div>
+    <div class="cc km"><span class="cn">Comoros</span>A2c asks how many left with a work contract already arranged; Mayotte is said aloud here, because households do not count it as another country unless it is named.</div>
+  </div>
+  <p class="src"><span class="tag ours">ours</span>No national instrument asks it.</p>
+</div>
+
+<div class="q" id="q-A3" data-b="A" data-k="A3 sex woman man respondent">
+  <div class="head"><span class="qno">A3</span><span class="qtext">Is the person answering a woman or a man?</span></div>
+  <p class="ans">Circled by the enumerator, never asked.</p>
+  <p class="src"><span class="tag">standard</span></p>
+</div>
+
+<div class="q" id="q-A4" data-b="A" data-k="A4 age years band birthday">
+  <div class="head"><span class="qno">A4</span><span class="qtext">How old were you at your last birthday?</span></div>
+  <p class="ans">Years written, or a band circled where they do not know: 18 to 24, 25 to 34, 35 to 49, 50 to 64, 65 to 74, 75 or over.</p>
+  <p class="src"><span class="tag">adapted</span>Mauritius instrument item 1, and every national instrument.</p>
+</div>
+
+<div class="q" id="q-A5" data-b="A" data-k="A5 relationship head household wife husband son daughter">
+  <div class="head"><span class="qno">A5</span><span class="qtext">What are you to the head of this household?</span></div>
+  <p class="ans">Nine codes from head to not a relative, with 96 for a household that does not use the idea of a head.</p>
+  <p class="src"><span class="tag">adapted</span>Population census codes in each country.</p>
+</div>
+
+<div class="q" id="q-A6" data-b="A" data-k="A6 marital status married union common law visiting polygamous EHCVM HIES SLC">
+  <div class="head"><span class="qno">A6</span><span class="qtext">What is your present marital status?</span></div>
+  <p class="ans">The national code list verbatim, printed English first with the original wording beside it where the national instrument is not in English.</p>
+  <div class="diff">
+    <div class="cc jm"><span class="cn">Jamaica</span>Married, common law, visiting, never married, divorced, separated, widowed. Survey of Living Conditions roster, marital and union status combined.</div>
+    <div class="cc to"><span class="cn">Tonga</span>Te'eki Mali, Mali, Nonofo fakamali, Uitou, Mavae, Vete. HIES 2021 item P113, verbatim.</div>
+    <div class="cc km"><span class="cn">Comoros</span>Eleven EHCVM codes at s01q07 on the 2024 tablet numbering, including the polygamous ranks, English with the EHCVM French beside it.</div>
+  </div>
+  <p class="src"><span class="tag">verbatim</span>National instruments.</p>
+</div>
+
+<div class="q" id="q-A7" data-b="A" data-k="A7 schooling education primary secondary vocational tertiary">
+  <div class="head"><span class="qno">A7</span><span class="qtext">What is the highest level of schooling you finished?</span></div>
+  <p class="ans">None, primary, lower and upper secondary, technical or vocational, tertiary; the Comoros form follows the EHCVM's own categories with the French beside them.</p>
+  <p class="src"><span class="tag">adapted</span>National instruments.</p>
+</div>
+
+<div class="q" id="q-A8" data-b="A" data-k="A8 livelihood income main source wages business market farming fishing handicraft koloa remittances pension">
+  <div class="head"><span class="qno">A8</span><span class="qtext">What is the main way this household earns its living?</span></div>
+  <p class="ans">One main source only.</p>
+  <div class="diff">
+    <div class="cc jm"><span class="cn">Jamaica</span>Ten SLC Part D codes, from work in somebody's business through buy and sell, own service, farming, help from others, remittances and pension.</div>
+    <div class="cc to"><span class="cn">Tonga</span>Wages, own business, market selling, growing or keeping animals, fishing, handicraft or koloa, remittances, a pension or government payment.</div>
+    <div class="cc km"><span class="cn">Comoros</span>Wages, own business, market selling, farming, fishing, remittances, a pension or government payment, adapted from the EHCVM income sections.</div>
+  </div>
+  <p class="src"><span class="tag">adapted</span>Jamaica SLC Part D; Tongan and Comorian national income sections, asked as one main source.</p>
+</div>
+
+<div class="q" id="q-A9" data-b="A" data-k="A9 own production grow food animals fish subsistence sell">
+  <div class="head"><span class="qno">A9</span><span class="qtext">Does this household grow food, keep animals, or fish?</span></div>
+  <p class="ans">No; yes for own eating; yes for eating and some selling; yes mainly to sell.</p>
+  <p class="src"><span class="tag">adapted</span>National agriculture and own-consumption sections. Fifth on the reserve cut list.</p>
+</div>
+
+<div class="q" id="q-A10" data-b="A" data-k="A10 who decides money spent decision">
+  <div class="head"><span class="qno">A10</span><span class="qtext">Who decides what this household's money is spent on?</span></div>
+  <p class="ans">I do; I do together with someone else here; someone else here; each manages their own; not sure.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-A11" data-b="A" data-k="A11 income band month money card show not sure rather not say pa'anga KMF J$ dollars">
+  <div class="head"><span class="qno">A11</span><span class="qtext">In a usual month, about how much money comes into this household altogether, from all sources?</span></div>
+  <p class="ans">A band on a show card, never a figure, with 98 not sure and 99 would rather not say. The bands are provisional until checked against the latest national household survey and fixed after the pilot; the full band table is below the questions.</p>
+  <p class="rule-note">A band and never a figure. This question describes the cash economy the rest of the survey sits in, and no claim is tested on it.</p>
+  <p class="src"><span class="tag">adapted</span>National income modules, asked as a band.</p>
+</div>
+
+<div class="q" id="q-B1" data-b="B" data-k="B1 who mainly paid thirteen things grid payment map food school medicine electricity water fuel rent church mosque misinale grand mariage tools codes">
+  <div class="head"><span class="qno">B1</span><span class="qtext">Who mainly paid for it in the last twelve months? Asked over the thirteen things.</span></div>
+  <p class="ans">One code per row from the twelve code list: own earnings, own production, family abroad, family in this country, another household here, a nameable programme, something free with no name, the church, mosque or village, we did not need it (95), we went without (96), it all goes in together (97), not sure (98). The thirteen rows and their country variants are set out below the questions.</p>
+  <p class="rule-note">The heart of the survey; if time runs short this block is protected. On every row the enumerator says aloud: or if it all goes in together and you could not say which, that is fine too. A named programme at code 6 is written in the margin, and no one asks who funds it.</p>
+  <p class="src"><span class="tag ours">ours</span>The payment map exists in no national instrument. Block B is the study's first claim and stands on its own.</p>
+</div>
+
+<div class="q" id="q-B2" data-b="B" data-k="B2 who else helped columns family abroad country programme church none tick">
+  <div class="head"><span class="qno">B2</span><span class="qtext">And did any of these help with it, including the one you have just told me?</span></div>
+  <p class="ans">On the same row, straight afterwards, every column that applies: family in another country, family in this country, a programme or something free, the church, mosque or village, or none of these.</p>
+  <p class="rule-note">B2 is the same question asked again about four particular sources, and the analysis needs both answers. A household naming a programme at B1 and a daughter abroad at B2 is the whole point of asking twice.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-B3" data-b="B" data-k="B3 pooling kept for what it was meant goes in together earmarking fungibility">
+  <div class="head"><span class="qno">B3</span><span class="qtext">When money or goods come in from outside, is what comes in kept for what it was meant for, or does it go in together with everything else?</span></div>
+  <p class="ans">A five step scale from always kept to always pooled, with 6 nothing comes in from outside and 98 not sure.</p>
+  <p class="rule-note">Not politeness and not a check on the grid: if most households pool, the grid records a habit of speech rather than a structure, and the form finds that out itself.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-C1" data-b="C" data-k="C1 givers three family abroad country programme office service yes no Mayotte">
+  <div class="head"><span class="qno">C1</span><span class="qtext">In the last twelve months, did this household get money, goods or help of any kind from each of these?</span></div>
+  <p class="ans">Yes, no or not sure for each of the three givers, always in the same order: family or friends in another country, family or friends elsewhere in this country, a programme, an office or a service. C2 to C8 are asked only for givers marked yes. In the Comoros, Mayotte is said aloud here as well.</p>
+  <p class="rule-note">Block C is the hypothesis's own test, so every column is asked: say the giver, wait, mark, then the next giver, never the three as a list.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-C2" data-b="C" data-k="C2 how many senders women men gender">
+  <div class="head"><span class="qno">C2</span><span class="qtext">How many people living outside this household sent money or goods in the last twelve months?</span></div>
+  <p class="ans">Two counts, women and men, asked as printed and never worked out from earlier answers.</p>
+  <p class="rule-note">The only place the form learns whether the person paying is a woman or a man, and the one thing this literature is most sure of is that women and men send differently.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-C3" data-b="C" data-k="C3 amount twelve months band remittances sent gave bills counted 88 nothing">
+  <div class="head"><span class="qno">C3</span><span class="qtext">Over the last twelve months, about how much did family or friends living outside this country send or give to this household altogether?</span></div>
+  <p class="ans">A band on a show card over twelve months, counting money and bills paid on the household's behalf, with 88 nothing came from outside, 98 not sure, 99 would rather not say. The country bands are in the table below the questions.</p>
+  <p class="rule-note">A band and never a figure, and no claim is tested on it: it exists so this survey can be described against every other remittance study, all of which report amounts.</p>
+  <p class="src"><span class="tag">adapted</span>National remittance modules, asked as a band.</p>
+</div>
+
+<div class="q" id="q-C4" data-b="C" data-k="C4 say what it is for purpose named earmark frequency never always">
+  <div class="head"><span class="qno">C4</span><span class="qtext">When they give, how often do they say what it is for?</span></div>
+  <p class="ans">Never to always, per giver.</p>
+  <p class="src"><span class="tag ours">ours</span>The first of the three properties of attachment: a purpose named.</p>
+</div>
+
+<div class="q" id="q-C5" data-b="C" data-k="C5 required expected checked condition">
+  <div class="head"><span class="qno">C5</span><span class="qtext">To get it, or to keep getting it, is anything required of this household?</span></div>
+  <p class="ans">Nothing is required; something is expected but nobody checks; something is required and it is checked; not sure. Per giver.</p>
+  <p class="src"><span class="tag ours">ours</span>The second property: something required.</p>
+</div>
+
+<div class="q" id="q-C6" data-b="C" data-k="C6 asked how used monitoring follow up">
+  <div class="head"><span class="qno">C6</span><span class="qtext">How often have they asked how what they gave was used?</span></div>
+  <p class="ans">Never to always, per giver.</p>
+  <p class="rule-note">C6 and C7 are the two questions the whole survey leans on: a purpose nobody checks is a wish, and a rule nobody enforces is a sentence in a manual. If the answers are never and never, the study will say so.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-C7" data-b="C" data-k="C7 withheld stopped given less enforcement sanction">
+  <div class="head"><span class="qno">C7</span><span class="qtext">Have they ever given less, or stopped, because of how something they gave was used?</span></div>
+  <p class="ans">Never, once, more than once, not sure. Per giver.</p>
+  <p class="src"><span class="tag ours">ours</span>The third property: it can be reduced or stopped.</p>
+</div>
+
+<div class="q" id="q-C8" data-b="C" data-k="C8 forms arrive money transfer bills goods barrel collection event koloa ngatu kie mats cloth in kind">
+  <div class="head"><span class="qno">C8</span><span class="qtext">In the last twelve months, how often did what family or friends outside this household gave arrive in each of these ways?</span></div>
+  <p class="ans">Never to always for each channel: money handed over or transferred; a bill or fee paid directly; goods rather than money; money sent in the household's name for a collection or an event.</p>
+  <div class="diff">
+    <div class="cc jm"><span class="cn">Jamaica</span>Names the barrel among the goods examples.</div>
+    <div class="cc to"><span class="cn">Tonga</span>Carries a fifth line for woven goods, mats and cloth, ngatu, kie and other koloa fakatonga, because koloa given in place of money is wealth in its own right.</div>
+    <div class="cc km"><span class="cn">Comoros</span>The four shared lines.</div>
+  </div>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-D1" data-b="D" data-k="D1 payer changed three years thirteen things nobody pays row number">
+  <div class="head"><span class="qno">D1</span><span class="qtext">In the last three years, is there anything on that list of thirteen things that somebody different pays for now, or that nobody pays for any more?</span></div>
+  <p class="ans">No; yes one thing; yes more than one, with the row number of the most recent change. No or not sure skips to D4.</p>
+  <p class="src"><span class="tag ours">ours</span>Block D is reported as description, in counts of households, never as a rate.</p>
+</div>
+
+<div class="q" id="q-D2" data-b="D" data-k="D2 before now who paid change when">
+  <div class="head"><span class="qno">D2</span><span class="qtext">For that one thing: who paid for it before, and who pays for it now?</span></div>
+  <p class="ans">Two codes from the Block B list, and how long ago it changed: under a year, one to two years, two to three years.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-D3" data-b="D" data-k="D3 what happened earlier payer stopped less same goes to something else own words">
+  <div class="head"><span class="qno">D3</span><span class="qtext">And what happened to what the earlier payer used to put toward it?</span></div>
+  <p class="ans">Their own words first, then every code that applies: stopped altogether, same amount now going elsewhere here, gives less, still pays as well, it was not money, or there was nothing to move. If it moved, to which of the thirteen things.</p>
+  <p class="rule-note">Codes 2 and 3 are both often true: a sister can send less and put what is left toward something else. Forcing one answer here is how a survey invents its own finding.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-D4" data-b="D" data-k="D4 ordering new payer started first earlier changed first same time">
+  <div class="head"><span class="qno">D4</span><span class="qtext">Did the new payer start before the earlier one changed what they gave, or afterwards?</span></div>
+  <p class="ans">New payer first; earlier one changed first; about the same time; there was no new payer; not sure.</p>
+  <p class="rule-note">The whole ordering of the story in one question: without it a programme arriving and a sister then moving her money cannot be told apart from a sister stopping and a programme later filling the gap.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-D5" data-b="D" data-k="D5 stopped sending less why died disagreement asking">
+  <div class="head"><span class="qno">D5</span><span class="qtext">Has anyone outside this household who used to send stopped, or sent much less?</span></div>
+  <p class="ans">No; sent less; stopped; both; no one has ever sent; and where yes, the reason in one code, from their situation changing to a death, with a write-in.</p>
+  <p class="rule-note">D1 finds the change where somebody took over, the easy case to remember. D5 finds the household simply left with nothing, the case that would count against the study, and both are asked because only one of them is comfortable.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-E1" data-b="E" data-k="E1 gone without water fuel medicine income food electricity deprivation Mauritius">
+  <div class="head"><span class="qno">E1</span><span class="qtext">In the past year, how often, if ever, have you or has anyone in your household had to go without the following things?</span></div>
+  <p class="ans">Six items, clean water, cooking fuel, medicines, income, food, electricity, each on Never to Always with a don't know.</p>
+  <p class="src"><span class="tag">verbatim</span>Moncada, Mauritius instrument, items 87 to 92, asked and coded exactly as printed in every country so results can be set beside other surveys.</p>
+</div>
+
+<div class="q" id="q-E2" data-b="E" data-k="E2 assets radio television phone refrigerator vehicle boat livestock water tank solar acquired given">
+  <div class="head"><span class="qno">E2</span><span class="qtext">Does this household have each of these, in working order? And did this household get it for itself, or did someone else give it or put it in?</span></div>
+  <p class="ans">Nine assets from radio to solar panel, each coded got it ourselves, someone else gave it, no, or not sure.</p>
+  <p class="src"><span class="tag">adapted</span>The national durable goods inventories, with the acquisition column added.</p>
+</div>
+
+<div class="q" id="q-E3" data-b="E" data-k="E3 provided services clinic school water electricity road shelter access hour">
+  <div class="head"><span class="qno">E3</span><span class="qtext">Now some things that are provided for people to use, rather than owned by one household.</span></div>
+  <p class="ans">Seven provisions, from a clinic to a storm shelter, each coded from here and used, here and not used, reachable within an hour, further than an hour, to not reachable at all.</p>
+  <p class="rule-note">E2 and E3 are never added into one score: what a household owns and what somebody provided are different things, and the standard wealth index leaves out everything in E3, which is exactly what a programme provides.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-E4" data-b="E" data-k="E4 living conditions compared community ladder better worse">
+  <div class="head"><span class="qno">E4</span><span class="qtext">Compared with other households here in this community, how would you describe this household's living conditions?</span></div>
+  <p class="ans">Much worse to much better, five steps, with not sure. Fourth on the reserve cut list.</p>
+  <p class="src"><span class="tag">adapted</span>The standard community ladder.</p>
+</div>
+
+<div class="q" id="q-E5" data-b="E" data-k="E5 life satisfaction satisfied scale zero ten OECD wellbeing subjective">
+  <div class="head"><span class="qno">E5</span><span class="qtext">Overall, how satisfied are you with life as a whole these days?</span></div>
+  <p class="ans">Zero to ten on a show card, with the printed introduction read first.</p>
+  <p class="src"><span class="tag">verbatim</span>OECD Guidelines on Measuring Subjective Well-being, core module item A1, the version used most widely, which is what lets this answer be set beside anyone else's.</p>
+</div>
+
+<div class="q" id="q-E6" data-b="E" data-k="E6 shocks cyclone storm flood landslide drought illness death work prices month year dated">
+  <div class="head"><span class="qno">E6</span><span class="qtext">In the last three years, has each of these happened to this household? If yes, when was the most recent time?</span></div>
+  <p class="ans">Seven shocks from cyclone damage to a food or fuel price rise, each yes or no with the month and year of the most recent time. A year without a month takes 98 in the month box, and a month is never guessed from a season.</p>
+  <p class="note">This is the household level shock record the country level shock index has to be defined against.</p>
+  <p class="src"><span class="tag">adapted</span>EHCVM Comores section 14.</p>
+</div>
+
+<div class="q" id="q-E7" data-b="E" data-k="E7 who could you ask money food stay childcare support network">
+  <div class="head"><span class="qno">E7</span><span class="qtext">If this household suddenly needed each of these, is there someone you could ask?</span></div>
+  <p class="ans">A week's food money, a few nights' stay, and care for a child, an older person or someone ill, each from definitely yes to definitely not. Third on the reserve cut list.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-E8" data-b="E" data-k="E8 home tenure whose name decides family land estate holder manyahuli matrilineage api">
+  <div class="head"><span class="qno">E8</span><span class="qtext">Two questions about this home: in whose name is it held, and who would decide about it?</span></div>
+  <p class="ans">Both parts asked one after the other, both written even where the same.</p>
+  <div class="diff">
+    <div class="cc jm"><span class="cn">Jamaica</span>Carries family land held by no one person.</div>
+    <div class="cc to"><span class="cn">Tonga</span>Carries land held from an estate holder, and the enumerator records 'api tukuhau or 'api kolo in the margin without reading the words out.</div>
+    <div class="cc km"><span class="cn">Comoros</span>Carries manyahuli, held by the matrilineage, which is why both parts are asked.</div>
+  </div>
+  <p class="src"><span class="tag">adapted</span>The tenure part is national; the decision part is ours.</p>
+</div>
+
+<div class="q" id="q-F1" data-b="F" data-k="F1 unprompted programme office service received before names own words">
+  <div class="head"><span class="qno">F1</span><span class="qtext">In the last twelve months, has this household got anything from any programme, office or service?</span></div>
+  <p class="ans">Asked before any programme name is read, answered in the household's own words, and never changed once the names have been read.</p>
+  <p class="rule-note">What a household says before it is prompted, set against what it says after, is itself one of the things this study measures.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-F2" data-b="F" data-k="F2 programme received now not now never heard area sheet coverage H4 visibility">
+  <div class="head"><span class="qno">F2</span><span class="qtext">Has this household received anything from it? Asked for each programme read from the area sheet.</span></div>
+  <p class="ans">Receive it now; received but not now; never; never heard of it; not sure. Up to three programmes, read exactly as printed on the area sheet.</p>
+  <p class="note">F2 also carries the coverage finding: the share of households in a community reporting receipt from a programme documented to operate there.</p>
+  <p class="src"><span class="tag">adapted</span>The national social protection modules.</p>
+</div>
+
+<div class="q" id="q-F3" data-b="F" data-k="F3 what got money food goods fee waived treatment training built work job">
+  <div class="head"><span class="qno">F3</span><span class="qtext">What did this household get from it?</span></div>
+  <p class="ans">Every code that applies, from money and food through a waived fee, treatment, training, something built or repaired, and work or a paid job.</p>
+  <p class="src"><span class="tag">adapted</span></p>
+</div>
+
+<div class="q" id="q-F4" data-b="F" data-k="F4 when first got this year years ago">
+  <div class="head"><span class="qno">F4</span><span class="qtext">When did this household first get anything from it?</span></div>
+  <p class="ans">This year; one to two years ago; three to five; more than five; not sure.</p>
+  <p class="src"><span class="tag">adapted</span></p>
+</div>
+
+<div class="q" id="q-F5" data-b="F" data-k="F5 who provides word for word never corrected attribution">
+  <div class="head"><span class="qno">F5</span><span class="qtext">As far as you know, who provides it?</span></div>
+  <p class="ans">Written word for word, no options read, and the answer is never corrected.</p>
+  <p class="src"><span class="tag ours">ours</span>With a wider list than the Lesotho Child Grants Programme equivalent.</p>
+</div>
+
+<div class="q" id="q-F6" data-b="F" data-k="F6 put off doing paying expecting help anticipation">
+  <div class="head"><span class="qno">F6</span><span class="qtext">Has this household ever put off doing something, or put off paying for something, because you were expecting help to come?</span></div>
+  <p class="ans">No; once; more than once; and where yes, who it was expected from, one code from the Block B list.</p>
+  <p class="rule-note">Nothing a household spends can show this: it is the only place on the form where the expectation of help is visible before any money moves.</p>
+  <p class="src"><span class="tag ours">ours</span></p>
+</div>
+
+<div class="q" id="q-CLOSE" data-b="Z" data-k="close thank you withdraw destroy form Z1 Z2 note interview went">
+  <div class="head"><span class="qno">CLOSE</span><span class="qtext">The close, read aloud, and the two closing records.</span></div>
+  <p class="ans">The person can withdraw everything on the spot, and Z1 records it, with the form destroyed in front of them where they do. Z2 is the enumerator's one line note on how the interview went.</p>
+</div>
+
+</div>
+
+<h2 class="sect">The thirteen things of Block B</h2>
+<p class="lede">B1 and B2 run over these rows. Rows 1 to 9 and 13 are the same in all three countries; rows 10 to 12 carry the country's own institutions.</p>
+<div class="tablewrap">
+<table>
+<tr><th>Row</th><th>Jamaica</th><th>Tonga</th><th>Comoros</th></tr>
+<tr><td>1 to 9, 13</td><td colspan="3">Food eaten at home; school fees and charges; uniforms, books and getting to school; medicines and treatment; getting to care; electricity or lighting; water; cooking fuel; rent, repairs and building materials; tools, seeds, nets, animals, a boat or stock used for work.</td></tr>
+<tr><td>10</td><td>Regular giving to the church</td><td>Regular weekly giving to the church</td><td>Regular giving to the mosque</td></tr>
+<tr><td>11</td><td>A special church collection</td><td>The Misinale, and church feast donations, katoanga 'ofa</td><td>A special mosque collection</td></tr>
+<tr><td>12</td><td>Family and customary events: a funeral, a nine-night, a wedding</td><td>Family and customary events: putu, mali, fakama'u, fai'aho</td><td>Family and customary events, above all the grand mariage</td></tr>
+</table>
+</div>
+
+<h2 class="sect">The currency bands, provisional until the pilot</h2>
+<p class="lede">A11 is a usual month from all sources; C3 is twelve months from outside the country. Both are bands on a show card with 98 not sure and 99 would rather not say, and C3 carries 88 for nothing came from outside. The bands must be checked against the latest national household survey before the pilot and fixed after it.</p>
+<div class="tablewrap">
+<table>
+<tr><th>Band</th><th>A11 Jamaica</th><th>A11 Tonga</th><th>A11 Comoros</th><th>C3 Jamaica</th><th>C3 Tonga</th><th>C3 Comoros</th></tr>
+<tr><td>1</td><td>under J$20,000</td><td>under 500 pa'anga</td><td>under 50,000 KMF</td><td>under J$50,000</td><td>under 1,000 pa'anga</td><td>under 100,000 KMF</td></tr>
+<tr><td>2</td><td>20,000 to 49,999</td><td>500 to 999</td><td>50,000 to 99,999</td><td>50,000 to 149,999</td><td>1,000 to 2,999</td><td>100,000 to 299,999</td></tr>
+<tr><td>3</td><td>50,000 to 99,999</td><td>1,000 to 1,999</td><td>100,000 to 199,999</td><td>150,000 to 399,999</td><td>3,000 to 7,999</td><td>300,000 to 799,999</td></tr>
+<tr><td>4</td><td>100,000 to 199,999</td><td>2,000 to 3,999</td><td>200,000 to 399,999</td><td>400,000 to 999,999</td><td>8,000 to 19,999</td><td>800,000 to 1,999,999</td></tr>
+<tr><td>5</td><td>200,000 or more</td><td>4,000 or more</td><td>400,000 or more</td><td>1,000,000 or more</td><td>20,000 or more</td><td>2,000,000 or more</td></tr>
+</table>
+</div>
+
+<h2 class="sect">What each block serves</h2>
+<p class="lede">Block A serves no claim; it is socio-demographic background that makes every later answer readable. Block B is the payment map, the study's first claim, and stands on its own. Block C is the hypothesis's own test, comparing the three properties of attachment, a purpose named, something required, and the possibility of withdrawal, across three kinds of giver inside the same household. Block D records what happened when a payer changed and is reported as description, never as a rate. Block E is the measurement record every claim is read against. Block F measures recognition, and F2 carries the coverage finding.</p>
+
+<h2 class="sect">The reserve cut list, in order, if the pilot runs long</h2>
+<p class="lede">First the third programme block at F2 to F5; second the second giver column of Block C if the pilot finds few households naming family elsewhere in this country; third E7; fourth E4; fifth A9. Nothing in Block B or Block C is available, and nothing else comes out without a claim losing its evidence.</p>
+
+<h2 class="sect">What the instrument does not do</h2>
+<p class="lede">Nothing measures whose day changed when a payer changed; that sits with the key informant interviews and the focus groups. Only one adult answers, so two people in one house disagreeing is not in this design. No question asks whether anything received was aid and no answer names a donor, because who stood behind a payer is joined afterwards at the desk from the community programme roster. Everything comes from one person, in one sitting, to one interviewer.</p>
+
+<footer>FAR-SIDS · Marie Sklodowska-Curie Actions Postdoctoral Fellowship, Grant Agreement 101244526 · Islands and Small States Institute, University of Malta.</footer>
+</div>
+
+<script>
+(function () {
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#cards .q'));
+  var input = document.getElementById('s');
+  var chips = document.getElementById('chips');
+  var count = document.getElementById('count');
+  var block = 'all';
+  function apply() {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function (c) {
+      var okB = block === 'all' || c.getAttribute('data-b') === block;
+      var hay = (c.textContent + ' ' + (c.getAttribute('data-k') || '')).toLowerCase();
+      var okQ = !q || hay.indexOf(q) !== -1;
+      var on = okB && okQ;
+      c.classList.toggle('hidden', !on);
+      if (on) shown++;
+    });
+    count.textContent = shown + ' of ' + cards.length + ' entries shown' + (q ? ' for "' + input.value + '"' : '');
+  }
+  input.addEventListener('input', apply);
+  chips.addEventListener('click', function (e) {
+    var b = e.target.getAttribute('data-b');
+    if (!b) return;
+    block = b;
+    Array.prototype.forEach.call(chips.children, function (ch) { ch.classList.toggle('on', ch === e.target); });
+    apply();
+    var controls = document.querySelector('.controls');
+    var top = document.getElementById('cards').getBoundingClientRect().top + window.pageYOffset - controls.offsetHeight - 14;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  });
+  apply();
+})();
+</script>
+</body>
+</html>

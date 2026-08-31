@@ -92,10 +92,10 @@
       <div class="qchips"><span>3 islands · 3 oceans</span><span>2 flows · 1 household</span><span>201 studies read</span></div>
       <p class="lede">FAR-SIDS is a two year study across Jamaica, Tonga, and Comoros, and the first to follow aid and remittances into the same households. It pairs econometric modelling with community led fieldwork and a household survey to understand dependency, agency, and self-reliance in Small Island Developing States.</p>
       <div class="meta"><span>Horizon Europe · Grant Agreement 101244526</span><span>Hosted at the Islands and Small States Institute</span></div>
-      <div class="nowline" style="margin-top:28px;">
-        <div class="labrow"><span class="lab">THIS WEEK ON THE PROJECT</span><span class="daychip" id="daychip"></span></div>
-        <p id="nowline">&nbsp;</p>
+      <div class="nowline nowbig">
+        <div class="daybig">Day <span id="daybign">&ndash;</span> of 730</div>
         <div class="track"><i id="daytrack" style="width:3%;"></i></div>
+        <p id="nowline">&nbsp;</p>
       </div>
     </div>
     <div class="sub" data-sub="why">
@@ -1298,6 +1298,7 @@ window.__initBoard = function(){
   var day = Math.min(730, Math.max(1, Math.floor((Date.now() - start.getTime())/86400000) + 1));
   document.querySelectorAll('[id^="dayline"]').forEach(function(el){ el.textContent = 'DAY ' + day + ' OF 730'; });
   var dc = document.getElementById('daychip'); if(dc) dc.textContent = 'DAY ' + day + ' OF 730';
+  var db = document.getElementById('daybign'); if(db) db.textContent = day;
   var dt = document.getElementById('daytrack'); if(dt) dt.style.width = Math.max(1, Math.round(day/730*100)) + '%';
 
   var YCOL = {"2026":"#0E4D5C","2027":"#E2664A","2028":"#1C8C9B"};

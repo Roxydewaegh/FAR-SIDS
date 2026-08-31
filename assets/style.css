@@ -760,3 +760,58 @@
 /* v17e, 31 August 2026: why it matters, the allocation diagram */
 .whyflow{display:block; width:100%; max-width:880px; margin:18px auto 10px;}
 @media (prefers-reduced-motion: reduce){ .whyflow circle{display:none;} }
+
+/* v17f, 31 August 2026: the review room restructured */
+.revq{font-family:'Fraunces',Georgia,serif; font-size:1.22rem; line-height:1.55; color:var(--abyss); border-left:3px solid #FFCC00; padding:4px 0 4px 20px; margin:16px 0 22px; max-width:72ch;}
+.revq em{color:#B04327;}
+#room-research .ecards{grid-template-columns:repeat(3,1fr);}
+#room-research .ecard.ewide{grid-column:1/-1; flex-direction:row;}
+#room-research .ecard.ewide .ethumb{width:36%; height:auto; border-bottom:none; border-right:1px solid var(--line);}
+#room-research .ecard.ewide .ethumb svg{height:100%;}
+#room-research .ecard.ewide .ebody{flex:1;}
+@media(max-width:900px){ #room-research .ecards{grid-template-columns:1fr;} #room-research .ecard.ewide{flex-direction:column;} #room-research .ecard.ewide .ethumb{width:100%; height:150px; border-right:none; border-bottom:1px solid var(--line);} }
+.tk-card .bignum{font-family:'Fraunces',Georgia,serif; font-size:2.9rem; line-height:1; color:#FFCC00; margin-bottom:10px;}
+
+/* Literature review, maps and analysis rebuilt as two features and a record band, 31 August 2026 */
+#room-research .efeat{grid-template-columns:1fr; gap:22px; margin-top:26px;}
+#room-research .efeat .ecard.ewide .ethumb{width:30%;}
+.estats{display:flex; flex-wrap:wrap; gap:6px 20px; margin:16px 0 0; padding:0; list-style:none;}
+.estats li{font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);}
+.estats li b{font-family:var(--serif); font-size:1.05rem; font-weight:500; color:var(--abyss); letter-spacing:0; margin-right:6px;}
+.revrec{margin-top:44px; border-top:1px solid var(--line); padding-top:24px;}
+.revrec-h{font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--lagoon); font-weight:400; margin:0;}
+.revrec .funnel{margin-top:16px;}
+#room-research .ercards{grid-template-columns:1fr 1fr; gap:20px; margin-top:22px;}
+#room-research .ercards .ethumb{height:112px;}
+#room-research .ercards .ebody{padding:18px 20px 20px;}
+#room-research .ercards .ebody h3{font-size:1.12rem; margin:7px 0 8px;}
+#room-research .ercards .ebody p{font-size:.88rem; line-height:1.6;}
+#room-research .ercards .elink{font-size:.86rem; padding-top:12px;}
+@media(max-width:900px){ #room-research .ercards{grid-template-columns:1fr;} }
+
+/* Glossary and questions rebuilt, 31 August 2026 */
+.gqgrid{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:26px;}
+.gqcard{background:linear-gradient(170deg,#0E4453,#0A3242); border-radius:16px; padding:26px 28px 24px;
+  border-top:3px solid var(--lagoon); display:flex; flex-direction:column; text-decoration:none;
+  transition:transform .18s ease, box-shadow .18s ease;}
+.gqcard:nth-child(2){border-top-color:#6A5ACD;}
+.gqcard:hover{transform:translateY(-2px); box-shadow:0 14px 30px rgba(10,50,66,.22);}
+.gqhead{display:flex; align-items:baseline; gap:12px;}
+.gqnum{font-family:var(--serif); font-size:2.6rem; line-height:1; color:#FFCC00;}
+.gqlab{font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:#9fc4c4;}
+.gqcard h3{color:#fff; font-size:1.24rem; margin:14px 0 0;}
+.gqcard > p{color:#9fc4c4; font-size:.9rem; line-height:1.65; margin:9px 0 0;}
+.gqaz{display:flex; flex-wrap:wrap; gap:4px; margin:18px 0 0;}
+.gqaz span{font-family:var(--mono); font-size:.63rem; color:#BFE3E2; background:rgba(255,255,255,.07);
+  border-radius:4px; padding:3px 6px; line-height:1;}
+.gqaz span.off{color:#4d7f88; background:rgba(255,255,255,.03);}
+.gqsample{list-style:none; margin:18px 0 0; padding:14px 0 0; border-top:1px solid rgba(255,255,255,.13);}
+.gqsample li{padding:9px 0; border-bottom:1px dashed rgba(255,255,255,.1);}
+.gqsample li:last-child{border-bottom:none;}
+.gqsample b{display:block; color:#EAF3F3; font-family:var(--serif); font-size:1rem; font-weight:500; line-height:1.35;}
+.gqsample span{display:block; color:#7fb6b5; font-size:.77rem; margin-top:4px;}
+.gqsample.qs b{font-size:.97rem;}
+.gqopen{display:inline-block; margin-top:auto; padding-top:20px; color:#FFCC00; font-weight:600; font-size:.92rem;}
+.gqcard:hover .gqopen{text-decoration:underline;}
+.gqfoot{margin-top:20px; font-family:var(--mono); font-size:.7rem; letter-spacing:.08em; color:var(--ink-soft);}
+@media(max-width:900px){ .gqgrid{grid-template-columns:1fr;} }

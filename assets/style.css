@@ -878,7 +878,7 @@ h3.hsec{margin:40px 0 4px; font-family:var(--mono); font-size:.72rem; letter-spa
 
 /* Glossary and questions, second pass: purpose before counts. 31 August 2026 */
 .gqbanner{border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:24px 0 0; line-height:0;}
-.gqbanner svg{display:block; width:100%; height:190px;}
+.gqbanner svg{display:block; width:100%; height:150px;}
 .gqcard h3{margin:0;}
 .gqterms{display:flex; flex-wrap:wrap; gap:6px; margin:18px 0 0;}
 .gqterms span{font-family:var(--mono); font-size:.66rem; letter-spacing:.04em; color:#CFE7E6;
@@ -886,3 +886,47 @@ h3.hsec{margin:40px 0 4px; font-family:var(--mono); font-size:.72rem; letter-spa
 .gqfootn{display:block; margin-top:14px; font-family:var(--mono); font-size:.66rem;
   letter-spacing:.08em; color:#7fb6b5;}
 .gqcard .gqopen{padding-top:20px;}
+
+/* Hypothesis page, second pass: headings that read as headings. 1 September 2026 */
+h3.hsec{margin:46px 0 10px; font-size:1.06rem; font-weight:700; letter-spacing:.11em;}
+.gapfig{margin:26px 0 30px; border:1px solid var(--line); border-radius:14px; background:#F7FAFA; padding:20px 24px;}
+.gapfig svg{display:block; width:100%; height:auto;}
+.tafig{margin:26px 0 6px; border:1px solid var(--line); border-radius:14px; background:#F7FAFA; padding:18px 20px;}
+.tafig svg{display:block; width:100%; height:auto;}
+.flatcard{display:block; margin-top:22px; border:1px solid var(--line); border-left:3px solid var(--lagoon);
+  border-radius:12px; padding:22px 26px; background:#fff; transition:transform .18s ease, border-color .18s ease;}
+.flatcard:hover{transform:translateY(-2px); border-color:var(--lagoon);}
+.flatcard .n{font-family:var(--mono); font-size:.68rem; letter-spacing:.16em; color:var(--lagoon); text-transform:uppercase;}
+.flatcard h3{font-size:1.3rem; margin:8px 0 9px; color:var(--abyss);}
+.flatcard p{margin:0; color:var(--ink-soft); font-size:.95rem; line-height:1.62; max-width:88ch;}
+.flatcard .elink{display:inline-block; padding-top:14px; color:var(--lagoon); font-weight:600; font-size:.95rem;}
+
+/* Fieldwork and listening, rebuilt 1 September 2026 */
+.rolegrid{list-style:none; margin:20px 0 4px; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+.rolegrid li{border:1px solid var(--line); border-left:3px solid var(--lagoon); border-radius:9px;
+  padding:11px 14px; background:#fff; font-size:.9rem; color:var(--ink); line-height:1.4;}
+.rolegrid li:nth-child(3n+2){border-left-color:#E2664A;} .rolegrid li:nth-child(3n){border-left-color:#6A5ACD;}
+.partgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:22px;}
+.partcard{border:1px solid var(--line); border-radius:13px; padding:20px 22px; background:#fff;}
+.partcard .pt{font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--lagoon);}
+.partcard h4{margin:8px 0 0; font-family:var(--serif); font-size:1.14rem; font-weight:500; color:var(--abyss);}
+.partcard p{margin:9px 0 0; color:var(--ink-soft); font-size:.9rem; line-height:1.6;}
+.beanfig{margin:26px 0 6px; border:1px solid var(--line); border-radius:14px; background:#F7FAFA; padding:22px 24px 16px;}
+.beanfig svg{display:block; width:100%; height:auto;}
+.figcap{margin:14px 0 0; color:var(--ink-soft); font-size:.86rem; line-height:1.6; max-width:80ch;}
+.outgrid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:20px;}
+.outcard{background:linear-gradient(170deg,#0E4453,#0A3242); border-radius:13px; padding:20px 24px; border-top:3px solid var(--lagoon);}
+.outcard:nth-child(2){border-top-color:#6A5ACD;} .outcard:nth-child(3){border-top-color:#E2664A;} .outcard:nth-child(4){border-top-color:#FFCC00;}
+.outcard h4{margin:0; color:#fff; font-family:var(--serif); font-size:1.16rem; font-weight:500;}
+.outcard p{margin:9px 0 0; color:#9fc4c4; font-size:.88rem; line-height:1.62;}
+@media(max-width:900px){ .rolegrid{grid-template-columns:1fr 1fr;} .partgrid{grid-template-columns:1fr;} .outgrid{grid-template-columns:1fr;} }
+@media(max-width:640px){ .rolegrid{grid-template-columns:1fr;} }
+
+/* The household survey page: the instrument leads, the two registers follow. 1 September 2026 */
+#room-approach .ecards{grid-template-columns:1fr 1fr;}
+#room-approach .ecard.ewide{grid-column:1/-1; flex-direction:row;}
+#room-approach .ecard.ewide .ethumb{width:38%; height:auto; border-bottom:none; border-right:1px solid var(--line);}
+#room-approach .ecard.ewide .ethumb svg{height:100%;}
+@media(max-width:900px){ #room-approach .ecards{grid-template-columns:1fr;}
+  #room-approach .ecard.ewide{flex-direction:column;}
+  #room-approach .ecard.ewide .ethumb{width:100%; height:150px; border-right:none; border-bottom:1px solid var(--line);} }

@@ -931,3 +931,20 @@ h3.hsec{margin:46px 0 10px; font-size:1.06rem; font-weight:700; letter-spacing:.
 @media(max-width:900px){ #room-approach .ecards{grid-template-columns:1fr;}
   #room-approach .ecard.ewide{flex-direction:column;}
   #room-approach .ecard.ewide .ethumb{width:100%; height:150px; border-right:none; border-bottom:1px solid var(--line);} }
+
+/* The five key informant questions, made visible. 1 September 2026 */
+.qintro{margin:30px 0 0; font-family:var(--mono); font-size:.72rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--lagoon); font-weight:700;}
+.qlist{list-style:none; counter-reset:q; margin:14px 0 0; padding:0; display:grid; gap:12px;}
+.qlist li{counter-increment:q; position:relative; border:1px solid var(--line); border-left:3px solid var(--lagoon);
+  border-radius:12px; padding:18px 22px 18px 62px; background:#fff;}
+.qlist li::before{content:counter(q); position:absolute; left:20px; top:16px;
+  font-family:var(--serif); font-size:1.5rem; color:var(--sand-deep); line-height:1;}
+.qlist li:nth-child(2){border-left-color:#E2664A;} .qlist li:nth-child(3){border-left-color:#6A5ACD;}
+.qlist li:nth-child(4){border-left-color:#FFCC00;} .qlist li:nth-child(5){border-left-color:#5DCAA5;}
+.qlist .qn{display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-soft);}
+.qlist b{display:block; margin-top:7px; font-family:var(--serif); font-size:1.12rem;
+  font-weight:500; color:var(--abyss); line-height:1.45;}
+.qlist .qnote{display:block; margin-top:8px; color:var(--ink-soft); font-size:.88rem; line-height:1.55;}
+@media(max-width:640px){ .qlist li{padding-left:52px;} .qlist li::before{left:16px;} }

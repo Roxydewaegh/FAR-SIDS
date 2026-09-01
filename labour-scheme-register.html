@@ -299,7 +299,7 @@ function renderTable(rows){
         <dt>What people call it</dt><dd>${esc(d['What people call it'])}</dd>
         <dt>Aid roster overlap</dt><dd>${esc(d['Overlap with the aid roster'])}</dd>
         <dt>Key informants</dt><dd>${esc(d['Key informant check'])}</dd>
-        <dt>Source</dt><dd><a href="${d['Source URL']}" target="_blank" rel="noopener">${d['Source URL'].replace(/^https?:\/\//,'').split('/')[0]}</a></dd>
+        <dt>Source</dt><dd><a href="${d['Source URL']}">${d['Source URL'].replace(/^https?:\/\//,'').split('/')[0]}</a></dd>
       </dl>`;
     return `<tr class="mainrow" data-i="${i}" tabindex="0" aria-expanded="false">
       <td class="chev">▸</td>

@@ -216,7 +216,7 @@ function render(){
     const badge = s==='active'? '<span class="badge b-active">active</span>' : s==='ended'? '<span class="badge b-ended">ended</span>' : '<span class="badge b-unk">to confirm</span>';
     const kii = d.k ? `<details class="kii"><summary>note</summary>${d.k.replace(/</g,'&lt;')}</details>` : '';
     const grp = d.gr ? ` <span class="badge b-ended" title="One household-facing programme with the other rows in this group: read out one name only">${d.gr}</span>` : '';
-    const link = d.u ? `<a href="${d.u}" target="_blank" rel="noopener">link</a>` : '<span style="color:var(--muted)">register</span>';
+    const link = d.u ? `<a href="${d.u}">link</a>` : '<span style="color:var(--muted)">register</span>';
     return `<tr><td>${d.c}</td><td><strong>${d.n.replace(/</g,'&lt;')}</strong>${grp}</td><td>${d.p.replace(/</g,'&lt;')}</td><td>${d.ty}</td><td>${d.fo.replace(/</g,'&lt;')}</td><td>${d.or}</td><td>${d.rc}</td><td class="num">${d.b||'none'}</td><td class="num">${d.sy}</td><td>${badge}</td><td>${kii}</td><td>${link}</td></tr>`;
   }).join('');
 }

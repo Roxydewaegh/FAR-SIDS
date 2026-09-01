@@ -49,10 +49,7 @@
     scholarship, and each of those fields uses words the others do not. Rather than look the same term up
     twice, I wrote down every one I did not already know, in plain language, with the study that used it
     named beside it.</p>
-    <p>The entries were written between 19 July and 15 August 2026, as the reading went along, and they
-    ended up spread across twenty separate documents. On 15 August 2026 I merged them into this one list.
-    A few terms had been written up twice from two different papers, and where the two accounts said
-    different things I kept both, with the second introduced by "Also glossed, from a different paper".</p>
+    
     <p>The list covers more than econometrics. It holds the tests you need in order to read an ARDL table
     honestly, and it also holds development concepts, theories, and words such as fakalakalaka,
     fa'alavelave and kavenga, which have no English equivalent and are defined here as the studies define
@@ -87,7 +84,8 @@ var out=document.getElementById('out'), q=document.getElementById('q'), cnt=docu
 function esc(s){return s.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
 function key(t){return t.replace(/^(the|a|an)\s+/i,'').replace(/^[^A-Za-z0-9]+/,'')}
 function hl(s,t){ if(!t) return esc(s); var r=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'); return esc(s).replace(r,'<mark>$1</mark>') }
-D.sort(function(a,b){ return key(a.t).toLowerCase() < key(b.t).toLowerCase() ? -1 : 1 });
+function skey(t){ var k=key(t).toLowerCase(); return /^[a-z]/.test(k) ? k : '~'+k }
+  D.sort(function(a,b){ return skey(a.t) < skey(b.t) ? -1 : 1 });
 var LETTERS=[]; D.forEach(function(d){ var L=key(d.t)[0].toUpperCase(); if(LETTERS.indexOf(L)<0) LETTERS.push(L) });
 az.innerHTML = LETTERS.map(function(L){ return '<a href="#L'+L+'">'+L+'</a>' }).join(' ');
 function render(t){

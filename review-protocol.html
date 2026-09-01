@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FAR-SIDS, the systematic review protocol</title>
+<style>
+  :root{--paper:#faf6ee; --ink:#2b2723; --muted:#7a7266; --line:#e4dccb; --rust:#8a5a2b; --teal:#2f6f7e;}
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--paper); color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.6}
+  .wrap{max-width:1000px; margin:0 auto; padding:34px 28px 80px}
+  header h1{font-size:30px; font-weight:normal; line-height:1.2}
+  header .sub{color:var(--muted); font-size:15px; margin-top:12px; max-width:860px}
+  header .sub p{margin-bottom:9px}
+  header .stats{margin-top:16px; font-size:14px; color:var(--muted); border-top:1px solid var(--line); padding-top:14px}
+  header .stats b{color:var(--ink); font-size:17px}
+  a{color:var(--rust)}
+  .sec{margin-top:34px; background:#fffdf8; border:1px solid var(--line); border-left:6px solid var(--teal);
+       border-radius:8px; padding:24px 28px}
+  .sec:nth-child(3n+2){border-left-color:var(--rust)}
+  .sec:nth-child(3n+3){border-left-color:#a8863c}
+  .sec h2{font-size:21px; font-weight:normal; margin-bottom:12px; line-height:1.3}
+  .sec p{font-size:15.5px; max-width:88ch; margin-bottom:11px}
+  ul.crit, ol.plain{margin:6px 0 8px 20px; max-width:88ch}
+  ul.crit li, ol.plain li{font-size:15.5px; margin-bottom:11px; padding-left:4px}
+  .cal{border-top:1px dotted var(--line); padding-top:12px; margin-top:12px}
+  .cal .d{font-family:'Helvetica Neue',Arial,sans-serif; font-size:11.5px; letter-spacing:.5px;
+          text-transform:uppercase; color:var(--rust); display:block; margin-bottom:5px}
+  .cal p{margin-bottom:0}
+  footer{margin-top:44px; border-top:1px solid var(--line); padding-top:18px; font-size:14px; color:var(--muted)}
+  footer p{margin-bottom:10px}
+  footer .footnote{font-size:11.5px; margin-top:18px; letter-spacing:.2px}
+  @media(max-width:700px){ .sec{padding:20px 18px} header h1{font-size:25px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>The systematic review protocol</h1>
+  <div class="sub">
+    <p>This is the protocol the FAR-SIDS systematic review was run under: what counted as a study, where the studies were searched for, what was extracted from each one, and what is deliberately left out of the counts. It was written before screening began, and every change made to it afterwards is dated below.</p>
+    <p>The review asks how foreign aid and remittances relate to wellbeing and livelihoods in small island developing states, which methods and variables have been used to measure that relationship, and whether any study has combined ethnography, household surveys and time series econometrics in one design.</p>
+  </div>
+  <div class="stats"><b>Version 1.6</b> &middot; 12 August 2026 &middot; follows PRISMA 2020 and the PRISMA-P protocol structure &middot; registered on OSF Registries</div>
+</header>
+<section class="sec"><h2>The four questions the review answers</h2>
+<ol class="plain">
+<li>What has already been studied on foreign aid and remittances in relation to wellbeing and livelihoods in small island developing states, and where are the gaps?</li>
+<li>Which methods and models were used, with particular attention to time series econometrics, ethnography and household surveys?</li>
+<li>Has any prior work combined ethnography, household surveys and ARDL econometrics in one design? This is the project's methodological claim to novelty, so it needs an evidence based answer.</li>
+<li>Which dependent and independent variables did those studies use? This part feeds the FAR-SIDS variable list directly.</li>
+</ol></section><section class="sec"><h2>What was included</h2>
+<p>A study is included where it meets all six of the following.</p>
+<ul class="crit">
+<li><b>Empirical or strongly conceptual.</b> Data collected and analysed through econometrics, household surveys, ethnography or mixed methods, or a structured framework, theory or evidence grounded argument, on foreign aid or remittances or both.</li>
+<li><b>Reports a wellbeing or livelihood outcome.</b> Welfare, poverty, food security, human development, resilience, standard of living, or a livelihoods dimension. The criterion is applied broadly: resilience includes community, societal and regional resilience, and the wellbeing pathway may be indirect. Studies whose outcomes are only macroeconomic are included as a separate macro stratum where aid or remittances is the object of study, extracted for their variables, data sources and methods, and reported as context rather than as wellbeing evidence.</li>
+<li><b>Set in a small island developing state</b>, or a study whose findings or design transfer to that setting.</li>
+<li><b>Peer reviewed, or substantial grey literature.</b> An institutional report with a clear method or data, from the World Bank, IMF, ODI, UNCTAD or a regional development bank. Not a blog, a press release or a think piece.</li>
+<li><b>Written in English, French or Spanish.</b> French for the Comoros literature, Spanish for the wider Caribbean and Latin American literature.</li>
+<li><b>Published in the last twenty years</b>, 2006 to the present. The window is judged on the publication date, and a study published inside it whose data are older is eligible, with the data vintage recorded as a caveat.</li>
+</ul></section><section class="sec"><h2>What was excluded, and for what reason</h2>
+<ul class="crit">
+<li><b>Not about aid or remittances.</b> A macroeconomic study in which aid or remittances appears only as a control variable or as background context.</li>
+<li><b>Opinion.</b> An editorial, commentary, op-ed or news item that asserts a view with no empirical or strong conceptual contribution.</li>
+<li><b>An existing review.</b> Systematic and literature reviews on this topic are not included as studies. Their reference lists are mined through citation searching instead, so that the same evidence is not counted twice.</li>
+<li><b>Critical methodological flaws.</b> On topic and in scope, but the method cannot yield a finding the review could use: an untested causal channel presented as a finding, headline results resting on bivariate correlations that plainly reflect confounding, or a sample or period the paper states inconsistently and never resolves. The specific defect is named in the screening log. Four studies carry this reason.</li>
+<li><b>A container record.</b> An edited volume or set of proceedings retrieved as one file while its chapters were screened separately. One record carries this reason.</li>
+<li><b>Not retrievable in full text</b> after reasonable effort. This applies at the full text stage only. At title and abstract screening a record that cannot be judged is kept, under the doubt rule.</li>
+</ul>
+<p>Duplicates are handled before eligibility, as PRISMA 2020 requires, and are reported in the flow diagram rather than as screening decisions.</p></section><section class="sec"><h2>How the criteria were calibrated</h2>
+<p>Every wording change made after screening began is recorded here with its date, and each was decided in session and carried to the supervisor.</p>
+<div class="cal"><span class="d">3 July 2026</span><p>At 227 of 1,133 records, the wellbeing criterion was clarified to be applied broadly. The prompting case was a study of Japanese development and security assistance as instruments of regional resilience, which reports no household level outcome but concerns aid policy bearing on the populations of recipient states. Such studies are included; the growth-only exclusion was left unchanged.</p></div>
+<div class="cal"><span class="d">10 July 2026</span><p>At the close of title and abstract screening, the growth-only exclusion was found to conflate two situations. Studies where the flow is merely a control stay excluded. Studies where the flow is the object of study but the outcomes are macroeconomic only are included as the macro stratum.</p></div>
+<div class="cal"><span class="d">15 July 2026</span><p>The setting criterion was ambiguous for pooled multi-country samples with no separate result for small island states. The test became whether a study earns its place, either by saying something about aid or remittances and wellbeing that reaches these islands, or by teaching us how to do the work, meaning a method, a measure, an identification strategy, a variable set, or a way of handling thin data. A study is excluded on setting only where the island presence is barely there, the outcomes are purely macroeconomic, and there is nothing in the design to carry into this study.</p></div>
+<div class="cal"><span class="d">12 August 2026</span><p>Four rulings at the close of full text screening: the date window is judged on publication date, not data vintage; the conceptual limb admits a policy analysis in which aid is a named pillar of the argument; a duplicate claim is verified against the files rather than the filenames; and a record whose attached file turns out to be a different work is treated as not retrieved rather than as a screening decision.</p></div></section><section class="sec"><h2>Where the studies came from</h2>
+<p>Two arms, both reported in the flow diagram.</p>
+<p><b>Arm one, the database searches.</b> Scopus, Web of Science, EBSCO Academic Search Ultimate and EconBiz for the auditable search, with Google Scholar for additional coverage and grey literature. EconLit was the planned economics database and is not in the University of Malta subscription, so EBSCO and the free ZBW database EconBiz were used in its place. The exact string, the date run and the number of records retrieved are recorded for each database.</p>
+<p><b>Arm two, other methods.</b> Citation searching backward through the reference lists of key reports and included studies and forward through the works that cite them, and targeted searching of grey literature. A French language search for the Comoros literature runs as its own task, after full text screening found one Comoros specific study across 270 assessed.</p></section><section class="sec"><h2>The search itself</h2>
+<p>The core search combines three blocks with AND. The flows: foreign aid, official development assistance, ODA, remittances. The outcomes: wellbeing, livelihoods, welfare, poverty, human development, resilience. The setting: small island developing states, SIDS, small states, island economies, Pacific, Caribbean, Indian Ocean, and the three case countries. A fourth block on methods, ARDL, cointegration, time series, ethnography, household survey and mixed methods, is applied as a refinement.</p>
+<p>Two searches run in each database. A broad mapping search captures studies on either flow with an outcome in the island setting. A targeted nexus search requires both flows in the same study. The contrast between a large mapping set and a very small nexus set is itself evidence of the gap.</p></section><section class="sec"><h2>What is counted, and what is not</h2>
+<p>Not everything done in this review is counted in the flow diagram. What is counted are the searches declared in the protocol, applied under these criteria, with the number of records in and out logged at every step.</p>
+<p>What is not counted is the scoping that came before the protocol was locked: citation mapping tools and semantic search tools used to learn the field, find seed papers and refine the terms. That work is reported in the methods as how the search was developed, and it is not a counted source, because its results are not fully reproducible.</p>
+<p>The test is simple. Triage becomes counted screening the moment it is done under the fixed criteria with the numbers recorded. Reading the references of a report and keeping the relevant ones is citation searching and it counts. The same act done loosely, before the criteria were fixed, is scoping and it does not.</p></section><section class="sec"><h2>What is extracted from every included study</h2>
+<p>One row per study, with fixed fields: citation; country or region; aid, remittances or both; outcome variables; independent variables; data source and years; method; whether ethnography, household survey, econometrics or a combination; key finding; and a note on quality or limitations. Extracted values are checked against the source.</p>
+<p>A further field records the basis on which each study speaks to small island developing states, and takes one of five values.</p>
+<ul class="crit">
+<li><b>All SIDS.</b> The whole study is set in them.</li>
+<li><b>Separate SIDS result.</b> The sample is mixed, but they receive their own estimate.</li>
+<li><b>SIDS not separated.</b> They are verifiably in the sample, but no separate result is reported.</li>
+<li><b>Sample not stated.</b> The study never enumerates its sample, so membership cannot be checked either way.</li>
+<li><b>No SIDS, transferable.</b> The sample is stated and contains none, and the study is kept for what it teaches.</li>
+</ul>
+<p>The field keeps evidence about these states apart from evidence that merely contains them, so the synthesis can report how many studies estimate a result for them and how many include them without isolating them. How much of this literature never discloses its own sample is itself a finding.</p></section><section class="sec"><h2>Synthesis, registration and roles</h2>
+<p>A narrative and tabular synthesis organised around the four questions. No meta-analysis is planned, because the methods and outcomes are too heterogeneous to pool. Weight falls on the variables, which become the candidate list for the econometric models, and on the integration question, where the paper stakes its contribution. Quality and limitations are appraised descriptively and carried into the synthesis rather than through a single formal risk of bias instrument, given the mixed methods evidence.</p>
+<p>The protocol is registered on OSF Registries, since PROSPERO is reserved largely for health reviews, and reporting follows PRISMA 2020 including the flow diagram. Roxane de Waegh leads the review and Professor Stefano Moncada supervises and reviewed the early screening batch.</p></section>
+<footer>
+  <p>Prepared by Roxane de Waegh, Marie Sk&#322;odowska-Curie Fellow at the Islands and Small States Institute, University of Malta, with Professor Stefano Moncada as supervisor. The counts this protocol produced are in the <a href="evidence-prisma-flow-diagram.png">PRISMA flow diagram</a>, the labels given at screening are on the <a href="evidence-map-title-abstract-screening.html">screening map</a>, and the analysis of the included studies is <a href="evidence-map-full-text-reading.html">published in full</a>. <a href="index.html#research/screening">Back to the atlas</a>.</p>
+  <p class="footnote">FAR-SIDS is funded by the European Union under Marie Sk&#322;odowska-Curie Actions grant agreement No. 101244526.</p>
+</footer>
+</div>
+</body>
+</html>

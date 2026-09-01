@@ -948,3 +948,11 @@ h3.hsec{margin:46px 0 10px; font-size:1.06rem; font-weight:700; letter-spacing:.
   font-weight:500; color:var(--abyss); line-height:1.45;}
 .qlist .qnote{display:block; margin-top:8px; color:var(--ink-soft); font-size:.88rem; line-height:1.55;}
 @media(max-width:640px){ .qlist li{padding-left:52px;} .qlist li::before{left:16px;} }
+
+/* Key informants as a compact list, not half a page. 1 September 2026 */
+.kilist{list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0; padding:0;}
+.kilist li{border:1px solid var(--line); border-left:3px solid var(--lagoon); border-radius:8px;
+  padding:7px 13px; background:#fff; font-size:.88rem; color:var(--ink); line-height:1.3;}
+.kilist li:nth-child(3n+2){border-left-color:#E2664A;} .kilist li:nth-child(3n){border-left-color:#6A5ACD;}
+.partgrid.two{grid-template-columns:1fr 1fr;}
+@media(max-width:900px){ .partgrid.two{grid-template-columns:1fr;} }

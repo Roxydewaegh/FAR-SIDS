@@ -730,7 +730,8 @@
 .qchips{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 4px;}
 .qchips span{font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:#BFE9E6; border:1px solid #2C6B76; border-radius:999px; padding:6px 14px;}
 .arcpipe{display:block; width:100%; max-width:980px; height:auto; margin:6px 0 18px;}
-.arccards{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; margin-top:8px;}
+.arccards{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:8px;}
+@media(max-width:820px){ .arccards{grid-template-columns:1fr;} }
 .arccards .tk-card p{margin-top:6px;}
 
 .whyparts{display:block; width:100%; max-width:860px; height:auto; margin:16px 0 8px;}

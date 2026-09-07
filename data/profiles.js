@@ -747,7 +747,7 @@ FARSIDS.PROFILES = {
   "name": "Tonga",
   "adj": "Tongan",
   "col": "#E2664A",
-  "intro": "Tonga is the country where both flows stay large. In 2023 remittances came to 228 million US dollars, 38.6 per cent of GDP, more than a third of the economy, and net aid to 130 million dollars, 20.3 per cent of national income. The remittance record begins in 1993, where the National Reserve Bank's series starts, while the aid record reaches back to 1981, and the chart carries the cyclones and the January 2022 Hunga Tonga eruption along its base.",
+  "intro": "Tonga is the country where both flows stay large. In 2023 remittances came to 228 million US dollars, 38.6 per cent of GDP, more than a third of the economy, and net aid to 130 million dollars, 20.4 per cent of national income. The remittance record begins in 1993, where the National Reserve Bank's series starts, while the aid record reaches back to 1981, and the chart carries the cyclones and the January 2022 Hunga Tonga eruption along its base.",
   "seascap": "December brings 29 per cent more remittance inflow than an average month and February 22 per cent less, on average across the 33 complete years of the National Reserve Bank's monthly record.",
   "labour": [
    {

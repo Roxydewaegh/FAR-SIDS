@@ -1,4 +1,4 @@
 // One living sentence for the question room: what is happening on the project right now.
 // Edit the text and upload this one file. Thirty seconds, start to finish.
 window.FARSIDS = window.FARSIDS || {};
-FARSIDS.NOW = "This week the ethics application is being assembled for the September committee, with the household survey matched to the three national instruments and the DevNet 2026 abstract submitted.";
+FARSIDS.NOW = "This week RESI week runs at the Valletta campus, the NVivo coding of the 201 included studies begins, and the abstract for the Islands of the World 2027 conference in Curaçao is submitted, with the DevNet 2026 abstract accepted.";

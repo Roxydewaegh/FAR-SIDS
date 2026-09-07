@@ -15,6 +15,12 @@ FARSIDS.TL = {
     dissem:    {label:'Dissemination and exploitation', colour:'#B34A8C'}
   },
   EVENTS: [
+    {track:'transfer', title:'ISISA 2027 abstract submitted', start:'2026-09-07', point:true,
+      desc:'Abstract submitted to the 21st Islands of the World Conference in Curaçao, 6 to 10 June 2027, under Culture, Society and Community. The paper presents preliminary findings from the Jamaican fieldwork. Decisions in December 2026 (WP6).',
+      href:'https://www.2027isisa.com/conference-info', linkText:'Conference information'},
+    {track:'transfer', title:'DevNet early bird registration', start:'2026-10-05', point:true,
+      desc:'Early bird registration for DevNet 2026 closes. The abstract is accepted; final registration closes 3 November (WP6).',
+      href:'https://devnet.org.nz/devnet-2026-conference-2/', linkText:'DevNet 2026 registration'},
     {track:'econ', title:'Systematic review (Paper 1)', start:'2026-06-25', end:'2026-09-30',
       desc:'The PRISMA systematic review, the project’s first paper. It maps what has been studied on aid, remittances, and wellbeing in SIDS, which methods and models were used, and which variables they drew on, feeding the econometric variable list and the DevNet 2026 abstract. The continuous groundwork that runs right through the summer (WP5 · WP7).'},
     {track:'fieldprep', title:'Household survey design reading', start:'2026-07-15', end:'2026-07-31',

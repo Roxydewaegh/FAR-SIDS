@@ -1727,6 +1727,7 @@ window.__initBoard = function(){
           + (e.art
               ? '<div class="lp-row"><div class="lp-artstrip">' + e.art + '</div><p class="lp-teaser">' + esc(e.body) + '</p></div>'
               : '<p class="lp-teaser" style="margin-top:10px;">' + esc(e.body) + '</p>')
+          + (e.fig ? '<figure class="lp-fig">' + e.fig + (e.figcap ? '<figcaption>' + esc(e.figcap) + '</figcaption>' : '') + '</figure>' : '')
           + (srcs ? '<div class="lp-src"><span class="lab">Listening via</span>' + srcs + '</div>' : '');
         return card;
       }

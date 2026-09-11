@@ -644,6 +644,11 @@
   .lp-row .lp-teaser{margin:0; flex:1 1 auto;}
   @media(max-width:700px){ .lp-row{flex-direction:column; align-items:flex-start; gap:14px;} }
 
+/* ============ 11 September 2026: optional full-width figure under a listening note ============ */
+  .lp-fig{margin:18px 0 0; padding:14px 14px 10px; background:var(--paper); border:1px solid var(--line); border-radius:12px; clear:both;}
+  .lp-fig svg{display:block; width:100%; height:auto;}
+  .lp-fig figcaption{margin:10px 2px 0; font-size:.8rem; line-height:1.5; color:var(--ink-soft);}
+
 /* ---- atlas v10, 15 August 2026: toolkit reduced to four cards ---- */
   .tk-grid{grid-template-columns:repeat(2, 1fr); max-width:940px;}
   @media(max-width:900px){ .tk-grid{grid-template-columns:1fr;} }

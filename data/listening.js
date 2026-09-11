@@ -4,10 +4,133 @@
 // place: the tag on the card · k: thread key (all, jm, to, km) · when: the "Logged ..." date stamp
 // title, teaser (the short card text), body (the full note): plain text, no HTML
 // art: one spot illustration per note, a single inline SVG scene floated left of the text
+// fig (optional): one full-width inline SVG figure shown under the note text · figcap: its one-line caption
 // sources: public, linkable sources only. House rules: paraphrase themes, never quote or
 // reproduce posts by private individuals, link only to public sources, no scraping.
 window.FARSIDS = window.FARSIDS || {};
 FARSIDS.LISTENING = [
+  {
+    "place": "Across the islands",
+    "k": "all",
+    "when": "Logged September 2026",
+    "title": "Losing both at once",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><line x1='12' y1='94' x2='98' y2='94' stroke='#3D5560' stroke-width='2'/><path d='M38,62 L55,46 L72,62' fill='none' stroke='#0E4D5C' stroke-width='2.6' stroke-linejoin='round'/><rect x='42' y='62' width='26' height='32' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><rect x='51' y='78' width='8' height='16' fill='#1C8C9B'/><path d='M8,30 C18,18 28,26 36,44' fill='none' stroke='#1C8C9B' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 5'/><polygon points='30,38 38,48 28,48' fill='#1C8C9B'/><path d='M102,30 C92,18 82,26 74,44' fill='none' stroke='#E2664A' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 5'/><polygon points='80,38 72,48 82,48' fill='#E2664A'/><line x1='16' y1='14' x2='30' y2='28' stroke='#993C1D' stroke-width='2.4' stroke-linecap='round'/><line x1='30' y1='14' x2='16' y2='28' stroke='#993C1D' stroke-width='2.4' stroke-linecap='round'/><line x1='80' y1='14' x2='94' y2='28' stroke='#993C1D' stroke-width='2.4' stroke-linecap='round'/><line x1='94' y1='14' x2='80' y2='28' stroke='#993C1D' stroke-width='2.4' stroke-linecap='round'/></svg>",
+    "teaser": "Haiti's households live on food rations and money from Boston and Miami. In 2026 the rations were halved for lack of funding and the senders lost their right to stay.",
+    "body": "Haiti is a small island developing state where humanitarian aid and family money reach the same households, and in 2026 both are being cut. Temporary Protected Status for Haitians in the United States ended in the first week of August, leaving more than 350,000 people open to deportation, about 45,000 of them in Massachusetts. The Haitian diaspora sends home about 3.9 billion US dollars a year, roughly a third of the country's GDP, and 70 per cent of it comes from the United States. Money sent from the United States to Haiti rose 20 per cent in 2025, the editor of Documented told PBS in May. The Boston Globe wrote on 19 August that deportation would sever the remittances that sustain families in Haiti. On the aid side, the World Food Programme halved its food rations in Haiti in October 2025 for lack of funding. It counted 5.7 million people acutely food insecure and needed 139 million US dollars for the year. The OECD counts a 36.6 per cent fall in aid to Caribbean small island states between 2024 and 2026. A household in Port-au-Prince that ate last year on a ration and a transfer from Boston could lose both in the same twelve months. The funding cut takes the ration and the deportation takes the transfer.",
+    "sources": [
+      {
+        "t": "Boston Globe, 19 August 2026, will Trump show mercy to Haitian TPS holders?",
+        "u": "https://www.bostonglobe.com/2026/08/19/opinion/tps-haitian-immigrants-temporary-protected-status/"
+      },
+      {
+        "t": "Christian Science Monitor, 1 August 2026, end of temporary status for Haitians in US sets off scramble for options",
+        "u": "https://www.csmonitor.com/USA/2026/0801/haiti-tps-immigration-trump"
+      },
+      {
+        "t": "PBS Amanpour and Company, 27 May 2026, the cost of sending help: how remittance taxes could destabilize Haiti",
+        "u": "https://www.pbs.org/wnet/amanpour-and-company/video/the-cost-of-sending-help-how-remittance-taxes-could-destabilize-haiti-ppnycs/"
+      },
+      {
+        "t": "World Food Programme, 2 October 2025, Haiti on the brink",
+        "u": "https://www.wfp.org/news/haiti-brink-violence-cuts-capital-pushing-families-towards-starvation-amidst-cuts-humanitarian"
+      },
+      {
+        "t": "Asia Pacific Report, 2 July 2026, Pacific nations among hardest hit as global aid drops, says OECD",
+        "u": "https://asiapacificreport.nz/2026/07/02/pacific-nations-among-hardest-hit-as-global-aid-drops-says-oecd/"
+      }
+    ]
+  },
+  {
+    "place": "Jamaica",
+    "k": "jm",
+    "when": "Logged September 2026",
+    "title": "Who pays for the rebuild, and when",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><line x1='12' y1='94' x2='98' y2='94' stroke='#3D5560' stroke-width='2'/><path d='M22,58 L46,36 L70,58' fill='none' stroke='#0E4D5C' stroke-width='2.6' stroke-linejoin='round'/><rect x='28' y='58' width='36' height='36' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><path d='M22,58 L46,36 L70,58' fill='#1C8C9B' opacity='.35'/><rect x='41' y='74' width='10' height='20' fill='#1C8C9B'/><rect x='74' y='30' width='24' height='32' rx='3' fill='#F6FBFB' stroke='#993C1D' stroke-width='2'/><line x1='79' y1='40' x2='93' y2='40' stroke='#993C1D' stroke-width='1.6'/><line x1='79' y1='47' x2='93' y2='47' stroke='#993C1D' stroke-width='1.6'/><line x1='79' y1='54' x2='88' y2='54' stroke='#993C1D' stroke-width='1.6'/><circle cx='92' cy='58' r='6' fill='#E2664A'/><path d='M10,22 C22,10 36,10 46,22' fill='none' stroke='#E2664A' stroke-width='3' stroke-linecap='round'/><polygon points='42,16 50,24 40,27' fill='#E2664A'/></svg>",
+    "fig": "<svg viewBox='0 0 760 430' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Two routes into a Jamaican household after Hurricane Melissa: the state route through NaRRA and the family route through remittances'><text x='20' y='20' font-family='Space Mono,monospace' font-size='11' fill='#1C8C9B' text-anchor='start'>THE STATE ROUTE</text><text x='420' y='20' font-family='Space Mono,monospace' font-size='11' fill='#E2664A' text-anchor='start'>THE FAMILY ROUTE</text><rect x='20' y='30' width='340' height='128' rx='8' fill='#F6FBFB' stroke='#0E4D5C' stroke-width='1.6'/><text x='32' y='50' font-family='Georgia,serif' font-size='12.5' fill='#0E4D5C' text-anchor='start' font-weight='bold'>US$6.7 billion over three years, most of it loans</text><text x='32' y='68' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>World Bank</text><text x='348' y='68' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='end'>up to US$1 billion</text><text x='32' y='82.5' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>Inter-American Development Bank</text><text x='348' y='82.5' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='end'>up to US$1 billion</text><text x='32' y='97.0' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>CAF development bank</text><text x='348' y='97.0' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='end'>up to US$1 billion</text><text x='32' y='111.5' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>Caribbean Development Bank</text><text x='348' y='111.5' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='end'>US$200 million</text><text x='32' y='126.0' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>IMF rapid financing</text><text x='348' y='126.0' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='end'>US$415 million</text><text x='32' y='140.5' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>CCRIF and cat bond payouts</text><text x='348' y='140.5' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='end'>US$241 million</text><text x='32' y='155.0' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>Government reserves</text><text x='348' y='155.0' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='end'>US$37 million</text><line x1='120' y1='158' x2='120' y2='180' stroke='#1C8C9B' stroke-width='2.2'/><polygon points='115,172 125,172 120,180' fill='#1C8C9B'/><rect x='20' y='182' width='210' height='54' rx='8' fill='#BFE3E2' stroke='#0E4D5C' stroke-width='1.6'/><text x='30' y='202' font-family='Georgia,serif' font-size='13' fill='#0E4D5C' text-anchor='start' font-weight='bold'>NaRRA</text><text x='30' y='218' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>law 27 May 2026, chief executive</text><text x='30' y='231' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>appointed by the Prime Minister</text><line x1='230' y1='209' x2='248' y2='209' stroke='#0E4D5C' stroke-width='1.6' stroke-dasharray='4 3'/><rect x='248' y='182' width='112' height='54' rx='8' fill='#F6FBFB' stroke='#0E4D5C' stroke-width='1.6' stroke-dasharray='4 3'/><text x='258' y='202' font-family='Georgia,serif' font-size='12' fill='#0E4D5C' text-anchor='start' font-weight='bold'>JAMRROC</text><text x='258' y='216' font-family='Georgia,serif' font-size='10.5' fill='#3D5560' text-anchor='start'>launched 8 Sep 2026</text><text x='258' y='229' font-family='Georgia,serif' font-size='10.5' fill='#3D5560' text-anchor='start'>seven members, advises</text><line x1='120' y1='236' x2='120' y2='258' stroke='#1C8C9B' stroke-width='2.2'/><polygon points='115,250 125,250 120,258' fill='#1C8C9B'/><rect x='20' y='260' width='340' height='96' rx='8' fill='#F6FBFB' stroke='#0E4D5C' stroke-width='1.6'/><text x='32' y='280' font-family='Georgia,serif' font-size='12' fill='#0E4D5C' text-anchor='start' font-weight='bold'>Priority projects</text><text x='160' y='280' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>contracts being signed, September 2026</text><text x='32' y='300' font-family='Georgia,serif' font-size='12' fill='#0E4D5C' text-anchor='start' font-weight='bold'>Public register</text><text x='160' y='300' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>promised for end 2026, not online on 11 Sep</text><text x='32' y='320' font-family='Georgia,serif' font-size='12' fill='#0E4D5C' text-anchor='start' font-weight='bold'>Shelter grants</text><text x='160' y='320' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>J$75,000, J$200,000 or up to J$500,000</text><text x='160' y='335' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>1,234 households paid in February 2026</text><rect x='420' y='30' width='320' height='44' rx='8' fill='#FBEDE8' stroke='#993C1D' stroke-width='1.6'/><text x='432' y='50' font-family='Georgia,serif' font-size='13' fill='#993C1D' text-anchor='start' font-weight='bold'>Jamaicans abroad</text><text x='432' y='66' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>money sent through remittance companies, by parish</text><line x1='580' y1='74' x2='580' y2='96' stroke='#E2664A' stroke-width='2.2'/><polygon points='575,88 585,88 580,96' fill='#E2664A'/><rect x='420' y='98' width='320' height='58' rx='8' fill='#F6FBFB' stroke='#993C1D' stroke-width='1.6'/><text x='432' y='118' font-family='Georgia,serif' font-size='12.5' fill='#0E4D5C' text-anchor='start' font-weight='bold'>US$1.85 billion sent November 2025 to May 2026</text><text x='432' y='135' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>up 7.7 per cent on the same seven months a year earlier,</text><text x='432' y='149' font-family='Georgia,serif' font-size='11' fill='#3D5560' text-anchor='start'>US$132.5 million more</text><line x1='580' y1='156' x2='580' y2='178' stroke='#E2664A' stroke-width='2.2'/><polygon points='575,170 585,170 580,178' fill='#E2664A'/><rect x='420' y='180' width='320' height='176' rx='8' fill='#F6FBFB' stroke='#993C1D' stroke-width='1.6'/><text x='432' y='200' font-family='Georgia,serif' font-size='12' fill='#0E4D5C' text-anchor='start' font-weight='bold'>Where the extra US$132.5 million went</text><text x='432' y='216' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='start'>Kingston and St Andrew</text><rect x='432' y='221' width='190.0' height='10' rx='2' fill='#E2664A'/><text x='432' y='244' font-family='Georgia,serif' font-size='10.5' fill='#3D5560' text-anchor='start'>US$79.6 million, 60 cents in every extra dollar</text><text x='432' y='260' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='start'>Four western parishes hit hardest</text><rect x='432' y='265' width='21.5' height='10' rx='2' fill='#E2664A'/><text x='432' y='288' font-family='Georgia,serif' font-size='10.5' fill='#3D5560' text-anchor='start'>US$9.0 million between them, up 4.2 per cent</text><text x='432' y='304' font-family='Georgia,serif' font-size='11' fill='#0E4D5C' text-anchor='start'>St James</text><rect x='432' y='309' width='2.0' height='10' rx='2' fill='#993C1D'/><text x='432' y='332' font-family='Georgia,serif' font-size='10.5' fill='#3D5560' text-anchor='start'>no increase: US$82.4 million before and after</text><line x1='190' y1='356' x2='190' y2='378' stroke='#1C8C9B' stroke-width='2.2'/><polygon points='185,370 195,370 190,378' fill='#1C8C9B'/><line x1='580' y1='356' x2='580' y2='378' stroke='#E2664A' stroke-width='2.2'/><polygon points='575,370 585,370 580,378' fill='#E2664A'/><rect x='20' y='380' width='720' height='40' rx='8' fill='#E4D6B8' stroke='#993C1D' stroke-width='1.6'/><path d='M40,410 L40,398 L52,388 L64,398 L64,410 Z' fill='#FFFFFF' stroke='#993C1D' stroke-width='1.8'/><text x='76' y='405' font-family='Georgia,serif' font-size='11.5' fill='#0E4D5C' text-anchor='start'>The household in a storm-hit parish: rebuilding on family money since November, and on the state route once the contracts are signed</text></svg>",
+    "figcap": "Two routes into a Jamaican household after Melissa. The state route is drawn from the World Bank package of 1 December 2025 and the Office of the Prime Minister; the family route from Bank of Jamaica parish figures reported in the Gleaner on 6 September 2026.",
+    "teaser": "Jamaica's reconstruction law came into force in May, its oversight committee sat for the first time on 8 September, and the family money arrived months earlier.",
+    "body": "Hurricane Melissa crossed Jamaica on 28 October 2025 and caused damage the World Bank put at 8.8 billion US dollars. Lenders and insurers assembled 6.7 billion US dollars over three years, most of it as loans the government will repay. The National Reconstruction and Resilience Authority, NaRRA, became law on 27 May 2026 to run the large projects, with a chief executive appointed by the Prime Minister. Its oversight committee, JAMRROC, was launched on 8 September with seven members and advises on which projects enter the fast track. The Act promises a public register of approved projects. No register was online on 11 September 2026, and the chief executive has said it will be ready by the end of the year. The Prime Minister said on 8 September that contracts were only now being signed, almost a year after the storm. In the seven months after Melissa, Jamaicans abroad sent home 1.85 billion US dollars, 7.7 per cent more than a year earlier. Sixty cents of every extra dollar went to Kingston and St Andrew. The four western parishes the storm hit hardest received 4.2 per cent more, and St James saw no increase at all. The state's shelter grants of 75,000 to 500,000 Jamaican dollars reached a first group of 1,234 households in February.",
+    "sources": [
+      {
+        "t": "Office of the Prime Minister, 27 May 2026, NaRRA Bill now law as government advances national reconstruction programme",
+        "u": "https://opm.gov.jm/narra-bill-now-law-as-government-advances-national-reconstruction-programme/"
+      },
+      {
+        "t": "Jamaica Observer, 9 September 2026, Fear factor: the JAMRROC launch and its seven members",
+        "u": "https://www.jamaicaobserver.com/2026/09/09/fear-factor/"
+      },
+      {
+        "t": "Jamaica Gleaner, 6 September 2026, Kingston takes bulk of remittance growth since Melissa",
+        "u": "https://jamaica-gleaner.com/article/business/20260906/kingston-takes-bulk-remittance-growth-melissa"
+      },
+      {
+        "t": "Jamaica Gleaner, 9 September 2026, Holness: I am not satisfied with the pace of Hurricane Melissa relief efforts",
+        "u": "https://jamaica-gleaner.com/article/news/20260909/holness-i-am-not-satisfied-pace-hurricane-melissa-relief-efforts"
+      },
+      {
+        "t": "World Bank, 1 December 2025, Jamaica secures a package of US$6.7 billion over three years",
+        "u": "https://www.worldbank.org/en/news/press-release/2025/12/01/jamaica-secures-a-package-of-us-6-7-billion-over-three-years-in-international-support-for-recovery-and-reconstruction-af"
+      },
+      {
+        "t": "Office of the Prime Minister, 10 February 2026, government begins disbursement of shelter recovery funds",
+        "u": "https://opm.gov.jm/government-begins-disbursement-of-shelter-recovery-funds-to-jamaicans-impacted-by-hurricane-melissa/"
+      }
+    ]
+  },
+  {
+    "place": "Tonga",
+    "k": "to",
+    "when": "Logged September 2026",
+    "title": "The fuel bill and the one-off hundred",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><line x1='12' y1='94' x2='98' y2='94' stroke='#3D5560' stroke-width='2'/><rect x='18' y='34' width='34' height='60' rx='4' fill='#BFE3E2' stroke='#0E4D5C' stroke-width='2.4'/><rect x='24' y='40' width='22' height='16' rx='2' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='1.6'/><path d='M52,44 L62,44 L62,74 C62,80 70,80 70,74 L70,52' fill='none' stroke='#0E4D5C' stroke-width='2.4'/><rect x='60' y='16' width='40' height='24' rx='3' fill='#E4D6B8' stroke='#993C1D' stroke-width='2'/><text x='80' y='33' text-anchor='middle' font-family='Georgia,serif' font-size='12' fill='#993C1D'>100</text><path d='M74,62 C82,52 92,52 100,62' fill='none' stroke='#E2664A' stroke-width='3' stroke-linecap='round'/><polygon points='96,56 104,64 94,67' fill='#E2664A'/></svg>",
+    "teaser": "Tonga's answer to this year's fuel prices is a relief package inside a budget that is more than one fifth aid. The households it reaches have another income that moves by millions of pa'anga a month.",
+    "body": "Fuel prices rose in Tonga this year after the conflict in the Middle East disrupted supply, and annual inflation stood at 7.1 per cent in June. The Ministry of Finance put the cost to the budget at 40 to 50 million pa'anga and set aside 31.8 million for relief. Electricity subsidies take 18 million of that, a 3 per cent cost of living allowance for civil servants 5 million, and the domestic airline and shipping 6.9 million. A further 900,000 pa'anga pays a one-off 100 pa'anga to every elderly and disability welfare recipient. Those recipients already receive 100 pa'anga a month at ages 66 to 79 and 120 from age 80. The budget that pays for all of this is 949.4 million pa'anga. Development partners provide 214.2 million of it in kind, so more than one pa'anga in five is aid. The Reserve Bank reports the other source of household money month by month. Remittances rose by 6.5 million pa'anga in May, mostly in Australian dollars, and fell by 1.1 million in June, mostly in New Zealand dollars. A pensioner on Tongatapu therefore lives this year on three sums. She receives a stipend of 100 or 120 pa'anga and one extra payment of 100 pa'anga from a budget that is one fifth aid. The third sum is whatever family in Auckland or Sydney can send after paying their own fuel bill.",
+    "sources": [
+      {
+        "t": "Talanoa 'o Tonga, 11 August 2026, senior citizens to receive one-off $100 payment amid fuel crisis",
+        "u": "https://talanoaotonga.to/senior-citizens-to-receive-one-off-100-payment-amid-fuel-crisis/"
+      },
+      {
+        "t": "Islands Business, 24 July 2026, energy crisis could cost Tonga budget up to TOP$50 million",
+        "u": "https://islandsbusiness.com/news-break/energy-crisis-could-cost-tonga-budget-up-to-top50-million/"
+      },
+      {
+        "t": "Talanoa 'o Tonga, 19 June 2026, Parliament passes $949.4 million budget for 2026/27",
+        "u": "https://talanoaotonga.to/parliament-passes-949-4-million-government-budget-for-2026-27/"
+      },
+      {
+        "t": "National Reserve Bank of Tonga, monthly economic update, August 2026 (June data)",
+        "u": "https://www.reservebank.to/index.php/eco-reviews/meu/monthly-economic-update-august-2026"
+      },
+      {
+        "t": "National Reserve Bank of Tonga, monthly economic update, July 2026 (May data)",
+        "u": "https://www.reservebank.to/index.php/eco-reviews/meu/monthly-economic-update-july-2026"
+      }
+    ]
+  },
+  {
+    "place": "Comoros",
+    "k": "km",
+    "when": "Logged September 2026",
+    "title": "One Comorian in three",
+    "art": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><line x1='12' y1='94' x2='98' y2='94' stroke='#3D5560' stroke-width='2'/><circle cx='28' cy='44' r='9' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><path d='M14,94 L14,70 C14,60 42,60 42,70 L42,94' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><circle cx='56' cy='44' r='9' fill='#1C8C9B' stroke='#0E4D5C' stroke-width='2.4'/><path d='M42,94 L42,70 C42,60 70,60 70,70 L70,94' fill='#1C8C9B' stroke='#0E4D5C' stroke-width='2.4'/><circle cx='84' cy='44' r='9' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><path d='M70,94 L70,70 C70,60 98,60 98,70 L98,94' fill='#FFFFFF' stroke='#0E4D5C' stroke-width='2.4'/><rect x='44' y='10' width='24' height='16' rx='2' fill='#E4D6B8' stroke='#993C1D' stroke-width='1.8'/><path d='M44,10 L56,20 L68,10' fill='none' stroke='#993C1D' stroke-width='1.8'/><path d='M56,26 L56,34' stroke='#E2664A' stroke-width='2.6' stroke-linecap='round'/></svg>",
+    "teaser": "The central bank called 2025 the best year since Covid. The Comorian press read the same report and saw an economy that produces little and a diaspora that now pays for a fifth of it.",
+    "body": "The Central Bank of the Comoros published its 2025 report at the end of August. It put growth at 3.8 per cent, the best year since Covid, with inflation down to 3 per cent. Comores Infos read the same figures on 31 August and reached a different conclusion. The economy produces little, the paper wrote, and the diaspora now pays for more than 20 per cent of it, up from 3.7 per cent in 2000. Thousands of families pay for food, housing, health care, school fees and building work with that money. The paper quoted the IMF, which describes a country dependent on imports, diaspora transfers and foreign aid at once. A World Bank note published in June puts the household side in numbers. More than one Comorian in three lives in a household that receives money from abroad. More than 90 per cent of that money is spent on daily consumption, and poverty would be 1.5 to 2.4 points higher without it. The same note records that the real value of transfers per person has halved since 2014, from 20 per cent of the poverty line to 10 per cent. Public revenue is 8 per cent of GDP and formal social protection reaches a small share of the population. In that setting, the World Bank writes, family money is what meets basic needs.",
+    "sources": [
+      {
+        "t": "Comores Infos, 31 August 2026, de moins de 5 % à plus de 20 % du PIB : la diaspora prend une place énorme dans une économie qui produit peu",
+        "u": "https://www.comoresinfos.net/de-moins-de-5-a-plus-de-20-du-pib-la-diaspora-prend-une-place-enorme-dans-une-economie-qui-produit-peu/"
+      },
+      {
+        "t": "Al-Watwan, 31 August 2026, économie nationale : un léger mieux en 2025, selon la Banque centrale",
+        "u": "https://alwatwan.net/economie/économie-nationale-i-un-léger-mieux-en-2025,-selon-la-banque-centrale.html"
+      },
+      {
+        "t": "World Bank, June 2026, note de conjoncture économique, Union des Comores : pour un bon emploi des transferts de fonds",
+        "u": "https://documents1.worldbank.org/curated/en/099061826122010879/pdf/P509150-26758418-36c4-4f12-a091-a7f06c1d3a09.pdf"
+      }
+    ]
+  },
   {
     "place": "Across the islands",
     "k": "all",

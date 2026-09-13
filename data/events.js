@@ -81,8 +81,9 @@ FARSIDS.TL = {
     {track:'training', title:'Hildesheim guest seminar', start:'2026-11-27', end:'2026-11-28',
       desc:'Virtual guest seminar at the University of Hildesheim, Aid, Remittances, and Agency: how small states navigated economic dependency in the twentieth century. Ninety minutes online for a course on small states in twentieth century Europe, the second teaching seminar (D.2.7).'},
     
-    {track:'projmgmt', title:'First progress report (D.1.3)', start:'2026-09-15', point:true,
-      desc:'The first trimestral progress report to the supervisor, Professor Stefano Moncada, due 15 September. One to two pages on the opening three months. Deliverable D.1.3, the first of the reports that recur every three months across the fellowship.'},
+    {track:'projmgmt', title:'First progress report (D.1.3) submitted', start:'2026-09-12', point:true,
+      desc:'The first trimestral progress report went to the supervisor, Professor Stefano Moncada, on 12 September 2026, ahead of its 15 September date: where the project stands, every Year 1 deliverable with its status, the changes to the plan with their reasons, the quarter ahead, and the quarterly review of the career development plan. Deliverable D.1.3, the first of eight reports, one every three months across the fellowship.',
+      href:'trimestral-progress-report-1-september-2026.docx', linkText:'Read the report'},
     {track:'fieldprep', title:'Ethics feedback, revision and resubmission', start:'2026-10-01', end:'2026-12-04',
       desc:'Malta: the Faculty of Arts committee replies within 30 working days of receipt, about 13 October; the application is revised in October and reaches the University data protection committee by its 2 November deadline, or 27 November for the December meeting. Jamaica: the Mona committee meets on 2 October and releases decisions at least two weeks later; a revised application is resubmitted by 9 November for the meeting of 4 December. Tonga and the Comoros follow the same steps through the partner universities (WP3).',
       href:'https://www.um.edu.mt/research/ethics/urec-dpmeetings/', linkText:'UREC-DP meeting dates'},

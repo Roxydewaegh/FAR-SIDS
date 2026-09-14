@@ -1642,6 +1642,8 @@ window.__initBoard = function(){
       thread.classList.add('vst-hidden'); thread.innerHTML = '';
       home.classList.remove('vst-hidden');
     });
+    var fitCurrent = null;
+    window.addEventListener('resize', function(){ if(fitCurrent){ fitCurrent(); } });
     function backBtn(){
       var b = document.createElement('button'); b.type = 'button'; b.className = 'vs-back';
       b.innerHTML = '&larr; ' + cfg.backLabel;
@@ -1654,6 +1656,7 @@ window.__initBoard = function(){
     }
     function openThread(k, name){
       var list = byK[k] || [];
+      var fit = null;
       thread.innerHTML = '';
       thread.appendChild(backBtn());
       var h = document.createElement('h3'); h.className = 'vs-thread-h';
@@ -1677,14 +1680,18 @@ window.__initBoard = function(){
           var i = Math.max(0, Math.min(list.length - 1, Math.round(track.scrollLeft / w)));
           count.textContent = cfg.nounCap + ' ' + (i + 1) + ' of ' + list.length + ' · newest first';
           prev.disabled = (i === 0); next.disabled = (i === list.length - 1);
+          var cur = track.children[i];
+          if(cur && cur.offsetHeight){ track.style.height = cur.offsetHeight + 'px'; }
         }
+        fit = sync;
         prev.addEventListener('click', function(){ track.scrollBy({left: -(track.clientWidth + 24), behavior: 'smooth'}); });
         next.addEventListener('click', function(){ track.scrollBy({left: track.clientWidth + 24, behavior: 'smooth'}); });
         track.addEventListener('scroll', sync);
-        sync();
       }
       home.classList.add('vst-hidden');
       thread.classList.remove('vst-hidden');
+      fitCurrent = fit;
+      if(fit){ fit(); requestAnimationFrame(fit); setTimeout(fit, 120); }
       var top = document.querySelector(cfg.top);
       (top || thread).scrollIntoView({behavior: 'smooth', block: 'start'});
     }

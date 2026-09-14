@@ -965,3 +965,6 @@ h3.hsec{margin:46px 0 10px; font-size:1.06rem; font-weight:700; letter-spacing:.
 .kilist li:nth-child(3n+2){border-left-color:#E2664A;} .kilist li:nth-child(3n){border-left-color:#6A5ACD;}
 .partgrid.two{grid-template-columns:1fr 1fr;}
 @media(max-width:900px){ .partgrid.two{grid-template-columns:1fr;} }
+
+/* ============ 14 September 2026: a thread slider takes the height of the note on screen ============ */
+  .th-track{align-items:flex-start; overflow-y:hidden; transition:height .18s ease;}

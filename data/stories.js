@@ -354,8 +354,8 @@ FARSIDS.STORIES =
     "note": "Ten years after the Pacific Access Category ballots, the researchers went back to the same Tongan families, winners and losers alike, with surveys and incentivised games. The migrants still earned almost 300 percent more than the comparable households whose names were not drawn, a lifetime gain the authors put near 250,000 US dollars. Yet on every measure tested, five of risk preference, three of patience, four of pro-market belief, and five of decision-making efficiency with family left behind, migration changed nothing. People carry their inner compass with them, which is good news for the remittance relationship: the family teamwork that spans Nuku'alofa and Auckland works as efficiently as it did at home. Read in full through the open working paper.",
     "sources": [
       {
-        "t": "Gibson, McKenzie, Rohorua and Stillman (2019), The long-term impact of international migration on economic decision-making, Journal of Development Economics",
-        "u": "https://doi.org/10.1016/j.jdeveco.2018.12.001"
+        "t": "Gibson, McKenzie, Rohorua and Stillman (2019), The long-term impact of international migration on economic decision-making: evidence from a migration lottery and lab-in-the-field experiments, Journal of Development Economics 138, 99 to 115",
+        "u": "https://doi.org/10.1016/j.jdeveco.2018.12.007"
       }
     ]
   },

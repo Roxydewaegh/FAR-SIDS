@@ -27,7 +27,7 @@ FARSIDS.TL = {
       desc:'The smaller parallel strand: focused reading on household survey design for remittances and livelihoods, drawing on the World Bank LSMS materials and earlier coastal communities research. It feeds the survey instrument going into the ethics package (WP3 · WP5).',
       href:'https://www.worldbank.org/en/programs/lsms/publications/lsms-guidebooks', linkText:'World Bank LSMS guidebooks'},
     {track:'transfer', title:'DevNet abstract due', start:'2026-08-28', point:true,
-      desc:'The call for abstracts for DevNet 2026 closes at the end of August (confirmed from the conference page, which gives the month rather than a day). The abstract for Paper 1, the systematic review, is submitted before the close, the first concrete output of the literature review.'},
+      desc:'The call for abstracts for DevNet 2026 closed at the end of August; the organisers later extended it to 18 September. The abstract for Paper 1, the systematic review, went in on 14 August, well before either close, and was accepted on 7 September.'},
     {track:'training', title:'Policy Brief Writing workshop', start:'2026-12-07', end:'2026-12-11',
       desc:'UNU-MERIT Capacity Development Office. Turning research into clear, targeted policy briefs, the policy writing training named in the proposal (D.2.2). Deliberately placed at the quiet end of the year, after DevNet; its real moment arrives when there are findings to communicate. Dates indicative.',
       href:'https://unu.edu/merit/course/policy-brief-writing', linkText:'UNU-MERIT course'},

@@ -346,7 +346,7 @@ FARSIDS.PROFILES = {
   "name": "Jamaica",
   "adj": "Jamaican",
   "col": "#3C9A5F",
-  "intro": "In 1980 aid was the larger flow: net official development assistance was worth 4.5 per cent of Jamaica's national income, and remittances 3.6 per cent of GDP. The two lines crossed in the following decade and never met again. In 2023 Jamaican families abroad sent 3.6 billion US dollars, 16.8 per cent of GDP, while net aid came to 86 million dollars, 0.4 per cent of national income. The chart carries the whole record from 1980, with the hurricanes marked along the base. The Bank of Jamaica's monthly record already puts 2025 at 3.74 billion US dollars, a figure that joins the chart when the World Bank publishes its 2025 series on the same basis as the line.",
+  "intro": "In 1980 aid was the larger flow: net official development assistance was worth 4.5 per cent of Jamaica's national income, and remittances 3.6 per cent of GDP. The two lines crossed in the following decade and never met again. In 2023 Jamaican families abroad sent 3.6 billion US dollars, 16.8 per cent of GDP, while net aid came to 86 million dollars, 0.4 per cent of national income. The chart carries the whole record from 1980, with the hurricanes marked along the base. The Bank of Jamaica's monthly record already puts 2025 at 3.49 billion US dollars, a figure that joins the chart when the World Bank publishes its 2025 series on the same basis as the line.",
   "seascap": "December brings 18 per cent more remittance inflow than an average month, on average across the 32 complete years of the Bank of Jamaica's monthly record, which runs from 1994.",
   "labour": [
    {
@@ -1096,10 +1096,6 @@ FARSIDS.PROFILES = {
     "Cyclone Elinah"
    ],
    [
-    1989,
-    "Cyclone Kalafandji"
-   ],
-   [
     2019,
     "Cyclone Kenneth"
    ]
@@ -1107,7 +1103,7 @@ FARSIDS.PROFILES = {
   "name": "Comoros",
   "adj": "Comorian",
   "col": "#1C8C9B",
-  "intro": "The Comoros began the period as an aid economy: in 1980 net aid was worth 17.7 per cent of national income and recorded remittances 0.7 per cent of GDP. By 2023 the positions had reversed, with remittances at 20.8 per cent of GDP against aid at 11.3 per cent. Between 150,000 and 200,000 Comorians live abroad, most of them in France, against about 880,000 at home. The series has one missing year, 1997, when the Anjouan secession crisis stopped the balance of payments from being compiled, and the chart shows that year as a break rather than a guess.",
+  "intro": "The Comoros began the period as an aid economy: in 1980 net aid was worth 17.7 per cent of national income and recorded remittances 0.7 per cent of GDP. By 2023 the positions had reversed, with remittances at 20.8 per cent of GDP against aid at 11.3 per cent. Official counts put about 120,000 Comorians abroad, while French diaspora bodies estimate 150,000 to 300,000 in France alone, against about 880,000 at home. The series has one missing year, 1997, when the Anjouan secession crisis stopped the balance of payments from being compiled, and the chart shows that year as a break rather than a guess.",
   "seascap": null,
   "seasempty": "No monthly remittance record exists for the Comoros. The Banque Centrale des Comores publishes annual figures only, one of the reasons the country is the least studied of the three.",
   "labour": [],
@@ -1115,7 +1111,7 @@ FARSIDS.PROFILES = {
   "lendcap": "World Bank disbursements to the Comoros in millions of US dollars a year, from the monthly IDA statements of credits and grants. One lender only, shown because no other aid flow is published month by month.",
   "prog": "66 aid programmes documented for the Comoros on the project's register in August 2026, compiled from the OECD Creditor Reporting System, the World Bank project database and ministry lists.",
   "field": "Fieldwork closes in the Comoros in August 2027 with the University of the Comoros: about two months of interviews, focus groups and a household survey of 250 to 300 families, fielded in Shikomori with French alongside.",
-  "shockcap": "The marks along the base, left to right: Cyclone Elinah 1983, Kalafandji 1989 and Kenneth 2019. The narrow band at 1997 is the Anjouan secession crisis, and the wider shaded band is the pandemic border closure period, 2020 to 2021. The aid line ends in 2023 because donors report to the OECD with a delay of one to two years, and later years appear here as they are published.",
+  "shockcap": "The marks along the base, left to right: Cyclone Elinah 1983 and Cyclone Kenneth 2019. The narrow band at 1997 is the Anjouan secession crisis, and the wider shaded band is the pandemic border closure period, 2020 to 2021. The aid line ends in 2023 because donors report to the OECD with a delay of one to two years, and later years appear here as they are published.",
   "sources": [
    [
     "World Bank, personal remittances received, Comoros",

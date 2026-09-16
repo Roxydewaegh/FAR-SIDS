@@ -1096,6 +1096,10 @@ FARSIDS.PROFILES = {
     "Cyclone Elinah"
    ],
    [
+    1989,
+    "Cyclone Firinga"
+   ],
+   [
     2019,
     "Cyclone Kenneth"
    ]
@@ -1111,7 +1115,7 @@ FARSIDS.PROFILES = {
   "lendcap": "World Bank disbursements to the Comoros in millions of US dollars a year, from the monthly IDA statements of credits and grants. One lender only, shown because no other aid flow is published month by month.",
   "prog": "66 aid programmes documented for the Comoros on the project's register in August 2026, compiled from the OECD Creditor Reporting System, the World Bank project database and ministry lists.",
   "field": "Fieldwork closes in the Comoros in August 2027 with the University of the Comoros: about two months of interviews, focus groups and a household survey of 250 to 300 families, fielded in Shikomori with French alongside.",
-  "shockcap": "The marks along the base, left to right: Cyclone Elinah 1983 and Cyclone Kenneth 2019. The narrow band at 1997 is the Anjouan secession crisis, and the wider shaded band is the pandemic border closure period, 2020 to 2021. The aid line ends in 2023 because donors report to the OECD with a delay of one to two years, and later years appear here as they are published.",
+  "shockcap": "The marks along the base, left to right: Cyclone Elinah 1983, Cyclone Firinga 1989, which struck Anjouan hardest, and Cyclone Kenneth 2019. The narrow band at 1997 is the Anjouan secession crisis, and the wider shaded band is the pandemic border closure period, 2020 to 2021. The aid line ends in 2023 because donors report to the OECD with a delay of one to two years, and later years appear here as they are published.",
   "sources": [
    [
     "World Bank, personal remittances received, Comoros",
@@ -1140,6 +1144,10 @@ FARSIDS.PROFILES = {
    [
     "EM-DAT, the international disaster database",
     "https://www.emdat.be"
+   ],
+   [
+    "UNDRO information report, Cyclone Firinga hits the Comoros, 30 January 1989",
+    "https://reliefweb.int/report/comoros/comoros-islands-cyclone-firinga-jan-1989-undro-information-report-no-1"
    ]
   ],
   "download": "data/downloads/far-sids island profile data - comoros.csv"

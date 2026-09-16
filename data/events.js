@@ -59,7 +59,7 @@ FARSIDS.TL = {
       desc:'The full ethics package submitted to the University of Malta research ethics committee on 28 August, a week ahead of the 7 September deadline: household survey, information sheet, consent and permission letters, the fieldwork design and the data management plan (WP3).'},
     {track:'fieldprep', title:'Jamaica ethics application submitted', start:'2026-09-07', point:true,
       desc:'Jamaica application submitted to the Mona Campus Research Ethics Committee of The University of the West Indies, reference CREC-MN.01867/2022/2023. Tonga and the Comoros follow through the partner universities (WP3).'},
-    {track:'training', title:'RESI week, Valletta campus', start:'2026-09-07', end:'2026-09-11',
+    {track:'training', title:'RESI week, Valletta campus', start:'2026-09-06', end:'2026-09-11',
       desc:'The Certificate in Advanced Knowledge for SIDS Global Leadership, hosted by ISSI at the Valletta campus, 6 to 11 September. Sessions with Matthew Bishop, George Carter, Emily Wilkinson, Jack Corbett and Godfrey Baldacchino, two field trips, and a FAR-SIDS talk given during the Majjistral Park visit on 8 September from a sixteen stop ledger built from the website (WP2).',
       href:'resi-week-talk-8-september-2026.html', linkText:'The talk ledger'},
     {track:'training', title:'Data visualization course', start:'2026-09-14', end:'2026-09-25',

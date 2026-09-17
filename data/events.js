@@ -79,7 +79,7 @@ FARSIDS.TL = {
     {track:'training', title:'ISS5200 teaching seminar', start:'2026-10-20', end:'2026-10-21',
       desc:'The seminar within the ISSI MA economics and environment unit in two blocks, Tuesday 20 and Wednesday 21 October, 15:00 to 17:00: how aid and remittances are counted, with Tonga as the worked case, then a mapping workshop by country group with presentations in the last half hour (D.2.6).'},
     {track:'training', title:'Hildesheim guest seminar', start:'2026-11-27', end:'2026-11-28',
-      desc:'Virtual guest seminar at the University of Hildesheim, Aid, Remittances, and Agency: how small states navigated economic dependency in the twentieth century. Ninety minutes online for a course on small states in twentieth century Europe, the second teaching seminar (D.2.7).'},
+      desc:'Virtual guest seminar at the University of Hildesheim, Aid, remittances and agency in small island states: the cases of Malta and Jamaica. Ninety minutes online for a course on small states in twentieth century Europe, the second teaching seminar (D.2.7).'},
     
     {track:'projmgmt', title:'First progress report (D.1.3) submitted', start:'2026-09-12', point:true,
       desc:'The first trimestral progress report went to the supervisor, Professor Stefano Moncada, on 12 September 2026, ahead of its 15 September date: where the project stands, every Year 1 deliverable with its status, the changes to the plan with their reasons, the quarter ahead, and the quarterly review of the career development plan. Deliverable D.1.3, the first of eight reports, one every three months across the fellowship.',

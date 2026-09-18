@@ -1324,6 +1324,34 @@ html { font-size:clamp(14px, 0.45vw + 0.3vh + 6px, 18px); }
 .tlstop .lead-p { max-width:none; }
 .conds, .findings { margin-top:22px; gap:20px; }
 .cond, .finding { min-height:0; }
+
+.shkcharts { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
+.shkcharts.one { grid-template-columns:1fr; }
+.wchart { background:#0B2C38; border:1px solid #1C4A58; border-radius:10px; padding:6px 8px 2px; }
+.wchart svg { display:block; width:100%; height:auto; max-height:150px; }
+.shkcharts.one .wchart svg { max-height:150px; }
+.wchart .wl { display:block; font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:#9fd0cf; margin:0 0 2px 2px; }
+.shk { padding:10px 16px; }
+.shk p { font-size:.84rem; }
+#pred .figline { margin-top:8px; }
+
+.worldstrip { background:#0B2C38; border:1px solid #1C4A58; border-radius:10px; padding:6px 10px 2px; margin-top:12px; }
+.worldstrip .wl { display:block; font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:#9fd0cf; margin:0 0 2px 2px; }
+.worldstrip svg { display:block; width:100%; height:auto; max-height:88px; }
+.wchart svg, .shkcharts.one .wchart svg { max-height:112px; }
+#pred .figline { font-size:.8rem; }
+.worldstrip svg { max-height:80px; }
+.shk h3 { font-size:1rem; }
+.shockpair { margin-top:10px; }
+.tlstop.dark #stop-9 h2.title, #stop-9 h2.title { font-size:clamp(1.3rem,2vw,1.7rem); margin-bottom:10px; }
+
+.onechart { background:#0B2C38; border:1px solid #1C4A58; border-radius:12px; padding:10px 14px 4px; margin-top:12px; }
+.onechart .wl { display:block; font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:#9fd0cf; margin:0 0 4px 2px; }
+.onechart svg { display:block; width:100%; height:auto; max-height:calc(100vh - 640px); }
+.readings { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:12px; }
+.readings > div { border-left:3px solid #FFCC00; padding:2px 0 2px 14px; }
+.readings .fk { font-family:var(--mono); font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); }
+.readings p { margin:4px 0 0; font-size:.92rem; color:#e6f4f2; line-height:1.45; }
 </style>
 </head>
 <body>
@@ -1513,16 +1541,16 @@ html { font-size:clamp(14px, 0.45vw + 0.3vh + 6px, 18px); }
   </div>
   <button class="tlreveal" type="button" data-reveal="pred" data-hide="voteopts">Show what 2009 and 2020 did, and what the project predicts</button>
   <div id="pred" hidden>
-    <div class="shockpair">
-      <div class="shk"><span class="fk">2008 to 2009 · the world economy fell</span><h3>Remittances fell, aid rose, on all three islands</h3><p>Read alone, those years look as if one flow replaces the other. Tonga: remittances from 29 to 24 per cent of GDP, aid from 7 to 11 per cent of national income.</p></div>
-      <div class="shk"><span class="fk">2020 to 2021 · the borders closed</span><h3>Both flows rose together, on all three islands</h3><p>Read alone, those years look as if the flows add to each other. Comoros: remittances from 14 to 22 per cent of GDP, aid from 6 to 12 per cent of national income.</p></div>
+    <div class="onechart"><span class="wl">Tonga, 2004 to 2023 · remittances (teal, share of GDP) and net aid (coral, share of national income) · the gold bands are the two world crises</span><div id="crisischart"></div></div>
+    <div class="readings">
+      <div><span class="fk">2008 to 2009 · the world economy fell</span><p>Remittances fell and aid rose, on all three islands. Read alone, that looks as if one flow replaces the other.</p></div>
+      <div><span class="fk">2020 to 2021 · the borders closed</span><p>Remittances rose on all three islands; aid rose in Comoros, held in Tonga, fell in Jamaica. Read alone, Comoros looks like co-movement, both flows rising in step, which a model reads as complementarity.</p></div>
     </div>
-    <p class="figline">A model that averages the two years reports an average that describes neither. The country models remove the world crisis first; the household survey asks the question directly.</p>
   </div>
-  <div class="moral"><span class="cue">Why it matters</span><p>The same two flows look like substitutes in one shock and complements in the next, so the only way to know what a family does is to ask the family.</p></div>
+  <div class="moral"><span class="cue">Why it matters</span><p>The same two flows look like substitutes in one world crisis and, on some islands, complements in the next, and a model that averages the two describes neither. The country models remove the world crisis first; the only way to know what a family does is to ask the family.</p></div>
 
   </div>
-  <div class="script" hidden><p>Now I want your answer. Think of a family on your island. A daughter or a son abroad has been paying the school fees for years. This year a programme, a scholarship or a government scheme, starts paying those fees. What does the person abroad do? Hands up for the first answer: they keep sending the same amount, and the family spends it on something else. Hands up for the second: they send less. Hands up for the third: they stop. Count each one out loud, then ask one person from the Caribbean and one from the Pacific why, thirty seconds each. Then press R. Here is why the answer is not obvious. In 2009, when the world economy fell, remittances fell and aid rose on all three islands: in Tonga, family money went from 29 to 24 per cent of GDP while aid went from 7 to 11 per cent of national income. Those years look as if one flow replaces the other. In 2020 both flows rose together on all three islands: in Comoros, family money went from 14 to 22 per cent of GDP and aid from 6 to 12 per cent of national income. Those years look as if they add to each other. The same two flows, two opposite answers, and a model that averages the two years reports an average that describes neither year. That is why the country models remove the world crisis first. The models treat a world crisis and an island disaster differently. In 2009 and 2020 every island moved at once, and so did every other country, so those years cannot tell us anything about aid and remittances in particular, and the model sets them aside. A hurricane in Jamaica or the eruption in Tonga is different: one island was hit and the other two were not. In that year the family abroad and the donor both reacted to the same event, so the model can compare the two reactions on the same island, in the same year, and see which flow rose, by how much, and how quickly. Each island&#x27;s model marks its own disaster years for exactly that reason, and the website page for this stop lists every one of them since 1980 and the rule that decides which count. And the household survey asks the question directly: the only way to know what a family does is to ask the family. So what does the project expect the family to say? That is the next slide.</p></div>
+  <div class="script" hidden><p>Now I want your answer. Think of a family on your island. A daughter or a son abroad has been paying the school fees for years. This year a programme, a scholarship or a government scheme, starts paying those fees. What does the person abroad do? Hands up for the first answer: they keep sending the same amount, and the family spends it on something else. Hands up for the second: they send less. Hands up for the third: they stop. Count each one out loud, then ask one person from the Caribbean and one from the Pacific why, thirty seconds each. Then press R. Here is why the answer is not obvious. This is Tonga's record from 2004 to 2023, and the two gold bands are the two moments when the whole world fell at once: 2009 and 2020. Look at the first band. In 2009 remittances fell and aid rose on all three islands: in Tonga, family money went from 29 to 24 per cent of GDP while aid went from 7 to 11 per cent of national income. Read alone, those years look as if one flow replaces the other. Now the second band. In 2020 and 2021 remittances rose on all three islands, but aid did three different things: it nearly doubled in Comoros, held in Tonga, and fell in Jamaica. In Comoros the two flows rose in the same direction and in similar proportion, which economists call co-movement, and a model reads it as complementarity. In Jamaica family money jumped while aid stayed flat, the opposite pairing. Both islands were reacting to the same world event. So the same two flows give one answer in 2009 and different answers in 2020, and a model that averages the two episodes reports an average that describes neither. That is why the country models remove the world crisis first. The models treat a world crisis and an island disaster differently. In 2009 and 2020 every island moved at once, and so did every other country, so those years cannot tell us anything about aid and remittances in particular, and the model sets them aside. A hurricane in Jamaica or the eruption in Tonga is different: one island was hit and the other two were not. In that year the family abroad and the donor both reacted to the same event, so the model can compare the two reactions on the same island, in the same year, and see which flow rose, by how much, and how quickly. Each island&#x27;s model marks its own disaster years for exactly that reason, and the website page for this stop lists every one of them since 1980 and the rule that decides which count. That is what the three islands will show you in a few minutes, one shock each: Jamaica, who the money reaches when a hurricane arrives after the aid has gone; Tonga, which flow moves first when the border closes and when the ash falls; Comoros, what the family money is already committed to before any shock arrives. And the household survey asks the question directly: the only way to know what a family does is to ask the family. So what does the project expect the family to say? That is the next slide.</p></div>
 </section>
 <section class="tlstop" id="stop-10" data-key="attach" data-title="The hypothesis" data-time="16:06 to 17:44" data-link="https://roxydewaegh.github.io/FAR-SIDS/#research/hypothesis" data-linklabel="Hypothesis and claims">
   <span class="wm" aria-hidden="true">10</span>
@@ -3108,6 +3136,75 @@ FARSIDS.PORTS = {
     function path(i){ var d = '', pen = false; p.series.forEach(function(r){ var v = r[i]; if(v == null){ pen = false; return; } d += (pen ? ' L' : ' M') + X(r[0]).toFixed(1) + ',' + Y(v).toFixed(1); pen = true; }); return d; }
     return '<svg viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true"><path d="' + path(2) + '" fill="none" stroke="' + CORAL + '" stroke-width="2"/><path d="' + path(1) + '" fill="none" stroke="#5FD3D3" stroke-width="2.4"/></svg>';
   }
+
+  function windowChart(p, y0, y1, b0, b1){
+    var W = 420, H = 150, padL = 34, padR = 10, padT = 10, padB = 22;
+    var iw = W - padL - padR, ih = H - padT - padB;
+    var rows = p.series.filter(function(r){ return r[0] >= y0 && r[0] <= y1; });
+    var vmax = 0; rows.forEach(function(r){ vmax = Math.max(vmax, r[1] || 0, r[2] || 0); });
+    var ymax = Math.max(10, 10 * Math.ceil(vmax / 10));
+    function X(y){ return padL + (y - y0) / (y1 - y0) * iw; }
+    function Y(v){ return padT + ih - v / ymax * ih; }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true">';
+    s += '<rect x="' + (X(b0) - iw/(y1-y0)/2) + '" y="' + padT + '" width="' + ((b1 - b0 + 1) * iw/(y1-y0)) + '" height="' + ih + '" fill="#FFCC00" fill-opacity="0.12"/>';
+    for(var g = 0; g <= ymax; g += (ymax > 30 ? 10 : 5)){
+      s += '<line x1="' + padL + '" y1="' + Y(g) + '" x2="' + (W - padR) + '" y2="' + Y(g) + '" stroke="#ffffff14"/>';
+      s += '<text x="' + (padL - 6) + '" y="' + (Y(g) + 3) + '" text-anchor="end" font-size="9" fill="#9fd0cf" font-family="Space Mono,monospace">' + g + '</text>';
+    }
+    rows.forEach(function(r){ s += '<text x="' + X(r[0]) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="9" fill="#9fd0cf" font-family="Space Mono,monospace">' + String(r[0]).slice(2) + '</text>'; });
+    function path(i){ var d = '', pen = false; rows.forEach(function(r){ var v = r[i]; if(v == null){ pen = false; return; } d += (pen ? ' L' : ' M') + X(r[0]).toFixed(1) + ',' + Y(v).toFixed(1); pen = true; }); return d; }
+    s += '<path d="' + path(2) + '" fill="none" stroke="' + CORAL + '" stroke-width="2"/>';
+    s += '<path d="' + path(1) + '" fill="none" stroke="#5FD3D3" stroke-width="2.4"/>';
+    rows.forEach(function(r){ if(r[1] != null) s += '<circle cx="' + X(r[0]) + '" cy="' + Y(r[1]) + '" r="2.4" fill="#5FD3D3"/>'; if(r[2] != null) s += '<circle cx="' + X(r[0]) + '" cy="' + Y(r[2]) + '" r="2.4" fill="' + CORAL + '"/>'; });
+    return s + '</svg>';
+  }
+  document.querySelectorAll('.wchart').forEach(function(el){
+    var p = P[el.getAttribute('data-k')];
+    el.innerHTML = '<span class="wl">' + esc(el.getAttribute('data-label')) + '</span>'
+      + windowChart(p, +el.getAttribute('data-from'), +el.getAttribute('data-to'), +el.getAttribute('data-b0'), +el.getAttribute('data-b1'));
+  });
+
+  var WG = [[1980,1.82],[1981,1.89],[1982,0.41],[1983,2.58],[1984,4.73],[1985,3.66],[1986,3.31],[1987,3.75],[1988,4.53],[1989,3.64],[1990,2.71],[1991,1.23],[1992,2.06],[1993,1.86],[1994,3.42],[1995,3.18],[1996,3.59],[1997,4.0],[1998,2.78],[1999,3.58],[2000,4.57],[2001,2.03],[2002,2.32],[2003,3.07],[2004,4.5],[2005,4.06],[2006,4.49],[2007,4.43],[2008,2.09],[2009,-1.33],[2010,4.52],[2011,3.31],[2012,2.75],[2013,2.89],[2014,3.17],[2015,3.13],[2016,2.79],[2017,3.45],[2018,3.29],[2019,2.68],[2020,-2.89],[2021,6.49],[2022,3.44],[2023,2.86],[2024,2.9],[2025,2.92]];
+  (function(){
+    var el = document.getElementById('worldg'); if(!el) return;
+    var W = 1200, H = 88, L = 34, R = 10, T = 8, B = 18;
+    var ymin = -4, ymax = 8;
+    function x(y){ return L + (y - 1980) / (2025 - 1980) * (W - L - R); }
+    function yy(v){ return T + (ymax - v) / (ymax - ymin) * (H - T - B); }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true">';
+    [[2008,2009],[2020,2021]].forEach(function(b){ s += '<rect x="' + x(b[0]-0.5) + '" y="' + T + '" width="' + (x(b[1]+0.5) - x(b[0]-0.5)) + '" height="' + (H - T - B) + '" fill="#FFCC00" fill-opacity="0.14"/>'; });
+    [-4,0,4,8].forEach(function(v){ s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + yy(v) + '" y2="' + yy(v) + '" stroke="' + (v === 0 ? '#9fd0cf88' : '#ffffff14') + '"/><text x="' + (L - 6) + '" y="' + (yy(v) + 3) + '" text-anchor="end" font-size="9" fill="#9fd0cf" font-family="Space Mono,monospace">' + v + '%</text>'; });
+    for(var y = 1980; y <= 2025; y += 5) s += '<text x="' + x(y) + '" y="' + (H - 5) + '" text-anchor="middle" font-size="9" fill="#9fd0cf" font-family="Space Mono,monospace">' + y + '</text>';
+    s += '<path d="' + WG.map(function(d, i){ return (i ? 'L' : 'M') + x(d[0]).toFixed(1) + ',' + yy(d[1]).toFixed(1); }).join(' ') + '" fill="none" stroke="#FFCC00" stroke-width="2"/>';
+    WG.filter(function(d){ return d[0] === 2009 || d[0] === 2020; }).forEach(function(d){ s += '<circle cx="' + x(d[0]) + '" cy="' + yy(d[1]) + '" r="3.5" fill="#FFCC00"/><text x="' + (x(d[0]) + 8) + '" y="' + (yy(d[1]) - 2) + '" text-anchor="start" font-size="9.5" fill="#fff" font-family="Space Mono,monospace">' + d[0] + ': ' + d[1] + '%</text>'; });
+    el.innerHTML = s + '</svg>';
+  })();
+
+  (function(){
+    var el = document.getElementById('crisischart'); if(!el) return;
+    var p = P['to'], y0 = 2004, y1 = 2023;
+    var W = 1200, H = 300, padL = 40, padR = 14, padT = 34, padB = 26;
+    var iw = W - padL - padR, ih = H - padT - padB, ymax = 60;
+    var rows = p.series.filter(function(r){ return r[0] >= y0 && r[0] <= y1; });
+    function X(y){ return padL + (y - y0) / (y1 - y0) * iw; }
+    function Y(v){ return padT + ih - v / ymax * ih; }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true">';
+    [[2008,2009,'2009 · world economy fell'],[2020,2021,'2020 · borders closed']].forEach(function(b){
+      var x0 = X(b[0]) - iw/(y1-y0)/2, w = (b[1]-b[0]+1) * iw/(y1-y0);
+      s += '<rect x="' + x0 + '" y="' + padT + '" width="' + w + '" height="' + ih + '" fill="#FFCC00" fill-opacity="0.13"/>';
+      s += '<text x="' + (x0 + w/2) + '" y="' + (padT - 12) + '" text-anchor="middle" font-size="12" fill="#FFCC00" font-family="Space Mono,monospace" letter-spacing="1">' + b[2] + '</text>';
+    });
+    for(var g = 0; g <= ymax; g += 10){ s += '<line x1="' + padL + '" y1="' + Y(g) + '" x2="' + (W - padR) + '" y2="' + Y(g) + '" stroke="#ffffff14"/><text x="' + (padL - 8) + '" y="' + (Y(g) + 4) + '" text-anchor="end" font-size="11" fill="#9fd0cf" font-family="Space Mono,monospace">' + g + (g === ymax ? '%' : '') + '</text>'; }
+    rows.forEach(function(r){ s += '<text x="' + X(r[0]) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="11" fill="#9fd0cf" font-family="Space Mono,monospace">' + r[0] + '</text>'; });
+    function path(i){ var d = '', pen = false; rows.forEach(function(r){ var v = r[i]; if(v == null){ pen = false; return; } d += (pen ? ' L' : ' M') + X(r[0]).toFixed(1) + ',' + Y(v).toFixed(1); pen = true; }); return d; }
+    s += '<path d="' + path(2) + '" fill="none" stroke="' + CORAL + '" stroke-width="2.4"/>';
+    s += '<path d="' + path(1) + '" fill="none" stroke="#5FD3D3" stroke-width="2.8"/>';
+    rows.forEach(function(r){ if(r[1] != null) s += '<circle cx="' + X(r[0]) + '" cy="' + Y(r[1]) + '" r="3" fill="#5FD3D3"/>'; if(r[2] != null) s += '<circle cx="' + X(r[0]) + '" cy="' + Y(r[2]) + '" r="3" fill="' + CORAL + '"/>'; });
+    var last = rows[rows.length-1];
+    s += '<text x="' + (X(last[0]) - 6) + '" y="' + (Y(last[1]) - 10) + '" text-anchor="end" font-size="12" fill="#5FD3D3" font-family="Spline Sans,system-ui,sans-serif" font-weight="600">Remittances</text>';
+    s += '<text x="' + (X(last[0]) - 6) + '" y="' + (Y(last[2]) + 18) + '" text-anchor="end" font-size="12" fill="' + CORAL + '" font-family="Spline Sans,system-ui,sans-serif" font-weight="600">Net aid</text>';
+    el.innerHTML = s + '</svg>';
+  })();
   var sp = document.getElementById('sparks');
   if(sp) sp.innerHTML = ['jm','to','km'].map(function(k){ return '<div class="spark"><b>' + esc(P[k].name) + '</b>' + spark(P[k]) + '</div>'; }).join('');
 })();

@@ -82,10 +82,10 @@ FARSIDS.TEACHING = [
     when: "Early 2027",
     where: "Partner universities in Jamaica, Tonga and Comoros",
     title: "Bridging Cultures with Reciprocity",
-    kind: "MOOC",
+    kind: "Teaching, online course",
     file: "",
     status: "planned",
-    dlv: "",
+    dlv: "D.2.8",
     blurb: "The first massive open online course, built over the winter and offered to the three partner universities.",
     svg: ""
   },
@@ -97,7 +97,7 @@ FARSIDS.TEACHING = [
     kind: "Research seminar",
     file: "",
     status: "planned",
-    dlv: "",
+    dlv: "D.6.1 to D.6.4",
     blurb: "Given during the secondment that closes the Jamaica fieldwork.",
     svg: ""
   },
@@ -121,7 +121,7 @@ FARSIDS.TEACHING = [
     kind: "Research seminar",
     file: "",
     status: "planned",
-    dlv: "",
+    dlv: "D.6.1 to D.6.4",
     blurb: "Given during the secondment that closes the Tonga fieldwork.",
     svg: ""
   },
@@ -133,7 +133,7 @@ FARSIDS.TEACHING = [
     kind: "Research seminar",
     file: "",
     status: "planned",
-    dlv: "",
+    dlv: "D.6.1 to D.6.4",
     blurb: "Given during the secondment that closes the Comoros fieldwork.",
     svg: ""
   },
@@ -154,10 +154,10 @@ FARSIDS.TEACHING = [
     when: "Spring 2028",
     where: "Online, with case studies from all three regions",
     title: "Waves of Wealth: foreign aid, remittances and livelihoods in SIDS",
-    kind: "MOOC",
+    kind: "Teaching, online course",
     file: "",
     status: "planned",
-    dlv: "",
+    dlv: "D.6.7",
     blurb: "The second massive open online course, completing the teaching promised across the fellowship.",
     svg: ""
   },

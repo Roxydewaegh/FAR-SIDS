@@ -992,7 +992,7 @@
   <div class="roomwrap">
       <p class="eyebrow">Teaching and training</p>
       <h2 class="title" style="font-size:1.7rem;">Teaching and training</h2>
-      <p class="lead-p muted" style="max-width:74ch;">Training on the left: online courses over the summer and two Doctoral School units through the autumn, free courses first and paid ones only where the research needs them. Teaching on the right: two modules in the ISSI Master's in October and a guest seminar at the University of Hildesheim in November.</p>
+      <p class="lead-p muted" style="max-width:74ch;">Training on the left: online courses over the summer and two Doctoral School units through the autumn, free courses first and paid ones only where the research needs them. Teaching on the right: two modules in the ISSI Master's in October and a guest seminar at the University of Hildesheim in November. Below them, every talk, class, conference paper and course of the fellowship on one timeline.</p>
       <div class="toolgrid">
         <div class="resgroup">
         <h3>Training</h3>
@@ -1020,8 +1020,9 @@
         </ul>
       </div>
       </div>
-      <h3 class="teachsplit">Teaching materials</h3>
-      <div class="ecards teachcards" id="teachcards"></div>
+      <h3 class="teachsplit">Talks, teaching, conferences and courses</h3>
+      <p class="tl-lead muted">Everything presented under the fellowship, in the order it happens. A filled marker is a presentation already given, an outlined one is still to come. Click a title to open its ledger or slides; the ones without a link get theirs once the presentation exists.</p>
+      <div class="teachline" id="teachline"></div>
   </div>
   <div class="waveband"><svg viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:44px;"><path d="M0,20 C200,34 420,6 680,18 C920,29 1160,8 1440,20 L1440,44 L0,44 Z" fill="#0E4D5C"/><path d="M0,30 C240,40 480,16 760,26 C1020,35 1240,18 1440,28 L1440,44 L0,44 Z" fill="#08293A"/></svg><div class="bandin"><span>FAR-SIDS · FOREIGN AID, REMITTANCES, AND WELLBEING IN SMALL ISLAND DEVELOPING STATES</span><span id="dayline9"></span></div></div>
 </section>
@@ -1533,18 +1534,32 @@ window.__initBoard = function(){
   route();
 
   (function(){
-    var box = document.getElementById('teachcards');
+    var box = document.getElementById('teachline');
     if(!box || !window.FARSIDS || !FARSIDS.TEACHING) return;
-    box.innerHTML = FARSIDS.TEACHING.map(function(t){
-      return '<a class="ecard" href="' + t.file + '">'
-           + '<div class="ethumb">' + t.svg + '</div>'
-           + '<div class="ebody">'
-           + '<div class="n">' + t.when + '</div>'
-           + '<h3>' + t.title + '</h3>'
-           + '<p class="wh">' + t.where + '</p>'
-           + '<p>' + t.blurb + '</p>'
-           + '</div></a>';
-    }).join('');
+    var items = FARSIDS.TEACHING.slice().sort(function(a,b){ return a.sort < b.sort ? -1 : 1; });
+    var html = '', year = '';
+    items.forEach(function(t){
+      var y = t.sort.slice(0,4);
+      if(y !== year){ year = y; html += '<div class="tl-year"><span>' + y + '</span></div>'; }
+      var given = t.status === 'given';
+      var mark = t.svg ? '<span class="tl-mark has-svg">' + t.svg + '</span>'
+                       : '<span class="tl-mark ' + (given ? 'is-given' : 'is-ahead') + '"></span>';
+      var badges = (t.dlv ? '<span class="dlv">' + t.dlv + '</span>' : '')
+                 + '<span class="tl-kind">' + t.kind + '</span>'
+                 + (given ? '<span class="done">given</span>' : '');
+      var title = t.file
+        ? '<a class="tl-title" href="' + t.file + '">' + t.title + '<span class="tl-open">open &#8599;</span></a>'
+        : '<span class="tl-title tl-soon">' + t.title + '<span class="tl-open">ledger to come</span></span>';
+      html += '<div class="tl-item' + (given ? ' is-given' : '') + (t.file ? ' has-file' : '') + '">'
+            + '<div class="tl-when">' + t.when + '</div>'
+            + mark
+            + '<div class="tl-body">' + title
+            + '<p class="tl-where">' + t.where + '</p>'
+            + '<p class="tl-blurb">' + t.blurb + '</p>'
+            + '<div class="tl-badges">' + badges + '</div>'
+            + '</div></div>';
+    });
+    box.innerHTML = html;
   })();
 
   var now = document.getElementById('nowline');

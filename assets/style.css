@@ -1049,7 +1049,7 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 #room-training .roomwrap{max-width:1240px;}
 #room-training .title{margin-bottom:4px;}
 #room-training .toolgrid{margin-top:12px; align-items:stretch;}
-#room-training .toolgrid .resgroup{height:clamp(300px, calc(100vh - 480px), 660px); max-height:none; padding:18px 22px 14px;}
+#room-training .toolgrid .resgroup{height:clamp(300px, calc(100vh - 430px), 700px); max-height:none; padding:18px 22px 14px;}
 #room-training .toolgrid .resgroup ul{flex:1; min-height:0; margin-top:6px;
   -webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent); mask-image:linear-gradient(to bottom,#000 82%,transparent);}
 #room-training .toolgrid .resgroup.at-end ul{-webkit-mask-image:none; mask-image:none;}
@@ -1118,3 +1118,28 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 .tl-h .tl-mark:not(.has-svg){margin:14px 0 14px 14px;}
 .tl-h .tl-item.new-year::after{left:56px;}
 .qroom .sub[data-sub=why] .cols{margin-top:30px;}
+/* 28 September 2026: deliverable and milestone badges in the logbook */
+.loggrid .dlv, .loggrid .ms{font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+  padding:1px 8px; border-radius:999px; margin-left:4px; vertical-align:middle; white-space:nowrap;}
+.loggrid .dlv{color:#fff; background:#C4553B;}
+.loggrid .ms{color:#08293A; background:#FFCC00;}
+
+/* 28 September 2026: deliverable and milestone badges in the logbook */
+.loggrid .dlv, .loggrid .ms{font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+  padding:1px 8px; border-radius:999px; margin-left:4px; vertical-align:middle; white-space:nowrap;}
+.loggrid .dlv{color:#fff; background:#C4553B;}
+.loggrid .ms{color:#08293A; background:#FFCC00;}
+
+/* 28 September 2026: teaching and training given room to breathe */
+#room-training .toolgrid{gap:34px;}
+#room-training .toolgrid .resgroup::after{display:none;}
+#room-training .toolgrid .resgroup{box-shadow:none; border-color:#DCE9EA; padding:22px 28px 16px;}
+#room-training .toolgrid .resgroup h3{font-size:1.15rem; padding-bottom:10px; border-bottom-width:1px;}
+#room-training .toolgrid .resgroup li{padding:16px 0; border-bottom-color:#E6EFF0;}
+#room-training .toolgrid .resgroup li > a{font-size:.95rem;}
+#room-training .toolgrid .resgroup .note{font-size:.84rem; line-height:1.6; margin-top:6px; color:#5A6E73;}
+#room-training h3.teachsplit{border-top:0; margin-top:30px; padding-top:0;}
+.tl-h .tl-item{flex:0 0 250px; padding-right:28px;}
+.tl-h .tl-where, .tl-h .tl-blurb{display:none;}
+.tl-h .tl-title{font-size:.98rem; line-height:1.35;}
+.tl-h .tl-badges{margin-top:10px;}

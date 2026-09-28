@@ -1117,3 +1117,4 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 #room-research .sub[data-sub=toolkit] .gqfootn{margin-top:6px;}
 .tl-h .tl-mark:not(.has-svg){margin:14px 0 14px 14px;}
 .tl-h .tl-item.new-year::after{left:56px;}
+.qroom .sub[data-sub=why] .cols{margin-top:30px;}

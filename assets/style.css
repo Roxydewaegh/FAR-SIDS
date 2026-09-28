@@ -1036,3 +1036,91 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
   .tl-mark{grid-area:mark;} .tl-when{grid-area:when;} .tl-body{grid-area:body;}
   .tl-mark.has-svg{margin-top:0;}
 }
+
+/* 28 September 2026: why it matters fits one screen, text beside the figure */
+#room-question .roomwrap{max-width:1240px;}
+.qroom .sub[data-sub=why] .whycol{max-width:none; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); column-gap:64px; align-items:center;}
+.qroom .sub[data-sub=why] .whytitle,.qroom .sub[data-sub=why] .big{grid-column:1 / -1;}
+.qroom .sub[data-sub=why] .big{max-width:none; margin:0 0 26px;}
+.qroom .sub[data-sub=why] .cols{grid-column:1; grid-row:3; margin-top:0;}
+.qroom .sub[data-sub=why] .cols p{font-size:1rem; line-height:1.7; margin:0 0 14px;}
+.qroom .sub[data-sub=why] .cols p:last-child{margin-bottom:0;}
+.whyfig{grid-column:2; grid-row:3; margin:0;}
+.whyfig .whyflow{max-width:540px; margin:0 auto;}
+.whycap{margin:10px auto 0; max-width:40ch; text-align:center; font-size:.84rem; line-height:1.55; color:#9FC4C9;}
+@media (max-width:980px){
+  .qroom .sub[data-sub=why] .whycol{grid-template-columns:1fr;}
+  .qroom .sub[data-sub=why] .cols,.whyfig{grid-column:1; grid-row:auto;}
+  .whyfig{margin-top:24px;}
+}
+
+/* 28 September 2026: teaching and training on one screen, columns scroll down, timeline scrolls sideways */
+#room-training .roomwrap{max-width:1240px;}
+#room-training .title{margin-bottom:4px;}
+#room-training .toolgrid{margin-top:12px; align-items:stretch;}
+#room-training .toolgrid .resgroup{height:clamp(220px, calc(100vh - 655px), 560px); max-height:none; padding:18px 22px 14px;}
+#room-training .toolgrid .resgroup ul{flex:1; min-height:0; margin-top:6px;
+  -webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent); mask-image:linear-gradient(to bottom,#000 82%,transparent);}
+#room-training .toolgrid .resgroup.at-end ul{-webkit-mask-image:none; mask-image:none;}
+#room-training .toolgrid .resgroup h3{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:0;}
+.scrollhint{font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; font-weight:400;
+  color:var(--lagoon); border:1px solid var(--shoal); border-radius:999px; padding:2px 10px; white-space:nowrap;}
+#room-training .resgroup.at-end .scrollhint{opacity:.35;}
+#room-training h3.teachsplit{margin:18px 0 0; padding-top:14px;}
+#room-training .tl-lead{margin:4px 0 10px;}
+.teachline.tl-h{display:flex; gap:0; overflow-x:auto; overflow-y:hidden; padding:0 0 12px; margin:0; scroll-snap-type:x proximity; scrollbar-width:thin;}
+.tl-h .tl-item{display:flex; flex-direction:column; flex:0 0 272px; padding:0 18px 0 0; scroll-snap-align:start; position:relative;}
+.tl-h .tl-item::before{left:0; right:0; top:21px; bottom:auto; width:auto; height:2px;}
+.tl-h .tl-item:last-child::before{right:auto; width:22px; height:2px;}
+.tl-h .tl-item.new-year{padding-left:0;}
+.tl-h .tl-item.new-year::after{content:attr(data-year); position:absolute; top:0; right:18px; font-family:var(--mono); font-size:.6rem;
+  letter-spacing:.16em; color:#fff; background:var(--deep); padding:2px 9px; border-radius:999px;}
+.tl-h .tl-mark{order:1; justify-self:auto; align-self:flex-start; margin:14px 0 0;}
+.tl-h .tl-mark.has-svg{width:44px; height:44px; margin-top:0;}
+.tl-h .tl-when{order:2; text-align:left; padding:8px 0 0; }
+.tl-h .tl-body{order:3; padding:4px 0 0;}
+.tl-h .tl-title{font-size:1rem;}
+.tl-h .tl-blurb{font-size:.8rem; line-height:1.5; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;}
+.tl-h .tl-where{font-size:.78rem;}
+@media(max-width:760px){
+  .tl-h .tl-item{grid-template-areas:none;}
+  #room-training .toolgrid .resgroup{height:auto;}
+}
+#room-training .lead-p{max-width:none !important; margin-top:6px;}
+#room-training .tl-lead{max-width:none;}
+#room-training .roomwrap{padding-top:22px; padding-bottom:14px;}
+.tl-h .tl-blurb{-webkit-line-clamp:2;}
+.tl-h .tl-where{display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;}
+.tl-h .tl-title{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+.tl-h .tl-title .tl-open{display:none;}
+.tl-h .tl-item.new-year::after{right:auto; left:30px; top:13px;}
+.tl-h .tl-item.new-year:has(.has-svg)::after{left:56px;}
+#room-training h3.teachsplit{display:flex; align-items:baseline; justify-content:space-between; gap:12px;}
+
+/* 28 September 2026: the household survey page fits one screen */
+#room-approach .sub[data-sub=survey] .lead-p{max-width:none;}
+#room-approach .sub[data-sub=survey] .ecards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:16px;}
+#room-approach .sub[data-sub=survey] .ecard, #room-approach .sub[data-sub=survey] .ecard.ewide{grid-column:auto; display:flex; flex-direction:column;}
+#room-approach .sub[data-sub=survey] .ecard .ethumb{width:100%; flex:0 0 auto; height:84px; border-right:0; border-bottom:1px solid var(--line);}
+#room-approach .sub[data-sub=survey] .ecard .ethumb svg{width:100%; height:100%;}
+#room-approach .sub[data-sub=survey] .ebody{padding:14px 18px 16px;}
+#room-approach .sub[data-sub=survey] .ebody h3{font-size:1.12rem; margin:4px 0 6px;}
+#room-approach .sub[data-sub=survey] .ebody p{font-size:.86rem; line-height:1.55;}
+#room-approach .sub[data-sub=survey] .profback{margin-top:14px;}
+@media(max-width:900px){ #room-approach .sub[data-sub=survey] .ecards{grid-template-columns:1fr;} }
+#room-approach .sub[data-sub=models] .lead-p{max-width:none;}
+#room-approach .sub[data-sub=models] .ecards{margin-top:18px;}
+#room-approach .sub[data-sub=models] .ethumb{height:96px;}
+#room-approach .sub[data-sub=models] .ebody p{font-size:.86rem; line-height:1.55;}
+#room-research .sub[data-sub=toolkit] .gqbanner svg{height:110px;}
+#room-research .sub[data-sub=toolkit] .gqbanner{margin-top:16px;}
+#room-research .sub[data-sub=toolkit] .title{max-width:none;}
+#room-research .sub[data-sub=toolkit] .gqbanner svg{height:80px;}
+#room-research .sub[data-sub=toolkit] .gqgrid{margin-top:16px;}
+#room-research .sub[data-sub=toolkit] .gqcard{padding:20px 26px 18px;}
+#room-research .sub[data-sub=toolkit] .gqsample li:nth-child(n+3){display:none;}
+#room-research .sub[data-sub=toolkit] .gqsample.qs li:nth-child(3), #room-research .sub[data-sub=toolkit] .gqsample.qs li:nth-child(4){display:block;}
+#room-research .sub[data-sub=toolkit] .gqterms, #room-research .sub[data-sub=toolkit] .gqaz{margin-top:12px;}
+#room-research .sub[data-sub=toolkit] .gqsample{margin-top:12px; padding-top:8px;}
+#room-research .sub[data-sub=toolkit] .gqcard .gqopen{padding-top:12px;}
+#room-research .sub[data-sub=toolkit] .gqfootn{margin-top:6px;}

@@ -1051,7 +1051,7 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 #room-training .roomwrap{max-width:1240px;}
 #room-training .title{margin-bottom:4px;}
 #room-training .toolgrid{margin-top:12px; align-items:stretch;}
-#room-training .toolgrid .resgroup{height:clamp(220px, calc(100vh - 655px), 560px); max-height:none; padding:18px 22px 14px;}
+#room-training .toolgrid .resgroup{height:clamp(300px, calc(100vh - 500px), 640px); max-height:none; padding:18px 22px 14px;}
 #room-training .toolgrid .resgroup ul{flex:1; min-height:0; margin-top:6px;
   -webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent); mask-image:linear-gradient(to bottom,#000 82%,transparent);}
 #room-training .toolgrid .resgroup.at-end ul{-webkit-mask-image:none; mask-image:none;}

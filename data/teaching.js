@@ -31,11 +31,11 @@ FARSIDS.TEACHING = [
   },
   {
     sort: "2026-10-07",
-    when: "7 and 14 October 2026",
+    when: "7 and 16 October 2026",
     where: "ISS5220, Islands and Small States Institute, University of Malta",
     title: "Qualitative analysis with NVivo",
     kind: "Teaching",
-    file: "iss5220-nvivo-ledger-7-14-october-2026.html",
+    file: "iss5220-nvivo-ledger-7-16-october-2026.html",
     status: "scheduled",
     dlv: "D.2.6",
     blurb: "The qualitative half of the MA methods unit. Thematic analysis by hand, then coding, codebooks and queries in NVivo 15.",

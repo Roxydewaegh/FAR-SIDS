@@ -1147,3 +1147,9 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 /* 3 October 2026: the question room, text under the household figure */
 .qroom .whytext{max-width:none; margin:18px 0 0; text-align:center; color:#cfe9e6; font-size:1.02rem; line-height:1.62;}
 @media (max-width:720px){ .qroom .whytext{text-align:left; font-size:1rem; line-height:1.7; margin-top:20px;} }
+
+/* 3 October 2026: the question room, two pages under the title, figures centred over the text */
+.qroom .sub[data-sub=meet] .whycol, .qroom .sub[data-sub=why] .whycol{max-width:none;}
+.qroom .sub[data-sub=meet] .whyflow{display:block; width:100%; max-width:900px; margin:6px auto 10px;}
+.qroom .whypaths{display:block; width:100%; max-width:1040px; margin:10px auto 14px;}
+@media (prefers-reduced-motion: reduce){ .qroom .whypaths circle{display:none;} }

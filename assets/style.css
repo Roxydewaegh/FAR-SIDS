@@ -1149,9 +1149,9 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 @media (max-width:720px){ .qroom .whytext{text-align:left; font-size:1rem; line-height:1.7; margin-top:20px;} }
 
 /* 3 October 2026: the question room, two pages under the title, figures centred over the text */
-.qroom .sub[data-sub=meet] .whycol, .qroom .sub[data-sub=why] .whycol{max-width:none;}
-.qroom .sub[data-sub=meet] .whyflow{display:block; width:100%; max-width:900px; margin:6px auto 10px;}
+.qroom .sub[data-sub=who] .whycol, .qroom .sub[data-sub=why] .whycol{max-width:none;}
+.qroom .sub[data-sub=who] .whyflow{display:block; width:100%; max-width:900px; margin:6px auto 10px;}
 .qroom .whypaths{display:block; width:100%; max-width:1040px; margin:10px auto 14px;}
 .qroom .sub[data-sub=why] .whytext{margin-top:40px; text-wrap:pretty; padding:0 10px;}
-.qroom .sub[data-sub=meet] .whytext{margin-top:28px; text-wrap:pretty; padding:0 10px;}
+.qroom .sub[data-sub=who] .whytext{margin-top:28px; text-wrap:pretty; padding:0 10px;}
 @media (prefers-reduced-motion: reduce){ .qroom .whypaths circle{display:none;} }

@@ -1143,3 +1143,7 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 .tl-h .tl-where, .tl-h .tl-blurb{display:none;}
 .tl-h .tl-title{font-size:.98rem; line-height:1.35;}
 .tl-h .tl-badges{margin-top:10px;}
+
+/* 3 October 2026: the question room, text under the household figure */
+.qroom .whytext{max-width:74ch; margin:34px auto 0; text-align:center; color:#cfe9e6; font-size:1.06rem; line-height:1.78;}
+@media (max-width:720px){ .qroom .whytext{text-align:left; font-size:1rem; line-height:1.7; margin-top:24px;} }

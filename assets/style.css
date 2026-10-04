@@ -1155,3 +1155,7 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 .qroom .sub[data-sub=why] .whytext{margin-top:40px; text-wrap:pretty; padding:0 10px;}
 .qroom .sub[data-sub=who] .whytext{margin-top:28px; text-wrap:pretty; padding:0 10px;}
 @media (prefers-reduced-motion: reduce){ .qroom .whypaths circle{display:none;} }
+
+/* 4 October 2026: listening notes may carry several paragraphs */
+.lp-text p{margin:0 0 10px; font-size:inherit; line-height:inherit; color:inherit;}
+.lp-text p:last-child{margin-bottom:0;}

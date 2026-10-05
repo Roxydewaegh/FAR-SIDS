@@ -54,6 +54,18 @@ FARSIDS.TEACHING = [
     svg: "<svg viewBox=\"0 0 120 120\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Two bars of different heights beside a small house\"><rect width=\"120\" height=\"120\" fill=\"#F6FBFB\"/><rect x=\"20\" y=\"52\" width=\"16\" height=\"36\" rx=\"3\" fill=\"#1C8C9B\"/><rect x=\"42\" y=\"38\" width=\"16\" height=\"50\" rx=\"3\" fill=\"#0E4D5C\"/><line x1=\"14\" y1=\"88\" x2=\"64\" y2=\"88\" stroke=\"#9FBFC4\" stroke-width=\"2\"/><path d=\"M74 88 L74 64 L90 52 L106 64 L106 88 Z\" fill=\"#fff\" stroke=\"#0E4D5C\" stroke-width=\"2\"/><path d=\"M68 65 L90 45 L112 65\" fill=\"none\" stroke=\"#E2664A\" stroke-width=\"3\" stroke-linecap=\"round\"/><rect x=\"84\" y=\"74\" width=\"12\" height=\"14\" rx=\"2\" fill=\"#BFE3E2\"/></svg>"
   },
   {
+    sort: "2026-11-23",
+    when: "23 November 2026",
+    where: "Doctoral School, University of Malta",
+    title: "Leadership for the 21st Century",
+    kind: "Training",
+    file: "https://www.um.edu.mt/courses/studyunit/DOC6009",
+    status: "scheduled",
+    dlv: "D.2.3",
+    blurb: "DOC6009 with Christopher Bezzina, 17:00 to 20:00: leadership, relationships and the institutions researchers work in. The leadership half of the deliverable.",
+    svg: ""
+  },
+  {
     sort: "2026-11-27",
     when: "27 November 2026",
     where: "Guest seminar, University of Hildesheim",
@@ -75,6 +87,18 @@ FARSIDS.TEACHING = [
     status: "scheduled",
     dlv: "",
     blurb: "The first paper, the systematic review, presented in person at the development studies conference.",
+    svg: ""
+  },
+  {
+    sort: "2027-01-18",
+    when: "18 and 26 January 2027",
+    where: "Doctoral School, University of Malta",
+    title: "Project Management",
+    kind: "Training",
+    file: "https://www.um.edu.mt/courses/studyunit/DOC6068",
+    status: "scheduled",
+    dlv: "D.2.3",
+    blurb: "DOC6068 with Maria Calleja, two mornings: planning a research project, work breakdown, Gantt charts, stakeholders and milestones. The project management half of the deliverable.",
     svg: ""
   },
   {

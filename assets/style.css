@@ -1405,3 +1405,33 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 .lrow h4{margin:4px 0 0; font-family:var(--serif); font-weight:500; font-size:1.12rem; line-height:1.3; color:var(--abyss);}
 .lrow p{margin:0; font-size:.98rem; line-height:1.65; color:var(--ink);}
 @media(max-width:900px){ .learnfour{grid-template-columns:1fr 1fr;} .lrow{grid-template-columns:40px 1fr;} .lrow p{grid-column:2;} }
+
+/* ============ 6 October 2026: hypothesis and claims, stepped reading ============ */
+.stepnav.seven{display:grid; grid-template-columns:repeat(7,1fr); gap:8px;}
+.stepnav.seven button{display:flex; align-items:center; gap:8px; text-align:left; border-radius:14px; padding:8px 11px; font-size:.78rem; line-height:1.3; white-space:normal;}
+.stepnav.seven button .n{margin:0; flex:none;}
+.step .lead-p{font-size:1.02rem; line-height:1.68; color:var(--ink);}
+.step .hsec{margin-top:0;}
+.tiesfig{margin-top:26px;}
+.tiesfig svg{display:block; width:100%; height:auto;}
+.step > .lead-p{margin-top:8px;}
+.step .evnote{text-align:center; text-wrap:balance; max-width:60ch; margin:18px auto 0; font-size:.98rem; color:var(--ink);}
+.step .hypframe{text-align:center;}
+.step .hypframe .hq{text-wrap:balance; max-width:44ch; margin:0 auto;}
+.step .hypframe .hh{text-wrap:balance; max-width:74ch; margin:16px auto 0;}
+.step .hypframe .hn{text-wrap:balance; max-width:64ch; margin:14px auto 0;}
+.claimrows{margin-top:6px;}
+.crow{display:grid; grid-template-columns:200px 1fr; gap:0 36px; padding:22px 0 24px; border-top:1px solid var(--line);}
+.crow:last-child{border-bottom:1px solid var(--line);}
+.crow .cnum{font-family:var(--mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--lagoon);}
+.crow:nth-child(2) .cnum{color:#6A5ACD;} .crow:nth-child(3) .cnum{color:#C9552F;}
+.crow h4{margin:6px 0 0; font-family:var(--serif); font-size:1.2rem; font-weight:500; line-height:1.3; color:var(--abyss);}
+.crow p{margin:0; font-size:1rem; line-height:1.66; color:var(--ink);}
+.crow .against{margin-top:12px; padding-left:14px; border-left:2px solid #C9552F;}
+.crow .against .lab{display:block; font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:#C9552F; margin-bottom:4px;}
+.crow .against p{font-size:.92rem; color:var(--ink-soft);}
+.step .claimsnote{margin:18px 0 0;}
+.step .hyplinks{border-top:0; padding-top:0; margin-top:16px; gap:10px;}
+.step .hyplinks a{display:inline-block; border:1px solid var(--deep); color:var(--deep); border-radius:18px; padding:7px 15px; font-size:.86rem; font-weight:500;}
+.step .hyplinks a:hover{background:var(--deep); color:#fff;}
+@media(max-width:900px){ .stepnav.seven{grid-template-columns:1fr 1fr;} .crow{grid-template-columns:1fr; gap:10px;} }

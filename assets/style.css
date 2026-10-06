@@ -1435,3 +1435,36 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 .step .hyplinks a{display:inline-block; border:1px solid var(--deep); color:var(--deep); border-radius:18px; padding:7px 15px; font-size:.86rem; font-weight:500;}
 .step .hyplinks a:hover{background:var(--deep); color:#fff;}
 @media(max-width:900px){ .stepnav.seven{grid-template-columns:1fr 1fr;} .crow{grid-template-columns:1fr; gap:10px;} }
+
+/* ============ 6 October 2026: why it matters, stepped reading ============ */
+.qroom .stepbtn{background:#0A3242; border-color:#FFCC00; color:#FFCC00; box-shadow:0 3px 12px rgba(0,0,0,.3);}
+.qroom .stepbtn:hover:not([disabled]){background:#FFCC00; color:#08293A;}
+.qroom .stepnav.three{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+.qroom .stepnav.three button, .qroom .stepnav.four button{background:transparent; border-color:#ffffff33; color:#bfe9e6;}
+.qroom .stepnav.three button.on, .qroom .stepnav.four button.on{background:#FFCC00; border-color:#FFCC00; color:#08293A;}
+.qroom .stepper{max-width:1060px; margin:26px auto 0;}
+.qroom .stepper{padding:0 58px;}
+.qroom .stepbtn-prev{left:-54px;} .qroom .stepbtn-next{right:-54px;}
+.qroom .step{min-height:420px;}
+.qroom .step.on{display:flex; align-items:center; flex-direction:column;}
+.qroom .step > .dfig.wide{width:100%; align-self:flex-start;}
+.qroom .step > p.under{align-self:center; text-align:center; max-width:1000px; text-wrap:pretty;}
+.qroom .dfig.anim{padding:14px 10px 6px;}
+.qroom .dfig.anim .whypaths{margin:0 auto;}
+.qroom .step > .row2{width:100%;}
+.dfig{background:#ffffff08; border:1px solid #ffffff1f; border-radius:14px; overflow:hidden;}
+.dfig svg{display:block; width:100%; height:auto;}
+.dfig.wide{margin:0 0 22px;}
+.row2.half.dark{align-items:center;}
+.row2.half.dark .dfig{display:flex; align-items:center;}
+.qroom .row2 > div > p{color:#d5ecea; font-size:1.06rem; line-height:1.75; margin:0; text-wrap:pretty;}
+.qroom .step p.under{color:#d5ecea; font-size:1.06rem; line-height:1.75; margin:0; text-wrap:pretty; max-width:none;}
+.spine{position:relative; max-width:1100px; margin:30px auto 0; padding-left:0;}
+.station{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center; padding:30px 0 34px; border-top:1px solid #ffffff1f; position:relative;}
+.station.full{grid-template-columns:1fr;}
+.station .snum{position:absolute; top:-15px; left:0; width:30px; height:30px; border-radius:50%; background:#FFCC00; color:#08293A; font-family:var(--mono); font-size:.72rem; display:flex; align-items:center; justify-content:center;}
+.station .lab{display:block; font-family:var(--mono); font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:#9fc4c4; margin-bottom:10px;}
+.qroom .station p{color:#d5ecea; font-size:1.06rem; line-height:1.75; margin:0; text-wrap:pretty;}
+.station .dfig{display:flex; align-items:center;}
+.station.full .dfig.wide{margin-bottom:18px;}
+@media(max-width:900px){ .station{grid-template-columns:1fr;} .station.flip .stext{order:2;} }

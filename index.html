@@ -1847,7 +1847,7 @@ window.__initBoard = function(){
         card.innerHTML = '<div class="lp-head"><span class="lp-tag">' + esc(e.place) + '</span><span class="lp-when">' + esc(e.when) + '</span></div>'
           + '<h3>' + esc(e.title) + '</h3>'
           + '<div class="vst-art">' + e.svg + '</div>'
-          + '<p class="lp-teaser" style="margin-top:10px;">' + esc(e.note) + '</p>'
+          + String(e.note || '').split(/\n\s*\n/).map(function(p){ return '<p class="lp-teaser" style="margin-top:10px;">' + esc(p) + '</p>'; }).join('')
           + (srcs ? '<div class="lp-src"><span class="lab">Drawn from</span>' + srcs + '</div>' : '');
         return card;
       }

@@ -1202,10 +1202,11 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 
 /* Teaching and training: timeline first, then two compact lists that open on click */
 #room-training h3.teachsplit{margin:6px 0 0; padding-top:0;}
-#room-training .toolgrid.compactlists{margin-top:40px; align-items:start;}
+#room-training .toolgrid.compactlists{margin-top:56px; align-items:stretch;}
 #room-training .teachline{margin-top:10px;}
-#room-training .toolgrid.compactlists .resgroup{height:auto; max-height:none; padding:16px 22px 10px;}
-#room-training .toolgrid.compactlists .resgroup ul{overflow:visible; -webkit-mask-image:none; mask-image:none; margin-top:4px; padding-right:0;}
+#room-training .toolgrid.compactlists .resgroup{height:400px; max-height:none; padding:16px 22px 10px; display:flex; flex-direction:column;}
+#room-training .toolgrid.compactlists .resgroup ul{flex:1; min-height:0; overflow-y:auto; margin-top:4px; padding-right:8px; scrollbar-width:thin;}
+#room-training .toolgrid.compactlists .resgroup h3{display:flex; align-items:baseline; justify-content:space-between; gap:12px;}
 #room-training .toolgrid.compactlists .resgroup li{padding:0; border-bottom:1px dashed var(--line); line-height:1.35;}
 #room-training .toolgrid.compactlists .resgroup li:last-child{border-bottom:0;}
 .compactlists li details summary{list-style:none; display:flex; align-items:center; gap:8px; padding:8px 0; cursor:pointer;}
@@ -1231,16 +1232,18 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 .visitstrip .vs-n{display:block; margin-top:3px; font-size:.82rem; color:var(--ink-soft); line-height:1.45;}
 .visitstrip .is-here .vs-n{color:#cfe4e4;}
 .kigrid{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:10px; margin:14px 0 0;}
-.kigrid div{display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; padding:14px 8px 12px; background:#fff; border:1px solid var(--line); border-radius:10px;}
+.kigrid div{display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; padding:10px 8px 9px; background:#fff; border:1px solid var(--line); border-radius:10px;}
 .kigrid svg{width:34px; height:34px; display:block; stroke:var(--lagoon); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
 .kigrid span{font-size:.8rem; line-height:1.3; color:var(--ink);}
 .qtable{list-style:none; counter-reset:q; margin:12px 0 0; padding:0;}
-.qtable li{counter-increment:q; display:grid; grid-template-columns:34px 1.5fr 1fr; gap:0 22px; align-items:start; padding:13px 0; border-bottom:1px dashed var(--line);}
+.qtable li{counter-increment:q; display:grid; grid-template-columns:34px 1.5fr 1fr; gap:0 22px; align-items:start; padding:9px 0; border-bottom:1px dashed var(--line);}
 .qtable li::before{content:counter(q); font-family:var(--serif); font-size:1.3rem; color:var(--lagoon); line-height:1.2;}
 .qtable li:nth-child(2)::before{color:#E2664A;} .qtable li:nth-child(3)::before{color:#6A5ACD;} .qtable li:nth-child(4)::before{color:#D9A94E;} .qtable li:nth-child(5)::before{color:#5DCAA5;}
-.qtable b{font-family:var(--serif); font-weight:500; font-size:1.06rem; line-height:1.45; color:var(--abyss);}
+.qtable b{font-family:var(--serif); font-weight:500; font-size:1.02rem; line-height:1.4; color:var(--abyss);}
 .qtable .qnote{font-size:.86rem; line-height:1.5; color:var(--ink-soft); padding-top:3px;}
 #room-approach .sub[data-sub=interviews] .lead-p, #room-approach .sub[data-sub=groups] .lead-p{max-width:none;}
+#room-approach .sub[data-sub=interviews] .hsec{margin-top:22px;}
+#room-approach .sub[data-sub=interviews] .nextsub{margin-top:20px; padding-top:12px;}
 @media(max-width:900px){ .kigrid{grid-template-columns:repeat(3,1fr);} .qtable li{grid-template-columns:30px 1fr;} .qtable .qnote{grid-column:2;} .visitstrip{grid-template-columns:1fr;} }
 
 /* Focus groups: the session as a bar, three parts with a figure each, four results in a row */

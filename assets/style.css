@@ -1468,3 +1468,8 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 .station .dfig{display:flex; align-items:center;}
 .station.full .dfig.wide{margin-bottom:18px;}
 @media(max-width:900px){ .station{grid-template-columns:1fr;} .station.flip .stext{order:2;} }
+
+/* ============ 9 October 2026: who pays for what, the paragraph under the figure ============ */
+.qroom .whoread{max-width:1000px; margin:26px auto 0;}
+.qroom .whoread .whotext{color:#d5ecea; font-size:1.06rem; line-height:1.75; margin:0 0 16px; text-align:center; text-wrap:pretty;}
+.qroom .whoread .whotext:last-child{margin-bottom:0; color:#9fc4c4; font-size:.98rem;}

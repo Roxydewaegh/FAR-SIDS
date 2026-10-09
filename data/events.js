@@ -76,8 +76,8 @@ FARSIDS.TL = {
       href:'https://www.um.edu.mt/courses/studyunit/DOC6068', linkText:'DOC6068 in the UM catalogue'},
     {track:'training', title:'ISS5220 NVivo module', start:'2026-10-07', end:'2026-10-16',
       desc:'Two sessions within ISS5220, Wednesday 7 October 13:00 to 15:00 and Friday 16 October 13:00 to 17:00: thematic analysis by hand, then coding, codebooks and queries in NVivo, with the review\'s own coding of the 201 included studies as the live example (D.2.6).'},
-    {track:'training', title:'ISS5200 teaching seminar', start:'2026-10-20', end:'2026-10-21',
-      desc:'The seminar within the ISSI MA economics and environment unit in two blocks, Tuesday 20 and Wednesday 21 October, 15:00 to 17:00: how aid and remittances are counted, with Tonga as the worked case, then a mapping workshop by country group with presentations in the last half hour (D.2.6).'},
+    {track:'training', title:'ISS5200 teaching seminar', start:'2026-10-14', end:'2026-10-15',
+      desc:'The seminar within the ISSI MA economics and environment unit in two blocks, Wednesday 14 and Thursday 15 October, 17:00 to 19:00: how aid and remittances are counted, with Tonga as the worked case, then a mapping workshop by country group with presentations in the last half hour (D.2.6).'},
     {track:'training', title:'Hildesheim guest seminar', start:'2026-11-27', end:'2026-11-28',
       desc:'Virtual guest seminar at the University of Hildesheim, Aid, remittances and agency in small island states: the cases of Malta and Jamaica. Ninety minutes online for a course on small states in twentieth century Europe, the second teaching seminar (D.2.7).'},
     

@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=2026-10-09a">
+<link rel="stylesheet" href="assets/style.css?v=2026-10-09b">
 <script>document.documentElement.className = 'js';</script>
 </head>
 <body>
@@ -2048,9 +2048,10 @@ window.__initBoard = function(){
           : '<p class="proftoolline"><a href="labour-scheme-register.html">Why no scheme reaches this island, in the labour scheme register \u2192</a></p>')
       + panel('The one aid flow published month by month', lendChart(p), p.lendcap)
       + '<div class="profpanel"><h3>The fieldwork</h3><p class="profrowline">' + esc(p.field) + '</p><p class="profrowline">' + esc(p.prog) + '</p><p class="proftoolline"><a href="aid-programme-register.html">Every traced programme for ' + esc(p.name) + ', in the aid programme register \u2192</a></p></div>'
-      + '<div class="profsources"><h3>Sources</h3><ul>' + p.sources.map(function(sr){ return '<li><a href="' + sr[1] + '">' + esc(sr[0]) + '</a></li>'; }).join('') + '</ul>'
+      + '<div class="profsources">'
       + (p.download ? '<p class="profdl">Download <a href="' + p.download + '" download>the data behind this page</a>, <a href="data/downloads/far-sids island profile data - all three countries.csv" download>the three islands in one file</a>, <a href="data/downloads/far-sids island profile data - monthly pattern.csv" download>the monthly pattern</a> or <a href="data/downloads/far-sids island profile data - world bank monthly lending.csv" download>the monthly lending record</a>. Each file names the source of every value.</p>' : '')
       + '<p class="profcap">Recorded remittances count what passes through formal channels. Money carried home by hand, goods sent in kind and transfers between family members abroad are not in these series, and measuring what the official record cannot see is one of the things the household survey is for.</p></div>'
+      + '<div class="profsrcrow"><details class="srcbox profsrc"><summary>Sources</summary><div class="srclist">' + p.sources.map(function(sr){ return '<p><a href="' + sr[1] + '">' + esc(sr[0]) + '</a></p>'; }).join('') + '</div></details></div>'
       + '<p class="profback"><a href="#islands">All three islands</a></p>';
     el.innerHTML = h;
   }

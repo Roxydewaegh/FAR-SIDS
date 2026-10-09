@@ -90,18 +90,6 @@ FARSIDS.TEACHING = [
     svg: ""
   },
   {
-    sort: "2026-09-06",
-    when: "6 to 11 September 2026",
-    where: "Valletta campus, hosted by ISSI with the Resilient and Sustainable Islands Initiative",
-    title: "Certificate in Advanced Knowledge for SIDS Global Leadership",
-    kind: "Training",
-    file: "resi-week-talk-8-september-2026.html",
-    status: "done",
-    dlv: "",
-    blurb: "The RESI week: sessions with Matthew Bishop, George Carter, Emily Wilkinson, Jack Corbett and Godfrey Baldacchino, two field trips, and the FAR-SIDS talk given on 8 September.",
-    svg: ""
-  },
-  {
     sort: "2026-09-08",
     when: "8 September 2026",
     where: "RESI certificate week, Majjistral Park, Malta",
@@ -114,15 +102,15 @@ FARSIDS.TEACHING = [
     svg: "<svg viewBox=\"0 0 120 120\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"A dotted path with four stops above a wave\"><rect width=\"120\" height=\"120\" fill=\"#F6FBFB\"/><path d=\"M0 92 C24 82 44 98 68 90 C88 83 104 92 120 88 L120 120 L0 120 Z\" fill=\"#DCEEEE\"/><path d=\"M18 74 C34 62 44 82 60 70 C76 58 88 46 104 40\" fill=\"none\" stroke=\"#9FBFC4\" stroke-width=\"2\" stroke-dasharray=\"4 5\"/><circle cx=\"18\" cy=\"74\" r=\"6\" fill=\"#1C8C9B\"/><circle cx=\"52\" cy=\"75\" r=\"6\" fill=\"#1C8C9B\"/><circle cx=\"78\" cy=\"59\" r=\"6\" fill=\"#1C8C9B\"/><circle cx=\"104\" cy=\"40\" r=\"7\" fill=\"#E2664A\"/></svg>"
   },
   {
-    sort: "2026-10-01",
-    when: "October 2026",
+    sort: "2026-10-14",
+    when: "14 October 2026",
     where: "ISS5220, Islands and Small States Institute, University of Malta",
     title: "Integrated methods training, Professor Briguglio’s lecture in ISS5220",
     kind: "Training",
     file: "https://www.um.edu.mt/courses/studyunit/ISS5220",
     status: "scheduled",
     dlv: "D.2.4",
-    blurb: "The research methods unit of the ISSI MA. Attending Professor Lino Briguglio’s lecture, which comes before my own NVivo sessions in the same unit.",
+    blurb: "The research methods unit of the ISSI MA. Attending Professor Lino Briguglio’s lecture, Wednesday 14 October, 13:00 to 17:00.",
     svg: ""
   },
   {

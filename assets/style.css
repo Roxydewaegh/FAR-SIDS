@@ -1473,3 +1473,15 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 .qroom .whoread{max-width:1000px; margin:26px auto 0;}
 .qroom .whoread .whotext{color:#d5ecea; font-size:1.06rem; line-height:1.75; margin:0 0 16px; text-align:center; text-wrap:pretty;}
 .qroom .whoread .whotext:last-child{margin-bottom:0; color:#9fc4c4; font-size:.98rem;}
+
+/* ============ 9 October 2026: island profile sources behind a button ============ */
+.profsrcrow{position:relative; min-height:40px; margin:0 0 18px;}
+.profsrc{position:absolute; left:0; bottom:0; z-index:5;}
+.profsrc summary{list-style:none; cursor:pointer; font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--deep); background:#fff; border:1px solid var(--line); border-radius:999px; padding:7px 14px; display:inline-block; box-shadow:0 6px 18px -12px #0e4d5c88;}
+.profsrc summary::-webkit-details-marker{display:none;}
+.profsrc[open] summary{background:var(--deep); color:#fff;}
+.profsrc .srclist{position:absolute; left:0; bottom:40px; width:min(760px,70vw); max-height:52vh; overflow:auto; background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 18px; box-shadow:0 18px 40px -20px #08293a99;}
+.profsrc .srclist p{font-family:var(--sans); font-size:.88rem; line-height:1.5; color:var(--ink); margin:0 0 8px;}
+.profsrc .srclist p:last-child{margin-bottom:0;}
+.profsrc .srclist a{color:var(--deep); font-weight:600;}
+.profsrc .srclist a:hover{color:var(--lagoon);}

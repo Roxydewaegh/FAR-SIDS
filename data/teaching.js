@@ -1,6 +1,6 @@
 // The talks, teaching, conferences and courses of the fellowship, shown as one timeline in the Teaching and training room.
 // Each entry carries: sort (a date for ordering) · when (the date label) · where · title · kind
-// file (the ledger or slides at the repo root; empty until the presentation exists) · status (given, scheduled, planned)
+// file (the ledger, slides or certificate at the repo root; empty until it exists) · status (given, done, scheduled, planned)
 // dlv (a deliverable code, only where the proposal assigns one) · blurb · svg (an optional motif for the marker)
 // Oldest first. Adding a talk is a change to this file only.
 window.FARSIDS = window.FARSIDS || {};
@@ -18,6 +18,90 @@ FARSIDS.TEACHING = [
     svg: ""
   },
   {
+    sort: "2026-07-13",
+    when: "13 to 17 July 2026",
+    where: "IT Services, University of Malta",
+    title: "IBM SPSS, Introduction",
+    kind: "Training",
+    file: "spss-certificate-introduction.jpg",
+    status: "done",
+    dlv: "D.2.1",
+    blurb: "Three afternoon sessions on the statistics package, the first half of the quantitative methods training. Certificate of attendance.",
+    svg: ""
+  },
+  {
+    sort: "2026-07-20",
+    when: "20 to 24 July 2026",
+    where: "IT Services, University of Malta",
+    title: "IBM SPSS, Intermediate",
+    kind: "Training",
+    file: "spss-certificate-intermediate.jpg",
+    status: "done",
+    dlv: "D.2.1",
+    blurb: "Three further sessions, which complete the quantitative methods training. Certificate of attendance.",
+    svg: ""
+  },
+  {
+    sort: "2026-08-17",
+    when: "17 August 2026",
+    where: "Inter-American Development Bank, on Coursera",
+    title: "Perspectives in Digital Transformation: Financial Inclusion",
+    kind: "Training",
+    file: "idb-fintech-certificate.pdf",
+    status: "done",
+    dlv: "D.2.5",
+    blurb: "The FinTech elective, completed on the verified certificate track. Certificate of completion.",
+    svg: ""
+  },
+  {
+    sort: "2026-08-23",
+    when: "August 2026",
+    where: "Work Package 3, the three country survey forms",
+    title: "Household survey instrument audit",
+    kind: "Training",
+    file: "household-survey-ledger.html",
+    status: "done",
+    dlv: "",
+    blurb: "Every question in the three country forms checked against Grosh and Glewwe and against the national household surveys each country already runs. Survey design learned on the instrument itself.",
+    svg: ""
+  },
+  {
+    sort: "2026-09-03",
+    when: "3 September 2026",
+    where: "Commonwealth Climate Finance Access Hub",
+    title: "Commonwealth Climate Finance Essentials",
+    kind: "Training",
+    file: "commonwealth-climate-certificate.pdf",
+    status: "done",
+    dlv: "",
+    blurb: "How small and vulnerable states access external finance across the Caribbean, Pacific and Indian Ocean. Certificate of completion.",
+    svg: ""
+  },
+  {
+    sort: "2026-09-06",
+    when: "31 August to 6 September 2026",
+    where: "IMFx on edX",
+    title: "Financial Programming and Policies, Part 1",
+    kind: "Training",
+    file: "imfx-fpp1-certificate.pdf",
+    status: "done",
+    dlv: "",
+    blurb: "Macroeconomic accounts and analysis, and where aid and remittances appear in them. Verified certificate track. Certificate of completion.",
+    svg: ""
+  },
+  {
+    sort: "2026-09-06",
+    when: "6 to 11 September 2026",
+    where: "Valletta campus, hosted by ISSI with the Resilient and Sustainable Islands Initiative",
+    title: "Certificate in Advanced Knowledge for SIDS Global Leadership",
+    kind: "Training",
+    file: "resi-week-talk-8-september-2026.html",
+    status: "done",
+    dlv: "",
+    blurb: "The RESI week: sessions with Matthew Bishop, George Carter, Emily Wilkinson, Jack Corbett and Godfrey Baldacchino, two field trips, and the FAR-SIDS talk given on 8 September.",
+    svg: ""
+  },
+  {
     sort: "2026-09-08",
     when: "8 September 2026",
     where: "RESI certificate week, Majjistral Park, Malta",
@@ -28,6 +112,30 @@ FARSIDS.TEACHING = [
     dlv: "",
     blurb: "The project in sixteen slides for the SIDS Global Leadership cohort: the question, the three islands, the review, and what the fieldwork will ask.",
     svg: "<svg viewBox=\"0 0 120 120\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"A dotted path with four stops above a wave\"><rect width=\"120\" height=\"120\" fill=\"#F6FBFB\"/><path d=\"M0 92 C24 82 44 98 68 90 C88 83 104 92 120 88 L120 120 L0 120 Z\" fill=\"#DCEEEE\"/><path d=\"M18 74 C34 62 44 82 60 70 C76 58 88 46 104 40\" fill=\"none\" stroke=\"#9FBFC4\" stroke-width=\"2\" stroke-dasharray=\"4 5\"/><circle cx=\"18\" cy=\"74\" r=\"6\" fill=\"#1C8C9B\"/><circle cx=\"52\" cy=\"75\" r=\"6\" fill=\"#1C8C9B\"/><circle cx=\"78\" cy=\"59\" r=\"6\" fill=\"#1C8C9B\"/><circle cx=\"104\" cy=\"40\" r=\"7\" fill=\"#E2664A\"/></svg>"
+  },
+  {
+    sort: "2026-10-01",
+    when: "October 2026",
+    where: "ISS5220, Islands and Small States Institute, University of Malta",
+    title: "Integrated methods training, Professor Briguglio’s lecture in ISS5220",
+    kind: "Training",
+    file: "https://www.um.edu.mt/courses/studyunit/ISS5220",
+    status: "scheduled",
+    dlv: "D.2.4",
+    blurb: "The research methods unit of the ISSI MA. Attending Professor Lino Briguglio’s lecture, which comes before my own NVivo sessions in the same unit.",
+    svg: ""
+  },
+  {
+    sort: "2026-10-06",
+    when: "14 September to 6 October 2026",
+    where: "World Bank Group Data Academy",
+    title: "Fundamentals of data visualization: crafting compelling stories with data",
+    kind: "Training",
+    file: "worldbank-dataviz-certificate.pdf",
+    status: "done",
+    dlv: "",
+    blurb: "Eight hours on choosing the chart type for the question, the anatomy of a clear chart, and maps and infographics in Excel. Certificate of completion.",
+    svg: ""
   },
   {
     sort: "2026-10-07",
@@ -85,8 +193,20 @@ FARSIDS.TEACHING = [
     kind: "Conference",
     file: "",
     status: "scheduled",
-    dlv: "",
+    dlv: "D.6.5",
     blurb: "The first paper, the systematic review, presented in person at the development studies conference.",
+    svg: ""
+  },
+  {
+    sort: "2026-12-07",
+    when: "7 to 11 December 2026",
+    where: "UNU-MERIT, online",
+    title: "Policy Brief Writing",
+    kind: "Training",
+    file: "https://unu.edu/merit/course/policy-brief-writing",
+    status: "planned",
+    dlv: "D.2.2",
+    blurb: "Turning research into clear policy briefs. The policy writing training, in the quiet week after DevNet.",
     svg: ""
   },
   {
@@ -102,8 +222,8 @@ FARSIDS.TEACHING = [
     svg: ""
   },
   {
-    sort: "2027-02-01",
-    when: "Early 2027",
+    sort: "2027-01-31",
+    when: "January 2027",
     where: "Partner universities in Jamaica, Tonga and Comoros",
     title: "Bridging Cultures with Reciprocity",
     kind: "Teaching, online course",
@@ -114,6 +234,30 @@ FARSIDS.TEACHING = [
     svg: ""
   },
   {
+    sort: "2027-02-15",
+    when: "February 2027",
+    where: "Work Package 2",
+    title: "Training complete",
+    kind: "Milestone",
+    file: "",
+    status: "planned",
+    dlv: "M.2.1",
+    blurb: "Both teaching seminars delivered and the ISS5220 lecture attended close the training work package.",
+    svg: ""
+  },
+  {
+    sort: "2027-02-20",
+    when: "February 2027",
+    where: "Islands and Small States Institute, University of Malta",
+    title: "Research seminar on the research design and the desk findings",
+    kind: "Research seminar",
+    file: "",
+    status: "planned",
+    dlv: "D.6.1",
+    blurb: "The framework and the desk findings presented at ISSI, with the partner counterparts in Jamaica, Tonga and the Comoros invited online. The first of the four research seminars.",
+    svg: ""
+  },
+  {
     sort: "2027-05-15",
     when: "April to June 2027",
     where: "The University of the West Indies, Jamaica",
@@ -121,7 +265,7 @@ FARSIDS.TEACHING = [
     kind: "Research seminar",
     file: "",
     status: "planned",
-    dlv: "D.6.1 to D.6.4",
+    dlv: "D.6.2",
     blurb: "Given during the secondment that closes the Jamaica fieldwork.",
     svg: ""
   },
@@ -145,7 +289,7 @@ FARSIDS.TEACHING = [
     kind: "Research seminar",
     file: "",
     status: "planned",
-    dlv: "D.6.1 to D.6.4",
+    dlv: "D.6.3",
     blurb: "Given during the secondment that closes the Tonga fieldwork.",
     svg: ""
   },
@@ -157,7 +301,7 @@ FARSIDS.TEACHING = [
     kind: "Research seminar",
     file: "",
     status: "planned",
-    dlv: "D.6.1 to D.6.4",
+    dlv: "D.6.4",
     blurb: "Given during the secondment that closes the Comoros fieldwork.",
     svg: ""
   },
@@ -169,7 +313,7 @@ FARSIDS.TEACHING = [
     kind: "Conference",
     file: "",
     status: "planned",
-    dlv: "",
+    dlv: "D.6.6",
     blurb: "The second paper, on the methodology and preliminary findings.",
     svg: ""
   },
@@ -183,6 +327,18 @@ FARSIDS.TEACHING = [
     status: "planned",
     dlv: "D.6.7",
     blurb: "The second massive open online course, completing the teaching promised across the fellowship.",
+    svg: ""
+  },
+  {
+    sort: "2028-05-15",
+    when: "May 2028",
+    where: "Work Package 6",
+    title: "Knowledge transfer complete",
+    kind: "Milestone",
+    file: "",
+    status: "planned",
+    dlv: "M.6.1",
+    blurb: "The four research seminars, the two conferences and the two online courses delivered close the knowledge transfer work package.",
     svg: ""
   },
   {

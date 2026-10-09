@@ -13,9 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=2026-10-09b">
+<link rel="stylesheet" href="assets/style.css?v=2026-10-09c">
 <script>document.documentElement.className = 'js';</script>
-<script src="assets/analytics.js"></script>
 </head>
 <body>
 <div class="atlas">
@@ -1551,11 +1550,8 @@ window.__initBoard = function(){
     links.forEach(function(a){ a.classList.toggle('on', a.dataset.room === id); });
     document.querySelectorAll('.rail .subnav a').forEach(function(a){ a.classList.remove('on'); });
     document.querySelectorAll('.rail .subnav').forEach(function(sn){ sn.classList.toggle('openset', sn.dataset['for'] === id); });
-    var chosenSub = SUBS[id] ? (sub && SUBS[id].indexOf(sub) >= 0 ? sub : SUBS[id][0]) : null;
-    if(chosenSub) setSub(id, chosenSub);
+    if(SUBS[id]) setSub(id, sub && SUBS[id].indexOf(sub) >= 0 ? sub : SUBS[id][0]);
     window.scrollTo(0, 0);
-    window.__view = id + (chosenSub ? '/' + chosenSub : '');
-    if(window.__gcView) window.__gcView(window.__view);
   }
   function route(){
     var h = location.hash.replace('#','').split('/');
@@ -2060,9 +2056,505 @@ window.__initBoard = function(){
     el.innerHTML = h;
   }
 
-  profile('jm', 'prof-jm');
-  profile('to', 'prof-to');
-  profile('km', 'prof-km');
+
+  var SANS = 'Spline Sans,sans-serif', MONO = 'Space Mono,monospace', SERIF = 'Fraunces,Georgia,serif';
+  function T(x, y, txt, size, fill, opts){
+    opts = opts || {};
+    return '<text x="' + x + '" y="' + y + '" font-size="' + size + '" fill="' + (fill || INK) + '" font-family="' + (opts.mono ? MONO : opts.serif ? SERIF : SANS) + '"' + (opts.anchor ? ' text-anchor="' + opts.anchor + '"' : '') + (opts.weight ? ' font-weight="' + opts.weight + '"' : '') + (opts.ls ? ' letter-spacing="' + opts.ls + '"' : '') + '>' + esc(txt) + '</text>';
+  }
+
+  // Header infographic: the two flows in 2023 as one bar, and three facts
+  function numword(n){
+    var ones = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+    var tens = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+    if(n < 20) return ones[n];
+    if(n < 100) return tens[Math.floor(n/10)] + (n % 10 ? '-' + ones[n % 10] : '');
+    return String(n);
+  }
+
+  // Part 1: then and now
+
+  // Header: the whole record in one small chart
+  function headFig(p){
+    var W = 440, H = 150, pad = 12, y0 = p.series[0][0], y1 = p.series[p.series.length-1][0];
+    var ymax = 10 * Math.ceil(Math.max.apply(null, p.series.map(function(r){ return Math.max(r[1]||0, r[2]||0); })) / 10);
+    function X(y){ return pad + (y - y0) / (y1 - y0) * (W - 150 - pad); }
+    function Y(v){ return 16 + (H - 46) - v / ymax * (H - 46); }
+    function path(idx){ var d = '', pen = false; p.series.forEach(function(r){ var v = r[idx]; if(v == null){ pen = false; return; } d += (pen ? ' L' : ' M') + X(r[0]).toFixed(1) + ',' + Y(v).toFixed(1); pen = true; }); return d; }
+    var lastR = null, lastA = null; p.series.forEach(function(r){ if(r[1] != null) lastR = r; if(r[2] != null) lastA = r; });
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(p.name + ': remittances as a share of GDP and net aid as a share of national income, ' + y0 + ' to ' + y1) + '">';
+    s += T(pad, 12, 'Remittances and net aid, ' + y0 + ' to ' + y1, 10.5, FAINT, {mono:true});
+    s += '<path d="' + path(2) + '" fill="none" stroke="' + CORAL + '" stroke-width="2.2" stroke-linejoin="round"/>';
+    s += '<path d="' + path(1) + '" fill="none" stroke="' + TEAL + '" stroke-width="2.6" stroke-linejoin="round"/>';
+    s += '<circle cx="' + X(lastR[0]) + '" cy="' + Y(lastR[1]) + '" r="4" fill="' + TEAL + '"/><circle cx="' + X(lastA[0]) + '" cy="' + Y(lastA[2]) + '" r="4" fill="' + CORAL + '"/>';
+    var yr = Y(lastR[1]), ya = Y(lastA[2]); if(Math.abs(yr - ya) < 16){ if(yr < ya){ yr -= 8; ya += 8; } else { yr += 8; ya -= 8; } }
+    s += T(X(lastR[0]) + 10, yr + 4, lastR[1].toFixed(1) + '% of GDP, ' + lastR[0], 12, TEAL, {weight:600});
+    s += T(X(lastA[0]) + 10, ya + 4, lastA[2].toFixed(1) + '% of income, ' + lastA[0], 12, CORAL, {weight:600});
+    s += T(pad, H - 10, y0 + '', 10.5, FAINT, {mono:true}); s += T(X(y1), H - 10, y1 + '', 10.5, FAINT, {mono:true, anchor:'end'});
+    s += '</svg>';
+    return s;
+  }
+
+  function val(p, year, idx){ var r = p.series.filter(function(x){ return x[0] === year; })[0]; return r ? r[idx] : null; }
+
+  // Part 1: then and now
+  function thenNow(p, yA, yB, noteA, noteB, mid1, mid2){
+    var W = 1000, H = 240, base = 184;
+    var vmax = Math.max(val(p,yA,1)||0, val(p,yA,2)||0, val(p,yB,1)||0, val(p,yB,2)||0), scale = 88 / vmax;
+    function panel(x, year, note){
+      var r = val(p, year, 1), a = val(p, year, 2), s = '';
+      s += T(x + 150, 34, year, 30, INK, {serif:true, anchor:'middle'});
+      s += T(x + 150, 58, note, 12.5, FAINT, {anchor:'middle'});
+      var hr = r * scale, ha = a * scale;
+      s += '<rect x="' + (x + 60) + '" y="' + (base - hr) + '" width="76" height="' + hr + '" rx="4" fill="' + TEAL + '"/>';
+      s += '<rect x="' + (x + 164) + '" y="' + (base - ha) + '" width="76" height="' + Math.max(ha, 2) + '" rx="4" fill="' + CORAL + '"/>';
+      s += T(x + 98, base - hr - 10, r.toFixed(1) + '%', 17, INK, {mono:true, anchor:'middle'});
+      s += T(x + 202, base - ha - 10, a.toFixed(1) + '%', 17, INK, {mono:true, anchor:'middle'});
+      s += T(x + 98, base + 22, 'remittances', 13, SOFT, {anchor:'middle'});
+      s += T(x + 98, base + 40, 'share of GDP', 11.5, FAINT, {anchor:'middle'});
+      s += T(x + 202, base + 22, 'net aid', 13, SOFT, {anchor:'middle'});
+      s += T(x + 202, base + 40, 'share of national income', 11.5, FAINT, {anchor:'middle'});
+      return s;
+    }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(p.name + ' in ' + yA + ' and in ' + yB + ': the two flows compared') + '">';
+    s += '<defs><marker id="pjarrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#7FA8AE"/></marker></defs>';
+    s += '<line x1="40" y1="' + base + '" x2="' + (W - 40) + '" y2="' + base + '" stroke="' + GRID + '" stroke-width="1.5"/>';
+    s += panel(60, yA, noteA);
+    s += panel(640, yB, noteB);
+    s += '<path d="M400,118 L600,118" stroke="#7FA8AE" stroke-width="2" marker-end="url(#pjarrow)"/>';
+    s += T(500, 102, mid1, 14, SOFT, {anchor:'middle'});
+    s += T(500, 142, mid2, 14, SOFT, {anchor:'middle'});
+    s += '</svg>';
+    return s;
+  }
+
+  // Part 3: flows into a hub
+  function flows(nodes, hub, sub, note, label){
+    var W = 1000, H = 262, ys = [62, 122, 166, 202, 234], pmax = nodes[0][1];
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">';
+    var jx = 700, jy = 140, jr = 72;
+    s += '<circle cx="' + jx + '" cy="' + jy + '" r="' + jr + '" fill="#0E4D5C"/>';
+    s += T(jx, jy + 7, hub, 21, '#fff', {anchor:'middle', serif:true});
+    s += T(jx, jy + jr + 20, sub, 11.5, SOFT, {anchor:'middle', mono:true});
+    nodes.forEach(function(c, i){
+      var cx = 230, cy = ys[i], rr = Math.max(7, 44 * Math.sqrt(c[1] / pmax)), faint = c[2];
+      s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + rr.toFixed(1) + '" fill="' + TEAL + '" fill-opacity="' + (faint ? 0.4 : 0.85) + '"/>';
+      s += T(cx - rr - 12, cy + 5, c[0], 14.5, INK, {anchor:'end'});
+      var x1 = cx + rr + 6, x2 = jx - jr - 8, sw = Math.max(1.2, 14 * c[1] / pmax);
+      s += '<path d="M' + x1 + ',' + cy + ' C' + (x1 + 160) + ',' + cy + ' ' + (x2 - 160) + ',' + jy + ' ' + x2 + ',' + jy + '" fill="none" stroke="' + TEAL + '" stroke-opacity=".55" stroke-width="' + sw.toFixed(1) + '" stroke-linecap="round"/>';
+      s += T(x1 + 14, cy - 6 - sw/2, c[1] + '%', 13, SOFT, {mono:true});
+    });
+    note.forEach(function(t, i){ s += T(880, 120 + i * 19, t, i === 0 ? 15 : 13.5, i === 0 ? INK : SOFT, {anchor:'middle', weight: i === 0 ? 600 : null}); });
+    s += '</svg>';
+    return s;
+  }
+
+  // Part 4: programme squares with a right panel
+  function squares(n, segs, title, right, label){
+    var W = 1000, H = 272;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">';
+    var cols = 12, size = 26, gap = 6, x0 = 30, y0 = 50, k = 0;
+    s += T(x0, 30, title, 11, FAINT, {mono:true, ls:1.4});
+    segs.forEach(function(g){
+      for(var i = 0; i < g[1]; i++, k++){
+        var x = x0 + (k % cols) * (size + gap), y = y0 + Math.floor(k / cols) * (size + gap);
+        s += '<rect x="' + x + '" y="' + y + '" width="' + size + '" height="' + size + '" rx="5" fill="' + g[0] + '" fill-opacity=".9"/>';
+      }
+    });
+    var lx = 430;
+    segs.forEach(function(g, i){
+      var y = 66 + i * 58;
+      s += '<rect x="' + lx + '" y="' + (y - 18) + '" width="22" height="22" rx="5" fill="' + g[0] + '" fill-opacity=".9"/>';
+      s += T(lx + 34, y, g[1] + '', 20, INK, {serif:true});
+      s += T(lx + 70, y - 8, g[2], 13, SOFT);
+      s += T(lx + 70, y + 10, g[3], 12, FAINT);
+    });
+    s += '<line x1="760" y1="18" x2="760" y2="' + (H - 10) + '" stroke="' + GRID + '" stroke-width="1.5"/>';
+    s += right;
+    s += '</svg>';
+    return s;
+  }
+  function rightPersons(title, lines){
+    var s = T(790, 30, title, 11, FAINT, {mono:true, ls:0.9});
+    for(var k = 0; k < 9; k++){
+      var px = 790 + (k % 3) * 40, py = 58 + Math.floor(k / 3) * 42;
+      s += '<g transform="translate(' + px + ',' + py + ')" fill="' + (k === 0 ? CORAL : '#CFDDE0') + '"><circle cx="14" cy="8" r="7"/><path d="M2,38 C2,22 8,18 14,18 C20,18 26,22 26,38 Z"/></g>';
+    }
+    lines.forEach(function(t, i){ s += T(790, 208 + i * 18, t, i === 0 ? 14.5 : 13, i === 0 ? INK : SOFT, {weight: i === 0 ? 600 : null}); });
+    return s;
+  }
+  function rightList(title, rows){
+    var s = T(790, 30, title[0], 11, FAINT, {mono:true, ls:1.2}) + T(790, 48, title[1], 11, FAINT, {mono:true, ls:1.2});
+    rows.forEach(function(r, i){
+      var y = 78 + i * 30;
+      s += T(790, y + 4, r[1] + '', 19, INK, {serif:true});
+      s += T(826, y + 3, r[0], 12.5, SOFT);
+    });
+    return s;
+  }
+
+  // Part 5: a hundred squares
+  function waffle(cats, title, label){
+    var W = 1000, H = 250;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">';
+    s += T(30, 24, title, 11, FAINT, {mono:true, ls:1.4});
+    var size = 17, gap = 4, x0 = 30, y0 = 38, idx = 0;
+    cats.forEach(function(c){
+      for(var k = 0; k < c[1]; k++, idx++){
+        var col = idx % 20, row = Math.floor(idx / 20);
+        s += '<rect x="' + (x0 + col * (size + gap)) + '" y="' + (y0 + row * (size + gap)) + '" width="' + size + '" height="' + size + '" rx="3" fill="' + c[2] + '" fill-opacity="' + c[3] + '"/>';
+      }
+    });
+    var lx = 500;
+    cats.forEach(function(c, i){
+      var col = i < 4 ? 0 : 1, row = i < 4 ? i : i - 4;
+      var x = lx + col * 250, y = 58 + row * 46;
+      s += '<rect x="' + x + '" y="' + (y - 17) + '" width="20" height="20" rx="4" fill="' + c[2] + '" fill-opacity="' + c[3] + '"/>';
+      s += T(x + 32, y, c[1] + '', 19, INK, {serif:true});
+      s += T(x + 66, y - 1, c[0], 12.5, SOFT);
+    });
+    s += '</svg>';
+    return s;
+  }
+
+  // Part 5 (Tonga): rows of households
+  function dotRows(rows, title, label){
+    var W = 1000, H = 250;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">';
+    s += T(30, 24, title, 11, FAINT, {mono:true, ls:1.4});
+    rows.forEach(function(r, i){
+      var y = 60 + i * 64;
+      s += T(30, y + 6, r[0], 15, INK, {weight:600});
+      s += T(30, y + 26, r[2], 12.5, FAINT);
+      for(var k = 0; k < 20; k++){
+        var x = 400 + k * 28;
+        s += '<rect x="' + x + '" y="' + (y - 10) + '" width="22" height="30" rx="4" fill="' + (k < r[1] ? TEAL : '#DCE7E7') + '"/>';
+      }
+      s += T(972, y + 12, r[1] + ' in 20', 13, SOFT, {mono:true, anchor:'end'});
+    });
+    s += '</svg>';
+    return s;
+  }
+
+  // Part 6: grouped bars
+  function groups(labels, A, B, ymax, title, label, unit){
+    var W = 1000, H = 230, padL = 60, padT = 30, padB = 42, iw = 900, ih = H - padT - padB, n = labels.length;
+    var g = iw / n, bw = Math.min(52, g / 2 - 10);
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">';
+    for(var v = 0; v <= ymax; v += ymax / 3){
+      var y = padT + ih - v / ymax * ih;
+      s += '<line x1="' + padL + '" y1="' + y + '" x2="' + (W - 30) + '" y2="' + y + '" stroke="' + GRID + '"/>';
+      s += T(padL - 10, y + 4, Math.round(v) + (v === ymax ? '%' : ''), 12, FAINT, {mono:true, anchor:'end'});
+    }
+    for(var i = 0; i < n; i++){
+      var cx = padL + g * i + g / 2, h1 = A[i] / ymax * ih, h2 = B[i] / ymax * ih;
+      s += '<rect x="' + (cx - bw - 4) + '" y="' + (padT + ih - h1) + '" width="' + bw + '" height="' + h1 + '" rx="3" fill="' + TEAL + '" fill-opacity=".9"/>';
+      s += '<rect x="' + (cx + 4) + '" y="' + (padT + ih - h2) + '" width="' + bw + '" height="' + h2 + '" rx="3" fill="' + CORAL + '" fill-opacity=".9"/>';
+      s += T(cx - bw/2 - 4, padT + ih - h1 - 7, A[i] + (unit||'%'), 12.5, INK, {mono:true, anchor:'middle'});
+      s += T(cx + bw/2 + 4, padT + ih - h2 - 7, B[i] + (unit||'%'), 12.5, INK, {mono:true, anchor:'middle'});
+      s += T(cx, H - 16, labels[i], 13.5, SOFT, {anchor:'middle'});
+    }
+    s += '</svg>';
+    return s;
+  }
+  function legend2(a, b){
+    return '<div class="proflegend"><span><i style="background:' + TEAL + '"></i>' + esc(a) + '</span><span><i style="background:' + CORAL + '"></i>' + esc(b) + '</span></div>';
+  }
+
+  // Part 6 (Tonga): two panels
+  function tongaKnown(){
+    var W = 1000, H = 240;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Nine Tongan households in ten receive remittances; poverty fell from 27.4% in 2015 to 20.6% in 2021">';
+    s += T(30, 24, 'HOUSEHOLDS RECEIVING MONEY FROM ABROAD, 2021', 11, FAINT, {mono:true, ls:1.4});
+    for(var k = 0; k < 10; k++){
+      var x = 30 + k * 44;
+      s += '<path d="M' + (x+18) + ',48 L' + (x+36) + ',66 L' + (x+32) + ',66 L' + (x+32) + ',92 L' + (x+4) + ',92 L' + (x+4) + ',66 L' + x + ',66 Z" fill="' + (k < 9 ? TEAL : '#DCE7E7') + '"/>';
+    }
+    s += T(30, 128, 'Nearly nine households in ten', 15, INK, {weight:600});
+    s += T(30, 150, 'received remittances in 2021, the Household Income', 13, SOFT);
+    s += T(30, 168, 'and Expenditure Survey found (World Bank, 2024).', 13, SOFT);
+    s += T(30, 200, '94% of households with a seasonal worker abroad,', 13, SOFT);
+    s += T(30, 218, '73% of other households (Edwards et al., 2022).', 13, SOFT);
+    s += '<line x1="560" y1="14" x2="560" y2="' + (H - 10) + '" stroke="' + GRID + '" stroke-width="1.5"/>';
+    s += T(600, 24, 'POVERTY HEADCOUNT RATE, 2015 AND 2021', 11, FAINT, {mono:true, ls:1.4});
+    var base = 190, sc = 4.6;
+    [[2015, 27.4], [2021, 20.6]].forEach(function(b, i){
+      var x = 640 + i * 180, h = b[1] * sc;
+      s += '<rect x="' + x + '" y="' + (base - h) + '" width="90" height="' + h + '" rx="4" fill="' + (i ? TEAL : '#9DB9BE') + '"/>';
+      s += T(x + 45, base - h - 10, b[1] + '%', 16, INK, {mono:true, anchor:'middle'});
+      s += T(x + 45, base + 22, b[0] + '', 14, SOFT, {anchor:'middle'});
+    });
+    s += '<line x1="600" y1="' + base + '" x2="960" y2="' + base + '" stroke="' + GRID + '" stroke-width="1.5"/>';
+    s += '</svg>';
+    return s;
+  }
+
+  // Part 7: what the study does on the island
+  function stages(){
+    var W = 1000, H = 150;
+    var boxes = [['Ethnographic fieldwork', 'semi-structured interviews and', 'focus groups, in the opening weeks', TEAL], ['Household survey', '250 to 300 households, asked', 'which need each flow pays for', CORAL], ['Two-way knowledge transfer', 'a research seminar at each partner university,', 'co-authorship, and two certificate courses', '#0E4D5C']];
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="What the study does on each island: ethnographic fieldwork, a household survey, and capacity building with the partner institution">';
+    boxes.forEach(function(b, i){
+      var x = 14 + i * 328;
+      s += '<rect x="' + x + '" y="10" width="310" height="132" rx="14" fill="#fff" stroke="#DCE7E7"/><rect x="' + x + '" y="10" width="5" height="132" rx="2" fill="' + b[3] + '"/>';
+      s += T(x + 24, 38, (i + 1) + '', 12, FAINT, {mono:true});
+      s += T(x + 24, 70, b[0], 19, INK, {serif:true});
+      s += T(x + 24, 98, b[1], 13, SOFT);
+      s += T(x + 24, 118, b[2], 13, SOFT);
+    });
+    s += '</svg>';
+    return s;
+  }
+
+  // Side by side: one small chart per island on one scale
+  function smallChart(p, ymax){
+    var W = 440, H = 340, padL = 44, padR = 14, padT = 36, padB = 40, iw = W - padL - padR, ih = H - padT - padB;
+    var y0 = 1980, y1 = 2025;
+    function X(y){ return padL + (y - y0) / (y1 - y0) * iw; }
+    function Y(v){ return padT + ih - v / ymax * ih; }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(p.name) + ', remittances and aid on the shared scale">';
+    s += T(padL, 20, p.name, 20, INK, {serif:true});
+    for(var g = 0; g <= ymax; g += 10){
+      s += '<line x1="' + padL + '" y1="' + Y(g) + '" x2="' + (W - padR) + '" y2="' + Y(g) + '" stroke="' + GRID + '"/>';
+      s += T(padL - 8, Y(g) + 4, g + (g === ymax ? '%' : ''), 11, FAINT, {mono:true, anchor:'end'});
+    }
+    [1980, 1990, 2000, 2010, 2020].forEach(function(t){ s += T(X(t), H - padB + 24, t + '', 11, FAINT, {mono:true, anchor:'middle'}); });
+    s += '<rect x="' + X(2020) + '" y="' + padT + '" width="' + (X(2021) - X(2020) + iw/(y1-y0)) + '" height="' + ih + '" fill="#0E4D5C" fill-opacity="0.06"/>';
+    function path(idx){ var d = '', pen = false; p.series.forEach(function(r){ var v = r[idx]; if(v == null){ pen = false; return; } d += (pen ? ' L' : ' M') + X(r[0]).toFixed(1) + ',' + Y(v).toFixed(1); pen = true; }); return d; }
+    s += '<path d="' + path(2) + '" fill="none" stroke="' + CORAL + '" stroke-width="2" stroke-linejoin="round"/>';
+    s += '<path d="' + path(1) + '" fill="none" stroke="' + TEAL + '" stroke-width="2.4" stroke-linejoin="round"/>';
+    var lastR = null, lastA = null;
+    p.series.forEach(function(r){ if(r[1] != null) lastR = r; if(r[2] != null) lastA = r; });
+    if(lastR) s += '<circle cx="' + X(lastR[0]) + '" cy="' + Y(lastR[1]) + '" r="4" fill="' + TEAL + '"/>';
+    if(lastA) s += '<circle cx="' + X(lastA[0]) + '" cy="' + Y(lastA[2]) + '" r="4" fill="' + CORAL + '"/>';
+    s += '</svg>';
+    return s;
+  }
+
+  function dlLine(p){ return '<p class="profdl">Download <a href="' + p.download + '" download>the data behind this page</a>, <a href="data/downloads/far-sids island profile data - all three countries.csv" download>the three islands in one file</a>, <a href="data/downloads/far-sids island profile data - monthly pattern.csv" download>the monthly pattern</a> or <a href="data/downloads/far-sids island profile data - world bank monthly lending.csv" download>the monthly lending record</a>. Each file names the source of every value.</p>'; }
+  function srcBox(list){ return '<div class="profsrcrow"><details class="srcbox profsrc"><summary>Sources</summary><div class="srclist">' + list.map(function(sr){ return '<p><a href="' + sr[1] + '">' + esc(sr[0]) + '</a></p>'; }).join('') + '</div></details></div>'; }
+  var WHATWEDO_TEXT = 'In each island the study begins with ethnographic fieldwork, semi-structured interviews and focus groups, so that the household survey asks what matters to households in their own words. The survey of 250 to 300 households then records which programmes reach each household, who sends money from abroad, and which need each flow is attached to. What the fieldwork finds is read alongside the national record: back in Malta, autoregressive distributed lag (ARDL) models test, across the annual series, whether aid and remittances replace each other, add to each other, or move independently. The study is designed as a two-way knowledge transfer with the partner universities rather than an extraction of data. The fellow delivers a research seminar at each partner institution on the study\u2019s mixed-methods design and its multi-level household survey, co-authors the country papers with the partner researchers, and leaves the survey instrument, the field protocols and the analysis code with the partner, so that the work can be repeated and extended in the country after the fellowship ends. Alongside the seminars, the study designs two open online courses, each leading to a certificate, whose content is set with the partner universities so that the courses answer the needs their staff and students name rather than the study\u2019s own methods.';
+  function whatWeDo(p, srcs, extra){
+    return { short: 'What we do', title: 'What the study does in each island',
+      lead: 'The study listens before counting, and is designed as a two-way knowledge transfer with the partner universities.',
+      fig: stages(), text: WHATWEDO_TEXT, after: '<div class="pjafter">' + srcBox(srcs) + dlLine(p) + '</div>' };
+  }
+
+  var ISLANDS = {};
+
+  ISLANDS.jm = function(p){
+    var srcs = p.sources.concat([
+      ['Bank of Jamaica (2026). Remittance Bulletin, December 2025', 'https://boj.org.jm/wp-content/uploads/2026/02/Remittance-Bulletin-December-2025.pdf'],
+      ['Ramocan, E. G. (2011). Remittances to Jamaica: findings from a national survey of remittance recipients. Bank of Jamaica', 'https://www.boj.org.jm/uploads/pdf/papers_pamphlets/papers_pamphlets_Remittances_to_Jamaica_-_Findings_from_a_National_Survey_of_Remittance_Recipients.pdf'],
+      ['World Bank (2024). Jamaica poverty assessment', 'https://documents1.worldbank.org/curated/en/099103024132571700/pdf/P175282-4080b652-c512-4f34-a5ab-525c2c16f39d.pdf'],
+      ['World Bank Microdata Library, Jamaica Survey of Living Conditions, first conducted in 1988', 'https://microdata.worldbank.org/catalog/2345'],
+      ['FAR-SIDS aid programme register, compiled from the OECD Creditor Reporting System, ministry project lists and the Jamaica Social Investment Fund', 'aid-programme-register.html'],
+      ['FAR-SIDS labour scheme register', 'labour-scheme-register.html'],
+      ['FAR-SIDS country shock record: Hurricane Allen 1980, Gilbert 1988, Ivan 2004, Dean 2007, Storm Nicole 2010, Beryl 2024, Melissa 2025', 'shock-record.html']
+    ]);
+    var corridor = [['United States', 66.6], ['United Kingdom', 12.5], ['Canada', 8.9], ['Cayman Islands', 6.9], ['All other countries', 5.0, true]];
+    var spend = [['Utility bills', 19, '#1795A6', 1], ['Food', 18, '#E2664A', 1], ['Education', 14, '#3C9A5F', 1], ['Housing and building', 10, '#D9A441', 1], ['Medical expenses', 7, '#B5493F', 1], ['Other bills and consumption', 17, '#9DB9BE', 1], ['Saved', 9, '#0E4D5C', 1], ['Invested', 6, '#7d8f98', 1]];
+    return [
+      { short: 'Why Jamaica', title: 'Why Jamaica is in the study',
+        lead: 'Jamaica is the island where aid has almost gone and the money that relatives send home carries the household.',
+        fig: thenNow(p, 1980, 2023, 'aid was the larger flow', 'remittances were the larger flow', 'the lines crossed in 1992', 'and have not met again'),
+        cap: 'Remittances as a share of GDP, net aid as a share of national income (World Bank, 2025).',
+        text: 'In 1980 net aid was worth 4.5% of Jamaica’s national income and remittances 3.6% of its GDP (World Bank, 2025). Remittances overtook aid in 1992 and the two lines have not met again. In 2023 Jamaican families abroad sent 3.6 billion US dollars, 16.8% of GDP, while net aid came to 86 million dollars, 0.4% of national income (World Bank, 2025). Of the three islands, Jamaica shows what a household economy looks like once one flow has shrunk to a fraction of the other. Tonga keeps both flows large, and the Comoros has crossed from one to the other within the period, so the three records can be read side by side.' },
+      { short: 'Over time', title: 'The two flows over time',
+        lead: 'Aid peaked at 9.1% of national income in 1985 and has stayed below 2% since 1995. Remittances climbed for three decades and reached 23.2% of GDP in 2021.',
+        fig: legend() + mainChart(p, {small:true}), cap: 'Hurricanes marked along the base; the shaded band is the pandemic border closure, 2020 to 2021 (World Bank, 2025).',
+        link: ['shock-record.html', 'The shock record'],
+        text: 'The chart carries the whole record from 1980, remittances as a share of GDP and net aid as a share of national income, with the seven hurricanes and storms marked along the base (World Bank, 2025). Families abroad sent more during the pandemic border closures of 2020 and 2021, and the flow has eased since. The aid line ends in 2023 because donors report to the OECD with a delay of one to two years. The Bank of Jamaica’s monthly record already puts 2025 at 3.49 billion US dollars, a figure that joins the chart when the World Bank publishes its 2025 series on the same basis as the line (Bank of Jamaica, 2026).' },
+      { short: 'Who sends', title: 'Who sends the money, and from where',
+        lead: 'Two thirds of the money comes from the United States, and more than half of the senders are a parent, a child, a sibling or a spouse.',
+        fig: flows(corridor, 'Jamaica', '3.49 billion US dollars received in 2025', ['Two in three dollars', 'arrive from the', 'United States'], 'Where Jamaica’s remittances came from in December 2025'),
+        cap: 'Shares of remittance inflows by source country, December 2025 (Bank of Jamaica, 2026).',
+        link: ['labour-scheme-register.html', 'The labour scheme register'],
+        text: 'In December 2025 the United States accounted for 66.6% of remittance inflows, the United Kingdom for 12.5%, Canada for 8.9% and the Cayman Islands for 6.9% (Bank of Jamaica, 2026). The Bank of Jamaica’s national survey of recipients found that 56% of senders were members of the recipient’s immediate family (Ramocan, 2011). Part of the flow follows the seasonal work schemes: 10,353 positions were approved for Jamaican farm and factory workers in Canada in 2025, and 16,777 US seasonal work visas were issued to Jamaicans in fiscal year 2024 (Ministry of Labour and Social Security, 2025; US Department of State, 2025). December brings 18% more remittance inflow than an average month, across the thirty-two complete years of the monthly record (Bank of Jamaica, 2026).' },
+      { short: 'Who gives aid', title: 'Who sends the aid, and what the aid pays for',
+        lead: 'Aid reaches a Jamaican household through a programme, and the project’s register documents fifty-nine programmes in Jamaica.',
+        fig: squares(59, [['#0E4D5C', 29, 'paid for by the Government of Jamaica', 'or a Jamaican foundation'], [CORAL, 27, 'paid for by an outside funder', 'World Bank, Canada and United States'], [FAINT, 3, 'origin not established', 'from published records']], 'FIFTY-NINE PROGRAMMES, ONE SQUARE EACH', rightPersons('THE LARGEST PROGRAMME, PATH', ['About one Jamaican in nine', 'receives a PATH grant,', '270,000 people in all.']), 'Fifty-nine programmes documented for Jamaica, and the reach of the largest, PATH'),
+        cap: 'The project’s register of programmes operating in Jamaica, August 2026; PATH coverage from the World Bank (2024).',
+        link: ['aid-programme-register.html', 'The aid programme register'],
+        text: 'Twenty-nine programmes are paid for by the Government of Jamaica or a Jamaican foundation, twenty-seven by an outside funder, and for three the origin of the money could not be established from published records. The outside funders named most often are the World Bank, Canada, the United States, the Inter-American Development Bank and the European Union. Fifteen of the fifty-nine programmes are cash transfers, and the largest, the Programme of Advancement Through Health and Education (PATH), pays grants to about 270,000 people, 11% of the population, on condition that children attend school and visit the clinic (World Bank, 2024).' },
+      { short: 'Remittances pay for', title: 'What the money from abroad pays for',
+        lead: 'Over half of the money from abroad goes on three items: utility bills, food and schooling.',
+        fig: waffle(spend, 'OF EVERY HUNDRED DOLLARS RECEIVED', 'Of every hundred dollars received, what Jamaican recipients spent it on in 2010'),
+        cap: 'Bank of Jamaica national survey of 2,072 remittance recipients, 2010 (Ramocan, 2011).',
+        text: 'When the Bank of Jamaica asked recipients what they did with the money, 19% went on utility bills, 18% on food and 14% on education. Another 10% went to housing and building and 7% to medical expenses. In all, 85% of the money received paid for bills and basic consumption, 6% was invested and 9% was saved (Ramocan, 2011). A PATH grant is attached to two of the same needs, schooling and health care, because the education grant depends on a child attending at least 85% of school days and the health grant on clinic visits (World Bank, 2024). The study asks which need each flow is attached to inside one household: whether the grant and the transfer from a relative abroad pay for the same school fee, or for different ones.' },
+      { short: 'Known, not known', title: 'What is known, and what is not',
+        lead: 'Jamaica counts both flows at the door, as received or not received. Which need each one pays for inside the same household has not yet been examined.',
+        fig: legend2('People in a household receiving remittances, 2021', 'Children covered by a PATH benefit, 2017') + groups(['poorest fifth', 'second fifth', 'third fifth', 'fourth fifth', 'richest fifth'], [40, 50, 55, 55, 55], [43.9, 35.8, 24.6, 20.7, 6.7], 60, '', 'Remittances reach more of the better-off fifths of Jamaican households, PATH more of the poorest'),
+        cap: 'Survey of Living Conditions, as reported in the World Bank’s 2024 poverty assessment; different people, different years.',
+        text: 'The Survey of Living Conditions, first run in 1988 by the Statistical Institute of Jamaica and the Planning Institute of Jamaica, records whether a household receives money from relatives abroad and whether anyone in it receives PATH (World Bank, 2024). In 2021 about 40% of people in the poorest fifth of households benefitted from remittances, against 50% in the second fifth and 55% in the top three fifths (World Bank, 2024). PATH runs the other way: in 2017 it covered 43.9% of children in the poorest fifth and 6.7% in the richest (World Bank, 2024). Remittances kept an estimated 5% of the population out of poverty in 2021, and transfers from relatives inside Jamaica another 4% (World Bank, 2024). Research has not yet examined, in Jamaica or elsewhere, which need each flow pays for inside the same household.' },
+      whatWeDo(p, srcs)
+    ];
+  };
+
+  ISLANDS.to = function(p){
+    var srcs = p.sources.concat([
+      ['National Reserve Bank of Tonga (2026). Remittances data, by category and by currency, 1993 to July 2026', 'https://www.reservebank.to/data/docs/economics/nrbt_rem_data.xlsx'],
+      ['World Bank (2024). Despite challenges, Tonga making important steps in reducing poverty, press release of 17 October 2024 on the Household Income and Expenditure Surveys 2015 and 2021', 'https://www.worldbank.org/en/news/press-release/2024/10/17/despite-challenges-tonga-making-important-steps-in-reducing-poverty'],
+      ['Edwards, R., Dornan, M., Doan, D. and Nguyen, T. (2022). Three questions on Tongan remittances. Devpolicy Blog, on the Pacific Labour Mobility Survey of 1,160 Tongan households, 2021', 'https://devpolicy.org/three-questions-on-tongan-remittances-20220720/'],
+      ['Tonga Statistics Department, Household Income and Expenditure Survey 2021, Pacific Data Hub', 'https://pacificdata.org/data/dataset/spc_ton_2021_hies_v01_m'],
+      ['FAR-SIDS aid programme register, compiled from the OECD Creditor Reporting System, the Lowy Institute Pacific Aid Map and Tonga’s budget papers', 'aid-programme-register.html'],
+      ['FAR-SIDS labour scheme register', 'labour-scheme-register.html'],
+      ['FAR-SIDS country shock record: Cyclone Isaac 1982, Ofa 1990, Hina 1997, Waka 2001, Ian 2014, Gita 2018, Harold 2020, the Hunga Tonga Hunga Ha’apai eruption 2022', 'shock-record.html']
+    ]);
+    var corridor = [['Australian dollars', 41.3], ['US dollars', 34.5], ['New Zealand dollars', 19.8], ['Other currencies', 4.3, true]];
+    return [
+      { short: 'Why Tonga', title: 'Why Tonga is in the study',
+        lead: 'Tonga is the island where both flows stay large: remittances worth more than a third of the economy and aid a fifth of national income.',
+        fig: thenNow(p, 1993, 2023, 'where the remittance record begins', 'both flows still large', 'thirty years side by side,', 'aid larger in two years only, 2011 and 2022'),
+        cap: 'Remittances as a share of GDP, net aid as a share of national income (World Bank, 2025).',
+        text: 'In 2023 Tongan families abroad sent 228 million US dollars, 38.6% of GDP, and net aid came to 130 million dollars, 20.4% of national income (World Bank, 2025). The remittance record begins in 1993, when the National Reserve Bank’s series starts, at 30.2% of GDP against 20.4% for aid, and the two flows have run side by side ever since; aid exceeded remittances in two years only, 2011 and 2022 (World Bank, 2025). Of the three islands, Tonga is the one where both flows are present in most homes at the same time, so the question of which need each one pays for can be asked where both answers exist. Jamaica shows one flow shrunk to a fraction of the other, and the Comoros a crossing from aid to remittances within the period.' },
+      { short: 'Over time', title: 'The two flows over time',
+        lead: 'Remittances have stayed above a fifth of GDP since 1993. Aid rose to 50.7% of national income in 2022, the year of the Hunga Tonga eruption.',
+        fig: legend() + mainChart(p, {small:true}), cap: 'Cyclones and the January 2022 eruption marked along the base; the shaded band is the pandemic border closure (World Bank, 2025).',
+        link: ['shock-record.html', 'The shock record'],
+        text: 'The aid record reaches back to 1981 and the remittance record to 1993, with the cyclones and the January 2022 eruption marked along the base (World Bank, 2025). Remittances climbed to 42.2% of GDP in 2021, during the pandemic border closures, and have eased since; aid rose to 50.7% of national income in 2022 as donors paid for recovery from the eruption and the tsunami that followed it (World Bank, 2025). The aid line ends in 2023 because donors report to the OECD with a delay of one to two years. The National Reserve Bank’s monthly record already puts 2025 at 570 million pa’anga, a figure that joins the chart when the World Bank publishes its 2025 series on the same basis as the line (National Reserve Bank of Tonga, 2026).' },
+      { short: 'Who sends', title: 'Who sends the money, and from where',
+        lead: 'Four dollars in ten arrive in Australian dollars, a third in US dollars and a fifth in New Zealand dollars, and a tenth of the total is the wages of seasonal workers abroad.',
+        fig: flows(corridor, 'Tonga', '570 million pa’anga received in 2025', ['Four in ten dollars', 'arrive in', 'Australian dollars'], 'Remittance receipts to Tonga in 2025 by the currency they arrived in'),
+        cap: 'Remittance receipts by currency, 2025, the currency standing in for the country the money was sent from (National Reserve Bank of Tonga, 2026).',
+        link: ['labour-scheme-register.html', 'The labour scheme register'],
+        text: 'The National Reserve Bank of Tonga records remittances by the currency they arrive in, which stands in for the country they are sent from. Of the 570 million pa’anga received in 2025, 41% arrived in Australian dollars, 35% in US dollars, 20% in New Zealand dollars and 4% in other currencies (National Reserve Bank of Tonga, 2026). Wages sent home by seasonal workers, recorded as compensation of employees, made up 10% of the total. The number of places on the two schemes that send them is set each year in Canberra and Wellington: 3,715 Tongans were at work in Australia under the PALM scheme at the end of June 2026, and 1,680 New Zealand RSE work visas were approved for Tongans in the 2025/26 year (Australian Government, 2026; Immigration New Zealand, 2026). December brings 29% more remittance inflow than an average month and February 22% less, across the thirty-three complete years of the monthly record (National Reserve Bank of Tonga, 2026).' },
+      { short: 'Who gives aid', title: 'Who sends the aid, and what the aid pays for',
+        lead: 'Aid reaches a Tongan household through a programme, and the project’s register documents seventy-two programmes in Tonga, sixty paid for from outside the country.',
+        fig: squares(72, [['#0E4D5C', 9, 'paid for by the Government of Tonga', 'or a Tongan organisation'], [CORAL, 60, 'paid for by an outside funder', 'Australia, China and the World Bank'], [FAINT, 3, 'origin not established', 'from published records']], 'SEVENTY-TWO PROGRAMMES, ONE SQUARE EACH', rightList(['PROGRAMMES PAID FOR', 'BY EACH OUTSIDE FUNDER'], [['Australia', 9], ['China', 9], ['World Bank', 7], ['Japan', 4], ['Asian Development Bank', 3], ['New Zealand', 2]]), 'Seventy-two programmes documented for Tonga, and the outside funders named most often'),
+        cap: 'The project’s register of programmes operating in Tonga, August 2026.',
+        link: ['aid-programme-register.html', 'The aid programme register'],
+        text: 'Nine programmes are paid for by the Government of Tonga or a Tongan organisation, sixty by an outside funder, and for three the origin of the money could not be established from published records. The outside funders named most often are Australia and China, nine programmes each, then the World Bank, Japan, the Asian Development Bank and New Zealand. Fourteen of the seventy-two programmes are cash transfers, among them the Social Welfare Scheme for the Elderly, a monthly payment to older Tongans, and the Disability Welfare Scheme; eight bring water or sanitation to the household, seven pay for scholarships or schooling, and four rebuild after a cyclone. The register was compiled from the OECD Creditor Reporting System, the Lowy Institute Pacific Aid Map and Tonga’s own budget papers.' },
+      { short: 'Remittances pay for', title: 'What the money from abroad pays for',
+        lead: 'Four households in five put the money from abroad towards everyday expenses, more than one in three towards the church, and one in four towards schooling.',
+        fig: dotRows([['Everyday expenses', 16, 'about four households in five'], ['Donations to the church', 7, 'more than one household in three'], ['Education', 5, 'about one household in four']], 'HOUSEHOLDS NAMING EACH USE OF THE MONEY, 2021, ONE BLOCK FOR ONE IN TWENTY', 'What Tongan households used remittances for in 2021: everyday expenses, church donations and education'),
+        cap: 'Pacific Labour Mobility Survey, 1,160 Tongan households, 2021 (Edwards et al., 2022); households could name more than one use.',
+        text: 'The Pacific Labour Mobility Survey asked 1,160 Tongan households in 2021 what they used the money for. About four in five named everyday expenses, more than a third named donations to the church, and about a quarter named education (Edwards, Dornan, Doan and Nguyen, 2022). Giving to the church is a recognised obligation in Tongan life, and the aid register records no programme that pays for church giving, so church giving marks one need where the two flows cannot stand in for each other. Schooling and health care are needs that both flows reach, through scholarship programmes on one side and family money on the other. The study asks which need each flow is attached to inside one household: whether the pension paid to a grandmother and the money a daughter sends from Auckland go to the same bill, or to different ones.' },
+      { short: 'Known, not known', title: 'What is known, and what is not',
+        lead: 'Nine Tongan households in ten receive money from abroad, and the poverty rate fell by a quarter between 2015 and 2021. Which need each flow pays for inside the same household has not yet been examined.',
+        fig: tongaKnown(),
+        cap: 'Household Income and Expenditure Surveys 2015 and 2021 (World Bank, 2024); Pacific Labour Mobility Survey 2021 (Edwards et al., 2022).',
+        text: 'The Household Income and Expenditure Survey, run by the Tonga Statistics Department, records whether a household receives money from abroad: in 2021 nearly nine households in ten did, and the poverty headcount rate fell from 27.4% in 2015 to 20.6% in 2021 (World Bank, 2024). The Pacific Labour Mobility Survey of the same year found that 94% of households with a member on the PALM or RSE schemes received remittances, against 73% of other households (Edwards et al., 2022). Both surveys count the money at the door, as received or not received, and the aid programmes that reach the same households are recorded separately, by the agencies that run them. Research has not yet examined, in Tonga or elsewhere, which need each flow pays for inside the same household.' },
+      whatWeDo(p, srcs)
+    ];
+  };
+
+  ISLANDS.km = function(p){
+    var srcs = p.sources.concat([
+      ['World Bank (2017). Comoros poverty assessment, chapter V on migration and remittances, drawing on the household surveys EIM 2004 and EESIC 2014', 'https://p4h.world/app/uploads/2023/02/Comoros2020Poverty20Assessment_revised.x40973.pdf'],
+      ['FAR-SIDS aid programme register, compiled from the OECD Creditor Reporting System, the World Bank project database and ministry lists', 'aid-programme-register.html'],
+      ['FAR-SIDS labour scheme register', 'labour-scheme-register.html'],
+      ['FAR-SIDS country shock record: Cyclone Elinah 1983, Cyclone Kalafandji 1989, the Anjouan secession crisis 1997, Cyclone Kenneth 2019', 'shock-record.html']
+    ]);
+    var senders = [['A brother or sister', 33.0], ['A son or daughter', 31.1], ['Another relative', 18.4], ['A parent', 11.4], ['An in-law', 1.9, true]];
+    var purposes = [['Family support, daily needs', 68, '#1795A6', 1], ['Illness and health care', 11, '#E2664A', 1], ['Studies', 7, '#3C9A5F', 1], ['Associations, insurance', 5, '#D9A441', 1], ['Investment', 4, '#0E4D5C', 1], ['Deaths and funerals', 3, '#B5493F', 1], ['Religious purposes', 1, '#9DB9BE', 1], ['Other purposes', 1, '#7d8f98', 1]];
+    return [
+      { short: 'Why Comoros', title: 'Why the Comoros is in the study',
+        lead: 'The Comoros is the island where aid was the larger flow and the money sent home from France has overtaken aid.',
+        fig: thenNow(p, 1980, 2023, 'an aid economy', 'a remittance economy', 'the lines first crossed in 1999,', 'and remittances have led since 2003'),
+        cap: 'Remittances as a share of GDP, net aid as a share of national income (World Bank, 2025).',
+        text: 'In 1980 net aid was worth 17.7% of the Comoros’ national income and recorded remittances 0.7% of GDP (World Bank, 2025). Remittances first exceeded aid in 1999 and have stayed above it since 2003; by 2023 they came to 306 million US dollars, 20.8% of GDP, against 166 million dollars of net aid, 11.3% of national income (World Bank, 2025). Official counts put about 120,000 Comorians abroad, while French diaspora bodies estimate 150,000 to 300,000 in France alone, against about 880,000 at home. Of the three islands, the Comoros shows the crossing itself, an aid economy becoming a remittance economy within one working life, and it is the least studied of the three. Jamaica shows one flow shrunk to a fraction of the other, and Tonga keeps both flows large.' },
+      { short: 'Over time', title: 'The two flows over time',
+        lead: 'Aid peaked at 24.7% of national income in 1985. Remittances rose from under 1% of GDP to 22.2% in 2021.',
+        fig: legend() + mainChart(p, {small:true}), cap: 'Cyclones marked along the base; the narrow band is the 1997 secession crisis, the wider one the pandemic border closure (World Bank, 2025).',
+        link: ['shock-record.html', 'The shock record'],
+        text: 'The chart carries the record from 1980, with Cyclone Elinah in 1983, Cyclone Kalafandji in 1989 and Cyclone Kenneth in 2019 marked along the base (World Bank, 2025). The series has one missing year, 1997, when the Anjouan secession crisis stopped the balance of payments from being compiled, and the chart shows that year as a break rather than a guess. Remittances rose through the 2010s and reached 22.2% of GDP in 2021, during the pandemic border closures (World Bank, 2025). The aid line ends in 2023 because donors report to the OECD with a delay of one to two years. No monthly remittance record exists: the Banque Centrale des Comores publishes annual figures only, one of the reasons the country is the least studied of the three.' },
+      { short: 'Who sends', title: 'Who sends the money, and from where',
+        lead: 'A brother or sister sends a third of the money and a son or daughter another third, and in 2014 more than half of the money still arrived in a relative’s luggage.',
+        fig: flows(senders, 'A household', 'in the Comoros, 2014', ['Eighty-four francs', 'in a hundred arrive', 'on Ngazidja'], 'Who sends remittances to Comorian households, by relationship to the recipient, 2014'),
+        cap: 'Relationship of the sender to the recipient, EESIC household survey 2014; island shares from the Banque Centrale des Comores (World Bank, 2017).',
+        link: ['labour-scheme-register.html', 'The labour scheme register'],
+        text: 'The Comorian diaspora lives mainly in France, in metropolitan France and in Mayotte, with Madagascar the next destination, and no labour mobility scheme places Comorian workers abroad (World Bank, 2017; IOM, 2024). When the 2014 household survey asked who sent the money, a third of recipients named a brother or sister, another third a son or daughter, 18% another relative and 11% a parent (World Bank, 2017). The Banque Centrale des Comores records 84% of incoming remittances on Ngazidja, the largest island, with most of the rest going to Ndzouani (World Bank, 2017). In the early 2000s about 85% of transfers were carried in by family members and friends entering the country; by 2014 that share had fallen to 55%, so the official record still misses a large part of what arrives (World Bank, 2017).' },
+      { short: 'Who gives aid', title: 'Who sends the aid, and what the aid pays for',
+        lead: 'Aid reaches a Comorian household through a programme, and the project’s register documents sixty-six programmes in the Comoros, sixty-one paid for from outside the country.',
+        fig: squares(66, [['#0E4D5C', 3, 'paid for by the Government', 'of the Comoros'], [CORAL, 61, 'paid for by an outside funder', 'the World Bank and France'], [FAINT, 2, 'origin not established', 'from published records']], 'SIXTY-SIX PROGRAMMES, ONE SQUARE EACH', rightList(['PROGRAMMES PAID FOR', 'BY EACH OUTSIDE FUNDER'], [['World Bank', 15], ['France', 11], ['United Arab Emirates', 5], ['African Development Bank', 3], ['Japan', 3], ['European Union', 3]]), 'Sixty-six programmes documented for the Comoros, and the outside funders named most often'),
+        cap: 'The project’s register of programmes operating in the Comoros, August 2026.',
+        link: ['aid-programme-register.html', 'The aid programme register'],
+        text: 'Three programmes are paid for by the Government of the Comoros, sixty-one by an outside funder, and for two the origin of the money could not be established from published records. The outside funders named most often are the World Bank, fifteen programmes, and France, eleven, then the United Arab Emirates, the African Development Bank, Japan and the European Union. Eleven of the sixty-six programmes deliver food or goods in kind, seven bring health services, seven water or sanitation and seven training or employment support. The largest cash programme is the World Bank’s Projet de Filets Sociaux de Sécurité, which pays direct transfers of up to 75,000 Comorian francs and cash for work to households chosen one by one. The register was compiled from the OECD Creditor Reporting System, the World Bank project database and ministry lists.' },
+      { short: 'Remittances pay for', title: 'What the money from abroad pays for',
+        lead: 'Two recipients in three name the family’s daily support as the main purpose of the money from abroad, and one in ten names illness.',
+        fig: waffle(purposes, 'OF EVERY HUNDRED RECIPIENTS, HOW MANY NAMED EACH MAIN PURPOSE FOR THE MONEY', 'The main purpose of remittances as named by Comorian recipients in 2014'),
+        cap: 'Main purpose of the transfer as named by recipients, EESIC household survey 2014 (World Bank, 2017).',
+        text: 'When the 2014 household survey asked recipients the main purpose of the money, 68% named family support and daily needs, 11% illness and health care, 7% studies and 5% contributions to associations and mutual insurance schemes; investment, funerals and religious purposes took the rest (World Bank, 2017). A World Bank study a decade earlier estimated that the anda, the grand mariage of Ngazidja through which a family acquires its standing, took over half of all remittance spending, at a cost of at least 20,000 US dollars for one ceremony (World Bank, 2005). The two figures measure different things, a main purpose named by the recipient and an estimate of where the money ends up, and the household survey asks both. The study asks which need each flow is attached to inside one household: whether the safety-net transfer and the money from a sister in Marseille pay for the same clinic visit, or for different ones.' },
+      { short: 'Known, not known', title: 'What is known, and what is not',
+        lead: 'Thirty-eight Comorian households in a hundred received money from abroad in 2014, up from twenty-one in 2004, and the share rose in the capital Moroni, on the rest of Ngazidja, on Ndzouani and on Mwali. Which need each flow pays for inside the same household has not yet been examined.',
+        fig: legend2('Households receiving money from abroad, 2004', 'Households receiving money from abroad, 2014') + groups(['Moroni, the capital', 'Ngazidja outside Moroni', 'Ndzouani', 'Mwali', 'All Comoros'], [10.7, 33.6, 18.1, 8.7, 20.7], [37.1, 43.8, 36.7, 18.2, 38.0], 60, '', 'Share of households receiving money from abroad in 2004 and 2014, by island and for the capital'),
+        cap: 'Household surveys EIM 2004 and EESIC 2014, as reported in the World Bank’s 2017 poverty assessment.',
+        text: 'Two household surveys, EIM in 2004 and EESIC in 2014, recorded whether a household received money from abroad: the share rose from 21% to 38% across the country, from 11% to 37% in Moroni and from 18% to 37% on Ndzouani (World Bank, 2017). Women are now the main recipients, more than 60% of household members who receive, and remittances make up about 22% of household revenues, over 35% in rural Ngazidja (World Bank, 2017). The Banque Centrale des Comores publishes remittances by year, not by month, so the seasonal pattern that the Jamaican and Tongan records show cannot be drawn for the Comoros, and no labour mobility scheme places Comorian workers abroad (IOM, 2024). Research has not yet examined, in the Comoros or elsewhere, which need each flow pays for inside the same household.' },
+      whatWeDo(p, srcs)
+    ];
+  };
+
+  function profileStep(key, mount){
+    var p = P[key], el = document.getElementById(mount); if(!el) return;
+    var parts = ISLANDS[key](p);
+    var nav = parts.map(function(pt, i){ return '<button><span class="n">' + (i+1) + '</span>' + esc(pt.short) + '</button>'; }).join('');
+    var body = parts.map(function(pt){
+      return '<section class="step"><div class="pjstep">'
+        + '<h3 class="pjtitle">' + esc(pt.title) + '</h3>'
+        + '<p class="pjlead">' + esc(pt.lead) + '</p>'
+        + '<div class="pjfig">' + pt.fig + '<p class="pjcap"><span>' + esc(pt.cap || '') + '</span>' + (pt.link ? '<a class="pjcardlink" href="' + pt.link[0] + '">' + esc(pt.link[1]) + ' →</a>' : '') + '</p></div>'
+        + '<div class="pjcols"><p>' + pt.text + '</p></div>'
+        + (pt.after || '')
+        + '</div></section>';
+    }).join('');
+    var h = '<div class="pjhead"><div><p class="eyebrow">Island profile</p><h2 class="title">' + esc(p.name) + '</h2></div><div class="pjheadfig">' + headFig(p) + '</div></div>'
+      + '<div class="stepper pjstepper"><div class="stepnav seven">' + nav + '</div><div class="stepbody">' + body
+      + '<button type="button" class="stepbtn stepbtn-prev" aria-label="Previous part">&larr;</button><button type="button" class="stepbtn stepbtn-next" aria-label="Next part">&rarr;</button></div>'
+      + '<div class="stepfoot"><a class="stepprev">Previous</a><span class="stepcount"></span><a class="stepnext">Next</a></div></div>'
+      + '';
+    el.innerHTML = h;
+  }
+  profileStep('jm', 'prof-jm');
+  profileStep('to', 'prof-to');
+  profileStep('km', 'prof-km');
+
+  function compare(){
+    var el = document.getElementById('prof-compare'); if(!el) return;
+    var cards = [
+      ['jm', 'One flow has almost gone', 'Jamaica’s aid fell from 4.5% of national income in 1980 to 0.4% in 2023, while remittances rose from 3.6% of GDP to 16.8%. The lines crossed in 1992 and have not met again.', 'About forty-two dollars sent home for every dollar of net aid, 2023.'],
+      ['to', 'Both flows stay large', 'Tonga’s remittances have stayed above a fifth of GDP since the record begins in 1993, and aid above a tenth of national income in most years. Aid was the larger flow in two years only, 2011 and 2022.', 'Remittances 38.6% of GDP, net aid 20.4% of national income, 2023.'],
+      ['km', 'From an aid economy to a remittance economy', 'The Comoros began the period with net aid at 17.7% of national income in 1980, and ended the period with remittances at 20.8% of GDP in 2023. Remittances have led since 2003.', 'Remittances 20.8% of GDP, net aid 11.3% of national income, 2023.']
+    ];
+    var cardHtml = '<div class="pjcmpgrid">' + cards.map(function(c){ return '<a class="pjcmpcard" href="#islands/' + (c[0] === 'jm' ? 'jamaica' : c[0] === 'to' ? 'tonga' : 'comoros') + '"><span class="pjcmpname">' + esc(P[c[0]].name) + '</span><span class="pjcmptitle">' + esc(c[1]) + '</span><span class="pjcmptext">' + esc(c[2]) + '</span><span class="pjcmpnum">' + esc(c[3]) + '</span><span class="pjopen">Open the profile →</span></a>'; }).join('') + '</div>';
+    var step1 = '<section class="step">' + legend()
+      + '<div class="pjcmpgrid">' + ['jm','to','km'].map(function(k){ return '<div class="pjcmpfig">' + smallChart(P[k], 60) + '</div>'; }).join('') + '</div>' + cardHtml + '</section>';
+    var step2 = '<section class="step"><div class="proflegend">' + ['jm','to','km'].map(function(k){ return '<span><i style="background:' + P[k].col + '"></i>' + esc(P[k].name) + '</span>'; }).join('') + '</div>'
+      + '<div class="pjfig pjcmpwide">' + flowChart(1, 'Remittances, share of GDP') + '</div>'
+      + '<div class="pjfig pjcmpwide">' + flowChart(2, 'Net aid, share of national income') + '</div>'
+      + '<div class="pjcmprow"><span><b>Jamaica</b> one flow has almost gone: the lines crossed in 1992 and have not met again.</span><span><b>Tonga</b> both flows stay large: aid was the larger flow in two years only, 2011 and 2022.</span><span><b>Comoros</b> from an aid economy to a remittance economy: remittances have led since 2003.</span></div></section>';
+    var h = '<div class="pjhead"><div><p class="eyebrow">Island profile</p><h2 class="title">Side by side</h2></div></div>'
+      + '<p class="pjlead pjcmplead">In all three islands the money families send home now exceeds net aid, by about forty-two to one in Jamaica and by about two to one in Tonga and the Comoros. The three records sit on one scale, 1980 to 2025, remittances as a share of GDP and net aid as a share of national income; the shaded band is the pandemic border closure, 2020 to 2021.</p>'
+      + '<div class="stepper pjstepper pjcmpstepper"><div class="stepnav"><button><span class="n">1</span>One chart per island</button><button><span class="n">2</span>One chart per flow</button></div><div class="stepbody">' + step1 + step2
+      + '<button type="button" class="stepbtn stepbtn-prev" aria-label="Previous view">&larr;</button><button type="button" class="stepbtn stepbtn-next" aria-label="Next view">&rarr;</button></div>'
+      + '<div class="stepfoot"><a class="stepprev">Previous</a><span class="stepcount"></span><a class="stepnext">Next</a></div></div>'
+      + '<p class="profdl">Download <a href="data/downloads/far-sids island profile data - all three countries.csv" download>the three records in one file</a>. Each row names the source of its value.</p>';
+    el.innerHTML = h;
+  }
+  compare();
+
+  function flowChart(idx, title, unit){
+    var W = 1000, H = 250, padL = 46, padR = 150, padT = 34, padB = 34, iw = W - padL - padR, ih = H - padT - padB, ymax = 60, y0 = 1980, y1 = 2025;
+    function X(y){ return padL + (y - y0) / (y1 - y0) * iw; }
+    function Y(v){ return padT + ih - v / ymax * ih; }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(title) + '">';
+    s += T(padL, 18, title.toUpperCase(), 11, FAINT, {mono:true, ls:1.4});
+    for(var g = 0; g <= ymax; g += 20){ s += '<line x1="' + padL + '" y1="' + Y(g) + '" x2="' + (W - padR) + '" y2="' + Y(g) + '" stroke="' + GRID + '"/>'; s += T(padL - 8, Y(g) + 4, g + (g === ymax ? '%' : ''), 11, FAINT, {mono:true, anchor:'end'}); }
+    [1980, 1990, 2000, 2010, 2020].forEach(function(t){ s += T(X(t), H - 8, t + '', 11, FAINT, {mono:true, anchor:'middle'}); });
+    s += '<rect x="' + X(2020) + '" y="' + padT + '" width="' + (X(2021) - X(2020) + iw/(y1-y0)) + '" height="' + ih + '" fill="#0E4D5C" fill-opacity="0.06"/>';
+    var ends = [];
+    ['jm','to','km'].forEach(function(k){
+      var p = P[k], d = '', pen = false, last = null;
+      p.series.forEach(function(r){ var v = r[idx]; if(v == null){ pen = false; return; } d += (pen ? ' L' : ' M') + X(r[0]).toFixed(1) + ',' + Y(v).toFixed(1); pen = true; last = r; });
+      s += '<path d="' + d + '" fill="none" stroke="' + p.col + '" stroke-width="2.4" stroke-linejoin="round"/>';
+      s += '<circle cx="' + X(last[0]) + '" cy="' + Y(last[idx]) + '" r="4" fill="' + p.col + '"/>';
+      ends.push([p.name + ' ' + last[idx].toFixed(1) + '%, ' + last[0], Y(last[idx]), p.col]);
+    });
+    ends.sort(function(a, b){ return a[1] - b[1]; });
+    var ly = -100; ends.forEach(function(e){ var y = Math.max(e[1], ly + 16); ly = y; s += T(W - padR + 12, y + 4, e[0], 12, e[2], {weight:600}); });
+    s += '</svg>';
+    return s;
+  }
 
   function closeSources(except){
     document.querySelectorAll('details.profsrc[open]').forEach(function(d){ if(d !== except) d.open = false; });
@@ -2073,18 +2565,6 @@ window.__initBoard = function(){
     closeSources(inside);
   });
 
-  var cmp = document.getElementById('prof-compare');
-  if(cmp){
-    var h = '<p class="eyebrow">Island profile</p><h2 class="title">Side by side</h2>'
-      + '<p class="lead-p profintro">The three records on one scale, remittances as a share of GDP and net aid as a share of national income. Jamaica’s aid falls toward zero while its remittances climb, Tonga keeps both flows large for the whole record, and the Comoros crosses from one to the other in the middle of the period.</p>'
-      + legend();
-    ['jm','to','km'].forEach(function(k){
-      h += '<div class="profpanel"><h3>' + esc(P[k].name) + '</h3>' + mainChart(P[k], {small:true, ymax:60}) + '</div>';
-    });
-    h += '<p class="profdl">Download <a href="data/downloads/far-sids island profile data - all three countries.csv" download>the three records in one file</a>. Each row names the source of its value.</p>';
-    h += '<p class="profback"><a href="#islands">All three islands</a></p>';
-    cmp.innerHTML = h;
-  }
 })();
 </script>
 

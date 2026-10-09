@@ -776,8 +776,8 @@ FARSIDS.PROFILES = {
     "https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS?locations=TO"
    ],
    [
-    "PALM scheme, official data",
-    "https://www.palmscheme.gov.au"
+    "PALM scheme data reports, Australian Government",
+    "https://www.palmscheme.gov.au/palm-scheme-data"
    ],
    [
     "Immigration New Zealand, RSE statistics",
@@ -1122,7 +1122,7 @@ FARSIDS.PROFILES = {
     "https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT?locations=KM"
    ],
    [
-    "IMF country report 04/233, the statistical appendix behind 1996 to 2001",
+    "IMF, Union of the Comoros: Selected Issues and Statistical Appendix, Country Report 04/233, 2004",
     "https://www.imf.org/external/pubs/ft/scr/2004/cr04233.pdf"
    ],
    [

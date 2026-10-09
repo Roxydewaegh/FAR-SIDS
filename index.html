@@ -15,7 +15,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=2026-10-09b">
 <script>document.documentElement.className = 'js';</script>
-<script src="assets/analytics.js"></script>
 </head>
 <body>
 <div class="atlas">
@@ -1551,11 +1550,8 @@ window.__initBoard = function(){
     links.forEach(function(a){ a.classList.toggle('on', a.dataset.room === id); });
     document.querySelectorAll('.rail .subnav a').forEach(function(a){ a.classList.remove('on'); });
     document.querySelectorAll('.rail .subnav').forEach(function(sn){ sn.classList.toggle('openset', sn.dataset['for'] === id); });
-    var chosenSub = SUBS[id] ? (sub && SUBS[id].indexOf(sub) >= 0 ? sub : SUBS[id][0]) : null;
-    if(chosenSub) setSub(id, chosenSub);
+    if(SUBS[id]) setSub(id, sub && SUBS[id].indexOf(sub) >= 0 ? sub : SUBS[id][0]);
     window.scrollTo(0, 0);
-    window.__view = id + (chosenSub ? '/' + chosenSub : '');
-    if(window.__gcView) window.__gcView(window.__view);
   }
   function route(){
     var h = location.hash.replace('#','').split('/');
@@ -2063,6 +2059,15 @@ window.__initBoard = function(){
   profile('jm', 'prof-jm');
   profile('to', 'prof-to');
   profile('km', 'prof-km');
+
+  function closeSources(except){
+    document.querySelectorAll('details.profsrc[open]').forEach(function(d){ if(d !== except) d.open = false; });
+  }
+  window.addEventListener('hashchange', function(){ closeSources(null); });
+  document.addEventListener('click', function(e){
+    var inside = e.target.closest ? e.target.closest('details.profsrc') : null;
+    closeSources(inside);
+  });
 
   var cmp = document.getElementById('prof-compare');
   if(cmp){

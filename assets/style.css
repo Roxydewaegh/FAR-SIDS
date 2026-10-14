@@ -1547,3 +1547,26 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 #prof-compare .profdl{margin-top:4px; font-size:.84rem;}
 @media(max-width:900px){ .pjcmpgrid{grid-template-columns:1fr;} }
 
+
+/* Teaching and training: the timeline opens on the event closest to today, with arrows at both ends */
+.tlscroll{position:relative; padding:0 66px;}
+.tlscroll .teachline{position:relative;}
+#room-training .teachline.tl-h{scroll-snap-type:none;}
+.tlscroll::before, .tlscroll::after{content:""; position:absolute; top:0; bottom:12px; width:44px; z-index:2; pointer-events:none; opacity:0; transition:opacity .25s ease;}
+.tlscroll::before{left:66px; background:linear-gradient(90deg, var(--paper) 30%, rgba(246,251,251,0));}
+.tlscroll::after{right:66px; background:linear-gradient(270deg, var(--paper) 30%, rgba(246,251,251,0));}
+.tlscroll.more-l::before, .tlscroll.more-r::after{opacity:1;}
+.tlarrow{position:absolute; top:4px; z-index:3; width:48px; height:48px; border-radius:50%; display:grid; place-items:center; padding:0; cursor:pointer;
+  background:#fff; color:var(--deep); border:1.5px solid var(--lagoon); box-shadow:0 10px 24px -12px rgba(14,77,92,.55), 0 0 0 5px rgba(246,251,251,.9);
+  transition:background .2s ease, color .2s ease, transform .2s ease, opacity .25s ease;}
+.tlarrow svg{width:22px; height:22px; display:block;}
+.tlarrow-prev{left:0;}
+.tlarrow-next{right:0;}
+.tlarrow-next svg{transform:scaleX(-1);}
+.tlarrow:hover, .tlarrow:focus-visible{background:var(--deep); color:#fff; border-color:var(--deep); outline:none;}
+.tlarrow-prev:hover{transform:translateX(-3px);}
+.tlarrow-next:hover{transform:translateX(3px);}
+.tlarrow:active{transform:scale(.94);}
+.tlarrow.off{opacity:.28; pointer-events:none; box-shadow:none;}
+@media(max-width:720px){ .tlarrow{width:40px; height:40px;} .tlarrow svg{width:18px; height:18px;} .tlscroll{padding:0 48px;} .tlscroll::before{left:48px;} .tlscroll::after{right:48px;} .tlscroll::before, .tlscroll::after{width:28px;} }
+@media(prefers-reduced-motion:reduce){ .tlarrow, .tlscroll::before, .tlscroll::after{transition:none;} }

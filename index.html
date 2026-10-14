@@ -1025,8 +1025,12 @@
   <div class="roomwrap">
       <p class="eyebrow">Teaching and training</p>
       <h2 class="title" style="font-size:1.7rem;">Teaching and training</h2>
-      <p class="tl-lead muted" style="margin:0 0 4px;"><span class="scrollhint">scroll sideways &rarr;</span></p>
-      <div class="teachline" id="teachline"></div>
+      <p class="tl-lead muted" style="margin:0 0 4px;"><span class="scrollhint">&larr; scroll sideways &rarr;</span></p>
+      <div class="tlscroll" id="tlscroll">
+        <button class="tlarrow tlarrow-prev" id="tlprev" type="button" aria-label="Earlier events"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="teachline" id="teachline"></div>
+        <button class="tlarrow tlarrow-next" id="tlnext" type="button" aria-label="Later events"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
 <div class="toolgrid compactlists">
         <div class="resgroup">
         <h3>Training<span class="scrollhint">scroll &darr;</span></h3>
@@ -1551,6 +1555,7 @@ window.__initBoard = function(){
     document.querySelectorAll('.rail .subnav a').forEach(function(a){ a.classList.remove('on'); });
     document.querySelectorAll('.rail .subnav').forEach(function(sn){ sn.classList.toggle('openset', sn.dataset['for'] === id); });
     if(SUBS[id]) setSub(id, sub && SUBS[id].indexOf(sub) >= 0 ? sub : SUBS[id][0]);
+    if(id === 'training' && window.__teachToday) setTimeout(window.__teachToday, 60);
     window.scrollTo(0, 0);
   }
   function route(){
@@ -1605,6 +1610,35 @@ window.__initBoard = function(){
     });
     box.innerHTML = html;
     box.classList.add('tl-h');
+    var wrap = document.getElementById('tlscroll'), prev = document.getElementById('tlprev'), next = document.getElementById('tlnext');
+    function edges(){
+      var atStart = box.scrollLeft <= 4, atEnd = box.scrollLeft + box.clientWidth >= box.scrollWidth - 4;
+      prev.classList.toggle('off', atStart); next.classList.toggle('off', atEnd);
+      wrap.classList.toggle('more-l', !atStart); wrap.classList.toggle('more-r', !atEnd);
+    }
+    function step(d){
+      var w = (box.querySelector('.tl-item') || {}).offsetWidth || 300, n = Math.max(1, Math.floor((box.clientWidth - 52) / w));
+      var target = Math.round((box.scrollLeft + 52) / w) * w + d * n * w - 52;
+      box.scrollTo({left: Math.max(0, target), behavior: 'smooth'});
+    }
+    prev.addEventListener('click', function(){ step(-1); });
+    next.addEventListener('click', function(){ step(1); });
+    box.addEventListener('scroll', edges, {passive: true});
+    window.addEventListener('resize', edges);
+    window.__teachToday = function(){
+      if(!box.clientWidth) return;
+      var els = box.querySelectorAll('.tl-item'), today = new Date(), t0 = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+      var best = 0, bestGap = Infinity;
+      items.forEach(function(t, i){
+        var d = t.sort.slice(0, 10).split('-'), gap = Math.abs(Date.UTC(+d[0], +d[1] - 1, +d[2]) - t0);
+        if(gap < bestGap){ bestGap = gap; best = i; }
+      });
+      var prevBehaviour = box.style.scrollBehavior; box.style.scrollBehavior = 'auto';
+      box.scrollLeft = Math.max(0, els[best].offsetLeft - 52);
+      box.style.scrollBehavior = prevBehaviour;
+      edges();
+    };
+    setTimeout(window.__teachToday, 60);
     document.querySelectorAll('#room-training .toolgrid .resgroup ul').forEach(function(ul){
       var g = ul.parentNode;
       function check(){ g.classList.toggle('at-end', ul.scrollTop + ul.clientHeight >= ul.scrollHeight - 4); }

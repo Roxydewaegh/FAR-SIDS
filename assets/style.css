@@ -162,7 +162,7 @@
   .tl-scroll.drag{cursor:grabbing;}
   .tl-scroll::-webkit-scrollbar{height:9px;}
   .tl-scroll::-webkit-scrollbar-thumb{background:var(--shoal); border-radius:8px;}
-  .tl-track{position:relative; min-width:1180px;}
+  .tl-track{position:relative; min-width:2360px;}
   .tl-ruler{position:relative; height:46px; border-bottom:1px solid var(--line);}
   .tl-mtick{position:absolute; top:0; bottom:0; border-left:1px solid var(--line);}
   .tl-mtick span{position:absolute; top:15px; left:8px; font-family:var(--mono); font-size:.68rem;

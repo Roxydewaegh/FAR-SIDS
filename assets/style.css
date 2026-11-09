@@ -1570,3 +1570,6 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 .tlarrow.off{opacity:.28; pointer-events:none; box-shadow:none;}
 @media(max-width:720px){ .tlarrow{width:40px; height:40px;} .tlarrow svg{width:18px; height:18px;} .tlscroll{padding:0 48px;} .tlscroll::before{left:48px;} .tlscroll::after{right:48px;} .tlscroll::before, .tlscroll::after{width:28px;} }
 @media(prefers-reduced-motion:reduce){ .tlarrow, .tlscroll::before, .tlscroll::after{transition:none;} }
+
+/* Listening post titles stay inside the body text column, clear of the spot illustration (9 November 2026) */
+@media(min-width:701px){ #lpthread .vst-card:has(.lp-row) > h3{padding-right:142px;} }

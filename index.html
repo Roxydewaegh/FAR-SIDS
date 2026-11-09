@@ -1421,17 +1421,10 @@ window.__initBoard = function(){
         var b = document.createElement('div'); b.className = 'tl-bar';
         b.style.left = pct(e.start) + '%';
         b.style.width = (pct(e.end) - pct(e.start)) + '%';
+        b.style.minWidth = Math.max(54, e.title.length * 7 + 24) + 'px';
         b.style.top = topY + 'px';
         b.style.background = TRACKS[key].colour;
-        b.title = e.title;
-        var truePx = (new Date(e.end + 'T00:00:00') - new Date(e.start + 'T00:00:00')) / DAY * pxDay;
-        if(truePx >= e.title.length * 7 + 24){ b.textContent = e.title; }
-        else {
-          // short event: the bar keeps its real length and the name sits beside it
-          b.className = 'tl-bar tl-short'; b.style.minWidth = '10px';
-          var lb = document.createElement('span'); lb.className = 'tl-blabel';
-          lb.style.color = TRACKS[key].colour; lb.textContent = e.title; b.appendChild(lb);
-        }
+        b.textContent = e.title; b.title = e.title;
         b.addEventListener('click', function(){ select(e, b); });
         e._el = b; lane.appendChild(b);
       }

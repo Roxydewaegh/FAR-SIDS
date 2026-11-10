@@ -186,15 +186,15 @@ FARSIDS.TEACHING = [
     svg: ""
   },
   {
-    sort: "2026-11-09",
-    when: "From 9 November 2026",
+    sort: "2026-11-10",
+    when: "9 and 10 November 2026",
     where: "Université de Montréal on edX, online",
     title: "Knowledge Translation 2: Policy Brief",
     kind: "Training",
-    file: "https://catalogue.edulib.org/en/cours/renard102-en/",
-    status: "scheduled",
+    file: "edx-policy-brief-certificate.pdf",
+    status: "done",
     dlv: "D.2.2",
-    blurb: "An online course on turning research into clear policy briefs, taken at my own pace from 9 November. The policy writing training.",
+    blurb: "An online course on turning research into clear policy briefs, completed on 10 November with a verified certificate. The policy writing training.",
     svg: ""
   },
   {

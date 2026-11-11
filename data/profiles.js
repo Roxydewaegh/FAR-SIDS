@@ -1114,7 +1114,7 @@ FARSIDS.PROFILES = {
   "labourempty": "No labour mobility scheme exists for Comorian workers: the IOM migration governance profile for the Comoros records no bilateral labour agreement of any kind. What Comorian families abroad send home moves through family channels alone, with no scheme behind any of it.",
   "lendcap": "World Bank disbursements to the Comoros in millions of US dollars a year, from the monthly IDA statements of credits and grants. One lender only, shown because no other aid flow is published month by month.",
   "prog": "66 aid programmes documented for the Comoros on the project's register in August 2026, compiled from the OECD Creditor Reporting System, the World Bank project database and ministry lists.",
-  "field": "Fieldwork closes in the Comoros in August 2027 with the University of the Comoros: about two months of interviews, focus groups and a household survey of 250 to 300 families, fielded in Shikomori with French alongside.",
+  "field": "Fieldwork closes in the Comoros in September 2027 with the University of the Comoros: about two months of interviews, focus groups and a household survey of 250 to 300 families, fielded in Shikomori with French alongside.",
   "shockcap": "The marks along the base, left to right: Cyclone Elinah 1983, Cyclone Kalafandji 1989, recorded internationally as Firinga and worst on Anjouan, and Cyclone Kenneth 2019. The narrow band at 1997 is the Anjouan secession crisis, and the wider shaded band is the pandemic border closure period, 2020 to 2021. The aid line ends in 2023 because donors report to the OECD with a delay of one to two years, and later years appear here as they are published.",
   "sources": [
    [

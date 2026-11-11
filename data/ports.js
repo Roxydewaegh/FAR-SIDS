@@ -16,10 +16,10 @@ FARSIDS.PORTS = {
       s: "Two modules in the Islands and Small States Institute's Master's programme in October, an NVivo module on coding qualitative material and a seminar in which students map how aid and remittances reach different livelihood assets, and a virtual guest seminar at the University of Hildesheim in Germany on 20 November, Aid, Remittances, and Agency." },
     { m: true, t: "M.5.1", d: "November 2026",
       s: "Milestone M.5.1: the data review is complete. The systematic review's search across the four databases is done, and the quantitative series that will feed the models, World Bank and OECD data for Jamaica, Tonga, and Comoros reaching back to 1980, are assembled and quality checked. From here the review knows which variables earlier studies used, and the models know which data they can use." },
+    { m: true, t: "M.1.1", d: "November 2026",
+      s: "Month six of the fellowship. The Career Development Plan, signed again by Professor Moncada, and the Data Management Plan were submitted on the EU Funding and Tenders Portal on 11 November 2026, a month ahead of the 14 December due date, and this digital platform has been live since June. Each plan is updated as the project changes." },
     { l: "Conference #1|(DevNet)", t: "The first paper is presented in Wellington", d: "2 to 4 December 2026",
-      s: "The systematic review is presented at DevNet 2026, the development studies conference hosted by Te Herenga Waka Victoria University of Wellington in New Zealand, delivered in person." },
-    { m: true, t: "M.1.1", d: "December 2026",
-      s: "Month six of the fellowship. The Career Development Plan, signed in June and formally submitted on the EU Funding and Tenders Portal, the Data Management Plan reviewed with the University's Open Science Department, and this digital platform, all complete. Each remains a living document that evolves with the project." }
+      s: "The systematic review is presented at DevNet 2026, the development studies conference hosted by Te Herenga Waka Victoria University of Wellington in New Zealand, delivered in person." }
   ],
   "2027": [
     { l: "Approvals", t: "Approvals and translations", d: "early 2027",

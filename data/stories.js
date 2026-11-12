@@ -30,7 +30,7 @@ FARSIDS.STORIES =
   {
     "place": "Comoros",
     "k": "km",
-    "when": "December 2026",
+    "when": "November 2026",
     "title": "Comorian women in Marseille funded suitcase trading from low wages to meet obligations at home",
     "paper": "Des femmes du Sud combinant activités formelles et informelles au Nord (Ahmad, 2022)",
     "mini": "<svg viewBox='0 0 120 64' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><rect width='120' height='64' fill='#E3F1F3'/><rect x='34' y='20' width='52' height='34' rx='4' fill='#0E4D5C'/><path d='M52,20 L52,13 L68,13 L68,20' fill='none' stroke='#0E4D5C' stroke-width='2.5'/><circle cx='60' cy='37' r='7' fill='#E8C547'/><path d='M8,37 L30,37' stroke='#E8C547' stroke-width='3'/><path d='M90,37 L112,37' stroke='#E8C547' stroke-width='3'/></svg>",
@@ -130,7 +130,7 @@ FARSIDS.STORIES =
   {
     "place": "Comoros",
     "k": "km",
-    "when": "November 2026",
+    "when": "October 2026",
     "title": "Migration control on Mayotte endangered the health and lives of undocumented Comorian women",
     "paper": "The Gendered Necropolitics of Migration Control in a French Postcolonial Periphery (Sahraoui, 2024)",
     "mini": "<svg viewBox='0 0 120 64' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><rect width='120' height='64' fill='#E3F1F3'/><path d='M4,20 Q20,8 34,20 Q40,40 24,48 Q6,48 4,20 Z' fill='#EAF4E8' stroke='#5C8A4A' stroke-width='1.5'/><path d='M84,10 Q110,6 116,28 Q114,54 92,54 Q78,48 80,28 Z' fill='#EAF4E8' stroke='#5C8A4A' stroke-width='1.5'/><path d='M36,22 Q58,10 80,22' fill='none' stroke='#0E4D5C' stroke-width='2'/><path d='M80,40 Q58,52 36,40' fill='none' stroke='#E2664A' stroke-width='2' stroke-dasharray='4 3'/><path d='M50,16 L64,16 L61,20 L53,20 Z' fill='#3D5560'/></svg>",
@@ -277,7 +277,7 @@ FARSIDS.STORIES =
   {
     "place": "Across all SIDS",
     "k": "all",
-    "when": "September 2026",
+    "when": "October 2026",
     "title": "What arrives, and when, after the storm",
     "paper": "Extreme weather events as drivers of climate official development assistance: evidence from Caribbean small island developing states (Mohan and Strobl, 2025)",
     "mini": "<svg viewBox='0 0 120 64' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><line x1='10' y1='20' x2='110' y2='20' stroke='#E2664A' stroke-width='2' stroke-opacity='0.4'/><line x1='10' y1='46' x2='110' y2='46' stroke='#1C8C9B' stroke-width='2' stroke-opacity='0.4'/><circle cx='22' cy='20' r='6' fill='#E2664A' stroke='#993C1D' stroke-width='1.3'/><circle cx='60' cy='20' r='4' fill='#E2664A' stroke='#993C1D' stroke-width='1.3'/><circle cx='60' cy='46' r='6' fill='#1C8C9B' stroke='#0E4D5C' stroke-width='1.3'/><circle cx='98' cy='46' r='4' fill='#1C8C9B' stroke='#0E4D5C' stroke-width='1.3'/><path d='M60,27 L60,38' stroke='#993C1D' stroke-width='1.6' stroke-dasharray='3 2'/></svg>",
@@ -325,7 +325,7 @@ FARSIDS.STORIES =
   {
     "place": "Across all SIDS",
     "k": "all",
-    "when": "August 2026",
+    "when": "September 2026",
     "title": "The bill, and what arrived",
     "paper": "Climate finance to support Caribbean Small Island Developing States efforts in achieving their Nationally Determined Contributions in the energy sector (Mohan, 2022)",
     "mini": "<svg viewBox='0 0 120 64' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><rect x='8' y='8' width='104' height='48' rx='3' fill='#1C8C9B' fill-opacity='0.18' stroke='#0E4D5C' stroke-width='1.4'/><rect x='14' y='34' width='36' height='16' rx='2' fill='#E2664A' fill-opacity='0.85' stroke='#993C1D' stroke-width='1.3'/></svg>",

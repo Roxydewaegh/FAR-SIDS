@@ -1908,7 +1908,7 @@ window.__initBoard = function(){
         card.innerHTML = '<div class="lp-head"><span class="lp-tag">' + esc(e.place) + '</span><span class="lp-when">' + esc(e.when) + '</span></div>'
           + '<h3>' + esc(e.title) + '</h3>'
           + '<div class="vst-art">' + e.svg + '</div>'
-          + '<p class="lp-teaser" style="margin-top:10px;">' + esc(e.note) + '</p>'
+          + '<div class="lp-teaser lp-text" style="margin-top:10px;">' + String(e.note || '').split(/\n\s*\n/).map(function(p){ return '<p>' + esc(p) + '</p>'; }).join('') + '</div>'
           + (srcs ? '<div class="lp-src"><span class="lab">Drawn from</span>' + srcs + '</div>' : '');
         return card;
       }

@@ -1573,11 +1573,3 @@ a.tl-title:hover .tl-open{background:var(--lagoon); color:#fff;}
 
 /* Listening post titles stay inside the body text column, clear of the spot illustration (9 November 2026) */
 @media(min-width:701px){ #lpthread .vst-card:has(.lp-row) > h3{padding-right:142px;} }
-
-/* Visualising stories tiles: equal size, aligned picture, title, source and link rows */
-#vsgrid{grid-auto-rows:1fr;}
-#vsgrid .vs-tile.vs-live{width:100%; box-sizing:border-box;}
-#vsgrid .vs-mini{height:150px; width:100%; margin:12px 0 4px; display:flex; align-items:center;}
-#vsgrid .vs-mini svg.vs-mini-fig{width:100%; height:150px;}
-#vsgrid .vs-t{line-height:1.5; min-height:4.5em;}
-#vsgrid .vs-paper{min-height:4.35em;}

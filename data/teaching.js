@@ -212,13 +212,13 @@ FARSIDS.TEACHING = [
   {
     sort: "2027-01-31",
     when: "January 2027",
-    where: "Partner universities in Jamaica, Tonga and Comoros",
+    where: "Partners in Jamaica, Tonga and Comoros",
     title: "Mixed methods research on aid and remittances in small island states",
     kind: "Teaching, online course",
     file: "",
     status: "planned",
     dlv: "D.2.8",
-    blurb: "The first massive open online course, designed with the partner universities that host the secondments around the teaching and research needs they identify.",
+    blurb: "The first massive open online course, designed with the partners that host the secondments around the teaching and research needs they identify.",
     svg: ""
   },
   {
@@ -242,7 +242,7 @@ FARSIDS.TEACHING = [
     file: "",
     status: "planned",
     dlv: "D.6.1",
-    blurb: "The framework and the desk findings presented at ISSI, with the partner counterparts in Jamaica, Tonga and the Comoros invited online. The first of the four research seminars.",
+    blurb: "The framework and the desk findings presented at ISSI, with the partners in Jamaica, Tonga and the Comoros invited online. The first of the four research seminars.",
     svg: ""
   },
   {
@@ -284,7 +284,7 @@ FARSIDS.TEACHING = [
   {
     sort: "2027-10-01",
     when: "September to October 2027",
-    where: "University of Comoros",
+    where: "Comoros",
     title: "Research seminar on aid effectiveness and remittance interactions",
     kind: "Research seminar",
     file: "",

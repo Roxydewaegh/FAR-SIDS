@@ -41,9 +41,7 @@ FARSIDS.PORTS = {
     { l: "Fieldwork: Comoros", t: "Fieldwork: Comoros", d: "September to October 2027",
       s: "The final and least studied site, where the fieldwork is conducted in French and Shikomori. The stay closes with a secondment in the Comoros and a research seminar on aid effectiveness and remittance interactions (D.6.1 to D.6.4), and with it the fieldwork phase is complete." },
     { m: true, t: "M.4.1", d: "October 2027",
-      s: "Milestone M.4.1: fieldwork, data dissemination, and secondments complete. Three countries, roughly two months each, interviews, focus groups, and household surveys reaching 250 to 300 families per country, each stay closed with a secondment and research seminar at the partner university." },
-    { l: "Conference #3|(Adaptation Futures)", t: "The methodology paper in Cancún", d: "around October 2027",
-      s: "The project's second paper, on the methodology and preliminary findings, is presented at the Adaptation Futures Conference in Cancún, Mexico." }
+      s: "Milestone M.4.1: fieldwork, data dissemination, and secondments complete. Three countries, roughly two months each, interviews, focus groups, and household surveys reaching 250 to 300 families per country, each stay closed with a secondment and research seminar at the partner university." }
   ],
   "2028": [
     { l: "Econometrics", t: "The models come together", d: "early 2028",
@@ -60,7 +58,7 @@ FARSIDS.PORTS = {
       s: "Milestone M.6.1: two-way knowledge transfer complete. Four research seminars delivered, two international conference presentations behind the project with a third committed, and both massive open online courses live." },
     { l: "Final report", t: "The fellowship closes", d: "14 June 2028",
       s: "The fellowship ends with its final report, the three research papers submitted to peer reviewed journals, and the MSCA evaluation questionnaire completed. The papers continue into publication beyond the closing date." },
-    { l: "Conference #4|(ISISA)", t: "The results paper in Gozo", d: "just after the close, 2028",
-      s: "The third paper, the project's results, is presented at the ISISA Islands of the World Congress in Gozo, an island of the very archipelago that hosted the fellowship. It falls just after the fellowship's closing date, committed and prepared within it." }
+    { l: "Conference #3|(ISISA)", t: "The methodology and the results in Gozo", d: "just after the close, 2028",
+      s: "The methodology and the project's results are presented at the ISISA Islands of the World Congress in Gozo, an island of the very archipelago that hosted the fellowship. It falls just after the fellowship's closing date, committed and prepared within it." }
   ]
 };

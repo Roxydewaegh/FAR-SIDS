@@ -265,7 +265,7 @@ FARSIDS.TEACHING = [
     kind: "Conference",
     file: "",
     status: "planned",
-    dlv: "",
+    dlv: "D.6.6",
     blurb: "Preliminary Jamaica findings at the 21st Islands of the World Conference. Abstract submitted 7 September 2026; decisions in December.",
     svg: ""
   },
@@ -291,18 +291,6 @@ FARSIDS.TEACHING = [
     status: "planned",
     dlv: "D.6.4",
     blurb: "Given during the secondment that closes the Comoros fieldwork.",
-    svg: ""
-  },
-  {
-    sort: "2027-10-20",
-    when: "Around October 2027",
-    where: "Adaptation Futures, Cancún, Mexico",
-    title: "The methodology paper",
-    kind: "Conference",
-    file: "",
-    status: "planned",
-    dlv: "D.6.6",
-    blurb: "The second paper, on the methodology and preliminary findings.",
     svg: ""
   },
   {
@@ -333,12 +321,12 @@ FARSIDS.TEACHING = [
     sort: "2028-07-01",
     when: "2028, just after the close",
     where: "ISISA Islands of the World Congress, Gozo",
-    title: "The results paper",
+    title: "The methodology and the results",
     kind: "Conference",
     file: "",
     status: "planned",
-    dlv: "",
-    blurb: "The third paper, the project's results, presented on an island of the archipelago that hosted the fellowship.",
+    dlv: "D.6.6",
+    blurb: "The methodology and the project's results, presented on an island of the archipelago that hosted the fellowship.",
     svg: ""
   }
 ];

@@ -168,7 +168,7 @@ FARSIDS.TEACHING = [
     title: "Aid, remittances and agency",
     kind: "Teaching",
     file: "hildesheim-seminar-ledger-20-november-2026.html",
-    status: "scheduled",
+    status: "given",
     dlv: "D.2.7",
     blurb: "Ninety minutes for history students on who decides how money from outside is used, built around a structured debate with fact sheets.",
     svg: "<svg viewBox=\"0 0 120 120\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Two speech bubbles facing each other across a dividing line\"><rect width=\"120\" height=\"120\" fill=\"#F6FBFB\"/><line x1=\"60\" y1=\"24\" x2=\"60\" y2=\"96\" stroke=\"#E2664A\" stroke-width=\"2\" stroke-dasharray=\"5 5\"/><path d=\"M16 40 h38 v26 h-22 l-10 10 v-10 h-6 z\" fill=\"#fff\" stroke=\"#0E4D5C\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path d=\"M104 52 h-38 v26 h22 l10 10 v-10 h6 z\" fill=\"#BFE3E2\" stroke=\"#0E4D5C\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>"

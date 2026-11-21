@@ -174,6 +174,18 @@ FARSIDS.TEACHING = [
     svg: "<svg viewBox=\"0 0 120 120\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Two speech bubbles facing each other across a dividing line\"><rect width=\"120\" height=\"120\" fill=\"#F6FBFB\"/><line x1=\"60\" y1=\"24\" x2=\"60\" y2=\"96\" stroke=\"#E2664A\" stroke-width=\"2\" stroke-dasharray=\"5 5\"/><path d=\"M16 40 h38 v26 h-22 l-10 10 v-10 h-6 z\" fill=\"#fff\" stroke=\"#0E4D5C\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path d=\"M104 52 h-38 v26 h22 l10 10 v-10 h6 z\" fill=\"#BFE3E2\" stroke=\"#0E4D5C\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>"
   },
   {
+    sort: "2026-11-25",
+    when: "25 November 2026",
+    where: "Islands and Small States Institute, University of Malta",
+    title: "Working with Claude: a project folder, clear prompts and a website of your own",
+    kind: "Workshop",
+    file: "ai/",
+    status: "scheduled",
+    dlv: "",
+    blurb: "A practical morning for colleagues who are new to AI: setting up a project folder with instruction files, writing clear prompts, completing procurement and travel forms with Claude, adding skills and publishing a free website on GitHub.",
+    svg: ""
+  },
+  {
     sort: "2026-12-02",
     when: "2 to 4 December 2026",
     where: "DevNet 2026, Te Herenga Waka Victoria University of Wellington",
